@@ -7,6 +7,10 @@ if [ ! -f .env ] && [ -f .env.example ]; then
   cp .env.example .env
 fi
 
+if [ ! -f .env ]; then
+  touch .env
+fi
+
 mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache database
 
 if [ "${DB_CONNECTION:-sqlite}" = "sqlite" ]; then
@@ -32,6 +36,12 @@ chown -R www-data:www-data storage bootstrap/cache database
 if [ -z "${APP_KEY:-}" ]; then
   if ! grep -q '^APP_KEY=base64:' .env 2>/dev/null; then
     php artisan key:generate --force --ansi
+  fi
+else
+  if grep -q '^APP_KEY=' .env 2>/dev/null; then
+    sed -i "s#^APP_KEY=.*#APP_KEY=${APP_KEY}#" .env
+  else
+    printf '\nAPP_KEY=%s\n' "${APP_KEY}" >> .env
   fi
 fi
 
