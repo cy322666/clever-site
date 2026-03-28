@@ -35,9 +35,11 @@ chown -R www-data:www-data storage bootstrap/cache database
 
 if [ -z "${APP_KEY:-}" ]; then
   if ! grep -q '^APP_KEY=base64:' .env 2>/dev/null; then
-    php artisan key:generate --force --ansi
+    APP_KEY="$(php -r 'echo "base64:".base64_encode(random_bytes(32));')"
   fi
-else
+fi
+
+if [ -n "${APP_KEY:-}" ]; then
   if grep -q '^APP_KEY=' .env 2>/dev/null; then
     sed -i "s#^APP_KEY=.*#APP_KEY=${APP_KEY}#" .env
   else
