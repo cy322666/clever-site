@@ -19,7 +19,7 @@ services:
       LOG_CHANNEL: stderr
       DB_CONNECTION: pgsql
       DB_HOST: db
-      DB_PORT: 5488
+      DB_PORT: 5432
       DB_DATABASE: ${POSTGRES_DB:-clevercrm}
       DB_USERNAME: ${POSTGRES_USER:-clevercrm}
       DB_PASSWORD: ${POSTGRES_PASSWORD:-clevercrm}
