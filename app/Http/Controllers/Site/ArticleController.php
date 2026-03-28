@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\CaseStudy;
 use App\Models\LandingPage;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
 class ArticleController extends Controller
@@ -14,8 +16,9 @@ class ArticleController extends Controller
     {
         return view('site.articles.index', [
             'articles' => Article::query()
-                ->where('status', 'published')
+                ->published()
                 ->latest('published_at')
+                ->latest('updated_at')
                 ->paginate(9),
         ]);
     }
@@ -23,142 +26,59 @@ class ArticleController extends Controller
     public function show(string $slug): View
     {
         $article = Article::query()
-            ->where('status', 'published')
+            ->published()
             ->where('slug', $slug)
             ->firstOrFail();
 
+        $contentBlocks = $this->prepareContentBlocks($article);
+
         return view('site.articles.show', [
             'article' => $article,
-            'contentBlocks' => $this->buildContentBlocks($article),
+            'contentBlocks' => $contentBlocks,
+            'relatedLandings' => $this->resolveRelatedLandings($article, $contentBlocks),
             'moreArticles' => Article::query()
-                ->where('status', 'published')
+                ->published()
                 ->whereKeyNot($article->getKey())
                 ->latest('published_at')
+                ->latest('updated_at')
                 ->take(2)
                 ->get(),
         ]);
     }
 
-    private function buildContentBlocks(Article $article): array
+    private function prepareContentBlocks(Article $article): array
     {
-        if (is_array($article->content_blocks) && $article->content_blocks !== []) {
-            return $this->normalizeStoredBlocks($article->content_blocks);
-        }
-
-        $rawBlocks = preg_split('/(?:\r?\n){2,}/u', trim((string) $article->full_content)) ?: [];
-        $blocks = [];
-        $pendingLinks = [];
-
-        foreach ($rawBlocks as $rawBlock) {
-            $block = trim((string) $rawBlock);
-
-            if ($block === '') {
-                continue;
-            }
-
-            if (mb_strtolower($block) === mb_strtolower(trim((string) $article->title))) {
-                continue;
-            }
-
-            $linkBlock = $this->resolveLinkBlock($block);
-
-            if ($linkBlock !== null) {
-                array_push($pendingLinks, ...$linkBlock);
-                continue;
-            }
-
-            if ($pendingLinks !== []) {
-                $blocks[] = [
-                    'type' => 'links',
-                    'items' => $pendingLinks,
+        return collect($article->resolvedContentBlocks())
+            ->map(function (array $block): array {
+                return [
+                    'view' => $block['view'],
+                    'data' => $this->prepareBlockData($block['data']),
                 ];
-                $pendingLinks = [];
-            }
+            })
+            ->filter(static function (array $block): bool {
+                return ($block['data']['type'] ?? null) !== 'links' || ! empty($block['data']['items']);
+            })
+            ->values()
+            ->all();
+    }
 
-            if ($this->isHeading($block)) {
-                $blocks[] = [
-                    'type' => 'heading',
-                    'text' => $block,
-                ];
+    private function prepareBlockData(array $block): array
+    {
+        if (($block['type'] ?? null) === 'links') {
+            $items = collect($block['items'] ?? [])
+                ->map(fn (mixed $item): ?array => $this->normalizeLinkItem($item))
+                ->filter()
+                ->values()
+                ->all();
 
-                continue;
-            }
-
-            $blocks[] = [
-                'type' => 'paragraph',
-                'text' => preg_replace('/\s*\R\s*/u', ' ', $block) ?: $block,
-            ];
-        }
-
-        if ($pendingLinks !== []) {
-            $blocks[] = [
+            return [
                 'type' => 'links',
-                'items' => $pendingLinks,
+                'title' => filled($block['title'] ?? null) ? trim((string) $block['title']) : null,
+                'items' => $items,
             ];
         }
 
-        return $blocks;
-    }
-
-    private function normalizeStoredBlocks(array $blocks): array
-    {
-        return collect($blocks)
-            ->filter(static fn (mixed $block): bool => is_array($block))
-            ->map(fn (array $block): ?array => $this->normalizeStoredBlock($block))
-            ->filter()
-            ->values()
-            ->all();
-    }
-
-    private function normalizeStoredBlock(array $block): ?array
-    {
-        $type = $block['type'] ?? null;
-
-        if (! is_string($type)) {
-            return null;
-        }
-
-        return match ($type) {
-            'heading' => $this->normalizeTextBlock($block, 'heading'),
-            'paragraph' => $this->normalizeTextBlock($block, 'paragraph'),
-            'links' => $this->normalizeLinksBlock($block),
-            default => null,
-        };
-    }
-
-    private function normalizeTextBlock(array $block, string $type): ?array
-    {
-        $text = trim((string) ($block['text'] ?? ''));
-
-        if ($text === '') {
-            return null;
-        }
-
-        return [
-            'type' => $type,
-            'text' => $text,
-        ];
-    }
-
-    private function normalizeLinksBlock(array $block): ?array
-    {
-        $items = collect($block['items'] ?? [])
-            ->map(fn (mixed $item): ?array => $this->normalizeLinkItem($item))
-            ->filter()
-            ->values()
-            ->all();
-
-        if ($items === []) {
-            return null;
-        }
-
-        $title = trim((string) ($block['title'] ?? ''));
-
-        return [
-            'type' => 'links',
-            'title' => $title !== '' ? $title : null,
-            'items' => $items,
-        ];
+        return $block;
     }
 
     private function normalizeLinkItem(mixed $item): ?array
@@ -171,7 +91,7 @@ class ArticleController extends Controller
             return null;
         }
 
-        $url = trim((string) ($item['url'] ?? ''));
+        $url = trim((string) Arr::get($item, 'url', ''));
 
         if ($url === '') {
             return null;
@@ -184,9 +104,9 @@ class ArticleController extends Controller
             'description' => null,
         ];
 
-        $title = trim((string) ($item['title'] ?? ''));
-        $description = trim((string) ($item['description'] ?? ''));
-        $badge = trim((string) ($item['badge'] ?? ''));
+        $title = trim((string) Arr::get($item, 'title', ''));
+        $description = trim((string) Arr::get($item, 'description', ''));
+        $badge = trim((string) Arr::get($item, 'badge', ''));
 
         if ($title !== '') {
             $resolved['title'] = $title;
@@ -201,30 +121,6 @@ class ArticleController extends Controller
         }
 
         return $resolved;
-    }
-
-    private function resolveLinkBlock(string $block): ?array
-    {
-        $lines = collect(preg_split('/\R/u', $block) ?: [])
-            ->map(static fn (string $line): string => trim($line))
-            ->filter()
-            ->values();
-
-        if ($lines->isEmpty()) {
-            return null;
-        }
-
-        $allLinks = $lines->every(static fn (string $line): bool => preg_match('#^(?:/|https?://)#', $line) === 1);
-
-        if (! $allLinks) {
-            return null;
-        }
-
-        return $lines
-            ->map(fn (string $line): ?array => $this->resolveLinkItem($line))
-            ->filter()
-            ->values()
-            ->all();
     }
 
     private function resolveLinkItem(string $path): ?array
@@ -283,22 +179,102 @@ class ArticleController extends Controller
         return (string) end($segments);
     }
 
-    private function isHeading(string $block): bool
+    private function resolveRelatedLandings(Article $article, array $contentBlocks): Collection
     {
-        if (preg_match('/\R/u', $block) === 1) {
-            return false;
+        $directSlugs = collect($contentBlocks)
+            ->filter(static fn (array $block): bool => ($block['data']['type'] ?? null) === 'links')
+            ->flatMap(function (array $block): Collection {
+                return collect($block['data']['items'] ?? [])
+                    ->map(static function (array $item): ?string {
+                        $url = (string) ($item['url'] ?? '');
+
+                        if (! str_starts_with($url, '/solutions/')) {
+                            return null;
+                        }
+
+                        $segments = array_values(array_filter(explode('/', trim($url, '/'))));
+
+                        return (string) end($segments);
+                    })
+                    ->filter();
+            })
+            ->unique()
+            ->values();
+
+        if ($directSlugs->isNotEmpty()) {
+            return LandingPage::query()
+                ->published()
+                ->whereIn('slug', $directSlugs->all())
+                ->get()
+                ->sortBy(fn (LandingPage $landing): int => $directSlugs->search($landing->slug))
+                ->take(3)
+                ->values();
         }
 
-        $normalized = trim($block);
+        $haystack = mb_strtolower(implode(' ', array_filter([
+            $article->title,
+            $article->excerpt,
+            $article->short_description,
+            $article->full_content,
+            collect($contentBlocks)->map(function (array $block): string {
+                $data = $block['data'] ?? [];
 
-        if ($normalized === '') {
-            return false;
-        }
+                return collect([
+                    $data['text'] ?? null,
+                    $data['title'] ?? null,
+                    $data['caption'] ?? null,
+                    $data['author'] ?? null,
+                    isset($data['items']) && is_array($data['items']) ? implode(' ', array_map(
+                        static fn (mixed $item): string => is_array($item) ? (string) ($item['title'] ?? $item['text'] ?? '') : (string) $item,
+                        $data['items']
+                    )) : null,
+                ])->filter()->implode(' ');
+            })->implode(' '),
+        ])));
 
-        if (mb_strlen($normalized) > 90) {
-            return false;
-        }
+        $keywordMap = [
+            'audit-amocrm' => ['аудит', 'crm', 'амоcrm', 'amo', 'проблем', 'не работает', 'провер'],
+            'perevnedrenie-amocrm' => ['перевнедрен', 'донастро', 'crm уже', 'не помогает', 'формально'],
+            'vnedrenie-amocrm' => ['внедрен', 'запуск crm', 'amo', 'воронк', 'отдел продаж'],
+            'crm-ne-rabotaet' => ['crm не работает', 'не работает', 'хаос', 'не дает результат'],
+            'teryayutsya-zayavki' => ['теряют', 'заявк', 'лид', 'первый контакт'],
+            'net-analitiki-v-crm' => ['аналитик', 'отчет', 'цифр', 'конверс'],
+            'povtornye-prodazhi-amocrm' => ['повторн', 'база клиентов', 'возврат'],
+            'ai-avtomatizaciya-prodazh' => ['ai', 'ии', 'openai', 'n8n', 'автоматизац'],
+        ];
 
-        return ! preg_match('/[.:!?]$/u', $normalized);
+        $scored = collect($keywordMap)
+            ->map(function (array $keywords, string $slug) use ($haystack): array {
+                $score = collect($keywords)
+                    ->sum(static fn (string $keyword): int => mb_stripos($haystack, $keyword) !== false ? 1 : 0);
+
+                return [
+                    'slug' => $slug,
+                    'score' => $score,
+                ];
+            })
+            ->filter(static fn (array $item): bool => $item['score'] > 0)
+            ->sortByDesc('score')
+            ->pluck('slug')
+            ->values();
+
+        $fallbackSlugs = collect([
+            'audit-amocrm',
+            'perevnedrenie-amocrm',
+            'vnedrenie-amocrm',
+        ]);
+
+        $slugs = $scored
+            ->concat($fallbackSlugs)
+            ->unique()
+            ->take(3)
+            ->values();
+
+        return LandingPage::query()
+            ->published()
+            ->whereIn('slug', $slugs->all())
+            ->get()
+            ->sortBy(fn (LandingPage $landing): int => $slugs->search($landing->slug))
+            ->values();
     }
 }

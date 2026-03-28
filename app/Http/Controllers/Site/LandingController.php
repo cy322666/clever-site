@@ -35,8 +35,70 @@ class LandingController extends Controller
         return view('site.landings.show', [
             'landing' => $landing,
             'sections' => $landing->resolvedSections(),
+            'formConfig' => $this->resolveFormConfig($landing),
             'relatedLandings' => $this->buildRelatedLinks($landing, $this->resolveRelatedLandings($landing)),
         ]);
+    }
+
+    private function resolveFormConfig(LandingPage $landing): array
+    {
+        $slugMap = [
+            'audit-amocrm' => [
+                'title' => 'Получите аудит CRM под вашу ситуацию',
+                'text' => 'Покажем, где CRM теряет деньги: на заявках, в клиентской базе или в самом контуре продаж',
+                'button' => 'Получить аудит CRM',
+                'offer_type' => 'Аудит CRM',
+            ],
+            'perevnedrenie-amocrm' => [
+                'title' => 'Получите план перевнедрения amoCRM',
+                'text' => 'Разберем, что можно сохранить, что нужно пересобрать и где старая CRM мешает выручке',
+                'button' => 'Получить план перевнедрения',
+                'offer_type' => 'План перевнедрения',
+            ],
+            'vnedrenie-amocrm' => [
+                'title' => 'Получите план внедрения amoCRM',
+                'text' => 'Покажем, какие блоки запускать в первую очередь, чтобы CRM начала возвращать деньги в продажи',
+                'button' => 'Получить план внедрения',
+                'offer_type' => 'План внедрения amoCRM',
+            ],
+        ];
+
+        if (isset($slugMap[$landing->slug])) {
+            return $slugMap[$landing->slug];
+        }
+
+        return match ($landing->page_type) {
+            'service' => [
+                'title' => 'Получите разбор и следующий шаг по CRM',
+                'text' => 'Коротко разберем вашу ситуацию и скажем, нужен аудит, внедрение, перевнедрение или точечная настройка',
+                'button' => 'Получить разбор',
+                'offer_type' => 'Разбор CRM',
+            ],
+            'integration' => [
+                'title' => 'Получите схему интеграции под ваш стек',
+                'text' => 'Разберем, как встроить интеграцию в amoCRM без потери заявок и ручного хаоса',
+                'button' => 'Получить схему интеграции',
+                'offer_type' => 'Консультация по интеграции',
+            ],
+            'problem' => [
+                'title' => 'Получите разбор потерь на этой проблеме',
+                'text' => 'Покажем, где именно бизнес теряет деньги и что нужно исправить в CRM в первую очередь',
+                'button' => 'Получить разбор проблемы',
+                'offer_type' => 'Разбор проблемы в CRM',
+            ],
+            'analytics' => [
+                'title' => 'Получите разбор аналитики и воронки',
+                'text' => 'Разберем, почему CRM не дает ясной картины по деньгам, конверсии и работе команды',
+                'button' => 'Получить разбор аналитики',
+                'offer_type' => 'Разбор аналитики продаж',
+            ],
+            default => [
+                'title' => 'Получите консультацию по вашей задаче',
+                'text' => 'Опишите ситуацию. Вернемся с конкретным следующим шагом без лишней продажи',
+                'button' => 'Получить консультацию',
+                'offer_type' => 'Консультация',
+            ],
+        };
     }
 
     private function resolveRelatedLandings(LandingPage $landing): Collection

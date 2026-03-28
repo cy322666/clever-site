@@ -32,13 +32,16 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libicu-dev \
+    libpq-dev \
     libzip-dev \
     libsqlite3-dev \
+    postgresql-client \
     unzip \
     && docker-php-ext-install -j"$(nproc)" \
     bcmath \
     intl \
     opcache \
+    pdo_pgsql \
     pdo_mysql \
     pdo_sqlite \
     zip \

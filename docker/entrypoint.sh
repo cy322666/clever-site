@@ -15,6 +15,18 @@ if [ "${DB_CONNECTION:-sqlite}" = "sqlite" ]; then
   touch "$DB_PATH"
 fi
 
+if [ "${DB_CONNECTION:-sqlite}" = "pgsql" ]; then
+  DB_HOST="${DB_HOST:-db}"
+  DB_PORT="${DB_PORT:-5432}"
+  DB_USERNAME="${DB_USERNAME:-postgres}"
+  DB_DATABASE="${DB_DATABASE:-laravel}"
+
+  echo "Waiting for PostgreSQL at ${DB_HOST}:${DB_PORT}..."
+  until pg_isready -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USERNAME" -d "$DB_DATABASE" >/dev/null 2>&1; do
+    sleep 2
+  done
+fi
+
 chown -R www-data:www-data storage bootstrap/cache database
 
 if [ -z "${APP_KEY:-}" ]; then

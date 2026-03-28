@@ -12,8 +12,9 @@ class CaseStudyController extends Controller
     {
         return view('site.case-studies.index', [
             'caseStudies' => CaseStudy::query()
-                ->where('status', 'published')
+                ->published()
                 ->orderBy('sort_order')
+                ->latest('published_at')
                 ->paginate(9),
         ]);
     }
@@ -21,7 +22,7 @@ class CaseStudyController extends Controller
     public function show(string $slug): View
     {
         $caseStudy = CaseStudy::query()
-            ->where('status', 'published')
+            ->published()
             ->where('slug', $slug)
             ->firstOrFail();
 

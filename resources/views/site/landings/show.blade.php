@@ -14,12 +14,17 @@
             ])
         @endforeach
 
+        @include('site.partials.landing-form', [
+            'landing' => $landing,
+            'formConfig' => $formConfig,
+        ])
+
         @if($relatedLandings->isNotEmpty())
             <section class="landing-section">
                 <div class="site-page-hero-box">
                     <p class="site-kicker">Внутренняя перелинковка</p>
                     <h2 class="landing-section-heading !mb-2">Другие услуги и решения</h2>
-                    <p class="landing-section-copy">Блок строится из `related_slugs`. Если список не задан, контроллер подбирает соседние опубликованные лендинги автоматически.</p>
+                    <p class="landing-section-copy">Соседние решения по внедрению, перевнедрению, автоматизации и типовым проблемам в продажах.</p>
 
                     <div class="landing-related-grid mt-6">
                         @foreach($relatedLandings as $relatedLanding)

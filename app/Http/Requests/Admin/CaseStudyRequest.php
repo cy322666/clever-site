@@ -33,13 +33,16 @@ class CaseStudyRequest extends FormRequest
             'problem_block' => ['nullable', 'string'],
             'solution_block' => ['nullable', 'string'],
             'result_block' => ['nullable', 'string'],
+            'metrics_block' => ['nullable', 'string'],
             'short_description' => ['nullable', 'string'],
             'full_content' => ['nullable', 'string'],
+            'published_at' => ['nullable', 'date'],
             'cover_image' => ['nullable', 'image', 'max:4096'],
             'status' => ['required', Rule::in(['draft', 'published'])],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'seo_title' => ['nullable', 'string', 'max:255'],
             'seo_description' => ['nullable', 'string'],
+            'canonical_url' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

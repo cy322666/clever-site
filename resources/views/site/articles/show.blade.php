@@ -1,4 +1,27 @@
-@extends('site.layouts.app', ['title' => $article->seo_title ?: $article->title, 'metaDescription' => $article->seo_description])
+@extends('site.layouts.app', [
+    'title' => $article->seoTitle(),
+    'metaDescription' => $article->seoDescription(),
+    'canonical' => $article->canonicalUrl(),
+])
+
+@push('meta')
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ $article->seoTitle() }}">
+    <meta property="og:description" content="{{ $article->seoDescription() }}">
+    <meta property="og:url" content="{{ $article->canonicalUrl() }}">
+    @if($article->coverImageUrl())
+        <meta property="og:image" content="{{ $article->coverImageUrl() }}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="{{ $article->coverImageUrl() }}">
+    @else
+        <meta name="twitter:card" content="summary">
+    @endif
+    <meta name="twitter:title" content="{{ $article->seoTitle() }}">
+    <meta name="twitter:description" content="{{ $article->seoDescription() }}">
+    @if($article->publishedDate())
+        <meta property="article:published_time" content="{{ $article->publishedDate()->toAtomString() }}">
+    @endif
+@endpush
 
 @section('content')
     <section class="site-page-hero">
@@ -6,7 +29,15 @@
             <div class="site-page-hero-box">
                 <p class="site-kicker">Статья</p>
                 <h1 class="site-title">{{ $article->title }}</h1>
-                <p class="mt-3 text-sm text-slate-500">{{ optional($article->published_at)->format('d.m.Y') }}</p>
+                <div class="mt-3 flex flex-wrap items-center gap-3 text-sm text-slate-500">
+                    @if($article->publishedDate())
+                        <time datetime="{{ $article->publishedDate()->toDateString() }}">{{ $article->publishedDate()->format('d.m.Y') }}</time>
+                    @endif
+                    @if($article->excerptText() !== '')
+                        <span class="hidden h-1 w-1 rounded-full bg-slate-300 md:block"></span>
+                        <span class="max-w-3xl">{{ $article->excerptText() }}</span>
+                    @endif
+                </div>
             </div>
         </div>
     </section>
@@ -15,36 +46,31 @@
         <article class="container-wrap card prose-lite">
             <div class="space-y-6">
                 @foreach($contentBlocks as $block)
-                    @if($block['type'] === 'heading')
-                        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">{{ $block['text'] }}</h2>
-                    @elseif($block['type'] === 'paragraph')
-                        <p class="text-base leading-8 text-slate-700">{{ $block['text'] }}</p>
-                    @elseif($block['type'] === 'links')
-                        <div class="space-y-4">
-                            @if(!empty($block['title']))
-                                <h3 class="text-xl font-semibold tracking-tight text-slate-900">{{ $block['title'] }}</h3>
-                            @endif
-
-                            <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                                @foreach($block['items'] as $item)
-                                    <a href="{{ $item['url'] }}" class="site-card no-underline">
-                                        @if(!empty($item['badge']))
-                                            <p class="site-kicker">{{ $item['badge'] }}</p>
-                                        @endif
-                                        <h3 class="site-card-title mt-3">{{ $item['title'] }}</h3>
-                                        @if(!empty($item['description']))
-                                            <p class="site-card-text">{{ $item['description'] }}</p>
-                                        @endif
-                                        <span class="site-link">Открыть</span>
-                                    </a>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
+                    @include($block['view'], ['block' => $block['data']])
                 @endforeach
             </div>
         </article>
     </section>
+
+    @if($relatedLandings->isNotEmpty())
+        <section class="site-section pt-0">
+            <div class="container-wrap">
+                <div class="space-y-4">
+                    <p class="site-kicker">По теме</p>
+                    <div class="grid gap-4 md:grid-cols-3">
+                        @foreach($relatedLandings as $landing)
+                            <article class="site-card">
+                                <p class="site-kicker">{{ $landing->pageTypeLabel() }}</p>
+                                <h2 class="site-card-title mt-3">{{ $landing->displayTitle() }}</h2>
+                                <p class="site-card-text">{{ $landing->excerpt }}</p>
+                                <a href="{{ route('site.landings.show', $landing->slug) }}" class="site-link">Открыть страницу</a>
+                            </article>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="site-section pt-0">
         <div class="container-wrap">
