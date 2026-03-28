@@ -9,14 +9,16 @@
             <div>
                 <p class="site-footer-title">Услуги</p>
                 <ul class="site-footer-list">
-                    <li><a href="/services/vnedrenie-crm">Внедрение</a></li>
-                    <li><a href="/services/perevnedrenie-crm">Перевнедрение</a></li>
-                    <li><a href="/services/soprovozhdenie-crm">Сопровождение</a></li>
-                    <li><a href="/services/skvoznaya-analitika">Аналитика</a></li>
-                    <li><a href="/services/razrabotka-crm">Разработка</a></li>
-                    <li><a href="/services/reanimaciya-amocrm">Реанимация amoCRM</a></li>
-                    <li><a href="/services/audit-amocrm">Аудит amoCRM</a></li>
-                    <li><a href="/services/kupit-licenzii">Купить amoCRM с бонусами</a></li>
+                    <li><a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}">Внедрение</a></li>
+                    <li><a href="{{ route('site.landings.show', 'audit-amocrm') }}">Аудит amoCRM</a></li>
+                    <li><a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}">Перевнедрение amoCRM</a></li>
+                    <li><a href="{{ route('site.landings.show', 'razrabotka-crm') }}">Разработка</a></li>
+                    <li><a href="{{ route('site.landings.show', 'reanimaciya-amocrm') }}">Реанимация amoCRM</a></li>
+                    <li><a href="{{ route('site.landings.show', 'analitika-prodazh-v-amocrm') }}">Аналитика продаж</a></li>
+                    <li><a href="{{ route('site.landings.show', 'raspredelenie-lidov-amocrm') }}">Распределение лидов</a></li>
+                    <li><a href="{{ route('site.landings.show', 'obrabotka-zayavok-crm') }}">Обработка заявок</a></li>
+                    <li><a href="{{ route('site.landings.show', 'avtozadachi-amocrm') }}">Автозадачи</a></li>
+                    <li><a href="{{ route('site.landings.show', 'integraciya-whatsapp-amocrm') }}">WhatsApp и amoCRM</a></li>
                 </ul>
             </div>
 

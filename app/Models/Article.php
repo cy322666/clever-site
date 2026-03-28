@@ -15,6 +15,7 @@ class Article extends Model
         'slug',
         'short_description',
         'full_content',
+        'content_blocks',
         'cover_image',
         'status',
         'sort_order',
@@ -28,6 +29,7 @@ class Article extends Model
     {
         return [
             'published_at' => 'datetime',
+            'content_blocks' => 'array',
         ];
     }
 }

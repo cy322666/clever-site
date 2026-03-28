@@ -14,16 +14,11 @@ use App\Http\Controllers\Site\ArticleController;
 use App\Http\Controllers\Site\CaseStudyController;
 use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\HomeController;
-use App\Http\Controllers\Site\ServiceController;
+use App\Http\Controllers\Site\LandingController;
 use App\Http\Controllers\Site\WidgetController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('site.home');
-Route::get('/services', [ServiceController::class, 'index'])->name('site.services.index');
-Route::get('/services/vnedrenie-crm', [ServiceController::class, 'implementation'])->name('site.services.amocrm-implementation');
-Route::get('/services/razrabotka-crm', [ServiceController::class, 'development'])->name('site.services.amocrm-development');
-Route::get('/services/reanimaciya-amocrm', [ServiceController::class, 'resuscitation'])->name('site.services.amocrm-resuscitation');
-Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('site.services.show');
 Route::get('/case-studies', [CaseStudyController::class, 'index'])->name('site.case-studies.index');
 Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('site.case-studies.show');
 Route::get('/articles', [ArticleController::class, 'index'])->name('site.articles.index');
@@ -31,6 +26,7 @@ Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('site.a
 Route::get('/widgets', [WidgetController::class, 'index'])->name('site.widgets.index');
 Route::get('/widgets/{slug}', [WidgetController::class, 'show'])->name('site.widgets.show');
 Route::get('/contacts', ContactController::class)->name('site.contacts');
+Route::get('/solutions/{slug}', [LandingController::class, 'show'])->name('site.landings.show');
 
 Route::prefix('admin')->name('admin.')->group(function (): void {
     Route::middleware('guest')->group(function (): void {

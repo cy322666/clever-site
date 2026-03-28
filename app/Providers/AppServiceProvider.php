@@ -16,11 +16,11 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        View::composer(['site.*', 'admin.*'], function ($view): void {
+        View::composer(['site.*', 'admin.*', 'errors.*'], function ($view): void {
             $view->with('siteSettings', SiteSetting::query()->first());
         });
 
-        View::composer('site.*', function ($view): void {
+        View::composer(['site.*', 'errors.*'], function ($view): void {
             $plugins = JsPlugin::query()
                 ->where('status', 'published')
                 ->orderBy('sort_order')

@@ -19,6 +19,7 @@ class HomeController extends Controller
         }
 
         $html = file_get_contents($file);
+        $html = $this->injectSharedNavigation($html);
         $html = $this->injectCompactCasesFromDatabase($html);
 
         $plugins = JsPlugin::query()
@@ -47,6 +48,16 @@ class HomeController extends Controller
 
         return response($html, 200)
             ->header('Content-Type', 'text/html; charset=UTF-8');
+    }
+
+    private function injectSharedNavigation(string $html): string
+    {
+        $navHtml = view('site.partials.nav')->render();
+
+        $pattern = '#<nav class="cmdf5-inspired-nav">.*?</nav>#s';
+        $replaced = preg_replace($pattern, $navHtml, $html, 1);
+
+        return is_string($replaced) ? $replaced : $html;
     }
 
     private function injectCompactCasesFromDatabase(string $html): string
@@ -121,6 +132,7 @@ class HomeController extends Controller
     private function normalizePreviewText(?string $value): string
     {
         $plain = trim((string) preg_replace('/\s+/u', ' ', strip_tags((string) $value)));
+
         return Str::limit($plain !== '' ? $plain : 'Открыть материал и посмотреть подробности проекта.', 140);
     }
 }

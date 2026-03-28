@@ -64,13 +64,15 @@
     .cmd-nav-item > a {
         color: #fff !important;
         text-decoration: none;
-        font-size: 16px;
-        line-height: 1.2;
+        font-size: 16px !important;
+        line-height: 1.2 !important;
+        opacity: .92;
     }
 
     .cmd-nav-item > a.is-active,
     .cmd-nav-item > a:hover {
         color: #ff9b3d !important;
+        opacity: 1;
     }
 
     .cmd-dropdown {
@@ -97,10 +99,25 @@
         grid-template-columns: 1fr;
     }
 
+    .cmd-dropdown.services-dropdown {
+        min-width: 760px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px 24px;
+    }
+
     .cmd-col {
         display: flex;
         flex-direction: column;
         gap: 12px;
+    }
+
+    .cmd-col-title {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: rgba(255, 255, 255, 0.42);
+        font-weight: 600;
+        margin-bottom: 2px;
     }
 
     .cmd-dropdown a {
@@ -138,9 +155,9 @@
         color: #fff !important;
         border: 1px solid rgba(255, 255, 255, 0.14);
         background: rgba(255, 255, 255, 0.03);
-        font-size: 12px;
-        line-height: 1;
-        font-weight: 600;
+        font-size: 12px !important;
+        line-height: 1 !important;
+        font-weight: 600 !important;
     }
 
     .cmd-nav-socials a:hover {
@@ -265,7 +282,7 @@
         .cmd-nav-center {
             justify-content: flex-start;
             flex-wrap: wrap;
-            gap: 14px 18px;
+            gap: 16px;
         }
 
         .cmd-nav-socials {
@@ -286,12 +303,32 @@
         .cmd-nav-item:hover .cmd-dropdown {
             display: grid;
         }
+
+        .cmd-dropdown.services-dropdown {
+            width: min(95vw, 760px);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px 16px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .cmd-dropdown.services-dropdown {
+            grid-template-columns: 1fr;
+            width: min(96vw, 420px);
+        }
     }
 }
 
 @layer components {
     .crm-brand-logo,
-    .nav-logo-wrap,
+    .nav-logo-wrap {
+        background: #fff !important;
+        color: #111 !important;
+        border-radius: 14px;
+        padding: 8px 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .10);
+    }
+
     .footer-logo {
         color: #fff !important;
         background: transparent !important;
@@ -594,5 +631,156 @@
     .service-cta-box {
         border-color: #dbe4f0;
         background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+    }
+}
+
+@layer components {
+    .landing-section {
+        @apply py-8 md:py-12;
+    }
+
+    .landing-shell {
+        @apply space-y-6;
+    }
+
+    .landing-hero {
+        @apply rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-sm md:px-10 md:py-10;
+        background:
+            radial-gradient(circle at top right, rgba(255, 155, 61, 0.16), transparent 28%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.96));
+    }
+
+    .landing-hero-grid {
+        @apply grid gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,0.9fr)];
+    }
+
+    .landing-kicker {
+        @apply text-xs font-semibold uppercase tracking-[0.18em] text-orange-500;
+    }
+
+    .landing-lead {
+        @apply mt-4 max-w-3xl text-base leading-relaxed text-slate-600 md:text-lg;
+    }
+
+    .landing-highlight-list {
+        @apply mt-6 grid gap-3 sm:grid-cols-2;
+    }
+
+    .landing-highlight-item {
+        @apply rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700;
+    }
+
+    .landing-hero-panel {
+        @apply rounded-[1.75rem] border border-slate-200 bg-slate-950 px-6 py-6 text-white shadow-sm;
+    }
+
+    .landing-hero-panel-title {
+        @apply text-xl font-semibold tracking-tight text-white;
+    }
+
+    .landing-hero-panel-list {
+        @apply mt-4 space-y-3 text-sm leading-relaxed text-slate-200;
+    }
+
+    .landing-actions {
+        @apply mt-6 flex flex-wrap gap-3;
+    }
+
+    .landing-section-heading {
+        @apply mb-5 text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl;
+    }
+
+    .landing-section-copy {
+        @apply max-w-3xl text-sm leading-relaxed text-slate-600 md:text-base;
+    }
+
+    .landing-grid {
+        @apply grid gap-4 md:grid-cols-2 xl:grid-cols-3;
+    }
+
+    .landing-card {
+        @apply rounded-3xl border border-slate-200 bg-white p-6 shadow-sm;
+    }
+
+    .landing-card-title {
+        @apply text-lg font-semibold leading-tight text-slate-900;
+    }
+
+    .landing-card-text {
+        @apply mt-3 text-sm leading-relaxed text-slate-600;
+    }
+
+    .landing-steps {
+        @apply grid gap-4 lg:grid-cols-3;
+    }
+
+    .landing-step {
+        @apply rounded-3xl border border-slate-200 bg-white p-6 shadow-sm;
+    }
+
+    .landing-step-index {
+        @apply inline-flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-sm font-semibold text-orange-600;
+    }
+
+    .landing-faq {
+        @apply space-y-3;
+    }
+
+    .landing-faq-item {
+        @apply rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm;
+    }
+
+    .landing-faq-question {
+        @apply text-base font-semibold text-slate-900;
+    }
+
+    .landing-faq-answer {
+        @apply mt-2 text-sm leading-relaxed text-slate-600;
+    }
+
+    .landing-cta {
+        @apply rounded-[2rem] border border-slate-900 bg-slate-950 px-6 py-8 text-white shadow-sm md:px-10;
+        background:
+            radial-gradient(circle at top right, rgba(255, 155, 61, 0.3), transparent 30%),
+            linear-gradient(135deg, #0f172a, #111827);
+    }
+
+    .landing-cta-title {
+        @apply text-3xl font-semibold tracking-tight text-white;
+    }
+
+    .landing-cta-text {
+        @apply mt-3 max-w-2xl text-sm leading-relaxed text-slate-200 md:text-base;
+    }
+
+    .landing-related-grid {
+        @apply grid gap-4 md:grid-cols-2 xl:grid-cols-3;
+    }
+
+    .error-hero {
+        @apply rounded-[2rem] border border-slate-200 bg-white px-6 py-10 text-center shadow-sm md:px-10 md:py-14;
+        background:
+            radial-gradient(circle at top center, rgba(255, 155, 61, 0.18), transparent 26%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(248, 250, 252, 0.97));
+    }
+
+    .error-code {
+        @apply text-xs font-semibold uppercase tracking-[0.2em] text-orange-500;
+    }
+
+    .error-title {
+        @apply mt-4 text-4xl font-semibold tracking-tight text-slate-950 md:text-6xl;
+    }
+
+    .error-text {
+        @apply mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base;
+    }
+
+    .error-actions {
+        @apply mt-8 flex flex-wrap justify-center gap-3;
+    }
+
+    .error-links {
+        @apply mt-10 grid gap-4 md:grid-cols-3;
     }
 }
