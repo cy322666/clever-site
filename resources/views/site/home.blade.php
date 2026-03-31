@@ -22,16 +22,16 @@
         <div class="container-wrap future-home-hero-grid">
             <div class="future-home-copy">
                 <h1 class="future-home-title">
-                    Строим систему продаж,
-                    <span>а не просто CRM</span>
+                    CRM есть,
+                    <span>а выручка все равно утекает</span>
                 </h1>
 
                 <p class="future-home-subtitle">
-                    Снижаем потери в продажах, убираем ручной хаос и возвращаем управляемость
+                    Покажем, где бизнес теряет заявки, повторные продажи и контроль над отделом
                 </p>
 
                 <div class="future-home-actions">
-                    <a class="future-btn future-btn-primary" href="#home-form">Обсудить проект</a>
+                    <a class="future-btn future-btn-primary" href="#home-form">Разобрать CRM и потери</a>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
         <div class="container-wrap">
             <div class="future-section-head">
                 <div>
-                    <h2 class="future-section-title">Где усиливаем продажи через amoCRM</h2>
+                    <h2 class="future-section-title">Где наводим порядок в продажах через amoCRM</h2>
                 </div>
             </div>
 
@@ -82,14 +82,14 @@
                     <div class="future-service-index">01</div>
                     <div>
                         <div class="future-service-kicker">Внедрение</div>
-                        <h3>Соберем amoCRM под реальные процессы продаж</h3>
+                        <h3>Соберем amoCRM под реальную работу продаж</h3>
                     </div>
                 </a>
                 <a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}" class="future-service-card">
                     <div class="future-service-index">02</div>
                     <div>
                         <div class="future-service-kicker">Перевнедрение</div>
-                        <h3>Переделаем amoCRM под реальную работу отдела продаж</h3>
+                        <h3>Переделаем CRM, если текущее внедрение не дает результата</h3>
                     </div>
                 </a>
                 <a href="{{ route('site.landings.show', 'analitika-prodazh-v-amocrm') }}" class="future-service-card">
@@ -118,19 +118,19 @@
                 <div class="future-why-grid">
                     <article class="future-why-card">
                         <h3>Лично вникаем в проект</h3>
-                        <p>На старте разбираем процессы, находим где теряются деньги и ломается логика продаж</p>
+                        <p>На старте находим, где теряются заявки, база клиентов и деньги</p>
                     </article>
                     <article class="future-why-card">
                         <h3>Сильны в переделке CRM</h3>
-                        <p>Пересобираем систему, если текущая CRM мешает работать и создает хаос</p>
+                        <p>Пересобираем CRM, если она мешает продажам вместо контроля</p>
                     </article>
                     <article class="future-why-card">
                         <h3>Проектируем под бизнес</h3>
-                        <p>Собираем CRM под реальные процессы, роли в команде и задачи руководителя</p>
+                        <p>Собираем CRM под воронку, роли и цифры, которые нужны собственнику</p>
                     </article>
                     <article class="future-why-card">
                         <h3>Решаем сложные задачи</h3>
-                        <p>Делаем интеграции, кастомную логику и автоматизацию там, где типовые решения не работают</p>
+                        <p>Закрываем сложные интеграции и автоматизацию, когда типовые решения не вытягивают</p>
                     </article>
                 </div>
             </div>
@@ -170,8 +170,7 @@
                 <div class="future-interview-meta">
                     <h3>Открыть интервью прямо на сайте</h3>
                     <p>
-                        Короткий разбор подхода к внедрению, автоматизации и сложным CRM-проектам.
-                        Откроется видео с интервью без лишних переходов по сайту.
+                        Короткий разбор того, как подходим к внедрению, переделке CRM и сложным проектам.
                     </p>
                     <span class="future-btn future-btn-secondary">Смотреть</span>
                 </div>
@@ -198,6 +197,32 @@
                         <p>{{ $caseStudy['text'] }}</p>
                     </a>
                 @endforeach
+            </div>
+        </div>
+    </section>
+
+    <section class="future-section future-section-tight" id="home-conversion">
+        <div class="container-wrap">
+            <div class="future-conversion-panel">
+                <div class="future-conversion-copy">
+                    <h2 class="future-conversion-title">
+                        CRM есть,
+                        <span>а выручка</span> все равно утекает
+                    </h2>
+                    <p class="future-conversion-text">
+                        Покажем, где бизнес теряет заявки, повторные продажи и контроль над отделом
+                    </p>
+                </div>
+
+                <ul class="future-conversion-list">
+                    <li>Разберем, где у вас теряются заявки и деньги</li>
+                    <li>Покажем слабые места в текущей CRM</li>
+                    <li>Дадим план, что исправить в первую очередь</li>
+                </ul>
+
+                <a class="future-btn future-btn-primary future-conversion-btn" href="#home-form">
+                    Разобрать CRM и потери
+                </a>
             </div>
         </div>
     </section>
@@ -250,15 +275,15 @@
             <div class="future-article-grid">
                 <a href="{{ route('site.landings.show', 'audit-amocrm') }}" class="future-article-card">
                     <h3>Аудит вашей CRM (бесплатно)</h3>
-                    <p>Покажем слабые места в текущей CRM и дадим понятный план, что нужно исправить в первую очередь</p>
+                    <p>Покажем, где CRM теряет заявки и деньги, и дадим план правок по приоритету</p>
                 </a>
                 <a href="{{ route('site.articles.index') }}" class="future-article-card">
                     <h3>Чек лист для проверки CRM</h3>
-                    <p>Короткий практический список для проверки CRM перед внедрением, переделкой или масштабированием</p>
+                    <p>Короткий список, чтобы понять: CRM помогает продажам или только создает видимость контроля</p>
                 </a>
                 <a href="{{ route('site.landings.show', 'skolko-stoit-amocrm') }}" class="future-article-card">
                     <h3>Купить amoCRM с бонусами</h3>
-                    <p>Поможем подобрать тариф, оформить лицензии и получить бонусы при покупке через нашу команду</p>
+                    <p>Подберем тариф, оформим лицензии и поможем не переплатить при покупке</p>
                 </a>
             </div>
         </div>
@@ -268,7 +293,7 @@
         <div class="container-wrap">
             <div class="future-contact-panel">
                 <div>
-                    <h2 class="future-contact-title">Покажем, где вы теряете деньги в продажах</h2>
+                    <h2 class="future-contact-title">Покажем, где CRM съедает деньги в продажах</h2>
                 </div>
 
                 <div class="future-form-card">
@@ -280,7 +305,7 @@
                         @csrf
                         <input type="hidden" name="landing_slug" value="home">
                         <input type="hidden" name="landing_title" value="Главная страница">
-                        <input type="hidden" name="offer_type" value="Разобрать мою ситуацию">
+                        <input type="hidden" name="offer_type" value="Показать потери в CRM">
                         <input type="hidden" name="page_url" value="{{ request()->fullUrl() }}">
 
                         <label class="future-form-field">
@@ -299,7 +324,7 @@
                         </label>
 
                         <button type="submit" class="future-btn future-btn-primary future-form-submit">
-                            Разобрать мою ситуацию
+                            Показать потери в CRM
                         </button>
                     </form>
                 </div>
