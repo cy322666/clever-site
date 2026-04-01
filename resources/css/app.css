@@ -1139,15 +1139,17 @@
         font-weight: 700;
         line-height: 0.92;
         letter-spacing: -0.045em;
-        color: #fff;
+        color: #0f0f0f;
         max-width: 10.5ch;
         text-wrap: balance;
     }
 
     .future-home-title span {
         display: block;
-        color: #fff;
-        text-shadow: none;
+        color: #ff6a00;
+        text-shadow:
+            0 0 10px rgba(255, 106, 0, 0.16),
+            0 0 24px rgba(255, 106, 0, 0.14);
     }
 
     .future-home-subtitle {
@@ -1848,7 +1850,7 @@
     }
 
     .future-conversion-title span {
-        color: #0f0f0f;
+        color: #fff;
     }
 
     .future-conversion-text {
