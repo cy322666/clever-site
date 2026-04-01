@@ -28,15 +28,6 @@
                 </div>
             </div>
 
-            <div class="cmd-nav-item has-dropdown">
-                <a href="{{ route('site.widgets.index') }}" class="{{ request()->routeIs('site.widgets.*') ? 'is-active' : '' }}">Виджеты</a>
-                <div class="cmd-dropdown small">
-                    <div class="cmd-col">
-                        <a href="{{ route('site.widgets.index') }}">Все виджеты</a>
-                    </div>
-                </div>
-            </div>
-
             <div class="cmd-nav-item">
                 <a href="{{ route('site.case-studies.index') }}" class="{{ request()->routeIs('site.case-studies.*') ? 'is-active' : '' }}">Кейсы</a>
             </div>

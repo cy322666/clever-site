@@ -22,8 +22,8 @@
         <div class="container-wrap future-home-hero-grid">
             <div class="future-home-copy">
                 <h1 class="future-home-title">
-                    CRM есть,
-                    <span>а выручка все равно утекает</span>
+                    CRM есть, а выручка
+                    <span>все равно утекает</span>
                 </h1>
 
                 <p class="future-home-subtitle">
@@ -69,6 +69,43 @@
         </div>
     </section>
 
+    <section class="future-section future-section-tight" id="home-process">
+        <div class="container-wrap">
+            <div class="future-section-head">
+                <div>
+                    <h2 class="future-section-title">Когда к нам обращаются</h2>
+                </div>
+            </div>
+
+            <div class="future-process-grid">
+                <article class="future-process-card">
+                    <div class="future-service-index">01</div>
+                    <h3>Внедрить amoCRM с нуля</h3>
+                </article>
+                <article class="future-process-card">
+                    <div class="future-service-index">02</div>
+                    <h3>Переделать после слабого внедрения</h3>
+                </article>
+                <article class="future-process-card">
+                    <div class="future-service-index">03</div>
+                    <h3>Внедрить ИИ инструменты в продажи</h3>
+                </article>
+                <article class="future-process-card">
+                    <div class="future-service-index">04</div>
+                    <h3>Бизнес вырос, а в CRM начался хаос</h3>
+                </article>
+                <article class="future-process-card">
+                    <div class="future-service-index">05</div>
+                    <h3>Нужна доработка или интеграция</h3>
+                </article>
+                <article class="future-process-card">
+                    <div class="future-service-index">06</div>
+                    <h3>Не хватает аналитики<br>и контроля продаж</h3>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <section class="future-section" id="home-directions">
         <div class="container-wrap">
             <div class="future-section-head">
@@ -108,30 +145,23 @@
                 </a>
             </div>
 
-            <div class="future-why-block">
-                <div class="future-section-head future-section-head-center">
-                    <div>
-                        <h2 class="future-section-title">Почему нам доверяют архитектуру продаж</h2>
-                    </div>
-                </div>
+        </div>
+    </section>
 
-                <div class="future-why-grid">
-                    <article class="future-why-card">
-                        <h3>Лично вникаем в проект</h3>
-                        <p>На старте находим, где теряются заявки, база клиентов и деньги</p>
-                    </article>
-                    <article class="future-why-card">
-                        <h3>Сильны в переделке CRM</h3>
-                        <p>Пересобираем CRM, если она мешает продажам вместо контроля</p>
-                    </article>
-                    <article class="future-why-card">
-                        <h3>Проектируем под бизнес</h3>
-                        <p>Собираем CRM под воронку, роли и цифры, которые нужны собственнику</p>
-                    </article>
-                    <article class="future-why-card">
-                        <h3>Решаем сложные задачи</h3>
-                        <p>Закрываем сложные интеграции и автоматизацию, когда типовые решения не вытягивают</p>
-                    </article>
+    <section class="future-section future-section-tight" id="home-responsibility">
+        <div class="container-wrap">
+            <div class="future-responsibility-panel">
+                <div class="future-responsibility-topline" aria-hidden="true"></div>
+                <div class="future-responsibility-grid">
+                    <h2 class="future-responsibility-title">
+                        Небольшая команда,
+                        <span>высокая ответственность</span>
+                    </h2>
+                    <div class="future-responsibility-copy">
+                        <p class="future-responsibility-text">
+                            Работаем с ограниченным количеством проектов, чтобы не превращать внедрение в формальность
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -209,9 +239,6 @@
                         CRM есть,
                         <span>а выручка</span> все равно утекает
                     </h2>
-                    <p class="future-conversion-text">
-                        Покажем, где бизнес теряет заявки, повторные продажи и контроль над отделом
-                    </p>
                 </div>
 
                 <ul class="future-conversion-list">
@@ -223,43 +250,6 @@
                 <a class="future-btn future-btn-primary future-conversion-btn" href="#home-form">
                     Разобрать CRM и потери
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="future-section future-section-tight" id="home-process">
-        <div class="container-wrap">
-            <div class="future-section-head">
-                <div>
-                    <h2 class="future-section-title">Когда к нам обращаются</h2>
-                </div>
-            </div>
-
-            <div class="future-process-grid">
-                <article class="future-process-card">
-                    <div class="future-service-index">01</div>
-                    <h3>Внедрить amoCRM с нуля</h3>
-                </article>
-                <article class="future-process-card">
-                    <div class="future-service-index">02</div>
-                    <h3>Переделать после слабого внедрения</h3>
-                </article>
-                <article class="future-process-card">
-                    <div class="future-service-index">03</div>
-                    <h3>Внедрить ИИ инструменты в продажи</h3>
-                </article>
-                <article class="future-process-card">
-                    <div class="future-service-index">04</div>
-                    <h3>Бизнес вырос, а в CRM начался хаос</h3>
-                </article>
-                <article class="future-process-card">
-                    <div class="future-service-index">05</div>
-                    <h3>Нужна доработка или интеграция</h3>
-                </article>
-                <article class="future-process-card">
-                    <div class="future-service-index">06</div>
-                    <h3>Не хватает аналитики<br>и контроля продаж</h3>
-                </article>
             </div>
         </div>
     </section>
