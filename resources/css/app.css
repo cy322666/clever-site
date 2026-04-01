@@ -1431,6 +1431,11 @@
         box-shadow: 0 30px 68px rgba(0, 0, 0, 0.1);
     }
 
+    .future-service-card:hover .future-service-link {
+        color: #ff6a00;
+        transform: translateX(4px);
+    }
+
     .future-service-index {
         font-family: var(--font-sans);
         font-size: 13px;
@@ -1446,6 +1451,11 @@
         font-weight: 600;
         letter-spacing: 0.12em;
         text-transform: uppercase;
+    }
+
+    .future-service-copy {
+        display: grid;
+        align-content: start;
     }
 
     .future-service-card h3,
@@ -1470,6 +1480,17 @@
         color: #5d5d5d;
         font-size: 14px;
         line-height: 1.7;
+    }
+
+    .future-service-link {
+        margin-top: auto;
+        padding-top: 22px;
+        color: #0f0f0f;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: color 0.2s ease, transform 0.2s ease;
     }
 
     .future-dark-banner {
@@ -1627,15 +1648,18 @@
         min-height: 520px;
         border-radius: 32px;
         overflow: hidden;
-        background:
-            radial-gradient(circle at 22% 20%, rgba(255, 106, 0, 0.28), transparent 34%),
-            linear-gradient(135deg, #171717 0%, #0f0f0f 100%);
+        background: linear-gradient(135deg, #171717 0%, #0f0f0f 100%);
         border: 1px solid rgba(15, 15, 15, 0.06);
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 28px;
+    }
+
+    .future-founder-photo-image {
+        width: 100%;
+        height: 100%;
+        min-height: 520px;
+        object-fit: cover;
+        object-position: center 35%;
+        display: block;
     }
 
     .future-founder-photo-glow {
@@ -1644,25 +1668,6 @@
         border-radius: 26px;
         border: 1px solid rgba(255, 255, 255, 0.08);
         pointer-events: none;
-    }
-
-    .future-founder-photo-label {
-        position: relative;
-        z-index: 1;
-        font-family: var(--font-sans);
-        font-size: clamp(28px, 3vw, 42px);
-        line-height: 1;
-        letter-spacing: -0.04em;
-        color: #fff;
-    }
-
-    .future-founder-photo-role {
-        position: relative;
-        z-index: 1;
-        margin-top: 10px;
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 14px;
-        line-height: 1.5;
     }
 
     .future-founder-copy {

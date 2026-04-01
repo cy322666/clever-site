@@ -117,31 +117,39 @@
             <div class="future-card-grid">
                 <a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}" class="future-service-card">
                     <div class="future-service-index">01</div>
-                    <div>
+                    <div class="future-service-copy">
                         <div class="future-service-kicker">Внедрение</div>
-                        <h3>Соберем amoCRM под реальную работу продаж</h3>
+                        <h3>Соберем amoCRM под реальные продажи</h3>
+                        <p>Настроим воронку, этапы и ключевые сценарии, чтобы CRM стала рабочей системой, а не формальностью.</p>
                     </div>
+                    <span class="future-service-link">Смотреть решение →</span>
                 </a>
                 <a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}" class="future-service-card">
                     <div class="future-service-index">02</div>
-                    <div>
+                    <div class="future-service-copy">
                         <div class="future-service-kicker">Перевнедрение</div>
-                        <h3>Переделаем CRM, если текущее внедрение не дает результата</h3>
+                        <h3>Переделаем CRM, если текущее внедрение не работает</h3>
+                        <p>Пересоберем логику CRM и вернем контроль над заявками, менеджерами и выручкой.</p>
                     </div>
+                    <span class="future-service-link">Перейти →</span>
                 </a>
                 <a href="{{ route('site.landings.show', 'analitika-prodazh-v-amocrm') }}" class="future-service-card">
                     <div class="future-service-index">03</div>
-                    <div>
+                    <div class="future-service-copy">
                         <div class="future-service-kicker">Аналитика</div>
-                        <h3>Настраиваем DataLens для контроля продаж и каналов</h3>
+                        <h3>Покажем цифры, на которые можно опираться</h3>
+                        <p>Соберем аналитику по продажам, каналам и команде, чтобы видеть реальную картину бизнеса.</p>
                     </div>
+                    <span class="future-service-link">Подробнее →</span>
                 </a>
                 <a href="{{ route('site.landings.show', 'razrabotka-crm') }}" class="future-service-card">
                     <div class="future-service-index">04</div>
-                    <div>
+                    <div class="future-service-copy">
                         <div class="future-service-kicker">Разработка</div>
-                        <h3>Делаем доработки, интеграции и виджеты</h3>
+                        <h3>Доработаем CRM под вашу логику бизнеса</h3>
+                        <p>Сделаем интеграции, кастомные сценарии и нестандартные решения там, где типовых настроек уже мало.</p>
                     </div>
+                    <span class="future-service-link">Смотреть решение →</span>
                 </a>
             </div>
 
@@ -173,8 +181,12 @@
                 <div class="future-founder-visual">
                     <div class="future-founder-photo-card">
                         <div class="future-founder-photo-glow"></div>
-                        <div class="future-founder-photo-label">Вячеслав Трофимов</div>
-                        <div class="future-founder-photo-role">Основатель компании</div>
+                        <img
+                            class="future-founder-photo-image"
+                            src="{{ asset('images/founder-photo.jpeg') }}"
+                            alt="Вячеслав Трофимов"
+                            loading="lazy"
+                        >
                     </div>
                 </div>
 
