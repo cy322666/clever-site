@@ -16,7 +16,7 @@ class HomeController extends Controller
             ->orderByRaw('CASE WHEN sort_order IS NULL THEN 1 ELSE 0 END')
             ->orderBy('sort_order')
             ->latest('updated_at')
-            ->limit(4)
+            ->limit(3)
             ->get()
             ->map(function (CaseStudy $caseStudy): array {
                 return [
