@@ -88,7 +88,7 @@
                 </article>
                 <article class="future-process-card">
                     <div class="future-service-index">03</div>
-                    <h3>Внедрить ИИ инструменты в продажи</h3>
+                    <h3>Внедрить ИИ в продажи</h3>
                 </article>
                 <article class="future-process-card">
                     <div class="future-service-index">04</div>
@@ -100,7 +100,7 @@
                 </article>
                 <article class="future-process-card">
                     <div class="future-service-index">06</div>
-                    <h3>Не хватает аналитики<br>и контроля продаж</h3>
+                    <h3>Не хватает аналитики продаж</h3>
                 </article>
             </div>
         </div>

@@ -34,9 +34,6 @@
             <div class="cmd-nav-item">
                 <a href="{{ route('site.articles.index') }}" class="{{ request()->routeIs('site.articles.*') ? 'is-active' : '' }}">Статьи</a>
             </div>
-            <div class="cmd-nav-item">
-                <a href="{{ route('site.contacts') }}" class="{{ request()->routeIs('site.contacts') ? 'is-active' : '' }}">Контакты</a>
-            </div>
         </div>
 
         <div class="cmd-nav-socials">
