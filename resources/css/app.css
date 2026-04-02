@@ -97,7 +97,7 @@
     .cmd-nav-inner {
         max-width: 1240px;
         margin: 0 auto;
-        padding: 14px 22px;
+        padding: 11px 22px;
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
@@ -145,7 +145,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 24px;
+        gap: 30px;
     }
 
     .cmd-nav-item {
@@ -1209,7 +1209,7 @@
 
     .future-home-visual {
         position: relative;
-        min-height: 560px;
+        min-height: 620px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1217,13 +1217,13 @@
 
     .future-home-orb {
         position: absolute;
-        width: min(100%, 520px);
+        width: min(100%, 560px);
         aspect-ratio: 1;
         border-radius: 999px;
         background:
-            radial-gradient(circle at 40% 40%, rgba(255, 106, 0, 0.55), rgba(255, 106, 0, 0.06) 34%, rgba(0, 0, 0, 0.02) 55%, transparent 72%),
-            radial-gradient(circle at center, rgba(0, 0, 0, 0.06), transparent 65%);
-        opacity: 0.95;
+            radial-gradient(circle at 42% 38%, rgba(255, 106, 0, 0.42), rgba(255, 106, 0, 0.08) 28%, rgba(255, 255, 255, 0.08) 44%, transparent 72%),
+            radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 62%);
+        opacity: 1;
     }
 
     .future-home-orb::before,
@@ -1239,6 +1239,33 @@
         inset: 86px;
         border-color: rgba(255, 106, 0, 0.25);
         box-shadow: 0 0 28px rgba(255, 106, 0, 0.15);
+    }
+
+    .future-home-panel {
+        position: absolute;
+        border-radius: 34px;
+        background: rgba(255, 255, 255, 0.56);
+        border: 1px solid rgba(255, 255, 255, 0.48);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 24px 64px rgba(15, 15, 15, 0.06);
+    }
+
+    .future-home-panel-back {
+        width: 320px;
+        height: 210px;
+        top: 54px;
+        right: 8px;
+        transform: rotate(8deg);
+        opacity: 0.78;
+    }
+
+    .future-home-panel-front {
+        width: 280px;
+        height: 170px;
+        bottom: 56px;
+        left: 18px;
+        transform: rotate(-8deg);
+        opacity: 0.54;
     }
 
     .future-home-orb-lines {
@@ -1260,16 +1287,44 @@
     .future-home-orb-lines span:nth-child(3) { top: 64%; }
     .future-home-orb-lines span:nth-child(4) { top: 82%; }
 
+    .future-home-floating {
+        position: absolute;
+        z-index: 1;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 18px 44px rgba(15, 15, 15, 0.08);
+        backdrop-filter: blur(14px);
+        color: #5d5d5d;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .future-home-floating-top {
+        top: 90px;
+        left: 12px;
+    }
+
+    .future-home-floating-bottom {
+        right: 18px;
+        bottom: 92px;
+    }
+
     .future-home-core-card {
         position: relative;
-        z-index: 1;
-        width: min(100%, 410px);
-        padding: 28px;
-        border-radius: 26px;
-        background: rgba(255, 255, 255, 0.86);
-        border: 1px solid rgba(15, 15, 15, 0.08);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-        backdrop-filter: blur(10px);
+        z-index: 2;
+        width: min(100%, 438px);
+        padding: 30px;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.64);
+        box-shadow:
+            0 30px 80px rgba(15, 15, 15, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(16px);
     }
 
     .future-home-core-head {
@@ -1277,30 +1332,40 @@
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        margin-bottom: 24px;
+        margin-bottom: 18px;
     }
 
     .future-home-core-title {
         font-family: var(--font-sans);
-        font-size: 15px;
-        letter-spacing: 0.14em;
+        font-size: 13px;
+        color: #666;
+        font-weight: 700;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
     }
 
+    .future-home-core-text {
+        margin-bottom: 20px;
+        color: #5d5d5d;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
     .future-home-badge {
-        padding: 8px 12px;
+        padding: 8px 13px;
         border-radius: 999px;
-        background: rgba(255, 106, 0, 0.1);
+        background: rgba(255, 106, 0, 0.12);
         color: #ff6a00;
         font-size: 11px;
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
+        box-shadow: inset 0 0 0 1px rgba(255, 106, 0, 0.08);
     }
 
     .future-home-core-grid {
         display: grid;
-        gap: 12px;
+        gap: 14px;
     }
 
     .future-home-core-item {
@@ -1308,23 +1373,66 @@
         align-items: center;
         justify-content: space-between;
         gap: 18px;
-        padding: 16px 18px;
-        border-radius: 18px;
-        background: #fff;
-        border: 1px solid rgba(15, 15, 15, 0.06);
+        padding: 18px 18px 17px;
+        border-radius: 20px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 248, 248, 0.96));
+        border: 1px solid rgba(15, 15, 15, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
     }
 
     .future-home-core-item span {
         color: #6f6f6f;
-        font-size: 13px;
-        letter-spacing: 0.08em;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
+        display: block;
     }
 
     .future-home-core-item strong {
         font-family: var(--font-sans);
-        font-size: 18px;
+        display: block;
+        margin-top: 5px;
+        font-size: 22px;
         font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        color: #111;
+    }
+
+    .future-home-core-item em {
+        flex: 0 0 30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 106, 0, 0.1);
+        color: #ff6a00;
+        box-shadow: inset 0 0 0 1px rgba(255, 106, 0, 0.12);
+        font-style: normal;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .future-home-core-footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .future-home-core-footer span {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(15, 15, 15, 0.04);
+        color: #6d6d6d;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
     }
 
     .future-section {
@@ -1389,7 +1497,9 @@
     .future-card-grid,
     .future-case-grid,
     .future-process-grid,
-    .future-article-grid {
+    .future-article-grid,
+    .future-review-grid,
+    .future-faq-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 20px;
@@ -1403,7 +1513,9 @@
     .future-service-card,
     .future-case-card,
     .future-process-card,
-    .future-article-card {
+    .future-article-card,
+    .future-review-card,
+    .future-faq-card {
         min-height: 268px;
         padding: 30px;
         border-radius: 30px;
@@ -1461,7 +1573,8 @@
     .future-service-card h3,
     .future-case-card h3,
     .future-process-card h3,
-    .future-article-card h3 {
+    .future-article-card h3,
+    .future-faq-card h3 {
         margin-top: 12px;
         font-family: var(--font-sans);
         font-size: clamp(24px, 2vw, 30px);
@@ -1475,11 +1588,44 @@
     .future-service-card p,
     .future-case-card p,
     .future-process-card p,
-    .future-article-card p {
+    .future-article-card p,
+    .future-faq-card p {
         margin-top: 16px;
         color: #5d5d5d;
         font-size: 14px;
         line-height: 1.7;
+    }
+
+    .future-review-card {
+        min-height: 0;
+        justify-content: space-between;
+        gap: 22px;
+    }
+
+    .future-review-text {
+        color: #111;
+        font-size: 18px;
+        line-height: 1.55;
+        letter-spacing: -0.02em;
+    }
+
+    .future-review-meta {
+        color: #6a6a6a;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.6;
+    }
+
+    .future-faq-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .future-faq-card {
+        min-height: 0;
+    }
+
+    .future-faq-card h3 {
+        font-size: clamp(22px, 1.8vw, 26px);
     }
 
     .future-service-link {
@@ -1658,8 +1804,10 @@
         height: 100%;
         min-height: 520px;
         object-fit: cover;
-        object-position: center 35%;
+        object-position: center 28%;
         display: block;
+        transform: scale(1.08);
+        transform-origin: center center;
     }
 
     .future-founder-photo-glow {
@@ -2003,9 +2151,14 @@
         .future-case-grid,
         .future-process-grid,
         .future-article-grid,
+        .future-review-grid,
         .future-why-grid,
         .future-responsibility-grid,
         .future-founder-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .future-faq-grid {
             grid-template-columns: 1fr;
         }
 
