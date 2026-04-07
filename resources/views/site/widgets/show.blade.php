@@ -4,7 +4,23 @@
     'canonical' => route('site.widgets.show', $widget->slug),
 ])
 
+@push('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $widget->seo_title ?: $widget->title }}">
+    <meta property="og:description" content="{{ $widget->seo_description ?: $widget->short_description ?: $widget->title }}">
+    <meta property="og:url" content="{{ route('site.widgets.show', $widget->slug) }}">
+    @if($widget->coverImageUrl())
+        <meta property="og:image" content="{{ $widget->coverImageUrl() }}">
+        <meta name="twitter:image" content="{{ $widget->coverImageUrl() }}">
+    @endif
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $widget->seo_title ?: $widget->title }}">
+    <meta name="twitter:description" content="{{ $widget->seo_description ?: $widget->short_description ?: $widget->title }}">
+@endpush
+
 @section('content')
+    @php($galleryImages = $widget->galleryImages())
+
     <section class="site-page-hero">
         <div class="container-wrap">
             <div class="site-page-hero-box">
@@ -21,6 +37,22 @@
     <section class="site-section">
         <article class="container-wrap card prose-lite">
             <div class="whitespace-pre-line">{{ $widget->full_content }}</div>
+
+            @if(! empty($galleryImages))
+                <div class="widget-gallery mb-8">
+                    @foreach($galleryImages as $index => $imageUrl)
+                        <div class="widget-gallery-item">
+                            <img
+                                src="{{ $imageUrl }}"
+                                alt="{{ $widget->title }} — изображение {{ $index + 1 }}"
+                                class="widget-gallery-image"
+                                loading="lazy"
+                            >
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+
             <div class="mt-6 flex flex-wrap gap-3">
                 <a href="{{ route('site.widgets.index') }}" class="btn btn-secondary">Все виджеты</a>
                 @if($widget->external_link)
