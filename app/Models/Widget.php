@@ -24,4 +24,9 @@ class Widget extends Model
         'platform_compatibility',
         'external_link',
     ];
+
+    public function coverImageUrl(): ?string
+    {
+        return $this->cover_image ? asset('storage/'.$this->cover_image) : null;
+    }
 }
