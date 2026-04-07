@@ -15,11 +15,11 @@ class FaqRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-        $title = $this->filled('title') ? $this->string('title') : $this->string('question');
+        $title = $this->filled('title') ? (string) $this->string('title') : (string) $this->string('question');
 
         $this->merge([
             'title' => $title,
-            'slug' => $this->filled('slug') ? Str::slug($this->string('slug')) : Str::slug($title),
+            'slug' => $this->filled('slug') ? Str::slug((string) $this->string('slug')) : Str::slug($title),
         ]);
     }
 
