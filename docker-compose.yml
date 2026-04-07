@@ -19,6 +19,10 @@ services:
       APP_RUN_SEEDER: ${APP_RUN_SEEDER:-false}
       APP_STORAGE_LINK: ${APP_STORAGE_LINK:-true}
     volumes:
+      - ./app:/var/www/html/app
+      - ./routes:/var/www/html/routes
+      - ./resources:/var/www/html/resources
+      - ./public:/var/www/html/public
       - storage_data:/var/www/html/storage
       - database_data:/var/www/html/database
 

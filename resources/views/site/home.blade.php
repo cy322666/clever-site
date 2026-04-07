@@ -16,7 +16,7 @@
             <x-section-header title="Услуги" subtitle="Базовый блок услуг на главной." />
             <div class="grid gap-4 md:grid-cols-3">
                 @forelse($services as $service)
-                    <x-card>
+                    <x-card class="anim-bounce">
                         <h3 class="text-lg font-semibold">{{ $service->title }}</h3>
                         <p class="mt-2 text-sm text-slate-600">{{ $service->short_description }}</p>
                         <a href="{{ route('site.services.show', $service->slug) }}" class="mt-4 inline-block text-sm font-medium text-slate-900">Подробнее</a>
@@ -27,12 +27,12 @@
             </div>
 
             <div class="grid gap-4 md:grid-cols-2">
-                <x-card><x-section-header title="Когда к нам обращаются" /><p class="mt-3 text-sm">Когда лиды теряются, CRM не связана с рекламой и менеджеры работают вручную.</p></x-card>
-                <x-card><x-section-header title="Почему нас выбирают" /><p class="mt-3 text-sm">Фокус на бизнес-результат, прозрачные этапы, понятная документация.</p></x-card>
-                <x-card><x-section-header title="Про основателя" /><p class="mt-3 text-sm">Секция с биографией, опытом и подходом к проектам.</p></x-card>
-                <x-card><x-section-header title="Интервью" /><p class="mt-3 text-sm">Место под видеоматериалы, подкасты и внешние публикации.</p></x-card>
-                <x-card><x-section-header title="Экспертность" /><p class="mt-3 text-sm">Портфолио технологий, сертификации и методологии внедрения.</p></x-card>
-                <x-card><x-section-header title="CTA" /><p class="mt-3 text-sm">Закрывающий блок с призывом оставить заявку.</p></x-card>
+                <div class="anim-bounce stagger-1"><x-card><x-section-header title="Когда к нам обращаются" /><p class="mt-3 text-sm">Когда лиды теряются, CRM не связана с рекламой и менеджеры работают вручную.</p></x-card></div>
+                <div class="anim-bounce stagger-2"><x-card><x-section-header title="Почему нас выбирают" /><p class="mt-3 text-sm">Фокус на бизнес-результат, прозрачные этапы, понятная документация.</p></x-card></div>
+                <div class="anim-bounce stagger-3"><x-card><x-section-header title="Про основателя" /><p class="mt-3 text-sm">Секция с биографией, опытом и подходом к проектам.</p></x-card></div>
+                <div class="anim-bounce stagger-4"><x-card><x-section-header title="Интервью" /><p class="mt-3 text-sm">Место под видеоматериалы, подкасты и внешние публикации.</p></x-card></div>
+                <div class="anim-bounce stagger-5"><x-card><x-section-header title="Экспертность" /><p class="mt-3 text-sm">Портфолио технологий, сертификации и методологии внедрения.</p></x-card></div>
+                <div class="anim-bounce stagger-6"><x-card><x-section-header title="CTA" /><p class="mt-3 text-sm">Закрывающий блок с призывом оставить заявку.</p></x-card></div>
             </div>
 
             <x-section-header title="Кейсы" subtitle="Последние реализованные проекты." />
