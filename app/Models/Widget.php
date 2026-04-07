@@ -13,6 +13,7 @@ class Widget extends Model
     protected $fillable = [
         'title',
         'slug',
+        'state',
         'short_description',
         'full_content',
         'cover_image',
