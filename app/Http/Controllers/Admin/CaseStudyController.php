@@ -14,15 +14,21 @@ class CaseStudyController extends Controller
 {
     public function index(Request $request): View
     {
-        $query = CaseStudy::query();
+        $query = CaseStudy::query()
+            ->latest('published_at')
+            ->latest('updated_at');
 
         if ($request->filled('q')) {
             $q = $request->string('q');
-            $query->where('title', 'like', "%{$q}%")
-                ->orWhere('client_name', 'like', "%{$q}%");
+            $query->where(function ($builder) use ($q): void {
+                $builder
+                    ->where('title', 'like', "%{$q}%")
+                    ->orWhere('client_name', 'like', "%{$q}%")
+                    ->orWhere('slug', 'like', "%{$q}%");
+            });
         }
 
-        $caseStudies = $query->latest()->paginate(15)->withQueryString();
+        $caseStudies = $query->paginate(15)->withQueryString();
 
         return view('admin.case-studies.index', compact('caseStudies'));
     }

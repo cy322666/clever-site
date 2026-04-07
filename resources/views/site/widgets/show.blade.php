@@ -1,4 +1,8 @@
-@extends('site.layouts.app', ['title' => $widget->seo_title ?: $widget->title, 'metaDescription' => $widget->seo_description])
+@extends('site.layouts.app', [
+    'title' => $widget->seo_title ?: $widget->title,
+    'metaDescription' => $widget->seo_description,
+    'canonical' => route('site.widgets.show', $widget->slug),
+])
 
 @section('content')
     <section class="site-page-hero">
@@ -24,5 +28,30 @@
                 @endif
             </div>
         </article>
+    </section>
+
+    <section class="site-section pt-0">
+        <div class="container-wrap">
+            <div class="site-cta-panel">
+                <div class="site-cta-grid">
+                    <div>
+                        <p class="site-dark-kicker">Нужна доработка под ваш CRM-стек</p>
+                        <h2 class="site-cta-title">Покажем, как встроить виджет в amoCRM без хаоса в продажах</h2>
+                        <p class="site-cta-text">Если нужен не просто отдельный модуль, а рабочая связка с CRM, отделом продаж и текущими каналами, разберем задачу и предложим короткий путь запуска</p>
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            <a href="{{ route('site.contacts') }}" class="btn bg-[#ff9b3d] text-slate-950 hover:bg-[#ffb15f]">Разобрать задачу</a>
+                            <a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}" class="btn border border-white/20 bg-white/8 text-white hover:bg-white/14">Смотреть внедрение</a>
+                        </div>
+                    </div>
+
+                    <div class="site-cta-side">
+                        <article class="site-cta-note">
+                            <p class="site-cta-note-title">Когда это особенно полезно</p>
+                            <p class="site-cta-note-text">Когда виджет должен не просто работать сам по себе, а давать деньги через CRM, заявки и клиентскую базу</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection

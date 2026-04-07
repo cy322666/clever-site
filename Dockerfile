@@ -1,7 +1,18 @@
 # syntax=docker/dockerfile:1.7
 
-FROM composer:2.8 AS vendor
+FROM composer:2.8 AS composer-bin
+
+FROM php:8.4-cli-bookworm AS vendor
 WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    libzip-dev \
+    unzip \
+    && docker-php-ext-install -j"$(nproc)" zip \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer-bin /usr/bin/composer /usr/bin/composer
 
 COPY composer.json composer.lock ./
 RUN composer install \
@@ -32,13 +43,16 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libicu-dev \
+    libpq-dev \
     libzip-dev \
     libsqlite3-dev \
+    postgresql-client \
     unzip \
     && docker-php-ext-install -j"$(nproc)" \
     bcmath \
     intl \
     opcache \
+    pdo_pgsql \
     pdo_mysql \
     pdo_sqlite \
     zip \

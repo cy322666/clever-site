@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\JsPlugin;
 use App\Models\SiteSetting;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,11 +17,17 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        View::composer(['site.*', 'admin.*'], function ($view): void {
+        $rootUrl = (string) (config('app.asset_url') ?: config('app.url'));
+
+        if ($this->app->environment('production') && str_starts_with($rootUrl, 'https://')) {
+            URL::forceScheme('https');
+        }
+
+        View::composer(['site.*', 'admin.*', 'errors.*'], function ($view): void {
             $view->with('siteSettings', SiteSetting::query()->first());
         });
 
-        View::composer('site.*', function ($view): void {
+        View::composer(['site.*', 'errors.*'], function ($view): void {
             $plugins = JsPlugin::query()
                 ->where('status', 'published')
                 ->orderBy('sort_order')

@@ -17,6 +17,7 @@ class ArticleRequest extends FormRequest
     {
         $this->merge([
             'slug' => $this->filled('slug') ? Str::slug($this->string('slug')) : Str::slug($this->string('title')),
+            'content_blocks_payload' => $this->filled('content_blocks_payload') ? $this->input('content_blocks_payload') : null,
         ]);
     }
 
@@ -31,11 +32,13 @@ class ArticleRequest extends FormRequest
             'published_at' => ['nullable', 'date'],
             'short_description' => ['nullable', 'string'],
             'full_content' => ['nullable', 'string'],
+            'content_blocks_payload' => ['nullable', 'json'],
             'cover_image' => ['nullable', 'image', 'max:4096'],
             'status' => ['required', Rule::in(['draft', 'published'])],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'seo_title' => ['nullable', 'string', 'max:255'],
             'seo_description' => ['nullable', 'string'],
+            'canonical_url' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

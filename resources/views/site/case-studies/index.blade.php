@@ -1,4 +1,18 @@
-@extends('site.layouts.app', ['title' => 'Кейсы'])
+@extends('site.layouts.app', [
+    'title' => 'Кейсы внедрения amoCRM и автоматизации продаж',
+    'metaDescription' => 'Подборка кейсов clevercrm.pro: внедрение amoCRM, перевнедрение CRM, автоматизация продаж и понятные результаты для бизнеса.',
+    'canonical' => route('site.case-studies.index'),
+])
+
+@push('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Кейсы внедрения amoCRM и автоматизации продаж">
+    <meta property="og:description" content="Подборка кейсов clevercrm.pro: внедрение amoCRM, перевнедрение CRM, автоматизация продаж и понятные результаты для бизнеса.">
+    <meta property="og:url" content="{{ route('site.case-studies.index') }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Кейсы внедрения amoCRM и автоматизации продаж">
+    <meta name="twitter:description" content="Подборка кейсов clevercrm.pro: внедрение amoCRM, перевнедрение CRM, автоматизация продаж и понятные результаты для бизнеса.">
+@endpush
 
 @section('content')
     <section class="site-page-hero">
@@ -16,8 +30,14 @@
             <div class="site-grid">
                 @foreach($caseStudies as $case)
                     <article class="site-card">
+                        <p class="site-kicker">Кейс</p>
                         <h2 class="site-card-title">{{ $case->title }}</h2>
-                        <p class="site-card-text">{{ $case->result_summary }}</p>
+                        <p class="site-card-text">{{ $case->result_summary ?: $case->short_description }}</p>
+                        @if($case->niche || $case->publishedDate())
+                            <p class="mt-3 text-xs uppercase tracking-[0.16em] text-slate-400">
+                                {{ $case->niche ?: 'Кейс' }}@if($case->niche && $case->publishedDate()) · @endif{{ optional($case->publishedDate())->format('d.m.Y') }}
+                            </p>
+                        @endif
                         <a href="{{ route('site.case-studies.show', $case->slug) }}" class="site-link">Открыть кейс</a>
                     </article>
                 @endforeach

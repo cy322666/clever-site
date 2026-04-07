@@ -1,4 +1,7 @@
-@props(['entity'])
+@props([
+    'entity',
+    'showFullContent' => true,
+])
 
 <div class="grid gap-4 md:grid-cols-2">
     <x-form.input name="title" label="Название" :value="$entity->title" />
@@ -24,10 +27,12 @@
         <textarea id="short_description" name="short_description" rows="3" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm">{{ old('short_description', $entity->short_description) }}</textarea>
     </div>
 
-    <div class="space-y-2 md:col-span-2">
-        <label class="text-sm font-medium text-slate-700" for="full_content">Полное содержание</label>
-        <textarea id="full_content" name="full_content" rows="6" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm">{{ old('full_content', $entity->full_content) }}</textarea>
-    </div>
+    @if($showFullContent)
+        <div class="space-y-2 md:col-span-2">
+            <label class="text-sm font-medium text-slate-700" for="full_content">Полное содержание</label>
+            <textarea id="full_content" name="full_content" rows="6" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm">{{ old('full_content', $entity->full_content) }}</textarea>
+        </div>
+    @endif
 
     <div class="space-y-2 md:col-span-2">
         <label class="text-sm font-medium text-slate-700" for="cover_image">Обложка</label>

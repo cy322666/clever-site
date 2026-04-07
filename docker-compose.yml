@@ -3,18 +3,30 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: crm-architect:latest
-    container_name: crm-architect-app
+    image: clevercrm-app:latest
+    container_name: clevercrm-app
     restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
-      - "${APP_PORT:-8080}:80"
+      - "${APP_PORT:-8081}:80"
     environment:
       APP_ENV: ${APP_ENV:-production}
       APP_DEBUG: ${APP_DEBUG:-false}
-      APP_URL: ${APP_URL:-http://localhost:8080}
+      APP_URL: ${APP_URL:-http://localhost:8081}
+      ASSET_URL: ${ASSET_URL:-}
+      APP_KEY: ${APP_KEY:-}
       LOG_CHANNEL: stderr
-      DB_CONNECTION: ${DB_CONNECTION:-sqlite}
-      DB_DATABASE: ${DB_DATABASE:-/var/www/html/database/database.sqlite}
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: ${POSTGRES_DB:-clevercrm}
+      DB_USERNAME: ${POSTGRES_USER:-clevercrm}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-clevercrm}
+      SESSION_DRIVER: ${SESSION_DRIVER:-database}
+      CACHE_STORE: ${CACHE_STORE:-database}
+      QUEUE_CONNECTION: ${QUEUE_CONNECTION:-database}
       APP_RUN_MIGRATIONS: ${APP_RUN_MIGRATIONS:-true}
       APP_RUN_SEEDER: ${APP_RUN_SEEDER:-false}
       APP_STORAGE_LINK: ${APP_STORAGE_LINK:-true}
@@ -24,8 +36,26 @@ services:
       - ./resources:/var/www/html/resources
       - ./public:/var/www/html/public
       - storage_data:/var/www/html/storage
-      - database_data:/var/www/html/database
+
+  db:
+    image: postgres:16-alpine
+    container_name: clevercrm-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-clevercrm}
+      POSTGRES_USER: ${POSTGRES_USER:-clevercrm}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-clevercrm}
+    ports:
+      - "${POSTGRES_PORT_FORWARD:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-clevercrm} -d ${POSTGRES_DB:-clevercrm}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
 
 volumes:
   storage_data:
-  database_data:
+  postgres_data:

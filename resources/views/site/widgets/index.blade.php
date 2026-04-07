@@ -1,4 +1,4 @@
-@extends('site.layouts.app', ['title' => 'Виджеты'])
+@extends('site.layouts.app', ['title' => 'Виджеты', 'canonical' => route('site.widgets.index')])
 
 @section('content')
     <section class="site-page-hero">
@@ -16,6 +16,7 @@
             <div class="site-grid">
                 @foreach($widgets as $widget)
                     <article class="site-card">
+                        <p class="site-kicker">Виджет</p>
                         <h2 class="site-card-title">{{ $widget->title }}</h2>
                         <p class="site-card-text">{{ $widget->short_description }}</p>
                         @if($widget->price_text)

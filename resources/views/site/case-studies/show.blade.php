@@ -1,4 +1,24 @@
-@extends('site.layouts.app', ['title' => $caseStudy->seo_title ?: $caseStudy->title, 'metaDescription' => $caseStudy->seo_description])
+@extends('site.layouts.app', [
+    'title' => $caseStudy->seoTitle(),
+    'metaDescription' => $caseStudy->seoDescription(),
+    'canonical' => $caseStudy->canonicalUrl(),
+])
+
+@push('meta')
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ $caseStudy->seoTitle() }}">
+    <meta property="og:description" content="{{ $caseStudy->seoDescription() }}">
+    <meta property="og:url" content="{{ $caseStudy->canonicalUrl() }}">
+    @if($caseStudy->cover_image)
+        <meta property="og:image" content="{{ asset('storage/'.$caseStudy->cover_image) }}">
+    @endif
+    @if($caseStudy->publishedDate())
+        <meta property="article:published_time" content="{{ $caseStudy->publishedDate()->toAtomString() }}">
+    @endif
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $caseStudy->seoTitle() }}">
+    <meta name="twitter:description" content="{{ $caseStudy->seoDescription() }}">
+@endpush
 
 @section('content')
     @php
@@ -69,6 +89,7 @@
             'Собрали автоматизацию под фактическую нагрузку команды.',
             'Закрепили контроль по этапам, срокам и потерям.',
         ];
+        $metricItems = $extractPoints($caseStudy->metrics_block, 6);
     @endphp
 
     <section class="site-page-hero">
@@ -77,7 +98,12 @@
                 <p class="site-kicker">Кейс</p>
                 <h1 class="site-title">{{ $caseStudy->title }}</h1>
                 <p class="site-subtitle">{{ $caseStudy->short_description ?: $caseStudy->result_summary }}</p>
-                <p class="mt-4 text-sm text-slate-500">Контекст: {{ $caseStudy->client_name }}{{ $caseStudy->niche ? ' / ' . $caseStudy->niche : '' }}</p>
+                <p class="mt-4 text-sm text-slate-500">
+                    Контекст: {{ $caseStudy->client_name ?: 'Клиент не указан' }}{{ $caseStudy->niche ? ' / ' . $caseStudy->niche : '' }}
+                    @if($caseStudy->publishedDate())
+                        <span class="mx-2">•</span>{{ $caseStudy->publishedDate()->format('d.m.Y') }}
+                    @endif
+                </p>
 
                 <ul class="mt-5 grid gap-2 text-sm text-slate-700 md:grid-cols-3">
                     @foreach($heroResults as $item)
@@ -91,6 +117,23 @@
             </div>
         </div>
     </section>
+
+    @if($metricItems !== [])
+        <section class="site-section">
+            <div class="container-wrap">
+                <div class="service-section-head">
+                    <h2 class="site-title service-section-title">Цифры и метрики</h2>
+                </div>
+                <div class="service-cards-grid service-cards-grid--4">
+                    @foreach($metricItems as $item)
+                        <article class="site-card service-clean-card">
+                            <p class="service-clean-card-text">— {{ $item }}</p>
+                        </article>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="site-section">
         <div class="container-wrap">
@@ -166,13 +209,25 @@
 
     <section class="site-section service-cta">
         <div class="container-wrap">
-            <div class="site-page-hero-box service-cta-box">
-                <h2 class="site-title service-section-title">Покажем, где вы теряете деньги в продажах</h2>
-                <p class="service-section-subtitle">Разбираем текущие процессы, находим слабые места и показываем, как выстроить систему продаж под ваш бизнес</p>
-                <div class="service-offer-actions">
-                    <x-button variant="secondary" :href="route('site.contacts')">Разобрать мою ситуацию</x-button>
+            <div class="site-cta-panel">
+                <div class="site-cta-grid">
+                    <div>
+                        <p class="site-dark-kicker">По итогам кейса</p>
+                        <h2 class="site-cta-title">Покажем, где вы теряете деньги в продажах</h2>
+                        <p class="site-cta-text">Разбираем текущую ситуацию, находим слабые места и показываем, как выстроить систему продаж под ваш бизнес без лишней сложности</p>
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            <a href="{{ route('site.contacts') }}" class="btn bg-[#ff9b3d] text-slate-950 hover:bg-[#ffb15f]">Разобрать мою ситуацию</a>
+                            <a href="{{ route('site.landings.show', 'audit-amocrm') }}" class="btn border border-white/20 bg-white/8 text-white hover:bg-white/14">Смотреть аудит CRM</a>
+                        </div>
+                    </div>
+
+                    <div class="site-cta-side">
+                        <article class="site-cta-note">
+                            <p class="site-cta-note-title">Формат</p>
+                            <p class="site-cta-note-text">Без перегруза и без продажи ради продажи. Сначала смотрим, где у вас реальные потери, и только потом говорим про внедрение или перевнедрение</p>
+                        </article>
+                    </div>
                 </div>
-                <p class="mt-3 text-sm text-slate-500">Без продаж и навязывания — просто разбор вашей ситуации</p>
             </div>
         </div>
     </section>
