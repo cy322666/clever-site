@@ -33,6 +33,8 @@ class WidgetRequest extends FormRequest
             'short_description' => ['nullable', 'string'],
             'full_content' => ['nullable', 'string'],
             'cover_image' => ['nullable', 'image', 'max:4096'],
+            'gallery_image_2' => ['nullable', 'image', 'max:4096'],
+            'gallery_image_3' => ['nullable', 'image', 'max:4096'],
             'status' => ['required', Rule::in(['draft', 'published'])],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'seo_title' => ['nullable', 'string', 'max:255'],

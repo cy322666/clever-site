@@ -1,6 +1,7 @@
 @props([
     'entity',
     'showFullContent' => true,
+    'showCoverImage' => true,
 ])
 
 <div class="grid gap-4 md:grid-cols-2">
@@ -34,11 +35,13 @@
         </div>
     @endif
 
-    <div class="space-y-2 md:col-span-2">
-        <label class="text-sm font-medium text-slate-700" for="cover_image">Обложка</label>
-        <input id="cover_image" name="cover_image" type="file" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm">
-        @if($entity->cover_image)
-            <img src="{{ asset('storage/'.$entity->cover_image) }}" alt="cover" class="h-24 rounded border border-slate-200 object-cover">
-        @endif
-    </div>
+    @if($showCoverImage)
+        <div class="space-y-2 md:col-span-2">
+            <label class="text-sm font-medium text-slate-700" for="cover_image">Обложка</label>
+            <input id="cover_image" name="cover_image" type="file" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm">
+            @if($entity->cover_image)
+                <img src="{{ asset('storage/'.$entity->cover_image) }}" alt="cover" class="h-24 rounded border border-slate-200 object-cover">
+            @endif
+        </div>
+    @endif
 </div>

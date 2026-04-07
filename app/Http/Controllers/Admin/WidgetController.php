@@ -12,6 +12,8 @@ use Illuminate\View\View;
 
 class WidgetController extends Controller
 {
+    private const IMAGE_FIELDS = ['cover_image', 'gallery_image_2', 'gallery_image_3'];
+
     public function index(Request $request): View
     {
         $query = Widget::query();
@@ -37,10 +39,7 @@ class WidgetController extends Controller
     {
         $data = $request->validated();
         $data['sort_order'] = $data['sort_order'] ?? 0;
-
-        if ($request->hasFile('cover_image')) {
-            $data['cover_image'] = $request->file('cover_image')->store('uploads/widgets', 'public');
-        }
+        $data = $this->handleImageUploads($request, $data);
 
         Widget::create($data);
 
@@ -56,13 +55,7 @@ class WidgetController extends Controller
     {
         $data = $request->validated();
         $data['sort_order'] = $data['sort_order'] ?? 0;
-
-        if ($request->hasFile('cover_image')) {
-            if ($widget->cover_image) {
-                Storage::disk('public')->delete($widget->cover_image);
-            }
-            $data['cover_image'] = $request->file('cover_image')->store('uploads/widgets', 'public');
-        }
+        $data = $this->handleImageUploads($request, $data, $widget);
 
         $widget->update($data);
 
@@ -71,12 +64,31 @@ class WidgetController extends Controller
 
     public function destroy(Widget $widget): RedirectResponse
     {
-        if ($widget->cover_image) {
-            Storage::disk('public')->delete($widget->cover_image);
+        foreach (self::IMAGE_FIELDS as $field) {
+            if ($widget->{$field}) {
+                Storage::disk('public')->delete($widget->{$field});
+            }
         }
 
         $widget->delete();
 
         return back()->with('success', 'Виджет удален.');
+    }
+
+    private function handleImageUploads(WidgetRequest $request, array $data, ?Widget $widget = null): array
+    {
+        foreach (self::IMAGE_FIELDS as $field) {
+            if (! $request->hasFile($field)) {
+                continue;
+            }
+
+            if ($widget?->{$field}) {
+                Storage::disk('public')->delete($widget->{$field});
+            }
+
+            $data[$field] = $request->file($field)->store('uploads/widgets', 'public');
+        }
+
+        return $data;
     }
 }

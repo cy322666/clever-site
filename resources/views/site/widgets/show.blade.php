@@ -19,6 +19,8 @@
 @endpush
 
 @section('content')
+    @php($galleryImages = $widget->galleryImages())
+
     <section class="site-page-hero">
         <div class="container-wrap">
             <div class="site-page-hero-box">
@@ -34,18 +36,23 @@
 
     <section class="site-section">
         <article class="container-wrap card prose-lite">
-            @if($widget->coverImageUrl())
-                <div class="mb-8 overflow-hidden rounded-[28px] border border-slate-200 bg-slate-50">
-                    <img
-                        src="{{ $widget->coverImageUrl() }}"
-                        alt="{{ $widget->title }}"
-                        class="block h-auto w-full object-cover"
-                        loading="lazy"
-                    >
+            <div class="whitespace-pre-line">{{ $widget->full_content }}</div>
+
+            @if(! empty($galleryImages))
+                <div class="widget-gallery mb-8">
+                    @foreach($galleryImages as $index => $imageUrl)
+                        <div class="widget-gallery-item">
+                            <img
+                                src="{{ $imageUrl }}"
+                                alt="{{ $widget->title }} — изображение {{ $index + 1 }}"
+                                class="widget-gallery-image"
+                                loading="lazy"
+                            >
+                        </div>
+                    @endforeach
                 </div>
             @endif
 
-            <div class="whitespace-pre-line">{{ $widget->full_content }}</div>
             <div class="mt-6 flex flex-wrap gap-3">
                 <a href="{{ route('site.widgets.index') }}" class="btn btn-secondary">Все виджеты</a>
                 @if($widget->external_link)
