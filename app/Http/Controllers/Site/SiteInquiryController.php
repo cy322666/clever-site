@@ -6,10 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\SiteInquiryRequest;
 use App\Models\LandingPage;
 use App\Models\SiteInquiry;
+use App\Services\TelegramNotifier;
 use Illuminate\Http\RedirectResponse;
+use Throwable;
 
 class SiteInquiryController extends Controller
 {
+    public function __construct(
+        private readonly TelegramNotifier $telegramNotifier,
+    ) {
+    }
+
     public function store(SiteInquiryRequest $request): RedirectResponse
     {
         $data = $request->validated();
@@ -23,7 +30,7 @@ class SiteInquiryController extends Controller
                 ->first();
         }
 
-        SiteInquiry::query()->create([
+        $inquiry = SiteInquiry::query()->create([
             'name' => $data['name'],
             'contact' => $data['contact'],
             'message' => $data['message'] ?: null,
@@ -35,6 +42,12 @@ class SiteInquiryController extends Controller
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
         ]);
+
+        try {
+            $this->telegramNotifier->sendSiteInquiry($inquiry);
+        } catch (Throwable $exception) {
+            report($exception);
+        }
 
         $target = url()->previous() ?: route('site.home');
 

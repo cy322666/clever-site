@@ -90,34 +90,30 @@
         <div class="container-wrap">
             <div class="future-section-head">
                 <div>
-                    <h2 class="future-section-title">Когда к нам обращаются</h2>
+                    <h2 class="future-section-title">Как работаем с CRM и продажами</h2>
                 </div>
             </div>
 
             <div class="future-process-grid">
                 <article class="future-process-card">
                     <div class="future-service-index">01</div>
-                    <h3>Внедрить amoCRM с нуля</h3>
+                    <h3>Смотрим CRM и продажи</h3>
+                    <p>Сначала разбираем, где теряются заявки, как работают менеджеры и что в системе уже сломано.</p>
                 </article>
                 <article class="future-process-card">
                     <div class="future-service-index">02</div>
-                    <h3>Переделать после слабого внедрения</h3>
+                    <h3>Находим потери и слабые места</h3>
+                    <p>Показываем, где CRM не дает контроля, какие этапы мешают продажам и что пора убирать.</p>
                 </article>
                 <article class="future-process-card">
                     <div class="future-service-index">03</div>
-                    <h3>Внедрить ИИ в продажи</h3>
+                    <h3>Собираем новую логику</h3>
+                    <p>Пересобираем воронки, роли, автоматизацию и аналитику под реальную работу отдела продаж.</p>
                 </article>
                 <article class="future-process-card">
                     <div class="future-service-index">04</div>
-                    <h3>Бизнес вырос, а в CRM начался хаос</h3>
-                </article>
-                <article class="future-process-card">
-                    <div class="future-service-index">05</div>
-                    <h3>Нужна доработка или интеграция</h3>
-                </article>
-                <article class="future-process-card">
-                    <div class="future-service-index">06</div>
-                    <h3>Не хватает аналитики продаж</h3>
+                    <h3>Запускаем и держим под контролем</h3>
+                    <p>Доводим CRM до рабочего состояния, чтобы по каждой сделке был понятный следующий шаг и цифры.</p>
                 </article>
             </div>
         </div>
@@ -137,6 +133,7 @@
                     <div class="future-service-copy">
                         <div class="future-service-kicker">Внедрение</div>
                         <h3>Соберем amoCRM под реальные продажи</h3>
+                        <p>Настроим воронку, роли и сценарии работы, чтобы CRM помогала продавать, а не мешала команде.</p>
                     </div>
                     <span class="future-service-link">Подробнее →</span>
                 </a>
@@ -145,6 +142,7 @@
                     <div class="future-service-copy">
                         <div class="future-service-kicker">Перевнедрение</div>
                         <h3>Переделаем CRM, если текущее внедрение не работает</h3>
+                        <p>Уберем хаос в этапах, логике и ответственности, чтобы вернуть контроль над заявками и выручкой.</p>
                     </div>
                     <span class="future-service-link">Подробнее →</span>
                 </a>
@@ -153,6 +151,7 @@
                     <div class="future-service-copy">
                         <div class="future-service-kicker">Аналитика</div>
                         <h3>Покажем цифры, на которые можно опираться</h3>
+                        <p>Соберем прозрачную аналитику по продажам, каналам и работе менеджеров без отчетов ради отчетов.</p>
                     </div>
                     <span class="future-service-link">Подробнее →</span>
                 </a>
@@ -161,6 +160,7 @@
                     <div class="future-service-copy">
                         <div class="future-service-kicker">Разработка</div>
                         <h3>Доработаем CRM под вашу логику бизнеса</h3>
+                        <p>Сделаем интеграции, виджеты и нестандартные сценарии там, где типовой настройки уже недостаточно.</p>
                     </div>
                     <span class="future-service-link">Подробнее →</span>
                 </a>
@@ -248,8 +248,23 @@
             <div class="future-case-grid">
                 @foreach($compactCaseStudies as $caseStudy)
                     <a href="{{ $caseStudy['url'] }}" class="future-case-card">
+                        <div class="future-case-meta">{{ $caseStudy['meta'] }}</div>
                         <h3>{{ $caseStudy['title'] }}</h3>
-                        <p>{{ $caseStudy['text'] }}</p>
+                        <div class="future-case-stack">
+                            <div class="future-case-row">
+                                <span>Проблема</span>
+                                <p>{{ $caseStudy['problem'] }}</p>
+                            </div>
+                            <div class="future-case-row">
+                                <span>Что сделали</span>
+                                <p>{{ $caseStudy['solution'] }}</p>
+                            </div>
+                            <div class="future-case-row">
+                                <span>Результат</span>
+                                <p>{{ $caseStudy['result'] }}</p>
+                            </div>
+                        </div>
+                        <span class="future-case-cta">Смотреть кейс →</span>
                     </a>
                 @endforeach
             </div>
@@ -267,15 +282,15 @@
             <div class="future-review-grid">
                 <article class="future-review-card">
                     <p class="future-review-text">“До этого CRM была внедрена формально. После проекта стало понятно, как реально вести сделки и где у нас терялись заявки.”</p>
-                    <p class="future-review-meta">Руководитель отдела продаж / образовательный проект</p>
+                    <p class="future-review-meta">Руководитель отдела продаж · образовательный проект</p>
                 </article>
                 <article class="future-review-card">
                     <p class="future-review-text">“Самое полезное было не в настройках, а в том, что наконец появилась понятная логика работы и контроль по менеджерам.”</p>
-                    <p class="future-review-meta">Собственник / B2B-компания</p>
+                    <p class="future-review-meta">Собственник · B2B-компания</p>
                 </article>
                 <article class="future-review-card">
                     <p class="future-review-text">“В CRM был бардак, цифрам нельзя было доверять. После внедрения стало видно, что происходит в продажах и где проседает выручка.”</p>
-                    <p class="future-review-meta">Коммерческий директор / производственная компания</p>
+                    <p class="future-review-meta">Коммерческий директор · производственная компания</p>
                 </article>
             </div>
         </div>
@@ -347,12 +362,8 @@
                     <p>Если проблема в отдельных функциях, хватает доработки. Если CRM не отражает реальную продажу и не дает контроля, обычно нужен перезапуск логики.</p>
                 </article>
                 <article class="future-faq-card">
-                    <h3>Можно ли навести порядок без остановки отдела продаж</h3>
-                    <p>Да. Обычно пересобираем систему поэтапно, чтобы команда продолжала работать, а изменения внедрялись без полной остановки отдела.</p>
-                </article>
-                <article class="future-faq-card">
                     <h3>Что вы даете на старте</h3>
-                    <p>Показываем, где теряются заявки и деньги, что в CRM лишнее, что сломано и какой план действий даст эффект быстрее всего.</p>
+                    <p>Показываем, где теряются заявки и деньги, что в CRM лишнее и какой план действий даст эффект быстрее всего.</p>
                 </article>
             </div>
         </div>
@@ -363,6 +374,8 @@
             <div class="future-contact-panel">
                 <div>
                     <h2 class="future-contact-title">Покажем, где CRM съедает деньги в продажах</h2>
+                    <p class="future-contact-text">Разберем текущую CRM, покажем слабые места в логике продаж и дадим понятный план, что исправить в первую очередь.</p>
+                    <a class="future-text-link future-text-link-light" href="{{ route('site.case-studies.index') }}">Посмотреть кейсы</a>
                 </div>
 
                 <div class="future-form-card">
@@ -393,7 +406,7 @@
                         </label>
 
                         <button type="submit" class="future-btn future-btn-primary future-form-submit">
-                            Показать потери в CRM
+                            Получить план по CRM
                         </button>
                     </form>
                 </div>

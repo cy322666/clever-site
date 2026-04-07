@@ -1501,13 +1501,23 @@
     .future-review-grid,
     .future-faq-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 20px;
         align-items: stretch;
     }
 
     .future-card-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .future-case-grid,
+    .future-article-grid,
+    .future-review-grid,
+    .future-faq-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .future-process-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .future-service-card,
@@ -1596,6 +1606,60 @@
         line-height: 1.7;
     }
 
+    .future-process-card {
+        min-height: 240px;
+        padding-top: 28px;
+    }
+
+    .future-process-card p {
+        margin-top: auto;
+        padding-top: 18px;
+    }
+
+    .future-case-card {
+        gap: 18px;
+    }
+
+    .future-case-stack {
+        display: grid;
+        gap: 14px;
+        margin-top: 4px;
+    }
+
+    .future-case-row {
+        padding-top: 14px;
+        border-top: 1px solid rgba(15, 15, 15, 0.07);
+    }
+
+    .future-case-row span {
+        display: block;
+        color: #6f6f6f;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    .future-case-row p {
+        margin-top: 8px;
+    }
+
+    .future-case-cta {
+        margin-top: auto;
+        padding-top: 8px;
+        color: #0f0f0f;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .future-case-card:hover .future-case-cta {
+        color: #ff6a00;
+        transform: translateX(4px);
+    }
+
     .future-review-card {
         min-height: 0;
         justify-content: space-between;
@@ -1616,16 +1680,13 @@
         line-height: 1.6;
     }
 
-    .future-faq-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .future-faq-card {
         min-height: 0;
+        padding-top: 28px;
     }
 
     .future-faq-card h3 {
-        font-size: clamp(22px, 1.8vw, 26px);
+        font-size: clamp(21px, 1.7vw, 25px);
     }
 
     .future-service-link {
@@ -1976,6 +2037,16 @@
         color: #0f0f0f;
     }
 
+    .future-text-link-light {
+        display: inline-block;
+        margin-top: 24px;
+        color: rgba(255, 255, 255, 0.72);
+    }
+
+    .future-text-link-light:hover {
+        color: #fff;
+    }
+
     .future-conversion-panel {
         padding: 38px 40px;
         border-radius: 34px;
@@ -2152,13 +2223,10 @@
         .future-process-grid,
         .future-article-grid,
         .future-review-grid,
+        .future-faq-grid,
         .future-why-grid,
         .future-responsibility-grid,
         .future-founder-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .future-faq-grid {
             grid-template-columns: 1fr;
         }
 
@@ -2206,6 +2274,8 @@
         .future-case-card,
         .future-process-card,
         .future-article-card,
+        .future-review-card,
+        .future-faq-card,
         .future-responsibility-panel,
         .future-conversion-panel,
         .future-contact-panel,
