@@ -62,7 +62,7 @@
         </article>
     </section>
 
-    <section class="site-section service-cta pt-0">
+    <section class="site-section pt-0">
         <div class="container-wrap">
             <div class="site-cta-panel">
                 <div class="site-cta-grid">
