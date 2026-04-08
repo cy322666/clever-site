@@ -3326,12 +3326,12 @@
     }
 
     .faq-acc-item {
-      border-bottom: 1px solid rgba(0, 0, 0, .06);
+      border: none;
       overflow: hidden;
     }
 
     .faq-acc-item:first-child {
-      border-top: 1px solid rgba(0, 0, 0, .06);
+      border: none;
     }
 
     .faq-acc-q {
@@ -3624,6 +3624,7 @@
       border-radius: 20px;
       padding: 36px;
       margin-bottom: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     .cs-featured-meta {
@@ -3709,6 +3710,7 @@
       border: 1px solid rgba(0, 0, 0, .05);
       border-radius: 16px;
       padding: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -5278,12 +5280,12 @@
 
     .future-mesh-2 {
       position: absolute;
-      bottom: -150px;
-      left: -50px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-      filter: blur(100px);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 45%;
+      background: linear-gradient(to right, rgba(255, 138, 42, 0.25), transparent);
+      filter: blur(20px);
       pointer-events: none;
       z-index: 1;
     }
@@ -5339,7 +5341,7 @@
       margin-top: 18px;
       font-family: var(--font-sans) !important;
       font-size: 90px !important;
-      font-weight: 700 !important;
+      font-weight: 900 !important;
       line-height: 0.96 !important;
       letter-spacing: -0.045em !important;
       color: #0f0f0f !important;
@@ -6548,7 +6550,7 @@
 
       <div class="cmd-nav-socials">
         <a href="{{ $siteSettings->telegram_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Telegram" title="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 4.4 2.4 10.8c-.6.2-.6.6 0 .8l4.8 1.8 1.8 5.8c.1.4.5.5.8.2l2.6-2.2 4.8 3.6c.4.3 1 .1 1.1-.4L22 5.2c.1-.6-.4-1-.8-.8Z"/><path d="m9 13.6 8.4-6.4"/></svg></a>
-        <a href="{{ $siteSettings->max_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Max" title="Max"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7.5 15.5V9l4.5 4.5L16.5 9v6.5"/></svg></a>
+        <a href="{{ $siteSettings->max_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Max" title="Max"><svg viewBox="0 0 720 720" fill="currentColor"><path d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg></a>
       </div>
 
       <input type="checkbox" id="nav-toggle" class="cmd-nav-check" aria-hidden="true">
@@ -6570,7 +6572,7 @@
         <div class="cmd-mob-bottom">
           <div class="cmd-nav-socials">
             <a href="{{ $siteSettings->telegram_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 4.4 2.4 10.8c-.6.2-.6.6 0 .8l4.8 1.8 1.8 5.8c.1.4.5.5.8.2l2.6-2.2 4.8 3.6c.4.3 1 .1 1.1-.4L22 5.2c.1-.6-.4-1-.8-.8Z"/><path d="m9 13.6 8.4-6.4"/></svg></a>
-            <a href="{{ $siteSettings->max_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Max"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7.5 15.5V9l4.5 4.5L16.5 9v6.5"/></svg></a>
+            <a href="{{ $siteSettings->max_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Max"><svg viewBox="0 0 720 720" fill="currentColor"><path d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg></a>
           </div>
           <a href="#contacts" class="cmd-mob-cta">Обсудить проект</a>
         </div>
@@ -6714,7 +6716,7 @@
       border-radius: 30px;
       background: #ffffff;
       border: 1px solid rgba(15, 15, 15, 0.05);
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -6898,7 +6900,7 @@
       border-radius: 34px !important;
       background: rgba(255, 255, 255, 0.95) !important;
       border: 1px solid rgba(15, 15, 15, 0.06) !important;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04) !important;
       display: flex !important;
       flex-direction: column !important;
       gap: 24px !important;
@@ -7823,7 +7825,7 @@
       }
       // First item border-top
       var firstItem = el.querySelector('.faq-acc-item');
-      if (firstItem) firstItem.style.borderTop = '1px solid rgba(0,0,0,.06)';
+      if (firstItem) firstItem.style.borderTop = 'none';
     })();
 
     document.querySelectorAll('.faq-acc-q').forEach(q => {
@@ -7947,12 +7949,12 @@
     }
 
     section.section#faq-section .faq-acc-item {
-      border-bottom: 1px solid rgba(0, 0, 0, .06) !important;
+      border: none !important;
       overflow: hidden !important;
     }
 
     section.section#faq-section .faq-acc-item:first-child {
-      border-top: 1px solid rgba(0, 0, 0, .06) !important;
+      border: none !important;
     }
 
     section.section#faq-section .faq-acc-q {
