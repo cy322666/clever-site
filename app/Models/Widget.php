@@ -50,7 +50,7 @@ class Widget extends Model
 
     public function renderedContent(): HtmlString
     {
-        $content = trim((string) $this->full_content);
+        $content = $this->normalizeMarkdown((string) $this->full_content);
 
         if ($content === '') {
             return new HtmlString('');
@@ -60,5 +60,25 @@ class Widget extends Model
             'html_input' => 'strip',
             'allow_unsafe_links' => false,
         ]));
+    }
+
+    protected function normalizeMarkdown(string $content): string
+    {
+        $content = trim(str_replace(["\r\n", "\r"], "\n", $content));
+
+        if ($content === '') {
+            return '';
+        }
+
+        // If the text was pasted as one long line, restore the most common markdown breaks.
+        if (substr_count($content, "\n") <= 3) {
+            $content = preg_replace('/\h+(#{1,6}\h+)/u', "\n\n$1", $content);
+            $content = preg_replace('/(?<!\n)\h{2,}(-\h+)/u', "\n$1", $content);
+            $content = preg_replace('/(?<!\n)\h{2,}(\d+\.\h+)/u', "\n\n$1", $content);
+            $content = preg_replace('/(?<!\n)(Важно:)\h*/u', "\n\n$1\n", $content);
+            $content = preg_replace('/(?<!\n)(Откройте:\h*`[^`]+`)\h*/u', "\n\n$1\n\n", $content);
+        }
+
+        return preg_replace("/\n{3,}/u", "\n\n", $content) ?? $content;
     }
 }
