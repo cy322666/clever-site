@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Models\Concerns\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 
 class Widget extends Model
 {
@@ -44,5 +46,19 @@ class Widget extends Model
             ->map(static fn (string $path): string => asset('storage/'.$path))
             ->values()
             ->all();
+    }
+
+    public function renderedContent(): HtmlString
+    {
+        $content = trim((string) $this->full_content);
+
+        if ($content === '') {
+            return new HtmlString('');
+        }
+
+        return new HtmlString(Str::markdown($content, [
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
+        ]));
     }
 }

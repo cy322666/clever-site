@@ -36,7 +36,7 @@
 
     <section class="site-section">
         <article class="container-wrap card prose-lite">
-            <div class="whitespace-pre-line">{{ $widget->full_content }}</div>
+            {!! $widget->renderedContent() !!}
 
             @if(! empty($galleryImages))
                 <div class="widget-gallery mb-8">
