@@ -356,14 +356,98 @@
         @apply text-slate-700 hover:bg-slate-100;
     }
 
+    .prose-lite > :first-child {
+        margin-top: 0 !important;
+    }
+
+    .prose-lite h1,
     .prose-lite h2,
+    .prose-lite h3,
+    .prose-lite h4 {
+        @apply mt-8 mb-3 font-semibold tracking-tight text-slate-900;
+    }
+
+    .prose-lite h1 {
+        @apply text-3xl;
+    }
+
+    .prose-lite h2 {
+        @apply text-2xl;
+    }
+
     .prose-lite h3 {
-        @apply mt-8 mb-3 text-slate-900;
+        @apply text-xl;
+    }
+
+    .prose-lite h4 {
+        @apply text-lg;
     }
 
     .prose-lite p,
     .prose-lite li {
         @apply text-slate-700 leading-relaxed;
+    }
+
+    .prose-lite p,
+    .prose-lite ul,
+    .prose-lite ol,
+    .prose-lite blockquote,
+    .prose-lite pre {
+        @apply my-4;
+    }
+
+    .prose-lite ul {
+        @apply pl-6;
+        list-style: disc !important;
+        list-style-position: outside !important;
+    }
+
+    .prose-lite ol {
+        @apply pl-6;
+        list-style: decimal !important;
+        list-style-position: outside !important;
+    }
+
+    .prose-lite ul li,
+    .prose-lite ol li {
+        display: list-item !important;
+    }
+
+    .prose-lite ul li::marker,
+    .prose-lite ol li::marker {
+        color: rgb(51 65 85) !important;
+    }
+
+    .prose-lite li + li {
+        @apply mt-2;
+    }
+
+    .prose-lite strong {
+        @apply font-semibold text-slate-900;
+    }
+
+    .prose-lite a {
+        @apply font-medium text-orange-600 underline decoration-orange-300 underline-offset-4;
+    }
+
+    .prose-lite a:hover {
+        @apply text-orange-500 decoration-orange-400;
+    }
+
+    .prose-lite code {
+        @apply rounded bg-slate-100 px-1.5 py-0.5 text-[0.95em] text-slate-900;
+    }
+
+    .prose-lite pre {
+        @apply overflow-x-auto rounded-2xl bg-slate-950 p-4 text-slate-100;
+    }
+
+    .prose-lite pre code {
+        @apply bg-transparent p-0 text-inherit;
+    }
+
+    .prose-lite blockquote {
+        @apply border-l-4 border-orange-200 pl-4 italic text-slate-600;
     }
 
     .site-footer {
