@@ -7376,7 +7376,7 @@
 
   <section id="founder-block">
     <div class="founder-split">
-      <div class="founder-split-photo cine-photo"><img src="/images/founder.jpg" alt="Вячеслав Трофимов"></div>
+      <div class="founder-split-photo cine-photo"><img src="/images/founder-v2.jpg" alt="Вячеслав Трофимов"></div>
       <div class="founder-split-text">
         <div class="founder-split-ey cine-ey">Основатель</div>
         <h2 class="founder-split-heading cine-head">Каждый проект начинается с личного погружения
