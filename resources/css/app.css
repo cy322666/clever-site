@@ -251,7 +251,11 @@
     }
 
     .widget-gallery-item {
-        @apply overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm;
+        @apply relative block overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm transition duration-200;
+    }
+
+    .widget-gallery-item:hover {
+        @apply -translate-y-0.5 shadow-md;
     }
 
     .widget-gallery-item:first-child {
@@ -259,7 +263,27 @@
     }
 
     .widget-gallery-image {
-        @apply block h-64 w-full object-cover md:h-full;
+        @apply block w-full object-contain bg-slate-100;
+        aspect-ratio: 4 / 3;
+    }
+
+    .widget-gallery-item:first-child .widget-gallery-image {
+        aspect-ratio: 4 / 5;
+    }
+
+    .widget-gallery-hint {
+        @apply absolute right-4 bottom-4 inline-flex items-center rounded-full border border-white/70 bg-white/88 px-3 py-1.5 text-xs font-medium text-slate-800 shadow-sm backdrop-blur-sm transition;
+    }
+
+    .widget-gallery-item:hover .widget-gallery-hint {
+        @apply bg-white text-slate-950 shadow;
+    }
+
+    @media (max-width: 767px) {
+        .widget-gallery-image,
+        .widget-gallery-item:first-child .widget-gallery-image {
+            aspect-ratio: 4 / 3;
+        }
     }
 
     .site-cta-panel {
@@ -432,6 +456,12 @@
 
     .prose-lite a:hover {
         @apply text-orange-500 decoration-orange-400;
+    }
+
+    .prose-lite a.btn,
+    .prose-lite a.btn:hover {
+        color: inherit !important;
+        text-decoration: none !important;
     }
 
     .prose-lite code {

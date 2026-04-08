@@ -35,20 +35,29 @@
     </section>
 
     <section class="site-section">
-        <article class="container-wrap card prose-lite">
-            {!! $widget->renderedContent() !!}
+        <article class="container-wrap card">
+            <div class="prose-lite">
+                {!! $widget->renderedContent() !!}
+            </div>
 
             @if(! empty($galleryImages))
                 <div class="widget-gallery mb-8">
                     @foreach($galleryImages as $index => $imageUrl)
-                        <div class="widget-gallery-item">
+                        <a
+                            href="{{ $imageUrl }}"
+                            class="widget-gallery-item"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="{{ $widget->title }} — открыть изображение {{ $index + 1 }}"
+                        >
                             <img
                                 src="{{ $imageUrl }}"
                                 alt="{{ $widget->title }} — изображение {{ $index + 1 }}"
                                 class="widget-gallery-image"
                                 loading="lazy"
                             >
-                        </div>
+                            <span class="widget-gallery-hint">Открыть</span>
+                        </a>
                     @endforeach
                 </div>
             @endif
