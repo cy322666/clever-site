@@ -30,12 +30,12 @@
     body {
       color: var(--site-text);
       background:
-        linear-gradient(rgba(15, 23, 42, 0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.018) 1px, transparent 1px),
+        linear-gradient(rgba(15, 23, 42, 0.008) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.008) 1px, transparent 1px),
         radial-gradient(circle at 12% 0%, rgba(255, 155, 61, 0.12) 0%, rgba(255, 255, 255, 0) 28%),
         radial-gradient(circle at 100% 12%, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 0) 24%),
         linear-gradient(180deg, #f7f9fc 0%, #f4f7fb 100%);
-      background-size: 44px 44px, 44px 44px, auto, auto, auto;
+      background-size: 62px 62px, 62px 62px, auto, auto, auto;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       margin: 0;
@@ -516,6 +516,15 @@
       width: 100%;
       height: 100%;
       border: 0
+    }
+
+    .crm-modal-panel video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+      object-fit: contain;
     }
 
     .crm-modal-close {
@@ -1121,17 +1130,17 @@
       z-index: 1;
       /* Above background color */
       background-image:
-        linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
-      background-size: 48px 48px;
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
 
     /* Inverse (Dark) Sections Grid */
     .section.is-inverse::before,
     .is-inverse::before {
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
     }
 
     /* Radial Glow Accents (Premium Look) for first section */
@@ -1179,9 +1188,9 @@
       pointer-events: none;
       z-index: 1;
       background-image:
-        linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
-      background-size: 48px 48px;
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
   </style>
 
@@ -2991,6 +3000,7 @@
     .pain-acc-item {
       border-bottom: 1px solid rgba(255, 255, 255, .06);
       overflow: hidden;
+      padding: 24px 0;
     }
 
     .pain-acc-item:first-child {
@@ -2999,9 +3009,9 @@
 
     .pain-acc-head {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 16px;
-      padding: 24px 0;
+      padding: 0;
       cursor: default;
       transition: color .2s;
     }
@@ -3015,10 +3025,10 @@
     }
 
     .pain-acc-head h3 {
-      font-size: 17px !important;
+      font-size: 22px !important;
       font-weight: 600 !important;
-      color: #fafafa !important;
-      line-height: 1.3 !important;
+      color: rgba(255, 255, 255, .9) !important;
+      line-height: 1.24 !important;
       flex: 1;
       margin: 0 !important;
       transition: color .2s;
@@ -3029,13 +3039,15 @@
     }
 
     .pain-acc-body {
-      display: none;
+      display: block;
+      padding-left: 44px;
+      margin-top: 10px;
     }
 
     .pain-acc-body p {
-      font-size: 14px !important;
-      line-height: 1.55 !important;
-      color: rgba(255, 255, 255, .35) !important;
+      font-size: 16px !important;
+      line-height: 1.6 !important;
+      color: rgba(255, 255, 255, .52) !important;
       margin: 0 !important;
     }
 
@@ -3456,6 +3468,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
+      align-items: stretch;
     }
 
     .uf-wrap {
@@ -3465,13 +3478,14 @@
     .uf-card {
       position: relative;
       min-height: 400px;
+      height: 400px;
       border-radius: 20px;
       border: 1px solid rgba(255, 255, 255, .06);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 28px;
+      padding: 0 28px 28px;
       text-decoration: none !important;
       color: #fff !important;
       transition: all .3s;
@@ -3523,6 +3537,11 @@
     .uf-card-content {
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      margin-top: auto;
+      padding-top: 150px;
+      min-height: 222px;
     }
 
     .uf-card-tag {
@@ -3552,6 +3571,7 @@
     .uf-btn {
       display: inline-flex !important;
       width: fit-content;
+      margin-top: auto;
       padding: 10px 20px;
       border-radius: 10px;
       background: rgba(255, 255, 255, .08);
@@ -3573,10 +3593,17 @@
 
       .uf-card {
         min-height: 300px;
+        height: auto;
+        padding: 0 24px 24px;
       }
 
       .uf-title {
         font-size: 32px !important;
+      }
+
+      .uf-card-content {
+        padding-top: 110px;
+        min-height: auto;
       }
     }
   </style>
@@ -4001,8 +4028,8 @@
 
     .founder-split {
       display: grid;
-      grid-template-columns: .45fr .55fr;
-      min-height: 480px;
+      grid-template-columns: .38fr .62fr;
+      min-height: 440px;
     }
 
     .founder-split-photo {
@@ -4054,9 +4081,12 @@
     }
 
     .founder-split-name {
-      font-size: 16px !important;
+      font-size: 22px !important;
       font-weight: 700 !important;
       color: #111 !important;
+      line-height: 1.12 !important;
+      margin-top: 6px !important;
+      margin-bottom: 20px !important;
     }
 
     .founder-split-role {
@@ -4068,19 +4098,27 @@
 
     .founder-split-facts {
       display: flex;
-      gap: 24px;
+      gap: 32px;
+      margin-top: 8px;
+      align-items: flex-start;
+    }
+
+    .founder-split-facts > div {
+      min-width: 104px;
     }
 
     .founder-split-val {
-      font-size: 24px !important;
+      font-size: 32px !important;
       font-weight: 800 !important;
       color: #f97316 !important;
+      line-height: 1 !important;
     }
 
     .founder-split-lbl {
-      font-size: 11px !important;
-      color: rgba(0, 0, 0, .35) !important;
-      margin-top: 2px;
+      font-size: 13px !important;
+      color: rgba(0, 0, 0, .48) !important;
+      margin-top: 8px;
+      line-height: 1.35 !important;
     }
 
     @media (max-width: 991px) {
@@ -4098,6 +4136,19 @@
 
       .founder-split-heading {
         font-size: 26px !important;
+      }
+
+      .founder-split-name {
+        font-size: 20px !important;
+        margin-bottom: 16px !important;
+      }
+
+      .founder-split-facts {
+        gap: 20px;
+      }
+
+      .founder-split-val {
+        font-size: 28px !important;
       }
     }
   </style>
@@ -5532,7 +5583,7 @@
       border-radius: 30px;
       background: rgba(255, 255, 255, 0.92);
       border: 1px solid rgba(255, 255, 255, 0.64);
-      box-shadow: 0 30px 80px rgba(15, 15, 15, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+      box-shadow: 0 42px 96px rgba(15, 15, 15, 0.12), 0 12px 28px rgba(15, 15, 15, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.72);
       backdrop-filter: blur(16px);
     }
 
@@ -6139,10 +6190,13 @@
         font-size: 26px !important;
       }
       .pain-acc-head h3 {
-        font-size: 15px !important;
+        font-size: 20px !important;
       }
       .pain-desc {
         font-size: 14px !important;
+      }
+      .pain-acc-body p {
+        font-size: 15px !important;
       }
 
       /* --- Services --- */
@@ -6179,6 +6233,19 @@
       }
       .founder-split-quote {
         font-size: 15px !important;
+      }
+      .founder-split-name {
+        font-size: 18px !important;
+        margin-bottom: 14px !important;
+      }
+      .founder-split-facts {
+        gap: 16px !important;
+      }
+      .founder-split-val {
+        font-size: 24px !important;
+      }
+      .founder-split-lbl {
+        font-size: 12px !important;
       }
 
       /* --- Interview --- */
@@ -6292,7 +6359,8 @@
         font-size: 14px !important;
       }
       .faq-acc-q span {
-        font-size: 15px !important;
+        font-size: 18px !important;
+        line-height: 1.22 !important;
       }
       .faq-acc-ans-inner {
         font-size: 14px !important;
@@ -6682,6 +6750,8 @@
     .future-service-reveal {
       opacity: 0;
       transform: translateY(40px);
+      height: 100%;
+      display: flex;
       transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1),
         transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
       will-change: transform, opacity;
@@ -6712,6 +6782,8 @@
     /* Layer 2: The Original Service Card (Handles Hover ONLY) */
     .future-service-card {
       min-height: 260px;
+      height: 100%;
+      width: 100%;
       padding: 30px;
       border-radius: 30px;
       background: #ffffff;
@@ -6734,36 +6806,40 @@
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.07);
     }
 
-    .future-service-index {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      color: #ff8a2a;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
     .future-service-kicker {
-      color: #64748b;
-      font-size: 11px;
+      color: #ff8a2a;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
 
     .future-service-copy h3 {
       font-family: var(--font-sans) !important;
-      font-size: clamp(24px, 2vw, 30px) !important;
+      font-size: clamp(22px, 1.9vw, 28px) !important;
       font-weight: 700 !important;
-      line-height: 1.05 !important;
+      line-height: 1.12 !important;
       letter-spacing: -0.03em !important;
       color: #0f172a !important;
-      margin-top: 12px;
+      margin-top: 0;
+      max-width: 48ch;
+    }
+
+    .future-service-desc {
+      display: none;
+    }
+
+    .future-service-actions {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding-top: 8px;
     }
 
     .future-service-link {
-      margin-top: auto;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -6771,11 +6847,27 @@
       color: #0f172a;
       opacity: 0.4;
       transition: all 0.2s;
+      text-decoration: none;
     }
 
     .future-service-card:hover .future-service-link {
       color: #ff8a2a;
       opacity: 1;
+      transform: translateX(4px);
+    }
+
+    .future-service-case-link {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .future-service-card:hover .future-service-case-link {
+      color: #0f172a;
       transform: translateX(4px);
     }
 
@@ -6802,6 +6894,10 @@
     #home-reviews,
     #faq-section {
       padding-top: 144px !important;
+    }
+
+    #home-directions {
+      padding-bottom: 188px !important;
     }
 
     /* Unified Typography System (Sections 2-9) */
@@ -6889,27 +6985,31 @@
 
     .future-review-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-      align-items: stretch;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
       margin-top: 32px;
     }
 
     .future-review-card {
-      padding: 40px !important;
-      border-radius: 34px !important;
+      padding: 18px !important;
+      border-radius: 30px !important;
       background: rgba(255, 255, 255, 0.95) !important;
       border: 1px solid rgba(15, 15, 15, 0.06) !important;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04) !important;
       display: flex !important;
       flex-direction: column !important;
-      gap: 24px !important;
+      gap: 16px !important;
       transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease, border-color 0.6s ease, opacity 0.8s ease;
       min-height: 0;
       opacity: 0;
       transform: translateX(-20px);
       position: relative;
       overflow: hidden;
+      width: 100%;
+      text-align: left;
+      appearance: none;
+      cursor: pointer;
     }
 
     .future-review-card.is-visible {
@@ -6955,43 +7055,139 @@
       border-color: rgba(255, 106, 0, 0.15);
     }
 
+    .future-review-video {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 138, 42, 0.18), transparent 32%),
+        linear-gradient(180deg, #f4f6f8 0%, #e8edf3 100%);
+      border: 1px solid rgba(15, 15, 15, 0.05);
+    }
+
+    .future-review-video img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .future-review-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #e5e7eb;
+    }
+
+    .future-review-video::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.02) 0%, rgba(15, 23, 42, 0.22) 100%);
+      pointer-events: none;
+    }
+
+    .future-review-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #0f172a;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 138, 42, 0.18), transparent 34%),
+        linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+    }
+
+    .future-review-play {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.72);
+      color: #fff;
+      backdrop-filter: blur(8px);
+    }
+
+    .future-review-play-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ff8a2a;
+      color: #111;
+      font-size: 10px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
     .client-info {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
     }
 
     .avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 20px;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
       object-fit: cover;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
+    .avatar-fallback {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(255, 138, 42, 0.18), rgba(255, 138, 42, 0.42));
+      color: #111;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+    }
+
     .meta h4 {
       margin: 0;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       color: #111;
     }
 
     .meta span {
       display: block;
-      font-size: 13px;
+      margin-top: 4px;
+      font-size: 12px;
       color: #777;
       font-weight: 500;
-    }
-
-    .future-review-text {
-      color: #111;
-      font-size: 17px;
-      line-height: 1.62;
-      letter-spacing: -0.01em;
-      margin: 0;
+      line-height: 1.45;
     }
 
     @media (max-width: 991px) {
+      .future-review-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .future-review-card {
+        padding: 16px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
       .future-review-grid {
         grid-template-columns: 1fr;
       }
@@ -7005,31 +7201,42 @@
           <div class="pain-eyebrow">Знакомые ситуации?</div>
           <h2 class="pain-heading">Когда к нам обращаются</h2>
           <p class="pain-desc">Если узнали хотя бы одну свою проблему — мы точно поможем её решить</p>
-          <a href="#" class="pain-cta">Консультация</a>
         </div>
         <div class="pain-acc-list">
           <div class="pain-acc-item glow-item glow-stagger-1">
             <div class="pain-acc-head">
               <span class="pain-acc-num">01</span>
-              <h3>Внедрить amoCRM с нуля</h3>
+              <h3>CRM уже есть, но в ней бардак</h3>
+            </div>
+            <div class="pain-acc-body">
+              <p>Лишние поля, старые настройки, кривые воронки и никто не понимает, что там вообще работает</p>
             </div>
           </div>
           <div class="pain-acc-item glow-item glow-stagger-2">
             <div class="pain-acc-head">
               <span class="pain-acc-num">02</span>
-              <h3>Переделать после слабого внедрения</h3>
+              <h3>Руководитель не видит, что происходит в отделе</h3>
+            </div>
+            <div class="pain-acc-body">
+              <p>Непонятно, где теряются заявки, как работают менеджеры и почему проседают продажи</p>
             </div>
           </div>
           <div class="pain-acc-item glow-item glow-stagger-3">
             <div class="pain-acc-head">
               <span class="pain-acc-num">03</span>
-              <h3>Внедрить ИИ в продажи</h3>
+              <h3>CRM не успевает за бизнесом</h3>
+            </div>
+            <div class="pain-acc-body">
+              <p>Компания выросла, а система осталась на старом уровне и уже тормозит работу</p>
             </div>
           </div>
           <div class="pain-acc-item glow-item glow-stagger-4">
             <div class="pain-acc-head">
               <span class="pain-acc-num">04</span>
-              <h3>Не хватает аналитики продаж</h3>
+              <h3>Хотят внедрить ИИ, но CRM к этому не готова</h3>
+            </div>
+            <div class="pain-acc-body">
+              <p>Когда в системе бардак, ИИ не усиливает продажи, а только маскирует проблему</p>
             </div>
           </div>
         </div>
@@ -7047,27 +7254,50 @@
         </div>
       </div>
 
+      @php
+        $directionCards = [
+        [
+          'title' => 'Внедрение amoCRM',
+          'description' => 'Запустили систему после интегратора, который не смог сделать это за год',
+          'service_url' => route('site.landings.show', 'vnedrenie-amocrm'),
+          'case_url' => route('site.case-studies.show', 'proizvodstvo-crm'),
+        ],
+        [
+          'title' => 'Перевнедрение amoCRM',
+          'description' => 'Пересобрали перегруженную систему для проекта "Нечто" Михаила Дашкиева',
+          'service_url' => route('site.landings.show', 'perevnedrenie-amocrm'),
+          'case_url' => route('site.case-studies.index'),
+        ],
+        [
+          'title' => 'Аналитика',
+          'description' => 'Собрали прозрачный дашборд в DataLens для маркетинга и отдела продаж',
+          'service_url' => route('site.landings.show', 'analitika-prodazh-v-amocrm'),
+          'case_url' => route('site.case-studies.show', 'b2b-analitika-datalens'),
+        ],
+        [
+          'title' => 'Разработка',
+          'description' => 'Сделали для Shortread интеграцию с сайтом и выгрузку исторических данных',
+          'service_url' => route('site.landings.show', 'razrabotka-crm'),
+          'case_url' => route('site.case-studies.index'),
+        ],
+      ];
+      @endphp
+
       <div class="future-card-grid">
-        @forelse($services as $i => $service)
-        <div class="future-service-reveal">
-          <a href="/services/{{ $service->slug }}" class="future-service-card">
-            <div class="future-service-index">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</div>
-            <div class="future-service-copy">
-              <div class="future-service-kicker">{{ $service->short_label ?? $service->title }}</div>
-              <h3>{{ $service->short_description ?? $service->title }}</h3>
-            </div>
-            <span class="future-service-link">Подробнее →</span>
-          </a>
-        </div>
-        @empty
+        @foreach($directionCards as $card)
         <div class="future-service-reveal">
           <div class="future-service-card">
             <div class="future-service-copy">
-              <h3>Услуги пока не добавлены</h3>
+              <div class="future-service-kicker">{{ $card['title'] }}</div>
+              <h3>{{ $card['description'] }}</h3>
+            </div>
+            <div class="future-service-actions">
+              <a href="{{ $card['service_url'] }}" class="future-service-link">Подробнее об услуге →</a>
+              <a href="{{ $card['case_url'] }}" class="future-service-case-link">Смотреть кейс полностью →</a>
             </div>
           </div>
         </div>
-        @endforelse
+        @endforeach
       </div>
     </div>
   </section>
@@ -7149,25 +7379,22 @@
       <div class="founder-split-photo cine-photo"><img src="/images/founder.jpg" alt="Вячеслав Трофимов"></div>
       <div class="founder-split-text">
         <div class="founder-split-ey cine-ey">Основатель</div>
-        <h2 class="founder-split-heading cine-head">Каждый проект начинается с личного погружения в архитектуру продаж
+        <h2 class="founder-split-heading cine-head">Каждый проект начинается с личного погружения
         </h2>
-        <blockquote class="founder-split-quote cine-quote">«На старте лично разбираю процессы, точки потерь, логику
-          CRM
-          и требования к автоматизации, чтобы система строилась под реальную задачу бизнеса»</blockquote>
+        <blockquote class="founder-split-quote cine-quote">«Я смотрю на проект сразу с нескольких сторон: как предприниматель, как человек из продаж и как технарь с большим опытом в amoCRM»</blockquote>
         <div class="founder-split-name cine-name">Вячеслав Трофимов</div>
-        <div class="founder-split-role cine-role">Основатель компании, опыт 8 лет во внедрении и разработке</div>
         <div class="founder-split-facts cine-facts">
           <div>
             <div class="founder-split-val">8+</div>
-            <div class="founder-split-lbl">лет опыта</div>
+            <div class="founder-split-lbl">лет<br>в amoCRM</div>
           </div>
           <div>
-            <div class="founder-split-val">150+</div>
-            <div class="founder-split-lbl">проектов</div>
+            <div class="founder-split-val">100+</div>
+            <div class="founder-split-lbl">проектов<br>внедрения, переделки и доработки</div>
           </div>
           <div>
             <div class="founder-split-val">30%</div>
-            <div class="founder-split-lbl">рост конверсии</div>
+            <div class="founder-split-lbl">рост конверсии<br>в кейсах</div>
           </div>
         </div>
       </div>
@@ -7201,17 +7428,14 @@
       <div class="iv-head tw-head">
         <div class="iv-ey tw-ey">Доверие рынка</div>
         <h2 class="iv-title tw-title">О своем пути рыссказываю в интерьвю для amoCRM</h2>
-        <p class="iv-sub tw-sub"> Мой путь, с какими сложностями столкнулся, как amoCRM попал в мою жизнь
-        </p>
       </div>
       <a class="iv-card tw-card" href="#" id="open-video-modal">
         <div class="iv-meta">
-          <div class="iv-kicker">Интервью</div>
           <h3 class="iv-card-title">Интервью для amoCRM</h3>
           <p class="iv-card-text">
             О том, как я пришел в интеграцию, почему взял фокус на сложные проекты и как подхожу к внедрению и
             переделке
-            CRM.
+            CRM
           </p>
           <span class="iv-btn"><svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor" style="vertical-align:-1px;margin-right:6px"><path d="M0 0v14l12-7z"/></svg>Смотреть интервью</span>
         </div>
@@ -7287,27 +7511,63 @@
       <div class="future-section-head">
         <div>
           <div class="cs-ey">Отзывы</div>
-          <h2 class="future-section-title">Что говорят клиенты после проекта</h2>
+          <h2 class="future-section-title">Как клиенты оценивают нашу работу</h2>
         </div>
       </div>
 
+      @php
+        $videoReviews = [
+          [
+            'name' => 'Антон Чалый',
+            'role' => 'Основатель Chill City',
+            'avatar' => asset('images/reviews/chaly.png'),
+            'video' => asset('videos/reviews/anton-review.mp4'),
+          ],
+          [
+            'name' => 'Никита Подлипский',
+            'role' => 'CEO Ultimate Education',
+            'avatar' => asset('images/reviews/podlipskiy.png'),
+            'video' => asset('videos/reviews/podlipskiy-review.mp4'),
+          ],
+          [
+            'name' => 'Евгений Ельмикеев',
+            'role' => 'CEO Ельмикеев Аналитика',
+            'avatar' => asset('images/reviews/yelmikeev.png'),
+            'video' => asset('videos/reviews/client-review-1.mp4'),
+          ],
+          [
+            'name' => 'Геворг Халатов',
+            'role' => 'Основатель Hay.agency',
+            'avatar' => asset('images/reviews/khalatov.png'),
+            'video' => asset('videos/reviews/client-review-2.mp4'),
+          ],
+        ];
+      @endphp
+
       <div class="future-review-grid">
-        @forelse($testimonials as $i => $testimonial)
-        <article class="future-review-card">
-          <div class="client-info">
-            <img src="{{ $testimonial->cover_image ?? 'images/avatars/avatar' . ($i + 1) . '.png' }}" alt="{{ $testimonial->author_name }}" class="avatar">
-            <div class="meta">
-              <h4>{{ $testimonial->author_name }}</h4>
-              <span>{{ $testimonial->role }}{{ $testimonial->company_name ? ' / ' . $testimonial->company_name : '' }}</span>
+        @foreach($videoReviews as $review)
+        <button type="button" class="future-review-card" data-review-video="{{ $review['video'] }}" data-review-title="{{ $review['name'] }}">
+          <div class="future-review-video">
+            <video muted autoplay loop playsinline preload="metadata">
+              <source src="{{ $review['video'] }}" type="video/mp4">
+            </video>
+            <div class="future-review-play">
+              <span class="future-review-play-icon">▶</span>
             </div>
           </div>
-          <p class="future-review-text">"{{ $testimonial->quote }}"</p>
-        </article>
-        @empty
-        <article class="future-review-card">
-          <p class="future-review-text">Отзывы пока не добавлены</p>
-        </article>
-        @endforelse
+          <div class="client-info">
+            @if(!empty($review['avatar']))
+            <img class="avatar" src="{{ $review['avatar'] }}" alt="{{ $review['name'] }}" loading="lazy">
+            @else
+            <div class="avatar avatar-fallback">{{ mb_strtoupper(mb_substr($review['name'], 0, 1)) }}</div>
+            @endif
+            <div class="meta">
+              <h4>{{ $review['name'] }}</h4>
+              <span>{{ $review['role'] }}</span>
+            </div>
+          </div>
+        </button>
+        @endforeach
       </div>
     </div>
   </section>
@@ -7320,7 +7580,7 @@
       <div class="uf-top v4-top">
         <div>
           <div class="uf-ey">Полезное</div>
-          <h2 class="uf-title">Полезное для бизнеса</h2>
+          <h2 class="uf-title">Полезные материалы по CRM и продажам</h2>
         </div>
       </div>
       <div class="uf-grid">
@@ -7328,27 +7588,27 @@
           <div class="uf-card-bg uf-bg-1"></div>
           <div class="uf-card-content">
             <div class="uf-card-tag">Бесплатно</div>
-            <h3>Аудит вашей CRM</h3>
-            <p>Покажем слабые места в текущей CRM и дадим понятный план, что нужно исправить в первую очередь</p>
-            <span class="uf-btn">Подробнее →</span>
+            <h3>Бесплатный аудит CRM</h3>
+            <p>Быстро посмотрим, где в CRM теряются заявки, нет контроля и что уже мешает продажам</p>
+            <span class="uf-btn">Разобрать CRM →</span>
           </div>
         </a>
         <a href="/articles" class="uf-card v4-card">
           <div class="uf-card-bg uf-bg-2"></div>
           <div class="uf-card-content">
-            <div class="uf-card-tag">Чек-лист</div>
-            <h3>Чек-лист проверки CRM</h3>
-            <p>Короткий практический список для проверки CRM перед внедрением, переделкой или масштабированием</p>
-            <span class="uf-btn">Подробнее →</span>
+            <div class="uf-card-tag">Материал</div>
+            <h3>Гайд по CRM и продажам</h3>
+            <p>Короткий практический материал, который поможет понять, где CRM уже тормозит продажи и что с этим делать</p>
+            <span class="uf-btn">Скачать гайд →</span>
           </div>
         </a>
         <a href="/services/kupit-licenzii" class="uf-card v4-card">
           <div class="uf-card-bg uf-bg-3"></div>
           <div class="uf-card-content">
             <div class="uf-card-tag">Бонусы</div>
-            <h3>Купить amoCRM с бонусами</h3>
-            <p>Поможем подобрать тариф, оформить лицензии и получить бонусы при покупке через нашу команду</p>
-            <span class="uf-btn">Подробнее →</span>
+            <h3>Бонусы</h3>
+            <p>Дарим более 40 виджетов и бонусные месяцы при продлении amoCRM, набор индивидуален для каждого клиента</p>
+            <span class="uf-btn">Посмотреть бонусы →</span>
           </div>
         </a>
       </div>
@@ -7383,26 +7643,38 @@
     <div class="faq-layout-wrap">
       <div class="faq-layout">
         <div class="faq-left faq-l-anim">
-          <div class="faq-left-ey">FAQ</div>
           <h2 class="faq-left-title">Что важно понять до старта</h2>
-          <p class="faq-left-desc">Если у вас есть сомнения — скорее всего мы уже отвечали на них десятки раз</p>
-          <a href="#" class="faq-left-btn">Консультация</a>
+          <p class="faq-left-desc">Коротко отвечаем на вопросы, которые обычно возникают до старта проекта</p>
         </div>
         <div class="faq-acc">
-          @forelse($faqs as $faq)
+          @php
+            $homeFaqs = [
+              [
+                'question' => 'Чем отличается от очередного шаблонного внедрения?',
+                'answer' => 'Сначала проводим интервью, разбираем, как у вас устроены продажи, выстраиваем процессы в holst.so, потом раскладываем это на задачи, оцениваем каждую по времени и уже из этого собираем дорожную карту и КП. Наш подход другой: мы почти не делаем шаблонных внедрений',
+              ],
+              [
+                'question' => 'Когда ИИ нужен, а когда это пустая трата денег?',
+                'answer' => 'От ИИ часто ждут какого-то волшебного буста, но работает это не так. Он помогает в рутине, повторяемых действиях и анализе, но по щелчку пальцев продажи не увеличивает',
+              ],
+              [
+                'question' => 'С чего начинать, если в CRM уже бардак или ее просто забросили?',
+                'answer' => 'Сначала нужно быстро понять, что именно там не так. Обычно мы смотрим, где теряются заявки, что лишнее в системе, как менеджеры работают в CRM и где нет контроля. После этого уже понятно, можно ли починить текущее или систему проще пересобрать нормально',
+              ],
+              [
+                'question' => 'Как понять, что проблема в CRM, а не в менеджерах?',
+                'answer' => 'Для этого мы сначала проводим отдельные встречи с руководством и с менеджерами, собираем общую картину и уже исходя из этого формируем план действий. Нужно слышать все стороны проекта, только так можно понять, где проблема: в людях, в процессе, в CRM или сразу в нескольких местах',
+              ],
+            ];
+          @endphp
+          @foreach($homeFaqs as $faq)
           <div class="faq-acc-item faq-i-anim">
-            <button class="faq-acc-q" type="button"><span>{{ $faq->question }}</span><i class="faq-acc-icon">+</i></button>
+            <button class="faq-acc-q" type="button"><span>{{ $faq['question'] }}</span><i class="faq-acc-icon">×</i></button>
             <div class="faq-acc-ans">
-              <div class="faq-acc-ans-inner">{{ $faq->answer }}</div>
+              <div class="faq-acc-ans-inner">{{ $faq['answer'] }}</div>
             </div>
           </div>
-          @empty
-          <div class="faq-acc-item faq-i-anim">
-            <div class="faq-acc-ans">
-              <div class="faq-acc-ans-inner">FAQ пока не добавлены</div>
-            </div>
-          </div>
-          @endforelse
+          @endforeach
         </div>
       </div>
     </div>
@@ -7434,10 +7706,10 @@
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 42px 42px;
-      opacity: 0.55;
+        linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+      background-size: 54px 54px;
+      opacity: 0.48;
     }
 
     .future-contact-panel>* {
@@ -7640,6 +7912,53 @@
       if (openBtn) openBtn.addEventListener('click', openModal);
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
       if (modal) modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    })();
+  </script>
+  <div aria-hidden="true" class="crm-modal" id="review-video-modal">
+    <div aria-label="Видео отзыв клиента" aria-modal="true" class="crm-modal-panel" role="dialog">
+      <button aria-label="Закрыть видео отзыв" class="crm-modal-close" id="close-review-video-modal">×</button>
+      <video id="review-video-player" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var modal = document.getElementById('review-video-modal');
+      var closeBtn = document.getElementById('close-review-video-modal');
+      var player = document.getElementById('review-video-player');
+      var cards = document.querySelectorAll('[data-review-video]');
+      if (!modal || !closeBtn || !player || !cards.length) return;
+
+      function openModal(src) {
+        player.innerHTML = '<source src="' + src + '" type="video/mp4">';
+        player.load();
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        player.play().catch(function () {});
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        player.pause();
+        player.removeAttribute('src');
+        player.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+          openModal(card.getAttribute('data-review-video'));
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) {
         if (e.target === modal) closeModal();
       });
       document.addEventListener('keydown', function (e) {
@@ -7877,9 +8196,9 @@
       pointer-events: none !important;
       z-index: 1 !important;
       background-image:
-        linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px) !important;
-      background-size: 48px 48px !important;
+        linear-gradient(rgba(0, 0, 0, 0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.026) 1px, transparent 1px) !important;
+      background-size: 64px 64px !important;
     }
 
     section.section#faq-section>* {
@@ -7972,30 +8291,48 @@
     }
 
     section.section#faq-section .faq-acc-q span {
-      font-size: 16px !important;
-      font-weight: 600 !important;
+      font-size: 22px !important;
+      font-weight: 700 !important;
+      line-height: 1.15 !important;
+      letter-spacing: -0.03em !important;
       color: #111 !important;
+      transition: color .25s ease !important;
+    }
+
+    section.section#faq-section .faq-acc-q:hover span {
+      color: #ea580c !important;
     }
 
     section.section#faq-section .faq-acc-icon {
-      width: 28px !important;
-      height: 28px !important;
+      width: 32px !important;
+      height: 32px !important;
       border-radius: 50% !important;
       flex-shrink: 0 !important;
-      background: rgba(0, 0, 0, .04) !important;
+      background: rgba(15, 23, 42, .08) !important;
+      border: 1px solid rgba(15, 23, 42, .08) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      font-size: 16px !important;
+      font-size: 21px !important;
+      font-weight: 500 !important;
       font-style: normal !important;
-      color: rgba(0, 0, 0, .3) !important;
-      transition: all .3s !important;
+      line-height: 1 !important;
+      color: rgba(15, 23, 42, .72) !important;
+      transition: transform .25s ease, background-color .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease !important;
+    }
+
+    section.section#faq-section .faq-acc-q:hover .faq-acc-icon {
+      background: rgba(249, 115, 22, .14) !important;
+      border-color: rgba(249, 115, 22, .22) !important;
+      color: #111 !important;
+      box-shadow: 0 8px 18px rgba(249, 115, 22, .12) !important;
     }
 
     section.section#faq-section .faq-acc-open .faq-acc-icon {
       background: #f97316 !important;
       color: #fff !important;
-      transform: rotate(45deg) !important;
+      border-color: #f97316 !important;
+      transform: rotate(45deg) scale(1.03) !important;
     }
 
     section.section#faq-section .faq-acc-ans {
@@ -8010,7 +8347,7 @@
 
     section.section#faq-section .faq-acc-ans-inner {
       padding: 0 0 18px !important;
-      font-size: 14px !important;
+      font-size: 17px !important;
       line-height: 1.6 !important;
       color: rgba(0, 0, 0, .45) !important;
     }

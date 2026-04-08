@@ -37,7 +37,7 @@ class HomeController extends Controller
         $testimonials = Testimonial::query()
             ->where('status', 'published')
             ->orderBy('sort_order')
-            ->limit(3)
+            ->limit(4)
             ->get();
 
         $faqs = Faq::query()
