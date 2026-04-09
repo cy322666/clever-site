@@ -80,4 +80,24 @@ class CaseStudy extends Model
     {
         return $this->published_at ?: $this->updated_at;
     }
+
+    public function coverImageUrl(): ?string
+    {
+        $path = trim((string) $this->cover_image);
+
+        if ($path !== '') {
+            return asset('storage/'.$path);
+        }
+
+        return null;
+    }
+
+    public function logoUrl(): ?string
+    {
+        return match ($this->slug) {
+            'macromir-invest' => asset('images/cases/macromir-invest-logo.png'),
+            'b2b-analitika-datalens' => asset('images/cases/datalens-logo.png'),
+            default => $this->coverImageUrl(),
+        };
+    }
 }

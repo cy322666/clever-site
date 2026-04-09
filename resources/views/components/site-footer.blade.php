@@ -33,6 +33,36 @@
             </div>
         </div>
 
+        <div class="site-footer-bank">
+            <p class="site-footer-title">Реквизиты</p>
+            <div class="site-footer-bank-grid">
+                <div>
+                    <span class="site-footer-bank-label">Наименование</span>
+                    <strong>Индивидуальный предприниматель Трофимов Вячеслав Михайлович</strong>
+                </div>
+                <div>
+                    <span class="site-footer-bank-label">ИНН</span>
+                    <strong>025508490244</strong>
+                </div>
+                <div>
+                    <span class="site-footer-bank-label">Расчётный счёт</span>
+                    <strong>40802810314500038154</strong>
+                </div>
+                <div>
+                    <span class="site-footer-bank-label">Название банка</span>
+                    <strong>ООО "Банк Точка"</strong>
+                </div>
+                <div>
+                    <span class="site-footer-bank-label">БИК</span>
+                    <strong>044525104</strong>
+                </div>
+                <div>
+                    <span class="site-footer-bank-label">Корреспондентский счёт</span>
+                    <strong>30101810745374525104</strong>
+                </div>
+            </div>
+        </div>
+
         <div class="site-footer-meta">
             <p>© 2026 CleverCRM · CRM-интегратор</p>
         </div>

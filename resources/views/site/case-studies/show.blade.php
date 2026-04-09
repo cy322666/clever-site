@@ -95,6 +95,11 @@
     <section class="site-page-hero">
         <div class="container-wrap">
             <div class="site-page-hero-box">
+                @if($caseStudy->logoUrl())
+                    <div class="mb-5 flex h-16 w-16 items-center justify-center overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-sm">
+                        <img src="{{ $caseStudy->logoUrl() }}" alt="{{ $caseStudy->client_name ?: $caseStudy->title }}" class="h-12 w-12 object-contain" loading="lazy">
+                    </div>
+                @endif
                 <p class="site-kicker">Кейс</p>
                 <h1 class="site-title">{{ $caseStudy->title }}</h1>
                 <p class="site-subtitle">{{ $caseStudy->short_description ?: $caseStudy->result_summary }}</p>

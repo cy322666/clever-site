@@ -30,6 +30,11 @@
             <div class="site-grid">
                 @foreach($caseStudies as $case)
                     <article class="site-card">
+                        @if($case->logoUrl())
+                            <div class="mb-4 flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                                <img src="{{ $case->logoUrl() }}" alt="{{ $case->client_name ?: $case->title }}" class="h-10 w-10 object-contain" loading="lazy">
+                            </div>
+                        @endif
                         <p class="site-kicker">Кейс</p>
                         <h2 class="site-card-title">{{ $case->title }}</h2>
                         <p class="site-card-text">{{ $case->result_summary ?: $case->short_description }}</p>
