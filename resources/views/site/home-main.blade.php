@@ -7,15 +7,15 @@
   <meta charset="utf-8" />
   <title>Внедрение и перевнедрение amoCRM | CleverCRM</title>
   <meta
-    content="Unlock the full potential of your business with our bespoke CRM solutions. Specializing in amoCRM implementation, automation, and complex project reengineering."
+    content="Внедрение и перевнедрение amoCRM. Наведём порядок в продажах, уберём потери заявок и настроим контроль. Интегратор с 2020 года, 150+ проектов."
     name="description" />
   <meta content="Внедрение и перевнедрение amoCRM | CleverCRM" property="og:title" />
   <meta
-    content="Accelerate business growth with our strategic approaches to CRM implementation and automation, designed for Russian SMBs."
+    content="Внедрение и перевнедрение amoCRM. Наведём порядок в продажах, уберём потери заявок и настроим контроль. Интегратор с 2020 года, 150+ проектов."
     property="og:description" />
   <meta content="Внедрение и перевнедрение amoCRM | CleverCRM" property="twitter:title" />
   <meta
-    content="Accelerate business growth with our strategic approaches to CRM implementation and automation, designed for Russian SMBs."
+    content="Внедрение и перевнедрение amoCRM. Наведём порядок в продажах, уберём потери заявок и настроим контроль. Интегратор с 2020 года, 150+ проектов."
     property="twitter:description" />
   <meta content="website" property="og:type" />
   <meta content="summary_large_image" name="twitter:card" />
