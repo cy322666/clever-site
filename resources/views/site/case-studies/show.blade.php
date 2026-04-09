@@ -112,7 +112,7 @@
                 </ul>
 
                 <div class="mt-6">
-                    <x-button variant="secondary" :href="route('site.contacts')">Разобрать мою ситуацию</x-button>
+                    <x-button variant="secondary" type="button" data-lead-open data-lead-offer="Разобрать мою ситуацию по кейсу">Разобрать мою ситуацию</x-button>
                 </div>
             </div>
         </div>
@@ -202,7 +202,7 @@
             <article class="site-card service-clean-card">
                 <p class="site-kicker">Разбор ситуации</p>
                 <h2 class="site-card-title">Если у вас похожая картина, покажем где теряются деньги и что исправить в CRM в первую очередь</h2>
-                <a href="{{ route('site.contacts') }}" class="site-link">Разобрать мою ситуацию</a>
+                <a href="#" data-lead-open data-lead-offer="Разобрать мою ситуацию по кейсу" class="site-link">Разобрать мою ситуацию</a>
             </article>
         </div>
     </section>
@@ -216,7 +216,7 @@
                         <h2 class="site-cta-title">Покажем, где вы теряете деньги в продажах</h2>
                         <p class="site-cta-text">Разбираем текущую ситуацию, находим слабые места и показываем, как выстроить систему продаж под ваш бизнес без лишней сложности</p>
                         <div class="mt-8 flex flex-wrap gap-3">
-                            <a href="{{ route('site.contacts') }}" class="btn bg-[#ff9b3d] text-slate-950 hover:bg-[#ffb15f]">Разобрать мою ситуацию</a>
+                            <a href="#" data-lead-open data-lead-offer="Разобрать мою ситуацию по кейсу" class="btn bg-[#ff9b3d] text-slate-950 hover:bg-[#ffb15f]">Разобрать мою ситуацию</a>
                             <a href="{{ route('site.landings.show', 'audit-amocrm') }}" class="btn border border-white/20 bg-white/8 text-white hover:bg-white/14">Смотреть аудит CRM</a>
                         </div>
                     </div>

@@ -80,7 +80,7 @@
                         <h2 class="site-cta-title">Покажем, как встроить виджет в amoCRM без хаоса в продажах</h2>
                         <p class="site-cta-text">Если нужен не просто отдельный модуль, а рабочая связка с CRM, отделом продаж и текущими каналами, разберем задачу и предложим короткий путь запуска</p>
                         <div class="mt-8 flex flex-wrap gap-3">
-                            <a href="{{ route('site.contacts') }}" class="btn bg-[#ff9b3d] text-slate-950 hover:bg-[#ffb15f]">Разобрать задачу</a>
+                            <a href="#" data-lead-open data-lead-offer="Разобрать задачу по виджету" class="btn bg-[#ff9b3d] text-slate-950 hover:bg-[#ffb15f]">Разобрать задачу</a>
                             <a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}" class="btn border border-white/20 bg-white/8 text-white hover:bg-white/14">Смотреть внедрение</a>
                         </div>
                     </div>

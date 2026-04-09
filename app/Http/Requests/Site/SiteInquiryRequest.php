@@ -22,6 +22,7 @@ class SiteInquiryRequest extends FormRequest
             'landing_title' => $this->filled('landing_title') ? trim((string) $this->input('landing_title')) : null,
             'offer_type' => $this->filled('offer_type') ? trim((string) $this->input('offer_type')) : null,
             'page_url' => $this->filled('page_url') ? trim((string) $this->input('page_url')) : null,
+            'form_anchor' => $this->filled('form_anchor') ? trim((string) $this->input('form_anchor')) : null,
         ]);
     }
 
@@ -35,6 +36,7 @@ class SiteInquiryRequest extends FormRequest
             'landing_title' => ['nullable', 'string', 'max:255'],
             'offer_type' => ['nullable', 'string', 'max:255'],
             'page_url' => ['nullable', 'url', 'max:500'],
+            'form_anchor' => ['nullable', 'string', 'max:80'],
         ];
     }
 

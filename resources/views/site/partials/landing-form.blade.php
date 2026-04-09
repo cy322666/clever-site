@@ -35,6 +35,7 @@
                     <input type="hidden" name="landing_title" value="{{ $landing->displayTitle() }}">
                     <input type="hidden" name="offer_type" value="{{ $formConfig['offer_type'] }}">
                     <input type="hidden" name="page_url" value="{{ request()->fullUrl() }}">
+                    <input type="hidden" name="form_anchor" value="landing-form">
 
                     <div class="space-y-2">
                         <label for="landing_inquiry_name" class="text-sm font-medium text-slate-700">Имя</label>

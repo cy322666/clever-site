@@ -50,8 +50,9 @@ class SiteInquiryController extends Controller
         }
 
         $target = url()->previous() ?: route('site.home');
+        $anchor = $data['form_anchor'] ?? 'landing-form';
 
-        return redirect($target.'#landing-form')
+        return redirect($target.'#'.$anchor)
             ->with('landing_form_success', 'Заявка отправлена. Вернемся с конкретным следующим шагом по вашей задаче.');
     }
 }

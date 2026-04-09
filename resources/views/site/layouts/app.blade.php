@@ -56,6 +56,7 @@
     </main>
 
     <x-site-footer />
+    @include('site.partials.lead-popup')
 
     {!! $globalJsPlugins['body_end'] ?? '' !!}
 </body>

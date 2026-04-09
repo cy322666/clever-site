@@ -5,7 +5,7 @@
         <div class="container-wrap">
             <x-section-header :title="$siteSettings->hero_title ?? 'Интегрируем CRM в маркетинг и продажи'" :subtitle="$siteSettings->hero_subtitle ?? 'Делаем прозрачную воронку, автоматизируем рутину и растим выручку через системную аналитику.'" />
             <div class="mt-6 flex flex-wrap gap-3">
-                <x-button :href="route('site.contacts')">Обсудить проект</x-button>
+                <x-button type="button" data-lead-open data-lead-offer="Обсудить проект">Обсудить проект</x-button>
                 <x-button variant="secondary" :href="route('site.services.index')">Смотреть услуги</x-button>
             </div>
         </div>

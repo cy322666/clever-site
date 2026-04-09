@@ -5,15 +5,15 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>CRM Architect Services - Streamline Your Sales Process</title>
+  <title>Внедрение и перевнедрение amoCRM | CleverCRM</title>
   <meta
     content="Unlock the full potential of your business with our bespoke CRM solutions. Specializing in amoCRM implementation, automation, and complex project reengineering."
     name="description" />
-  <meta content="Transform Your Sales with CRM Architect's Expert Services" property="og:title" />
+  <meta content="Внедрение и перевнедрение amoCRM | CleverCRM" property="og:title" />
   <meta
     content="Accelerate business growth with our strategic approaches to CRM implementation and automation, designed for Russian SMBs."
     property="og:description" />
-  <meta content="Transform Your Sales with CRM Architect's Expert Services" property="twitter:title" />
+  <meta content="Внедрение и перевнедрение amoCRM | CleverCRM" property="twitter:title" />
   <meta
     content="Accelerate business growth with our strategic approaches to CRM implementation and automation, designed for Russian SMBs."
     property="twitter:description" />
@@ -2998,13 +2998,13 @@
     }
 
     .pain-acc-item {
-      border-bottom: 1px solid rgba(255, 255, 255, .06);
+      border-bottom: 0;
       overflow: hidden;
       padding: 24px 0;
     }
 
     .pain-acc-item:first-child {
-      border-top: 1px solid rgba(255, 255, 255, .06);
+      border-top: 0;
     }
 
     .pain-acc-head {
@@ -3025,7 +3025,7 @@
     }
 
     .pain-acc-head h3 {
-      font-size: 22px !important;
+      font-size: 24px !important;
       font-weight: 600 !important;
       color: rgba(255, 255, 255, .9) !important;
       line-height: 1.24 !important;
@@ -3063,6 +3063,10 @@
 
       .pain-heading {
         font-size: 30px !important;
+      }
+
+      .pain-acc-head h3 {
+        font-size: 22px !important;
       }
     }
   </style>
@@ -3702,7 +3706,8 @@
     .cs-box-text {
       font-size: 13px !important;
       line-height: 1.5 !important;
-      color: rgba(0, 0, 0, .5) !important;
+      color: rgba(0, 0, 0, .4) !important;
+      margin: 0 !important;
     }
 
     .cs-featured-btn {
@@ -6642,7 +6647,7 @@
             <a href="{{ $siteSettings->telegram_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 4.4 2.4 10.8c-.6.2-.6.6 0 .8l4.8 1.8 1.8 5.8c.1.4.5.5.8.2l2.6-2.2 4.8 3.6c.4.3 1 .1 1.1-.4L22 5.2c.1-.6-.4-1-.8-.8Z"/><path d="m9 13.6 8.4-6.4"/></svg></a>
             <a href="{{ $siteSettings->max_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Max"><svg viewBox="0 0 720 720" fill="currentColor"><path d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg></a>
           </div>
-          <a href="#contacts" class="cmd-mob-cta">Обсудить проект</a>
+          <a href="#home-form" class="cmd-mob-cta" data-lead-open data-lead-offer="Обсудить проект">Обсудить проект</a>
         </div>
       </div>
     </div>
@@ -6660,7 +6665,7 @@
           {{ $siteSettings->hero_subtitle ?? 'Покажем, где бизнес теряет заявки, повторные продажи и контроль над отделом' }}
         </p>
         <div class="future-home-actions">
-          <a class="future-btn future-btn-primary" href="#contacts">Разобрать CRM и потери</a>
+          <a class="future-btn future-btn-primary" href="#home-form" data-lead-open data-lead-offer="Диагностика за 15 минут">Диагностика за 15 минут</a>
         </div>
       </div>
       <div class="future-home-visual">
@@ -7200,7 +7205,6 @@
         <div class="pain-left glow-left">
           <div class="pain-eyebrow">Знакомые ситуации?</div>
           <h2 class="pain-heading">Когда к нам обращаются</h2>
-          <p class="pain-desc">Если узнали хотя бы одну свою проблему — мы точно поможем её решить</p>
         </div>
         <div class="pain-acc-list">
           <div class="pain-acc-item glow-item glow-stagger-1">
@@ -7247,7 +7251,7 @@
 
   <section class="future-section" id="home-directions">
     <div class="container-wrap">
-      <div class="future-section-head">
+      <div class="future-section-head" style="justify-content:center;text-align:center;">
         <div>
           <div class="cs-ey">Направления</div>
           <h2 class="future-section-title">Где наводим порядок в продажах через amoCRM</h2>
@@ -7386,15 +7390,15 @@
         <div class="founder-split-facts cine-facts">
           <div>
             <div class="founder-split-val">8+</div>
-            <div class="founder-split-lbl">лет<br>в amoCRM</div>
+            <div class="founder-split-lbl">лет работы с amoCRM</div>
           </div>
           <div>
             <div class="founder-split-val">100+</div>
-            <div class="founder-split-lbl">проектов<br>внедрения, переделки и доработки</div>
+            <div class="founder-split-lbl">Проектов</div>
           </div>
           <div>
             <div class="founder-split-val">30%</div>
-            <div class="founder-split-lbl">рост конверсии<br>в кейсах</div>
+            <div class="founder-split-lbl">Средний рост конверсии</div>
           </div>
         </div>
       </div>
@@ -7427,11 +7431,11 @@
     <div class="iv-wrap">
       <div class="iv-head tw-head">
         <div class="iv-ey tw-ey">Доверие рынка</div>
-        <h2 class="iv-title tw-title">О своем пути рыссказываю в интерьвю для amoCRM</h2>
+        <h2 class="iv-title tw-title">О своем пути рассказываю в интервью для amoCRM</h2>
       </div>
       <a class="iv-card tw-card" href="#" id="open-video-modal">
         <div class="iv-meta">
-          <h3 class="iv-card-title">Интервью для amoCRM</h3>
+          <h3 class="iv-card-title">О чем рассказываю</h3>
           <p class="iv-card-text">
             О том, как я пришел в интеграцию, почему взял фокус на сложные проекты и как подхожу к внедрению и
             переделке
@@ -7463,7 +7467,6 @@
       <div class="cs-featured cr-featured">
         <div class="cs-featured-meta">{{ $featuredCase->niche ?? 'Кейс' }} / amoCRM</div>
         <h3 class="cs-featured-title">{{ $featuredCase->title }}</h3>
-        <p class="cs-featured-intro">{{ $featuredCase->short_description }}</p>
         <div class="cs-featured-grid">
           @if($featuredCase->problem_block)
           <div class="cs-feat-box">
@@ -7508,7 +7511,7 @@
 
   <section class="future-section" id="home-reviews">
     <div class="container-wrap">
-      <div class="future-section-head">
+      <div class="future-section-head" style="justify-content:center;text-align:center;">
         <div>
           <div class="cs-ey">Отзывы</div>
           <h2 class="future-section-title">Как клиенты оценивают нашу работу</h2>
@@ -7572,13 +7575,37 @@
     </div>
   </section>
 
+  <style id="main-headings-style-sync">
+    #pain-section .pain-heading,
+    #home-directions .future-section-title,
+    #founder-block .founder-split-heading,
+    #interview-video-block .iv-title,
+    #case-studies-block .cs-title,
+    #home-reviews .future-section-title,
+    #useful-business-block .uf-title,
+    #faq-section .faq-left-title,
+    #budget-hypothesis .bh-title,
+    #start-flow-block .sf-title {
+      font-size: clamp(32px, 4.2vw, 52px) !important;
+      line-height: 1.02 !important;
+      letter-spacing: -0.04em !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+    }
+
+    #pain-section .pain-heading,
+    #useful-business-block .uf-title {
+      color: #ffffff !important;
+    }
+  </style>
+
 
 
 
   <section id="useful-business-block">
     <div class="uf-wrap">
       <div class="uf-top v4-top">
-        <div>
+        <div style="text-align:center; width:100%;">
           <div class="uf-ey">Полезное</div>
           <h2 class="uf-title">Полезные материалы по CRM и продажам</h2>
         </div>
@@ -7680,6 +7707,606 @@
     </div>
   </section>
 
+
+  <style id="budget-hypothesis-style">
+    #budget-hypothesis {
+      padding: 112px 0 72px;
+      background:
+        radial-gradient(920px 360px at 10% -8%, rgba(255, 155, 61, 0.08), transparent 62%),
+        linear-gradient(180deg, #f7f9fc 0%, #f4f7fb 100%);
+      color: #0f172a;
+    }
+
+    #budget-hypothesis .bh-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    #budget-hypothesis .bh-head {
+      margin-bottom: 32px;
+      max-width: 860px;
+    }
+
+    #budget-hypothesis .bh-eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff8a2a;
+    }
+
+    #budget-hypothesis .bh-title {
+      margin: 0 0 14px;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      color: #0f172a;
+    }
+
+    #budget-hypothesis .bh-body {
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    #budget-hypothesis .bh-visual {
+      position: sticky;
+      top: 108px;
+      display: grid;
+      gap: 14px;
+    }
+
+    #budget-hypothesis .bh-visual-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background:
+        radial-gradient(220px 120px at 0% 0%, rgba(255, 138, 42, 0.08), transparent 72%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.96) 100%);
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+      padding: 22px;
+    }
+
+    #budget-hypothesis .bh-visual-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: .28;
+    }
+
+    #budget-hypothesis .bh-visual-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    #budget-hypothesis .bh-visual-title {
+      margin: 0 0 18px;
+      font-size: 24px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 500;
+      font-family: inherit;
+      color: #0f172a;
+    }
+
+    #budget-hypothesis .bh-spark {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-bottom: 18px;
+    }
+
+    #budget-hypothesis .bh-bars {
+      display: grid;
+      gap: 12px;
+    }
+
+    #budget-hypothesis .bh-bars-row {
+      display: grid;
+      gap: 7px;
+    }
+
+    #budget-hypothesis .bh-bars-row span {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(15, 23, 42, 0.64);
+    }
+
+    #budget-hypothesis .bh-bar-track {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.16);
+      overflow: hidden;
+    }
+
+    #budget-hypothesis .bh-bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, rgba(255, 138, 42, 0.88), rgba(255, 138, 42, 0.38));
+    }
+
+    #budget-hypothesis .bh-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin: 0;
+      max-width: none;
+      width: 100%;
+    }
+
+    #budget-hypothesis .bh-card {
+      position: relative;
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 0;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    #budget-hypothesis .bh-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+      border-color: rgba(255, 138, 42, 0.22);
+    }
+
+    #budget-hypothesis .bh-card:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -14px;
+      width: 1px;
+      height: 14px;
+      background: rgba(255, 138, 42, 0.22);
+      transform: translateX(-50%);
+    }
+
+    #budget-hypothesis .bh-card-top {
+      display: block;
+      width: 100%;
+    }
+
+    #budget-hypothesis .bh-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      background: rgba(255, 138, 42, 0.1);
+      color: #ff8a2a;
+      border: 1px solid rgba(255, 138, 42, 0.16);
+      flex-shrink: 0;
+    }
+
+    #budget-hypothesis .bh-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      text-align: center;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: rgba(255, 138, 42, 0.08);
+      color: #c2410c;
+      white-space: nowrap;
+    }
+
+    #budget-hypothesis .bh-card h3 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    #budget-hypothesis .bh-price {
+      margin: 0;
+      position: absolute;
+      bottom: 22px;
+      right: 24px;
+      font-size: 26px !important;
+      font-weight: 500 !important;
+      font-family: inherit;
+      line-height: 1.08 !important;
+      letter-spacing: -0.03em !important;
+      color: #0f172a !important;
+      white-space: nowrap;
+      transform: none;
+    }
+
+    #budget-hypothesis .bh-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.62;
+      color: #0f172a !important;
+    }
+
+    #budget-hypothesis .bh-cta-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 4px;
+      align-items: center;
+    }
+
+    #budget-hypothesis .bh-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      padding: 14px 22px;
+      text-decoration: none;
+      background: #0f172a;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    #budget-hypothesis .bh-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(15, 23, 42, 0.22);
+      background: #1e293b;
+    }
+
+    @media (max-width: 820px) {
+      #budget-hypothesis {
+        padding: 86px 0 42px;
+      }
+
+      #budget-hypothesis .bh-wrap {
+        padding: 0 20px;
+      }
+
+      #budget-hypothesis .bh-body {
+        grid-template-columns: 1fr;
+      }
+
+      #budget-hypothesis .bh-visual {
+        position: static;
+      }
+
+      #budget-hypothesis .bh-cta-row {
+        justify-content: flex-start;
+      }
+
+    }
+
+    @media (max-width: 640px) {
+      #budget-hypothesis .bh-title {
+        font-size: 30px;
+      }
+
+      #budget-hypothesis .bh-visual-title {
+        font-size: 21px;
+      }
+
+      #budget-hypothesis .bh-grid {
+        max-width: none;
+      }
+
+      #budget-hypothesis .bh-card h3 {
+        font-size: 24px;
+      }
+
+      #budget-hypothesis .bh-price {
+        font-size: 23px !important;
+        right: 20px;
+      }
+    }
+  </style>
+
+  <section id="budget-hypothesis">
+    <div class="bh-wrap">
+      <div class="bh-head">
+        <div class="bh-eyebrow">Стоимость и гипотеза бюджета</div>
+        <h2 class="bh-title">Инвестиции в продажи</h2>
+      </div>
+
+      <div class="bh-body">
+        <aside class="bh-visual" aria-hidden="true">
+          <div class="bh-visual-card">
+            <h3 class="bh-visual-title">Собираем бюджет из состава работ, а не из шаблонного прайса</h3>
+            <svg class="bh-spark" viewBox="0 0 300 120" fill="none">
+              <path d="M14 92C44 92 54 58 82 58C112 58 118 82 148 82C179 82 190 30 220 30C247 30 258 56 286 56" stroke="rgba(255,138,42,.85)" stroke-width="3" stroke-linecap="round"/>
+              <path d="M14 92C44 92 54 58 82 58C112 58 118 82 148 82C179 82 190 30 220 30C247 30 258 56 286 56" stroke="rgba(255,138,42,.16)" stroke-width="12" stroke-linecap="round"/>
+              <circle cx="82" cy="58" r="4" fill="#ff8a2a"/>
+              <circle cx="148" cy="82" r="4" fill="#ff8a2a"/>
+              <circle cx="220" cy="30" r="4" fill="#ff8a2a"/>
+              <circle cx="286" cy="56" r="4" fill="#ff8a2a"/>
+            </svg>
+
+            <div class="bh-bars">
+              <div class="bh-bars-row">
+                <span>Архитектура продаж</span>
+                <div class="bh-bar-track"><div class="bh-bar-fill" style="width: 78%;"></div></div>
+              </div>
+              <div class="bh-bars-row">
+                <span>Автоматизация рутины</span>
+                <div class="bh-bar-track"><div class="bh-bar-fill" style="width: 62%;"></div></div>
+              </div>
+              <div class="bh-bars-row">
+                <span>ИИ и разработка</span>
+                <div class="bh-bar-track"><div class="bh-bar-fill" style="width: 86%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="bh-grid">
+          <article class="bh-card">
+            <div class="bh-card-top">
+              <span class="bh-badge">Первый шаг</span>
+              <p class="bh-price">Бесплатно</p>
+            </div>
+            <h3>Аудит и диагностика</h3>
+          </article>
+
+          <article class="bh-card">
+            <div class="bh-card-top">
+              <span class="bh-badge">Оптимизация</span>
+              <p class="bh-price">от 200 000 руб</p>
+            </div>
+            <h3>Перевнедрение amoCRM</h3>
+          </article>
+
+          <article class="bh-card">
+            <div class="bh-card-top">
+              <span class="bh-badge">Под ключ</span>
+              <p class="bh-price">от 300 000 руб</p>
+            </div>
+            <h3>Внедрение с нуля</h3>
+          </article>
+
+          <article class="bh-card">
+            <div class="bh-card-top">
+              <span class="bh-badge">Сложные проекты</span>
+              <p class="bh-price">индивидуально</p>
+            </div>
+            <h3>Кастом + интеграции</h3>
+          </article>
+
+          <article class="bh-card">
+            <div class="bh-card-top">
+              <span class="bh-badge">AI</span>
+              <p class="bh-price">от 30 000 руб</p>
+            </div>
+            <h3>Внедрение ИИ</h3>
+          </article>
+
+          <div class="bh-cta-row">
+            <a href="#home-form" class="bh-btn" data-lead-open data-lead-offer="Рассчитать точную стоимость">Рассчитать точную стоимость</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style id="start-flow-style">
+    #start-flow-block {
+      padding: 104px 0 32px;
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    #start-flow-block .sf-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    #start-flow-block .sf-head {
+      margin: 0 auto 34px;
+      max-width: 760px;
+      text-align: center;
+    }
+
+    #start-flow-block .sf-eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff8a2a;
+    }
+
+    #start-flow-block .sf-title {
+      margin: 0;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      color: #0f172a;
+    }
+
+    #start-flow-block .sf-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin: 0 auto;
+      max-width: 700px;
+      padding-left: 58px;
+    }
+
+    #start-flow-block .sf-grid::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(255, 138, 42, 0.14), rgba(255, 138, 42, 0.46), rgba(255, 138, 42, 0.14));
+      z-index: 0;
+    }
+
+    #start-flow-block .sf-step {
+      position: relative;
+      padding: 28px 108px 28px 30px;
+      border-radius: 26px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.055);
+      min-height: 0;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    #start-flow-block .sf-step:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.075);
+      border-color: rgba(255, 138, 42, 0.18);
+    }
+
+    #start-flow-block .sf-step::before {
+      content: attr(data-step);
+      position: absolute;
+      right: 26px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 64px;
+      text-align: left;
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      font-variant-numeric: tabular-nums;
+      color: rgba(255, 138, 42, 0.18);
+      pointer-events: none;
+    }
+
+    #start-flow-block .sf-step::after {
+      content: '';
+      position: absolute;
+      left: -46px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: #ff8a2a;
+      border: 4px solid #ffffff;
+      box-shadow: 0 10px 24px rgba(255, 138, 42, 0.24);
+      z-index: 1;
+    }
+
+    #start-flow-block .sf-top {
+      display: none;
+    }
+
+    #start-flow-block .sf-step h3 {
+      margin: 0 0 8px;
+      max-width: 70%;
+      font-size: 30px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+
+    #start-flow-block .sf-step p {
+      margin: 0;
+      max-width: 68%;
+      font-size: 15px;
+      line-height: 1.52;
+      color: rgba(15, 23, 42, 0.62);
+    }
+
+    @media (max-width: 760px) {
+      #start-flow-block {
+        padding: 84px 0 20px;
+      }
+
+      #start-flow-block .sf-wrap {
+        padding: 0 20px;
+      }
+
+      #start-flow-block .sf-grid {
+        gap: 14px;
+        padding-left: 34px;
+        max-width: 100%;
+      }
+
+      #start-flow-block .sf-step {
+        padding: 22px 76px 22px 24px;
+      }
+
+      #start-flow-block .sf-step::after {
+        left: -36px;
+      }
+
+      #start-flow-block .sf-step::before {
+        right: 20px;
+        width: 42px;
+        font-size: 42px;
+      }
+
+      #start-flow-block .sf-step h3 {
+        max-width: 74%;
+        font-size: 22px;
+      }
+
+      #start-flow-block .sf-step p {
+        max-width: 78%;
+        font-size: 14px;
+      }
+    }
+  </style>
+
+  <section id="start-flow-block" aria-labelledby="start-flow-title">
+    <div class="sf-wrap">
+      <div class="sf-head">
+        <div class="sf-eyebrow">Старт проекта</div>
+        <h2 class="sf-title" id="start-flow-title">С чего начнём, чтобы продажи перестали течь</h2>
+      </div>
+
+      <div class="sf-grid">
+        <article class="sf-step" data-step="01">
+          <h3>Быстро вникаем в вашу ситуацию</h3>
+          <p>Смотрим CRM, воронку и как сейчас на самом деле работает отдел продаж</p>
+        </article>
+
+        <article class="sf-step" data-step="02">
+          <h3>Находим, где теряются деньги</h3>
+          <p>Показываем узкие места в заявках, повторных продажах, контроле и логике CRM</p>
+        </article>
+
+        <article class="sf-step" data-step="03">
+          <h3>Собираем понятный план работ</h3>
+          <p>Фиксируем, что нужно переделать, автоматизировать или внедрить в первую очередь</p>
+        </article>
+
+        <article class="sf-step" data-step="04">
+          <h3>Запускаем изменения без хаоса</h3>
+          <p>Переходим к внедрению и переделке так, чтобы CRM наконец начала работать на продажи</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <style id="future-contact-style">
     #home-form {
@@ -7837,6 +8464,7 @@
     }
   </style>
 
+  <span id="contacts" aria-hidden="true"></span>
   <section class="future-section" id="home-form">
     <div class="container-wrap">
       <div class="future-contact-panel">
@@ -7845,21 +8473,32 @@
         </div>
 
         <div class="future-form-card">
-          <form action="#" method="POST" class="future-form-grid">
+          @if(session('landing_form_success'))
+            <div class="mb-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+              {{ session('landing_form_success') }}
+            </div>
+          @endif
+
+          <form action="{{ route('site.inquiries.store') }}" method="POST" class="future-form-grid">
+            @csrf
+            <input type="hidden" name="landing_title" value="Главная">
+            <input type="hidden" name="offer_type" value="Диагностика CRM">
+            <input type="hidden" name="page_url" value="{{ request()->fullUrl() }}">
+            <input type="hidden" name="form_anchor" value="home-form">
             <label class="future-form-field">
               <span>Имя</span>
-              <input type="text" name="name" placeholder="Как к вам обращаться">
+              <input type="text" name="name" value="{{ old('name') }}" placeholder="Как к вам обращаться">
             </label>
 
             <label class="future-form-field">
               <span>Контакт</span>
-              <input type="text" name="contact" placeholder="Телефон, Telegram или email">
+              <input type="text" name="contact" value="{{ old('contact') }}" placeholder="Телефон, Telegram или email">
             </label>
 
             <label class="future-form-field future-form-field-full">
               <span>Коротко о задаче</span>
               <textarea name="message" rows="4"
-                placeholder="Например: дорогие лиды, CRM есть но не дает контроля, нужно внедрение AI"></textarea>
+                placeholder="Например: дорогие лиды, CRM есть но не дает контроля, нужно внедрение AI">{{ old('message') }}</textarea>
             </label>
 
             <button type="submit" class="future-form-submit">
@@ -7880,7 +8519,7 @@
   <!-- <script src="webflow.6ac8ce3a.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <div aria-hidden="true" class="crm-modal" id="video-modal">
-    <div aria-label="Интервью для amoCRM" aria-modal="true" class="crm-modal-panel" role="dialog">
+    <div aria-label="О чем рассказываю" aria-modal="true" class="crm-modal-panel" role="dialog">
       <button aria-label="Закрыть видео" class="crm-modal-close" id="close-video-modal">×</button>
       <iframe allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen="" id="vk-video-frame"
         src=""></iframe>
@@ -8592,6 +9231,7 @@
       check();
     })();
   </script>
+  @include('site.partials.lead-popup')
   {!! $bodyEndPlugins ?? '' !!}
 </body>
 
