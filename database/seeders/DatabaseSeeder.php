@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             ['id' => 1],
             [
                 'site_name' => 'CleverCRM',
-                'phone' => '+7 (900) 123-45-67',
+                'phone' => null,
                 'email' => 'info@clevercrm.ru',
                 'telegram_link' => 'https://t.me/clevercrm',
                 'youtube_link' => 'https://youtube.com/@clevercrm',
