@@ -30,6 +30,9 @@ services:
       APP_RUN_MIGRATIONS: ${APP_RUN_MIGRATIONS:-true}
       APP_RUN_SEEDER: ${APP_RUN_SEEDER:-false}
       APP_STORAGE_LINK: ${APP_STORAGE_LINK:-true}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
+      TELEGRAM_MESSAGE_THREAD_ID: ${TELEGRAM_MESSAGE_THREAD_ID:-}
     volumes:
       - storage_data:/var/www/html/storage
 
