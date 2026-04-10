@@ -44,7 +44,7 @@ class SiteInquiryController extends Controller
         ]);
 
         try {
-            $this->telegramNotifier->sendSiteInquiry($inquiry);
+            $this->telegramNotifier->sendSiteInquiry($inquiry, $data['calculator_snapshot'] ?? null);
         } catch (Throwable $exception) {
             report($exception);
         }

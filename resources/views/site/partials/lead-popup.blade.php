@@ -203,6 +203,7 @@
         <input type="hidden" name="name" value="Заявка с сайта">
         <input type="hidden" name="landing_title" value="{{ $title ?? ($siteSettings->site_name ?? 'Сайт') }}">
         <input type="hidden" name="offer_type" value="">
+        <input type="hidden" name="calculator_snapshot" value="{{ old('calculator_snapshot') }}">
         <input type="hidden" name="page_url" value="{{ request()->fullUrl() }}">
         <input type="hidden" name="form_anchor" value="lead-popup">
 
@@ -245,6 +246,7 @@
     var panel = popup.querySelector('.lead-popup-panel');
     var closeBtn = popup.querySelector('.lead-popup-close');
     var offerInput = popup.querySelector('input[name="offer_type"]');
+    var calculatorSnapshotInput = popup.querySelector('input[name="calculator_snapshot"]');
     var pageUrlInput = popup.querySelector('input[name="page_url"]');
     var titleInput = popup.querySelector('input[name="landing_title"]');
     var contactInput = popup.querySelector('input[name="contact"]');
@@ -252,6 +254,12 @@
     function openPopup(trigger) {
       if (offerInput && trigger) {
         offerInput.value = trigger.getAttribute('data-lead-offer') || trigger.textContent.trim();
+      }
+
+      if (calculatorSnapshotInput) {
+        calculatorSnapshotInput.value = trigger
+          ? (trigger.getAttribute('data-lead-calculator') || '')
+          : '';
       }
 
       if (pageUrlInput) {

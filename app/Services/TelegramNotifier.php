@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class TelegramNotifier
 {
-    public function sendSiteInquiry(SiteInquiry $inquiry): void
+    public function sendSiteInquiry(SiteInquiry $inquiry, ?string $calculatorSnapshot = null): void
     {
         $token = (string) config('services.telegram.bot_token');
         $chatId = (string) config('services.telegram.chat_id');
@@ -18,7 +18,7 @@ class TelegramNotifier
 
         $payload = [
             'chat_id' => $chatId,
-            'text' => $this->buildSiteInquiryMessage($inquiry),
+            'text' => $this->buildSiteInquiryMessage($inquiry, $calculatorSnapshot),
             'parse_mode' => 'HTML',
             'disable_web_page_preview' => true,
         ];
@@ -35,7 +35,7 @@ class TelegramNotifier
             ->throw();
     }
 
-    private function buildSiteInquiryMessage(SiteInquiry $inquiry): string
+    private function buildSiteInquiryMessage(SiteInquiry $inquiry, ?string $calculatorSnapshot = null): string
     {
         $lines = [
             '📥 <b>Новая заявка с сайта</b>',
@@ -62,6 +62,21 @@ class TelegramNotifier
             $lines[] = '';
             $lines[] = '📝 <b>Задача:</b>';
             $lines[] = $this->escape($inquiry->message);
+        }
+
+        if (! empty($calculatorSnapshot)) {
+            $lines[] = '';
+            $lines[] = '🧮 <b>Параметры калькулятора:</b>';
+
+            foreach (preg_split('/\r\n|\n|\r/', $calculatorSnapshot) as $row) {
+                $row = trim((string) $row);
+
+                if ($row === '') {
+                    continue;
+                }
+
+                $lines[] = '• '.$this->escape($row);
+            }
         }
 
         if (! empty($inquiry->ip_address)) {

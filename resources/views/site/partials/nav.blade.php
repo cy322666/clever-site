@@ -38,6 +38,7 @@
 
         <div class="cmd-nav-socials">
             <a href="{{ $siteSettings->telegram_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Telegram" title="Telegram">TG</a>
+            <a href="{{ $siteSettings->vk_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="VK" title="VK">VK</a>
             <a href="{{ $siteSettings->max_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Max" title="Max">MX</a>
         </div>
     </div>

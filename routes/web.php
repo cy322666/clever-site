@@ -15,12 +15,16 @@ use App\Http\Controllers\Site\CaseStudyController;
 use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\LandingController;
+use App\Http\Controllers\Site\RobotsController;
 use App\Http\Controllers\Site\ServiceController;
+use App\Http\Controllers\Site\SitemapController;
 use App\Http\Controllers\Site\SiteInquiryController;
 use App\Http\Controllers\Site\WidgetController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('site.home');
+Route::get('/robots.txt', RobotsController::class)->name('site.robots');
+Route::get('/sitemap.xml', SitemapController::class)->name('site.sitemap');
 Route::get('/demo-hero', fn () => response()->file(public_path('demo-hero.html')));
 Route::get('/demo-hero-v2', fn () => response()->file(public_path('demo-hero-v2.html')));
 Route::get('/demo-hero-v3', fn () => response()->file(public_path('demo-hero-v3.html')));
@@ -69,6 +73,10 @@ Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('site.a
 Route::get('/solutions/{slug}', [LandingController::class, 'show'])->name('site.landings.show');
 Route::get('/widgets', [WidgetController::class, 'index'])->name('site.widgets.index');
 Route::get('/widgets/{slug}', [WidgetController::class, 'show'])->name('site.widgets.show');
+Route::view('/project-estimate', 'site.calculator', [
+    'title' => 'Предварительная оценка CRM-проекта | CleverCRM',
+    'metaDescription' => 'Калькулятор предварительной оценки CRM-проекта: бюджетный диапазон, сроки и состав работ от CleverCRM.',
+])->name('site.calculator');
 Route::get('/contacts', ContactController::class)->name('site.contacts');
 Route::view('/policy', 'site.policy', [
     'title' => 'Политика обработки персональных данных | CleverCRM',

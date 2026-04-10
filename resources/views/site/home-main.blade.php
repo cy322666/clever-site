@@ -2778,6 +2778,11 @@
       margin-bottom: 40px;
     }
 
+    .nf-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
     .nf-brand-name {
       font-size: 20px !important;
       font-weight: 700 !important;
@@ -2870,11 +2875,23 @@
       background: rgba(255, 255, 255, .03);
     }
 
+    .nf-brand .nf-bank {
+      margin: 22px 0 0;
+      max-width: none;
+      width: 100%;
+      padding: 18px 20px;
+    }
+
     .nf-bank-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px 24px;
       margin-top: 14px;
+    }
+
+    .nf-brand .nf-bank-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
     .nf-bank-label {
@@ -7280,13 +7297,13 @@
       @php
         $directionCards = [
         [
-          'title' => 'Внедрение amoCRM',
+          'title' => 'Внедрение',
           'description' => 'Запустили систему после интегратора, который не смог сделать это за год',
           'service_url' => route('site.landings.show', 'vnedrenie-amocrm'),
           'case_url' => route('site.case-studies.show', 'proizvodstvo-crm'),
         ],
         [
-          'title' => 'Перевнедрение amoCRM',
+          'title' => 'Перевнедрение',
           'description' => 'Пересобрали перегруженную систему для проекта "Нечто" Михаила Дашкиева',
           'service_url' => route('site.landings.show', 'perevnedrenie-amocrm'),
           'case_url' => route('site.case-studies.index'),
@@ -7407,13 +7424,13 @@
         <blockquote class="founder-split-quote cine-quote">«Я смотрю на проект сразу с нескольких сторон: как предприниматель, как человек из продаж и как технарь с большим опытом в amoCRM»</blockquote>
         <div class="founder-split-name cine-name">Вячеслав Трофимов</div>
         <div class="founder-split-socials">
-          <a href="{{ $siteSettings->telegram_link ?? '#' }}" class="founder-split-social" target="_blank" rel="noreferrer" aria-label="Telegram">
+          <a href="https://t.me/integrator" class="founder-split-social" target="_blank" rel="noreferrer" aria-label="Telegram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 4.4 2.4 10.8c-.6.2-.6.6 0 .8l4.8 1.8 1.8 5.8c.1.4.5.5.8.2l2.6-2.2 4.8 3.6c.4.3 1 .1 1.1-.4L22 5.2c.1-.6-.4-1-.8-.8Z"/><path d="m9 13.6 8.4-6.4"/></svg>
           </a>
-          <a href="{{ $siteSettings->vk_link ?? '#' }}" class="founder-split-social" target="_blank" rel="noreferrer" aria-label="VK">
+          <a href="https://vk.com/vyacheslavagram" class="founder-split-social" target="_blank" rel="noreferrer" aria-label="VK">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.146s.382-.042.578-.252c.18-.193.174-.556.174-.556s-.025-1.698.764-1.95c.778-.247 1.777 1.645 2.836 2.373.8.55 1.41.43 1.41.43l2.83-.04s1.48-.09.778-1.247c-.058-.095-.41-.858-2.107-2.425-1.777-1.64-1.538-1.373.602-4.208 1.303-1.726 1.824-2.78 1.66-3.23-.155-.432-1.115-.318-1.115-.318l-3.19.02s-.236-.033-.412.073c-.173.103-.284.345-.284.345s-.51 1.357-1.19 2.512c-1.434 2.436-2.008 2.564-2.242 2.413-.545-.352-.408-1.415-.408-2.17 0-2.36.357-3.342-.697-3.598-.35-.085-.607-.14-1.5-.15-1.148-.013-2.12.004-2.67.274-.367.18-.65.58-.477.603.213.028.696.13.952.48.33.453.32 1.472.32 1.472s.188 2.78-.443 3.123c-.434.236-1.03-.245-2.31-2.448-.654-1.127-1.15-2.373-1.15-2.373s-.095-.233-.266-.358C5.17 5.4 4.9 5.36 4.9 5.36l-3.03.02s-.456.013-.623.21c-.149.177-.012.542-.012.542s2.395 5.606 5.107 8.432c2.486 2.594 5.31 2.424 5.31 2.424h1.134Z"/></svg>
           </a>
-          <a href="{{ $siteSettings->max_link ?? '#' }}" class="founder-split-social" target="_blank" rel="noreferrer" aria-label="Max">
+          <a href="https://max.ru/u/f9LHodD0cOIcLV9o9-5lH1-cKD7pPYP3ykso-qm9ZHZsNCBzSNSqi4wB4F8" class="founder-split-social" target="_blank" rel="noreferrer" aria-label="Max">
             <svg viewBox="0 0 720 720" fill="currentColor"><path d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg>
           </a>
         </div>
@@ -7989,6 +8006,8 @@
       justify-content: flex-end;
       margin-top: 4px;
       align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     #budget-hypothesis .bh-btn {
@@ -8011,6 +8030,17 @@
       transform: translateY(-2px);
       box-shadow: 0 18px 34px rgba(15, 23, 42, 0.22);
       background: #1e293b;
+    }
+
+    #budget-hypothesis .bh-btn-calc {
+      background: #ff8a2a;
+      color: #0f172a;
+      box-shadow: 0 14px 30px rgba(255, 138, 42, 0.28);
+    }
+
+    #budget-hypothesis .bh-btn-calc:hover {
+      background: #ff9b4a;
+      box-shadow: 0 18px 34px rgba(255, 138, 42, 0.34);
     }
 
     @media (max-width: 820px) {
@@ -8139,6 +8169,7 @@
           </article>
 
           <div class="bh-cta-row">
+            <a href="{{ route('site.calculator') }}" class="bh-btn bh-btn-calc">Калькулятор услуг</a>
             <a href="#home-form" class="bh-btn" data-lead-open data-lead-offer="Рассчитать точную стоимость">Рассчитать точную стоимость</a>
           </div>
         </div>
@@ -8527,16 +8558,13 @@
 
           <form action="{{ route('site.inquiries.store') }}" method="POST" class="future-form-grid">
             @csrf
+            <input type="hidden" name="name" value="Заявка с главной">
             <input type="hidden" name="landing_title" value="Главная">
             <input type="hidden" name="offer_type" value="Диагностика CRM">
             <input type="hidden" name="page_url" value="{{ request()->fullUrl() }}">
             <input type="hidden" name="form_anchor" value="home-form">
-            <label class="future-form-field">
-              <span>Имя</span>
-              <input type="text" name="name" value="{{ old('name') }}" placeholder="Как к вам обращаться">
-            </label>
 
-            <label class="future-form-field">
+            <label class="future-form-field future-form-field-full">
               <span>Контакт</span>
               <input type="text" name="contact" value="{{ old('contact') }}" placeholder="Телефон, Telegram или email">
             </label>
@@ -8698,7 +8726,36 @@
           <div class="nf-socials">
             <a href="{{ $siteSettings->telegram_link ?? '#' }}" class="nf-social" target="_blank" rel="noreferrer" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 4.4 2.4 10.8c-.6.2-.6.6 0 .8l4.8 1.8 1.8 5.8c.1.4.5.5.8.2l2.6-2.2 4.8 3.6c.4.3 1 .1 1.1-.4L22 5.2c.1-.6-.4-1-.8-.8Z"/><path d="m9 13.6 8.4-6.4"/></svg></a>
             <a href="{{ $siteSettings->vk_link ?? '#' }}" class="nf-social" target="_blank" rel="noreferrer" aria-label="VK"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.146s.382-.042.578-.252c.18-.193.174-.556.174-.556s-.025-1.698.764-1.95c.778-.247 1.777 1.645 2.836 2.373.8.55 1.41.43 1.41.43l2.83-.04s1.48-.09.778-1.247c-.058-.095-.41-.858-2.107-2.425-1.777-1.64-1.538-1.373.602-4.208 1.303-1.726 1.824-2.78 1.66-3.23-.155-.432-1.115-.318-1.115-.318l-3.19.02s-.236-.033-.412.073c-.173.103-.284.345-.284.345s-.51 1.357-1.19 2.512c-1.434 2.436-2.008 2.564-2.242 2.413-.545-.352-.408-1.415-.408-2.17 0-2.36.357-3.342-.697-3.598-.35-.085-.607-.14-1.5-.15-1.148-.013-2.12.004-2.67.274-.367.18-.65.58-.477.603.213.028.696.13.952.48.33.453.32 1.472.32 1.472s.188 2.78-.443 3.123c-.434.236-1.03-.245-2.31-2.448-.654-1.127-1.15-2.373-1.15-2.373s-.095-.233-.266-.358C5.17 5.4 4.9 5.36 4.9 5.36l-3.03.02s-.456.013-.623.21c-.149.177-.012.542-.012.542s2.395 5.606 5.107 8.432c2.486 2.594 5.31 2.424 5.31 2.424h1.134Z"/></svg></a>
-            <a href="{{ $siteSettings->youtube_link ?? '#' }}" class="nf-social" target="_blank" rel="noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg></a>
+            <a href="{{ $siteSettings->max_link ?? '#' }}" class="nf-social" target="_blank" rel="noreferrer" aria-label="Max"><svg viewBox="0 0 720 720" fill="currentColor"><path d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg></a>
+          </div>
+          <div class="nf-bank">
+            <p class="nf-col-title">Реквизиты</p>
+            <div class="nf-bank-grid">
+              <div>
+                <span class="nf-bank-label">Наименование</span>
+                <strong class="nf-bank-value">Индивидуальный предприниматель Трофимов Вячеслав Михайлович</strong>
+              </div>
+              <div>
+                <span class="nf-bank-label">ИНН</span>
+                <strong class="nf-bank-value">025508490244</strong>
+              </div>
+              <div>
+                <span class="nf-bank-label">Расчётный счёт</span>
+                <strong class="nf-bank-value">40802810314500038154</strong>
+              </div>
+              <div>
+                <span class="nf-bank-label">Название банка</span>
+                <strong class="nf-bank-value">ООО "Банк Точка"</strong>
+              </div>
+              <div>
+                <span class="nf-bank-label">БИК</span>
+                <strong class="nf-bank-value">044525104</strong>
+              </div>
+              <div>
+                <span class="nf-bank-label">Корреспондентский счёт</span>
+                <strong class="nf-bank-value">30101810745374525104</strong>
+              </div>
+            </div>
           </div>
         </div>
         <div>
@@ -8722,7 +8779,7 @@
           <p class="nf-col-title">Контакты</p>
           <ul class="nf-list">
             <li><a href="/contacts">Контактная страница</a></li>
-            <li><a href="https://t.me/integrator" target="_blank" rel="noreferrer">Telegram</a></li>
+            <li><a href="{{ $siteSettings->telegram_link ?? '#' }}" target="_blank" rel="noreferrer">Telegram</a></li>
             @if($siteSettings->email)
             <li><a href="mailto:{{ $siteSettings->email }}">{{ $siteSettings->email }}</a></li>
             @endif
@@ -8730,35 +8787,6 @@
             <li><a href="tel:{{ $siteSettings->phone }}">{{ $siteSettings->phone }}</a></li>
             @endif
           </ul>
-        </div>
-      </div>
-      <div class="nf-bank">
-        <p class="nf-col-title">Реквизиты</p>
-        <div class="nf-bank-grid">
-          <div>
-            <span class="nf-bank-label">Наименование</span>
-            <strong class="nf-bank-value">Индивидуальный предприниматель Трофимов Вячеслав Михайлович</strong>
-          </div>
-          <div>
-            <span class="nf-bank-label">ИНН</span>
-            <strong class="nf-bank-value">025508490244</strong>
-          </div>
-          <div>
-            <span class="nf-bank-label">Расчётный счёт</span>
-            <strong class="nf-bank-value">40802810314500038154</strong>
-          </div>
-          <div>
-            <span class="nf-bank-label">Название банка</span>
-            <strong class="nf-bank-value">ООО "Банк Точка"</strong>
-          </div>
-          <div>
-            <span class="nf-bank-label">БИК</span>
-            <strong class="nf-bank-value">044525104</strong>
-          </div>
-          <div>
-            <span class="nf-bank-label">Корреспондентский счёт</span>
-            <strong class="nf-bank-value">30101810745374525104</strong>
-          </div>
         </div>
       </div>
       <div class="nf-bottom">

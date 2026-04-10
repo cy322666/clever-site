@@ -86,7 +86,17 @@ class CaseStudy extends Model
         $path = trim((string) $this->cover_image);
 
         if ($path !== '') {
-            return asset('storage/'.$path);
+            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://') || str_starts_with($path, '//')) {
+                return $path;
+            }
+
+            $normalized = ltrim($path, '/');
+
+            if (str_starts_with($normalized, 'storage/')) {
+                return '/'.$normalized;
+            }
+
+            return '/storage/'.$normalized;
         }
 
         return null;
@@ -94,10 +104,17 @@ class CaseStudy extends Model
 
     public function logoUrl(): ?string
     {
-        return match ($this->slug) {
-            'macromir-invest' => asset('images/cases/macromir-invest-logo.png'),
-            'b2b-analitika-datalens' => asset('images/cases/datalens-logo.png'),
-            default => $this->coverImageUrl(),
-        };
+        $logos = [
+            'macromir-invest' => '/images/cases/macromir-invest-logo.png',
+            'b2b-analitika-datalens' => '/images/cases/datalens-logo.png',
+        ];
+
+        $logoPath = $logos[$this->slug] ?? null;
+
+        if ($logoPath !== null && file_exists(public_path(ltrim($logoPath, '/')))) {
+            return $logoPath;
+        }
+
+        return $this->coverImageUrl();
     }
 }
