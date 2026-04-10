@@ -18,6 +18,27 @@
     <x-site-footer />
     @include('site.partials.lead-popup')
 
+    <script>
+        (function () {
+            var nav = document.querySelector('.cmdf5-inspired-nav');
+            if (!nav) return;
+
+            var threshold = 30;
+            var scrolled = false;
+
+            function check() {
+                var next = window.scrollY > threshold;
+                if (next !== scrolled) {
+                    scrolled = next;
+                    nav.classList.toggle('nav-scrolled', next);
+                }
+            }
+
+            window.addEventListener('scroll', check, { passive: true });
+            check();
+        })();
+    </script>
+
     {!! $globalJsPlugins['body_end'] ?? '' !!}
 </body>
 </html>

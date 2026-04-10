@@ -27,8 +27,15 @@
         position: sticky;
         top: 0;
         z-index: 9998;
-        background: #000;
+        background: #000 !important;
+        background-color: #000 !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cmdf5-inspired-nav.nav-scrolled {
+        background: #000 !important;
+        background-color: #000 !important;
+        border-bottom-color: rgba(255, 255, 255, .08);
     }
 
     .cmd-nav-inner {
@@ -726,9 +733,11 @@
 
     .site-footer-bank {
         margin-top: 28px;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 980px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 0;
+        max-width: none;
+        width: 100%;
         padding: 22px 24px;
         border-radius: 24px;
         border: 1px solid rgba(255, 255, 255, 0.08);

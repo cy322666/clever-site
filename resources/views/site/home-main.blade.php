@@ -1521,24 +1521,24 @@
 
 
   <style id="footer-text-black-fix">
-    footer,
-    footer p,
-    footer a,
-    footer div,
-    footer span,
-    footer li,
-    footer .paragraph_large,
-    footer .text-color_secondary,
-    footer .crm-footer-title,
-    footer .crm-footer-subtitle,
-    footer .crm-contact-link,
-    footer .eyebrow {
+    footer#new-footer,
+    footer#new-footer p,
+    footer#new-footer a,
+    footer#new-footer div,
+    footer#new-footer span,
+    footer#new-footer li,
+    footer#new-footer .paragraph_large,
+    footer#new-footer .text-color_secondary,
+    footer#new-footer .crm-footer-title,
+    footer#new-footer .crm-footer-subtitle,
+    footer#new-footer .crm-contact-link,
+    footer#new-footer .eyebrow {
       color: #111 !important;
       -webkit-text-fill-color: #111 !important;
     }
 
-    footer a:hover,
-    footer .crm-contact-link:hover {
+    footer#new-footer a:hover,
+    footer#new-footer .crm-contact-link:hover {
       color: #111 !important;
       -webkit-text-fill-color: #111 !important;
       opacity: 0.8;
@@ -7728,7 +7728,6 @@
       <div class="faq-layout">
         <div class="faq-left faq-l-anim">
           <h2 class="faq-left-title">Что важно понять до старта</h2>
-          <p class="faq-left-desc">Коротко отвечаем на вопросы, которые обычно возникают до старта проекта</p>
         </div>
         <div class="faq-acc">
           @php
@@ -8718,126 +8717,133 @@
       });
     });
   </script>
-  <footer class="site-footer" id="new-footer">
-    <div class="nf-wrap">
-      <div class="nf-grid">
-        <div class="nf-brand">
-          <h3 class="nf-brand-name">{{ $siteSettings->site_name ?? 'CleverCRM' }}</h3>
-          <p class="nf-brand-text">Интегратор amoCRM и CRM-экосистем для роста продаж</p>
-          <div class="nf-socials">
-            <a href="{{ $siteSettings->telegram_link ?? '#' }}" class="nf-social" target="_blank" rel="noreferrer" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 4.4 2.4 10.8c-.6.2-.6.6 0 .8l4.8 1.8 1.8 5.8c.1.4.5.5.8.2l2.6-2.2 4.8 3.6c.4.3 1 .1 1.1-.4L22 5.2c.1-.6-.4-1-.8-.8Z"/><path d="m9 13.6 8.4-6.4"/></svg></a>
-            <a href="{{ $siteSettings->vk_link ?? '#' }}" class="nf-social" target="_blank" rel="noreferrer" aria-label="VK"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.146s.382-.042.578-.252c.18-.193.174-.556.174-.556s-.025-1.698.764-1.95c.778-.247 1.777 1.645 2.836 2.373.8.55 1.41.43 1.41.43l2.83-.04s1.48-.09.778-1.247c-.058-.095-.41-.858-2.107-2.425-1.777-1.64-1.538-1.373.602-4.208 1.303-1.726 1.824-2.78 1.66-3.23-.155-.432-1.115-.318-1.115-.318l-3.19.02s-.236-.033-.412.073c-.173.103-.284.345-.284.345s-.51 1.357-1.19 2.512c-1.434 2.436-2.008 2.564-2.242 2.413-.545-.352-.408-1.415-.408-2.17 0-2.36.357-3.342-.697-3.598-.35-.085-.607-.14-1.5-.15-1.148-.013-2.12.004-2.67.274-.367.18-.65.58-.477.603.213.028.696.13.952.48.33.453.32 1.472.32 1.472s.188 2.78-.443 3.123c-.434.236-1.03-.245-2.31-2.448-.654-1.127-1.15-2.373-1.15-2.373s-.095-.233-.266-.358C5.17 5.4 4.9 5.36 4.9 5.36l-3.03.02s-.456.013-.623.21c-.149.177-.012.542-.012.542s2.395 5.606 5.107 8.432c2.486 2.594 5.31 2.424 5.31 2.424h1.134Z"/></svg></a>
-            <a href="{{ $siteSettings->max_link ?? '#' }}" class="nf-social" target="_blank" rel="noreferrer" aria-label="Max"><svg viewBox="0 0 720 720" fill="currentColor"><path d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg></a>
-          </div>
-          <div class="nf-bank">
-            <p class="nf-col-title">Реквизиты</p>
-            <div class="nf-bank-grid">
-              <div>
-                <span class="nf-bank-label">Наименование</span>
-                <strong class="nf-bank-value">Индивидуальный предприниматель Трофимов Вячеслав Михайлович</strong>
-              </div>
-              <div>
-                <span class="nf-bank-label">ИНН</span>
-                <strong class="nf-bank-value">025508490244</strong>
-              </div>
-              <div>
-                <span class="nf-bank-label">Расчётный счёт</span>
-                <strong class="nf-bank-value">40802810314500038154</strong>
-              </div>
-              <div>
-                <span class="nf-bank-label">Название банка</span>
-                <strong class="nf-bank-value">ООО "Банк Точка"</strong>
-              </div>
-              <div>
-                <span class="nf-bank-label">БИК</span>
-                <strong class="nf-bank-value">044525104</strong>
-              </div>
-              <div>
-                <span class="nf-bank-label">Корреспондентский счёт</span>
-                <strong class="nf-bank-value">30101810745374525104</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <p class="nf-col-title">Услуги</p>
-          <ul class="nf-list">
-            @foreach($footerServices as $fs)
-            <li><a href="/services/{{ $fs->slug }}">{{ $fs->short_label ?? $fs->title }}</a></li>
-            @endforeach
-          </ul>
-        </div>
-        <div>
-          <p class="nf-col-title">Компания</p>
-          <ul class="nf-list">
-            <li><a href="/case-studies">Кейсы</a></li>
-            <li><a href="/articles">Статьи</a></li>
-            <li><a href="/widgets">Виджеты</a></li>
-            <li><a href="/policy">Политика конфиденциальности</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="nf-col-title">Контакты</p>
-          <ul class="nf-list">
-            <li><a href="/contacts">Контактная страница</a></li>
-            <li><a href="{{ $siteSettings->telegram_link ?? '#' }}" target="_blank" rel="noreferrer">Telegram</a></li>
-            @if($siteSettings->email)
-            <li><a href="mailto:{{ $siteSettings->email }}">{{ $siteSettings->email }}</a></li>
-            @endif
-            @if($siteSettings->phone)
-            <li><a href="tel:{{ $siteSettings->phone }}">{{ $siteSettings->phone }}</a></li>
-            @endif
-          </ul>
-        </div>
-      </div>
-      <div class="nf-bottom">
-        <span>&copy; {{ date('Y') }} {{ $siteSettings->site_name ?? 'CleverCRM' }} &middot; CRM-интегратор</span>
-        <span>Все права защищены</span>
-      </div>
-    </div>
-  </footer>
+  <style id="home-main-shared-footer-fix">
+    .site-footer {
+      margin-top: 84px;
+      padding: 56px 0 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255, 106, 0, 0.14), transparent 24%),
+        linear-gradient(180deg, #141414 0%, #0d0d0d 100%);
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .site-footer .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .site-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+    }
+
+    .site-footer-title {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: rgba(255, 255, 255, 0.44);
+    }
+
+    .site-footer-text {
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .site-footer-list {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+    }
+
+    .site-footer-list li + li {
+      margin-top: 8px;
+    }
+
+    .site-footer-list a {
+      color: rgba(255, 255, 255, 0.82);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color .2s ease;
+    }
+
+    .site-footer-list a:hover {
+      color: #ff9b3d;
+    }
+
+    .site-footer-bank {
+      margin-top: 28px !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+      max-width: none;
+      width: 100%;
+      padding: 22px 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .site-footer-bank-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 20px;
+    }
+
+    .site-footer-bank-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.42);
+    }
+
+    .site-footer-bank strong {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+    }
+
+    .site-footer-meta {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.48);
+    }
+
+    @media (max-width: 980px) {
+      .site-footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-footer {
+        margin-top: 64px;
+        padding: 44px 0 24px;
+      }
+
+      .site-footer-grid,
+      .site-footer-bank-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <x-site-footer />
 
   <script>
-    // Force footer styles (run after Webflow JS)
-    function forceFooterStyles() {
-      var f = document.getElementById('new-footer');
-      if (!f) return;
-      f.querySelectorAll('*').forEach(function (n) {
-        if (n.closest('svg') || n.tagName === 'svg' || n.tagName === 'SVG') return;
-        n.style.setProperty('visibility', 'visible', 'important');
-        n.style.setProperty('opacity', '1', 'important');
-      });
-      f.querySelectorAll('.nf-brand-name').forEach(function (n) { n.style.setProperty('color', '#fff', 'important'); });
-      f.querySelectorAll('.nf-brand-text').forEach(function (n) { n.style.setProperty('color', 'rgba(255,255,255,.4)', 'important'); });
-      f.querySelectorAll('.nf-col-title').forEach(function (n) { n.style.setProperty('color', 'rgba(255,255,255,.3)', 'important'); });
-      f.querySelectorAll('.nf-list a').forEach(function (n) { n.style.setProperty('color', 'rgba(255,255,255,.5)', 'important'); });
-      f.querySelectorAll('.nf-bottom, .nf-bottom span').forEach(function (n) { n.style.setProperty('color', 'rgba(255,255,255,.25)', 'important'); });
-    }
-    forceFooterStyles();
-    setTimeout(forceFooterStyles, 100);
-    setTimeout(forceFooterStyles, 500);
-    setTimeout(forceFooterStyles, 1500);
-
-    // Social icons hover in footer
-    document.querySelectorAll('#new-footer .nf-social').forEach(function(a) {
-      a.addEventListener('mouseenter', function() {
-        a.style.setProperty('color', '#f97316', 'important');
-        a.style.setProperty('background', 'rgba(249,115,22,.12)', 'important');
-        a.querySelectorAll('svg, svg *').forEach(function(el) {
-          if (el.hasAttribute('fill') && el.getAttribute('fill') !== 'none') el.style.setProperty('fill', '#f97316', 'important');
-          if (el.hasAttribute('stroke') && el.getAttribute('stroke') !== 'none') el.style.setProperty('stroke', '#f97316', 'important');
-        });
-      });
-      a.addEventListener('mouseleave', function() {
-        a.style.setProperty('color', '#fff', 'important');
-        a.style.setProperty('background', 'rgba(255,255,255,.05)', 'important');
-        a.querySelectorAll('svg, svg *').forEach(function(el) {
-          if (el.hasAttribute('fill') && el.getAttribute('fill') !== 'none') el.style.setProperty('fill', 'currentColor', 'important');
-          if (el.hasAttribute('stroke') && el.getAttribute('stroke') !== 'none') el.style.setProperty('stroke', 'currentColor', 'important');
-        });
-      });
-    });
-
     // Force FAQ styles via JS
     (function () {
       var el = document.getElementById('faq-section');
