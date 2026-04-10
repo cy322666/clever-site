@@ -29,6 +29,7 @@
                     <li><a href="/case-studies">Кейсы</a></li>
                     <li><a href="/articles">Статьи</a></li>
                     <li><a href="/widgets">Виджеты</a></li>
+                    <li><a href="{{ route('site.policy') }}">Политика конфиденциальности</a></li>
                 </ul>
             </div>
         </div>

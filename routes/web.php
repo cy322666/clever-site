@@ -70,6 +70,10 @@ Route::get('/solutions/{slug}', [LandingController::class, 'show'])->name('site.
 Route::get('/widgets', [WidgetController::class, 'index'])->name('site.widgets.index');
 Route::get('/widgets/{slug}', [WidgetController::class, 'show'])->name('site.widgets.show');
 Route::get('/contacts', ContactController::class)->name('site.contacts');
+Route::view('/policy', 'site.policy', [
+    'title' => 'Политика обработки персональных данных | CleverCRM',
+    'metaDescription' => 'Политика обработки персональных данных CleverCRM.',
+])->name('site.policy');
 Route::post('/inquiries', [SiteInquiryController::class, 'store'])->name('site.inquiries.store');
 
 Route::prefix('admin')->name('admin.')->group(function (): void {

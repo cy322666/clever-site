@@ -2862,7 +2862,8 @@
     }
 
     .nf-bank {
-      margin-top: 28px;
+      margin: 28px auto 0;
+      max-width: 920px;
       padding: 22px 24px;
       border-radius: 24px;
       border: 1px solid rgba(255, 255, 255, .08);
@@ -2871,8 +2872,8 @@
 
     .nf-bank-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px 24px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 24px;
       margin-top: 14px;
     }
 
@@ -8454,6 +8455,12 @@
       transition: all 0.2s;
     }
 
+    .future-form-field input::placeholder,
+    .future-form-field textarea::placeholder {
+      font-weight: 400 !important;
+      color: rgba(15, 15, 15, .48) !important;
+    }
+
     .future-form-field input:focus,
     .future-form-field textarea:focus {
       border-color: rgba(255, 138, 42, 0.5);
@@ -8708,6 +8715,7 @@
             <li><a href="/case-studies">Кейсы</a></li>
             <li><a href="/articles">Статьи</a></li>
             <li><a href="/widgets">Виджеты</a></li>
+            <li><a href="{{ route('site.policy') }}">Политика конфиденциальности</a></li>
           </ul>
         </div>
         <div>
