@@ -8034,12 +8034,13 @@
 
     #budget-hypothesis .bh-btn-calc {
       background: #ff8a2a;
-      color: #0f172a;
+      color: #fff;
       box-shadow: 0 14px 30px rgba(255, 138, 42, 0.28);
     }
 
     #budget-hypothesis .bh-btn-calc:hover {
       background: #ff9b4a;
+      color: #fff;
       box-shadow: 0 18px 34px rgba(255, 138, 42, 0.34);
     }
 
