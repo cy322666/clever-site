@@ -7403,6 +7403,319 @@
   </section>
   -->
 
+  <style id="project-clarity-block-style">
+    #project-clarity-block {
+      padding: 108px 0 88px;
+      background:
+        radial-gradient(760px 280px at 0% 0%, rgba(255, 138, 42, 0.09), transparent 62%),
+        linear-gradient(180deg, #f7f8fb 0%, #f4f6fa 100%);
+    }
+
+    #project-clarity-block .pc-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    #project-clarity-block .pc-head {
+      max-width: 860px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    #project-clarity-block .pc-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    #project-clarity-block .pc-copy {
+      max-width: 520px;
+    }
+
+    #project-clarity-block .pc-eyebrow {
+      display: block;
+      margin: 0 0 12px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff8a2a;
+      text-align: center;
+      backdrop-filter: none;
+    }
+
+    #project-clarity-block .pc-title {
+      margin: 0 0 56px;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      text-align: center;
+      color: #0f172a;
+    }
+
+    #project-clarity-block .pc-subtitle {
+      margin: 0 0 28px;
+      max-width: 500px;
+      font-size: 18px;
+      line-height: 1.58;
+      color: rgba(15, 23, 42, 0.72);
+    }
+
+    #project-clarity-block .pc-list {
+      display: grid;
+      gap: 14px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    #project-clarity-block .pc-list li {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      font-size: 17px;
+      line-height: 1.52;
+      color: #172033;
+    }
+
+    #project-clarity-block .pc-list li::before {
+      content: '✓';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(255, 138, 42, 0.14);
+      color: #ff8a2a;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 1px rgba(255, 138, 42, 0.18);
+    }
+
+    #project-clarity-block .pc-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    #project-clarity-block .pc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 16px;
+      background: #ff8a2a;
+      color: #ffffff;
+      font-size: 16px;
+      text-decoration: none;
+      box-shadow: 0 16px 30px rgba(255, 138, 42, 0.18);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    #project-clarity-block .pc-btn:hover {
+      transform: translateY(-1px);
+      background: #ff9a43;
+      box-shadow: 0 18px 32px rgba(255, 138, 42, 0.22);
+    }
+
+    #project-clarity-block .pc-note {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(15, 23, 42, 0.56);
+    }
+
+    #project-clarity-block .pc-visual {
+      position: relative;
+    }
+
+    #project-clarity-block .pc-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
+      padding: 20px;
+      backdrop-filter: blur(18px);
+    }
+
+    #project-clarity-block .pc-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent 28%),
+        radial-gradient(320px 140px at 0% 0%, rgba(255, 138, 42, 0.08), transparent 70%);
+    }
+
+    #project-clarity-block .pc-shot {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    #project-clarity-block .pc-badge {
+      position: absolute;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.82);
+      color: #ffffff;
+      font-size: 13px;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      box-shadow: 0 16px 28px rgba(15, 23, 42, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    #project-clarity-block .pc-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #ff8a2a;
+      box-shadow: 0 0 0 5px rgba(255, 138, 42, 0.14);
+      flex: 0 0 auto;
+    }
+
+    #project-clarity-block .pc-badge--done {
+      top: 26px;
+      left: 26px;
+    }
+
+    #project-clarity-block .pc-badge--active {
+      top: 26px;
+      right: 26px;
+    }
+
+    #project-clarity-block .pc-badge--next {
+      bottom: 26px;
+      left: 26px;
+    }
+
+    #project-clarity-block .pc-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 16px;
+      padding: 0 6px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: rgba(15, 23, 42, 0.54);
+    }
+
+    #project-clarity-block .pc-caption strong {
+      color: #172033;
+      font-weight: 600;
+    }
+
+    @media (max-width: 980px) {
+      #project-clarity-block .pc-shell {
+        grid-template-columns: 1fr;
+      }
+
+      #project-clarity-block .pc-copy {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #project-clarity-block {
+        padding: 84px 0 48px;
+      }
+
+      #project-clarity-block .pc-wrap {
+        padding: 0 18px;
+      }
+
+      #project-clarity-block .pc-shell {
+        gap: 24px;
+      }
+
+      #project-clarity-block .pc-subtitle {
+        font-size: 16px;
+      }
+
+      #project-clarity-block .pc-list li {
+        font-size: 16px;
+      }
+
+      #project-clarity-block .pc-frame {
+        padding: 12px;
+        border-radius: 24px;
+      }
+
+      #project-clarity-block .pc-shot {
+        border-radius: 16px;
+      }
+
+      #project-clarity-block .pc-badge {
+        position: static;
+        width: fit-content;
+      }
+
+      #project-clarity-block .pc-visual {
+        display: grid;
+        gap: 10px;
+      }
+
+      #project-clarity-block .pc-caption {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 0;
+      }
+    }
+  </style>
+
+  <section id="project-clarity-block">
+    <div class="pc-wrap">
+      <div class="pc-head">
+        <div class="pc-eyebrow">Прозрачность работы</div>
+        <h2 class="pc-title">Проект под полным контролем</h2>
+      </div>
+
+      <div class="pc-shell">
+        <div class="pc-copy">
+          <ul class="pc-list">
+            <li>Фиксируем все задачи и выставляем сроки</li>
+            <li>Еженедельные отчеты по проделанной работе</li>
+            <li>Добавим вас в задачник, для прозрачности работы</li>
+          </ul>
+        </div>
+
+        <div class="pc-visual">
+          <div class="pc-frame">
+            <img class="pc-shot" src="{{ asset('images/home/project-transparency.png') }}" alt="Прозрачный контур проекта и фиксация статусов работ" loading="lazy">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
   <section id="trust-compact-block">
     <div class="trust-marquee-wrap">
       <div class="trust-marquee">
@@ -7419,7 +7732,6 @@
       </div>
     </div>
   </section>
-
   <section id="founder-block">
     <div class="founder-split">
       <div class="founder-split-photo cine-photo"><img src="/images/founder-v2.jpg" alt="Вячеслав Трофимов"></div>
