@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? ($siteSettings->site_name ?? 'CRM Integrator') }}</title>
-    <meta name="description" content="{{ $metaDescription ?? 'Внедрение и перевнедрение amoCRM. Наведём порядок в продажах, уберём потери заявок и настроим контроль. Интегратор с 2020 года, 150+ проектов.' }}">
+    <meta name="description" content="{{ $metaDescription ?? 'Маркетинговый сайт CRM-интегратора' }}">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {!! $globalJsPlugins['head'] ?? '' !!}
 </head>
 <body class="min-h-screen">
-    @include('site.partials.top-nav')
+    @include('site.partials.nav')
 
     <main class="site-main">
         @yield('content')

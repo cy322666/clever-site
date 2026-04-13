@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-        View::composer(['site.*', 'admin.*', 'errors.*'], function ($view): void {
+        View::composer(['site.*', 'admin.*', 'errors.*', 'components.*'], function ($view): void {
             $view->with('siteSettings', SiteSetting::query()->first());
         });
 

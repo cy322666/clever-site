@@ -34,6 +34,10 @@ services:
       TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
       TELEGRAM_MESSAGE_THREAD_ID: ${TELEGRAM_MESSAGE_THREAD_ID:-}
     volumes:
+      - ./app:/var/www/html/app
+      - ./routes:/var/www/html/routes
+      - ./resources:/var/www/html/resources
+      - ./public:/var/www/html/public
       - storage_data:/var/www/html/storage
 
   db:

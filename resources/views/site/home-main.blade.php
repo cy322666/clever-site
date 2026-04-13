@@ -6079,6 +6079,12 @@
     }
   </style>
   <style id="mobile-responsive">
+    /* ===== NAV font override ===== */
+    .cmdf5-inspired-nav,
+    .cmdf5-inspired-nav * {
+      font-family: 'Manrope', 'Segoe UI', system-ui, sans-serif !important;
+    }
+
     /* ===== BURGER MENU — hidden on desktop ===== */
     .cmd-nav-check { display: none; }
     .cmd-burger { display: none; }
