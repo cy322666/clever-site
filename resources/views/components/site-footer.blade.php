@@ -2,8 +2,8 @@
     <div class="container">
         <div class="site-footer-grid">
             <div>
-                <p class="site-footer-title">CleverCRM</p>
-                <p class="site-footer-text">Интегратор amoCRM и CRM-экосистем для роста продаж.</p>
+                <p class="site-footer-title">Clever</p>
+                <p class="site-footer-text">Наводим порядок в продажах: внедрение, перевнедрение и развитие amoCRM.</p>
                 <div class="site-footer-bank">
                     <p class="site-footer-title">Реквизиты</p>
                     <div class="site-footer-bank-grid">
@@ -40,7 +40,7 @@
                 <ul class="site-footer-list">
                     <li><a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}">Внедрение</a></li>
                     <li><a href="{{ route('site.landings.show', 'audit-amocrm') }}">Аудит amoCRM</a></li>
-                    <li><a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}">Перевнедрение amoCRM</a></li>
+                    <li><a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}">Перевнедрение</a></li>
                     <li><a href="{{ route('site.landings.show', 'razrabotka-crm') }}">Разработка</a></li>
                     <li><a href="{{ route('site.landings.show', 'reanimaciya-amocrm') }}">Реанимация amoCRM</a></li>
                     <li><a href="{{ route('site.landings.show', 'analitika-prodazh-v-amocrm') }}">Аналитика продаж</a></li>
@@ -54,7 +54,6 @@
             <div>
                 <p class="site-footer-title">Контакты</p>
                 <ul class="site-footer-list">
-                    <li><a href="/contacts">Контактная страница</a></li>
                     <li><a href="/case-studies">Кейсы</a></li>
                     <li><a href="/articles">Статьи</a></li>
                     <li><a href="/widgets">Виджеты</a></li>
@@ -64,7 +63,7 @@
         </div>
 
         <div class="site-footer-meta">
-            <p>© 2026 CleverCRM · CRM-интегратор</p>
+            <p>© 2026 Clever · Интегратор amoCRM</p>
         </div>
     </div>
 </footer>
