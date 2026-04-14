@@ -297,7 +297,12 @@
     .cmd-mob-cta { padding:10px 20px; background:#f97316; color:#fff !important; border-radius:10px; font-size:13px; font-weight:600; text-decoration:none; transition:background .2s; }
     .cmd-mob-cta:hover { background:#ea6c0e; }
     .site-main {
-        @apply pb-16;
+        @apply pb-0;
+    }
+
+    .site-main > :last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
     }
 
     .site-section {
@@ -583,7 +588,7 @@
     }
 
     .site-footer {
-        margin-top: 84px;
+        margin-top: 0 !important;
         padding: 56px 0 28px;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         background:
@@ -644,10 +649,10 @@
     }
 
     .site-footer-bank {
-        margin-top: 28px;
+        margin-top: 28px !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
-        margin-bottom: 0;
+        margin-bottom: 0 !important;
         max-width: none;
         width: 100%;
         padding: 22px 24px;
@@ -674,9 +679,8 @@
     }
 
     .site-footer-bank strong {
-        display: block;
         font-size: 14px;
-        line-height: 1.55;
+        line-height: 1.5;
         font-weight: 600;
         color: rgba(255, 255, 255, 0.9);
     }
@@ -786,9 +790,9 @@
 
 @layer components {
     .site-footer .container {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 0 20px;
+        max-width: 1180px !important;
+        margin: 0 auto !important;
+        padding: 0 20px !important;
     }
 }
 
