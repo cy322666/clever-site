@@ -25,7 +25,7 @@ services:
       DB_USERNAME: ${POSTGRES_USER:-clevercrm}
       DB_PASSWORD: ${POSTGRES_PASSWORD:-clevercrm}
       SESSION_DRIVER: ${SESSION_DRIVER:-database}
-      CACHE_STORE: ${CACHE_STORE:-database}ыв
+      CACHE_STORE: ${CACHE_STORE:-database}
       QUEUE_CONNECTION: ${QUEUE_CONNECTION:-database}
       APP_RUN_MIGRATIONS: ${APP_RUN_MIGRATIONS:-true}
       APP_RUN_SEEDER: ${APP_RUN_SEEDER:-false}
