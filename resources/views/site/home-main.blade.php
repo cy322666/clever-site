@@ -3670,7 +3670,8 @@
 
   <style id="cases-new-style">
     #cases-redesign-6 {
-      background: #f7f5f2 !important;
+      background: #f8fafc !important;
+      background-image: none !important;
       padding: 144px 0 !important;
       font-family: 'Inter', 'Albert Sans', sans-serif !important;
     }
@@ -7703,7 +7704,7 @@
           <ul class="pc-list">
             <li>Фиксируем все задачи и выставляем сроки</li>
             <li>Еженедельные отчеты по проделанной работе</li>
-            <li>Добавим вас в задачник, для прозрачности работы</li>
+            <li>Добавим вас в задачник для прозрачности</li>
           </ul>
         </div>
 

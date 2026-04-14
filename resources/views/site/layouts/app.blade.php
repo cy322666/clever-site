@@ -10,7 +10,7 @@
     {!! $globalJsPlugins['head'] ?? '' !!}
 </head>
 <body class="min-h-screen">
-    @include('site.partials.nav')
+    @include('site.partials.top-nav')
 
     <main class="site-main">
         @yield('content')
