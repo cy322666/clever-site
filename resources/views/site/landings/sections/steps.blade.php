@@ -1,5 +1,6 @@
 <style>
-    .sp-wrap { background:#0f0f11; padding:100px 0; position:relative; min-height:100vh; display:flex; align-items:center; }
+    .sp-wrap { background:#0f0f11; padding:100px 0; position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; }
+    .sp-wrap::before { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size:44px 44px; }
     .sp-inner { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:0 24px; width:100%; }
 
     .sp-kicker { font-family:'Manrope',system-ui,sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:rgba(249,115,22,.7); }
