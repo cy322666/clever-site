@@ -1,3 +1,182 @@
+<style id="top-nav-home-shared">
+    .cmdf5-inspired-nav {
+        position: sticky;
+        top: 0;
+        z-index: 9998;
+        background: #000 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: none !important;
+    }
+
+    .cmd-nav-inner {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 14px 22px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .cmd-nav-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .cmd-nav-item {
+        position: relative;
+    }
+
+    .cmd-nav-item > a {
+        color: #fff !important;
+        text-decoration: none;
+        font-size: 16px !important;
+        line-height: 1.2 !important;
+        opacity: .92;
+    }
+
+    .cmd-nav-item > a.is-active,
+    .cmd-nav-item > a:hover {
+        color: #ff9b3d !important;
+        opacity: 1;
+    }
+
+    .cmd-dropdown {
+        position: absolute;
+        left: 0;
+        top: calc(100% + 14px);
+        min-width: 760px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 14px;
+        border-radius: 18px;
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(6px);
+        transition: .2s ease;
+        z-index: 20;
+    }
+
+    .cmd-nav-item:hover .cmd-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .cmd-solution-link {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        background: rgba(255, 255, 255, 0.01);
+        text-decoration: none;
+        transition: border-color .2s, background .2s;
+    }
+
+    .cmd-dropdown a.cmd-solution-link:hover {
+        color: inherit !important;
+        border-color: rgba(249, 115, 22, 0.28);
+        background: rgba(249, 115, 22, 0.08);
+    }
+
+    .cmd-solution-title {
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 15px;
+        line-height: 1.35;
+        font-weight: 600;
+    }
+
+    .cmd-solution-desc {
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .cmd-nav-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
+    .cmd-nav-socials {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+
+    .cmd-nav-socials a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #fff !important;
+        border: none;
+        background: rgba(255, 255, 255, 0.10);
+        transition: all .2s ease;
+    }
+
+    .cmd-nav-socials a svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .cmd-nav-socials a:hover {
+        color: #f97316 !important;
+        background: rgba(249, 115, 22, 0.12);
+    }
+
+    .cmd-nav-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        padding: 0 16px;
+        border-radius: 11px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff !important;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+        transition: background .2s, border-color .2s, color .2s;
+    }
+
+    .cmd-nav-cta:hover {
+        background: #f97316;
+        border-color: #f97316;
+    }
+
+    @media (max-width: 767px) {
+        .cmd-nav-inner {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            padding: 10px 20px !important;
+            grid-template-columns: none !important;
+        }
+
+        .cmd-nav-center,
+        .cmd-nav-actions {
+            display: none !important;
+        }
+    }
+</style>
 <nav class="cmdf5-inspired-nav">
     <div class="cmd-nav-inner">
         <a class="cmd-nav-brand" href="{{ route('site.home') }}" aria-label="{{ $siteSettings->site_name ?? 'CleverCRM' }}">

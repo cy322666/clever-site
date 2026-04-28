@@ -700,7 +700,7 @@
     }
 
     .site-footer {
-        margin-top: 0 !important;
+        margin-top: 84px;
         padding: 56px 0 28px;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         background:
@@ -905,34 +905,6 @@
         max-width: 1180px !important;
         margin: 0 auto !important;
         padding: 0 20px !important;
-    }
-}
-
-@layer base {
-    :root {
-        --heading-unified-font: 'Manrope', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
-        --heading-unified-size: clamp(30px, 3.1vw, 40px);
-        --heading-unified-line: 1.15;
-        --heading-unified-weight: 600;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .site-title,
-    .site-card-title,
-    .heading_primary,
-    .heading_secondary,
-    .heading_tertiary,
-    .heading_hero {
-        font-family: var(--heading-unified-font);
-        font-size: var(--heading-unified-size);
-        line-height: var(--heading-unified-line);
-        font-weight: var(--heading-unified-weight);
-        letter-spacing: -0.02em;
     }
 }
 
