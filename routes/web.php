@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
 use App\Http\Controllers\Admin\WidgetController as AdminWidgetController;
+use App\Http\Controllers\Site\AboutController;
 use App\Http\Controllers\Site\ArticleController;
 use App\Http\Controllers\Site\CaseStudyController;
 use App\Http\Controllers\Site\ContactController;
@@ -73,6 +74,7 @@ Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('site.a
 Route::get('/solutions/{slug}', [LandingController::class, 'show'])->name('site.landings.show');
 Route::get('/widgets', [WidgetController::class, 'index'])->name('site.widgets.index');
 Route::get('/widgets/{slug}', [WidgetController::class, 'show'])->name('site.widgets.show');
+Route::get('/about', AboutController::class)->name('site.about');
 Route::view('/project-estimate', 'site.calculator', [
     'title' => 'Предварительная оценка CRM-проекта | CleverCRM',
     'metaDescription' => 'Калькулятор предварительной оценки CRM-проекта: бюджетный диапазон, сроки и состав работ от CleverCRM.',

@@ -167,12 +167,6 @@
                     @endif
                     <h2 class="cases-cp-title">Расскажите о задаче — <span>покажем, как решить</span></h2>
                     <p class="cases-cp-desc">Обсудим вашу CRM, найдём точки потерь и предложим план. Бесплатно, без навязчивости.</p>
-                    <div class="cases-cp-trust">
-                        <div class="cases-cp-trust-item">Бесплатная диагностика без обязательств</div>
-                        <div class="cases-cp-trust-item">Отвечаем за 1 час в рабочее время</div>
-                        <div class="cases-cp-trust-item">Никаких продаж на первой встрече</div>
-                        <div class="cases-cp-trust-item">Работаем с amoCRM 8+ лет</div>
-                    </div>
                 </div>
                 <div class="cases-cp-card">
                     <form action="{{ route('site.inquiries.store') }}" method="POST" class="cases-cp-grid">

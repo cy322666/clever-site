@@ -3544,8 +3544,8 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 28px 28px;
+      justify-content: center;
+      padding: 22px 28px;
       text-decoration: none !important;
       color: #fff !important;
       transition: all .3s;
@@ -3599,9 +3599,11 @@
       z-index: 1;
       display: flex;
       flex-direction: column;
-      margin-top: auto;
-      padding-top: 150px;
-      min-height: 222px;
+      justify-content: center;
+      margin-top: 0;
+      padding-top: 0;
+      min-height: 0;
+      height: 100%;
     }
 
     .uf-card-tag {
@@ -3631,7 +3633,7 @@
     .uf-btn {
       display: inline-flex !important;
       width: fit-content;
-      margin-top: auto;
+      margin-top: 12px;
       padding: 10px 20px;
       border-radius: 10px;
       background: rgba(255, 255, 255, .08);
@@ -3654,7 +3656,7 @@
       .uf-card {
         min-height: 300px;
         height: auto;
-        padding: 0 24px 24px;
+        padding: 20px 24px;
       }
 
       .uf-title {
@@ -3662,7 +3664,8 @@
       }
 
       .uf-card-content {
-        padding-top: 110px;
+        justify-content: center;
+        padding-top: 0;
         min-height: auto;
       }
     }
@@ -6692,6 +6695,143 @@
 </svg>
 
   @include('site.partials.top-nav')
+  <style id="home-top-nav-premium-sync">
+    .cmdf5-inspired-nav .cmd-nav-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .cmdf5-inspired-nav .cmd-nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 0 16px;
+      border-radius: 11px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(255, 255, 255, .08);
+      color: #fff !important;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+
+    .cmdf5-inspired-nav .cmd-nav-cta:hover {
+      background: #f97316;
+      border-color: #f97316;
+      color: #fff !important;
+    }
+
+    .cmdf5-inspired-nav .cmd-dropdown.services-dropdown {
+      min-width: 760px !important;
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+      padding: 14px !important;
+    }
+
+    .cmdf5-inspired-nav .cmd-solution-link {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, .01);
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+
+    .cmdf5-inspired-nav .cmd-dropdown a.cmd-solution-link:hover {
+      color: inherit !important;
+      border-color: rgba(249, 115, 22, .28);
+      background: rgba(249, 115, 22, .08);
+    }
+
+    .cmdf5-inspired-nav .cmd-solution-title {
+      color: rgba(255, 255, 255, .92);
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .cmdf5-inspired-nav .cmd-solution-desc {
+      color: rgba(255, 255, 255, .58);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .cmdf5-inspired-nav .cmd-mob-accordion {
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+      margin-bottom: 4px;
+    }
+
+    .cmdf5-inspired-nav .cmd-mob-accordion summary {
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .cmdf5-inspired-nav .cmd-mob-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cmdf5-inspired-nav .cmd-mob-accordion .cmd-mob-link::after {
+      content: '▾';
+      margin-left: auto;
+      color: rgba(255, 255, 255, .4);
+      font-size: 12px;
+      transition: transform .2s ease;
+    }
+
+    .cmdf5-inspired-nav .cmd-mob-accordion[open] .cmd-mob-link::after {
+      transform: rotate(180deg);
+    }
+
+    .cmdf5-inspired-nav .cmd-mob-accordion-body {
+      display: grid;
+      gap: 2px;
+      padding: 0 0 8px;
+    }
+
+    .cmdf5-inspired-nav .cmd-mob-sub-rich {
+      align-items: flex-start;
+      min-height: 0;
+      padding: 9px 20px 9px 36px;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .cmdf5-inspired-nav .cmd-mob-sub-title {
+      color: rgba(255, 255, 255, .9);
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .cmdf5-inspired-nav .cmd-mob-sub-desc {
+      color: rgba(255, 255, 255, .5);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 991px) {
+      .cmdf5-inspired-nav .cmd-dropdown.services-dropdown {
+        width: min(95vw, 760px) !important;
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .cmdf5-inspired-nav .cmd-nav-actions {
+        display: none !important;
+      }
+    }
+  </style>
   <section class="future-home-hero">
     <div class="future-mesh-1"></div>
     <div class="future-mesh-2"></div>
@@ -7183,6 +7323,19 @@
       flex-shrink: 0;
     }
 
+    .future-review-quote {
+      margin: 0;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: rgba(248, 250, 252, 0.9);
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(15, 23, 42, 0.72);
+      font-style: italic;
+      min-height: 90px;
+    }
+
     .client-info {
       display: flex;
       align-items: center;
@@ -7238,6 +7391,10 @@
     @media (max-width: 640px) {
       .future-review-grid {
         grid-template-columns: 1fr;
+      }
+
+      .future-review-quote {
+        min-height: 0;
       }
     }
   </style>
@@ -7404,319 +7561,6 @@
   </section>
   -->
 
-  <style id="project-clarity-block-style">
-    #project-clarity-block {
-      padding: 108px 0 88px;
-      background:
-        radial-gradient(760px 280px at 0% 0%, rgba(255, 138, 42, 0.09), transparent 62%),
-        linear-gradient(180deg, #f7f8fb 0%, #f4f6fa 100%);
-    }
-
-    #project-clarity-block .pc-wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    #project-clarity-block .pc-head {
-      max-width: 860px;
-      margin: 0 auto 42px;
-      text-align: center;
-    }
-
-    #project-clarity-block .pc-shell {
-      display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-      gap: 34px;
-      align-items: center;
-    }
-
-    #project-clarity-block .pc-copy {
-      max-width: 520px;
-    }
-
-    #project-clarity-block .pc-eyebrow {
-      display: block;
-      margin: 0 0 12px;
-      padding: 0;
-      border: 0;
-      border-radius: 0;
-      background: none;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #ff8a2a;
-      text-align: center;
-      backdrop-filter: none;
-    }
-
-    #project-clarity-block .pc-title {
-      margin: 0 0 56px;
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(32px, 4.2vw, 52px);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-      font-weight: 700;
-      text-align: center;
-      color: #0f172a;
-    }
-
-    #project-clarity-block .pc-subtitle {
-      margin: 0 0 28px;
-      max-width: 500px;
-      font-size: 18px;
-      line-height: 1.58;
-      color: rgba(15, 23, 42, 0.72);
-    }
-
-    #project-clarity-block .pc-list {
-      display: grid;
-      gap: 14px;
-      margin: 0 0 30px;
-      padding: 0;
-      list-style: none;
-    }
-
-    #project-clarity-block .pc-list li {
-      display: grid;
-      grid-template-columns: 28px minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-      font-size: 17px;
-      line-height: 1.52;
-      color: #172033;
-    }
-
-    #project-clarity-block .pc-list li::before {
-      content: '✓';
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: rgba(255, 138, 42, 0.14);
-      color: #ff8a2a;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: inset 0 0 0 1px rgba(255, 138, 42, 0.18);
-    }
-
-    #project-clarity-block .pc-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    #project-clarity-block .pc-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 24px;
-      border-radius: 16px;
-      background: #ff8a2a;
-      color: #ffffff;
-      font-size: 16px;
-      text-decoration: none;
-      box-shadow: 0 16px 30px rgba(255, 138, 42, 0.18);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-
-    #project-clarity-block .pc-btn:hover {
-      transform: translateY(-1px);
-      background: #ff9a43;
-      box-shadow: 0 18px 32px rgba(255, 138, 42, 0.22);
-    }
-
-    #project-clarity-block .pc-note {
-      font-size: 14px;
-      line-height: 1.5;
-      color: rgba(15, 23, 42, 0.56);
-    }
-
-    #project-clarity-block .pc-visual {
-      position: relative;
-    }
-
-    #project-clarity-block .pc-frame {
-      position: relative;
-      overflow: hidden;
-      border-radius: 32px;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      background: rgba(255, 255, 255, 0.76);
-      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
-      padding: 20px;
-      backdrop-filter: blur(18px);
-    }
-
-    #project-clarity-block .pc-frame::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent 28%),
-        radial-gradient(320px 140px at 0% 0%, rgba(255, 138, 42, 0.08), transparent 70%);
-    }
-
-    #project-clarity-block .pc-shot {
-      position: relative;
-      z-index: 1;
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 22px;
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
-    }
-
-    #project-clarity-block .pc-badge {
-      position: absolute;
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.82);
-      color: #ffffff;
-      font-size: 13px;
-      line-height: 1;
-      letter-spacing: 0.01em;
-      box-shadow: 0 16px 28px rgba(15, 23, 42, 0.18);
-      backdrop-filter: blur(10px);
-    }
-
-    #project-clarity-block .pc-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #ff8a2a;
-      box-shadow: 0 0 0 5px rgba(255, 138, 42, 0.14);
-      flex: 0 0 auto;
-    }
-
-    #project-clarity-block .pc-badge--done {
-      top: 26px;
-      left: 26px;
-    }
-
-    #project-clarity-block .pc-badge--active {
-      top: 26px;
-      right: 26px;
-    }
-
-    #project-clarity-block .pc-badge--next {
-      bottom: 26px;
-      left: 26px;
-    }
-
-    #project-clarity-block .pc-caption {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 16px;
-      padding: 0 6px;
-      font-size: 13px;
-      line-height: 1.45;
-      color: rgba(15, 23, 42, 0.54);
-    }
-
-    #project-clarity-block .pc-caption strong {
-      color: #172033;
-      font-weight: 600;
-    }
-
-    @media (max-width: 980px) {
-      #project-clarity-block .pc-shell {
-        grid-template-columns: 1fr;
-      }
-
-      #project-clarity-block .pc-copy {
-        max-width: none;
-      }
-    }
-
-    @media (max-width: 767px) {
-      #project-clarity-block {
-        padding: 84px 0 48px;
-      }
-
-      #project-clarity-block .pc-wrap {
-        padding: 0 18px;
-      }
-
-      #project-clarity-block .pc-shell {
-        gap: 24px;
-      }
-
-      #project-clarity-block .pc-subtitle {
-        font-size: 16px;
-      }
-
-      #project-clarity-block .pc-list li {
-        font-size: 16px;
-      }
-
-      #project-clarity-block .pc-frame {
-        padding: 12px;
-        border-radius: 24px;
-      }
-
-      #project-clarity-block .pc-shot {
-        border-radius: 16px;
-      }
-
-      #project-clarity-block .pc-badge {
-        position: static;
-        width: fit-content;
-      }
-
-      #project-clarity-block .pc-visual {
-        display: grid;
-        gap: 10px;
-      }
-
-      #project-clarity-block .pc-caption {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        padding: 0;
-      }
-    }
-  </style>
-
-  <section id="project-clarity-block">
-    <div class="pc-wrap">
-      <div class="pc-head">
-        <div class="pc-eyebrow">Прозрачность работы</div>
-        <h2 class="pc-title">Проект под полным контролем</h2>
-      </div>
-
-      <div class="pc-shell">
-        <div class="pc-copy">
-          <ul class="pc-list">
-            <li>Фиксируем все задачи и выставляем сроки</li>
-            <li>Еженедельные отчеты по проделанной работе</li>
-            <li>Добавим вас в задачник для прозрачности</li>
-          </ul>
-        </div>
-
-        <div class="pc-visual">
-          <div class="pc-frame">
-            <img class="pc-shot" src="{{ asset('images/home/project-transparency.png') }}" alt="Прозрачный контур проекта и фиксация статусов работ" loading="lazy">
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
   <section id="trust-compact-block">
     <div class="trust-marquee-wrap">
       <div class="trust-marquee">
@@ -7901,24 +7745,28 @@
             'role' => 'Основатель Chill City',
             'avatar' => asset('images/reviews/chaly.png'),
             'video' => asset('videos/reviews/anton-review.mp4'),
+            'quote' => 'Clever собрали рабочую CRM, где заявки и команда под контролем',
           ],
           [
             'name' => 'Никита Подлипский',
             'role' => 'CEO Ultimate Education',
             'avatar' => asset('images/reviews/podlipskiy.png'),
             'video' => asset('videos/reviews/podlipskiy-review.mp4'),
+            'quote' => 'Команда погружается в бизнес и предлагает решения под задачу',
           ],
           [
             'name' => 'Евгений Ельмикеев',
             'role' => 'CEO Ельмикеев Аналитика',
             'avatar' => asset('images/reviews/yelmikeev.png'),
             'video' => asset('videos/reviews/client-review-1.mp4'),
+            'quote' => 'Clever понимают и amoCRM, и бизнес-логику процесса',
           ],
           [
             'name' => 'Геворг Халатов',
             'role' => 'Основатель Hay.agency',
             'avatar' => asset('images/reviews/khalatov.png'),
             'video' => asset('videos/reviews/client-review-2.mp4'),
+            'quote' => 'С Clever комфортно: берут сложную CRM-часть и ведут к результату',
           ],
         ];
       @endphp
@@ -7945,6 +7793,7 @@
               <span>{{ $review['role'] }}</span>
             </div>
           </div>
+          <p class="future-review-quote">«{{ $review['quote'] }}»</p>
         </button>
         @endforeach
       </div>
@@ -7983,35 +7832,35 @@
       <div class="uf-top v4-top">
         <div style="text-align:center; width:100%;">
           <div class="uf-ey">Полезное</div>
-          <h2 class="uf-title">Полезные материалы по CRM и продажам</h2>
+          <h2 class="uf-title">Материалы о CRM, продажах и контроле</h2>
         </div>
       </div>
       <div class="uf-grid">
-        <a href="/services/audit-amocrm" class="uf-card v4-card">
+        <a href="{{ route('site.landings.show', 'audit-amocrm') }}" class="uf-card v4-card">
           <div class="uf-card-bg uf-bg-1"></div>
           <div class="uf-card-content">
-            <div class="uf-card-tag">Бесплатно</div>
-            <h3>Бесплатный аудит CRM</h3>
-            <p>Быстро посмотрим, где в CRM теряются заявки, нет контроля и что уже мешает продажам</p>
-            <span class="uf-btn">Разобрать CRM →</span>
+            <div class="uf-card-tag">Диагностика</div>
+            <h3>Диагностика CRM и продаж</h3>
+            <p>Первый шаг перед пересборкой amoCRM: разбираем текущую систему, процессы, источники заявок, контроль менеджеров и точки потерь.</p>
+            <span class="uf-btn">Подробнее →</span>
           </div>
         </a>
         <a href="/articles" class="uf-card v4-card">
           <div class="uf-card-bg uf-bg-2"></div>
           <div class="uf-card-content">
             <div class="uf-card-tag">Материал</div>
-            <h3>Гайд по CRM и продажам</h3>
-            <p>Короткий практический материал, который поможет понять, где CRM уже тормозит продажи и что с этим делать</p>
-            <span class="uf-btn">Скачать гайд →</span>
+            <h3>Где CRM тормозит продажи</h3>
+            <p>Практический разбор типичных ошибок: лишние поля, хаос в воронках, потерянные заявки, слабый контроль и отсутствие понятной аналитики.</p>
+            <span class="uf-btn">Читать материал →</span>
           </div>
         </a>
-        <a href="/services/kupit-licenzii" class="uf-card v4-card">
+        <a href="{{ route('site.case-studies.index') }}" class="uf-card v4-card">
           <div class="uf-card-bg uf-bg-3"></div>
           <div class="uf-card-content">
-            <div class="uf-card-tag">Бонусы</div>
-            <h3>Бонусы</h3>
-            <p>Дарим более 40 виджетов и бонусные месяцы при продлении amoCRM, набор индивидуален для каждого клиента</p>
-            <span class="uf-btn">Посмотреть бонусы →</span>
+            <div class="uf-card-tag">Кейсы</div>
+            <h3>Кейсы сложных внедрений</h3>
+            <p>Реальные проекты, где мы запускали и пересобирали amoCRM для компаний со сложными процессами, интеграциями и требованиями к контролю продаж.</p>
+            <span class="uf-btn">Смотреть кейсы →</span>
           </div>
         </a>
       </div>
@@ -8053,7 +7902,7 @@
             $homeFaqs = [
               [
                 'question' => 'Чем отличается от очередного шаблонного внедрения?',
-                'answer' => 'Сначала проводим интервью, разбираем, как у вас устроены продажи, выстраиваем процессы в holst.so, потом раскладываем это на задачи, оцениваем каждую по времени и уже из этого собираем дорожную карту и КП. Наш подход другой: мы почти не делаем шаблонных внедрений',
+                'answer' => 'Перед настройкой мы проектируем систему продаж: проводим интервью, разбираем текущий процесс, находим точки потерь, фиксируем роли, правила, этапы, контроль и аналитику. Только после этого становится понятно, что именно нужно внедрять, в какой последовательности и какой результат должен появиться у руководителя.',
               ],
               [
                 'question' => 'Когда ИИ нужен, а когда это пустая трата денег?',
@@ -8099,7 +7948,7 @@
     }
 
     #budget-hypothesis .bh-head {
-      margin-bottom: 44px;
+      margin-bottom: 34px;
       max-width: 860px;
     }
 
@@ -8114,218 +7963,134 @@
     }
 
     #budget-hypothesis .bh-title {
-      margin: 0 0 14px;
+      margin: 0;
       font-size: clamp(32px, 4.2vw, 52px);
       line-height: 1.02;
       letter-spacing: -0.04em;
       color: #0f172a;
     }
 
+    #budget-hypothesis .bh-shell {
+      border-radius: 30px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background:
+        radial-gradient(360px 180px at 100% 0%, rgba(255, 138, 42, 0.11), transparent 72%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
+      padding: 30px;
+    }
+
     #budget-hypothesis .bh-body {
       display: grid;
-      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
       gap: 28px;
       align-items: start;
-      margin-bottom: 24px;
     }
 
-    #budget-hypothesis .bh-visual {
-      position: sticky;
-      top: 108px;
-      display: grid;
-      gap: 14px;
+    #budget-hypothesis .bh-copy {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(15, 23, 42, 0.72);
+      max-width: 620px;
     }
 
-    #budget-hypothesis .bh-visual-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 28px;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      background:
-        radial-gradient(220px 120px at 0% 0%, rgba(255, 138, 42, 0.08), transparent 72%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.96) 100%);
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
-      padding: 22px;
+    #budget-hypothesis .bh-label {
+      margin: 24px 0 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: rgba(15, 23, 42, 0.48);
     }
 
-    #budget-hypothesis .bh-visual-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-      background-size: 28px 28px;
-      opacity: .28;
-    }
-
-    #budget-hypothesis .bh-visual-card > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    #budget-hypothesis .bh-visual-title {
-      margin: 0 0 18px;
-      font-size: 24px;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      font-weight: 500;
-      font-family: inherit;
-      color: #0f172a;
-    }
-
-    #budget-hypothesis .bh-spark {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin-bottom: 18px;
-    }
-
-    #budget-hypothesis .bh-bars {
+    #budget-hypothesis .bh-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
       display: grid;
       gap: 12px;
     }
 
-    #budget-hypothesis .bh-bars-row {
-      display: grid;
-      gap: 7px;
-    }
-
-    #budget-hypothesis .bh-bars-row span {
-      font-size: 12px;
-      font-weight: 600;
-      color: rgba(15, 23, 42, 0.64);
-    }
-
-    #budget-hypothesis .bh-bar-track {
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.16);
-      overflow: hidden;
-    }
-
-    #budget-hypothesis .bh-bar-fill {
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, rgba(255, 138, 42, 0.88), rgba(255, 138, 42, 0.38));
-    }
-
-    #budget-hypothesis .bh-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin: 0;
-      max-width: none;
-      width: 100%;
-    }
-
-    #budget-hypothesis .bh-card {
+    #budget-hypothesis .bh-list li {
       position: relative;
-      border-radius: 28px;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      background: #fff;
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
-      padding: 22px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      min-height: 0;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-
-    #budget-hypothesis .bh-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
-      border-color: rgba(255, 138, 42, 0.22);
-    }
-
-    #budget-hypothesis .bh-card:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: -14px;
-      width: 1px;
-      height: 14px;
-      background: rgba(255, 138, 42, 0.22);
-      transform: translateX(-50%);
-    }
-
-    #budget-hypothesis .bh-card-top {
-      display: block;
-      width: 100%;
-    }
-
-    #budget-hypothesis .bh-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      background: rgba(255, 138, 42, 0.1);
-      color: #ff8a2a;
-      border: 1px solid rgba(255, 138, 42, 0.16);
-      flex-shrink: 0;
-    }
-
-    #budget-hypothesis .bh-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex: 0 0 auto;
-      text-align: center;
-      border-radius: 999px;
-      padding: 5px 9px;
-      font-size: 10px;
-      line-height: 1;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 700;
-      background: rgba(255, 138, 42, 0.08);
-      color: #c2410c;
-      white-space: nowrap;
-    }
-
-    #budget-hypothesis .bh-card h3 {
-      margin: 0;
-      font-size: 30px;
-      line-height: 1.16;
-      letter-spacing: -0.02em;
-      font-weight: 800;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px 14px 12px 36px;
+      font-size: 15px;
+      line-height: 1.55;
       color: #0f172a;
     }
 
-    #budget-hypothesis .bh-price {
-      margin: 0;
+    #budget-hypothesis .bh-list li::before {
+      content: '';
       position: absolute;
-      bottom: 22px;
-      right: 24px;
-      font-size: 26px !important;
-      font-weight: 500 !important;
-      font-family: inherit;
-      line-height: 1.08 !important;
-      letter-spacing: -0.03em !important;
-      color: #0f172a !important;
-      white-space: nowrap;
-      transform: none;
+      left: 14px;
+      top: 16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #ff8a2a;
+      box-shadow: 0 0 0 5px rgba(255, 138, 42, 0.16);
     }
 
-    #budget-hypothesis .bh-card p {
+    #budget-hypothesis .bh-right {
+      display: grid;
+      gap: 14px;
+    }
+
+    #budget-hypothesis .bh-budget {
+      border-radius: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      padding: 20px;
+    }
+
+    #budget-hypothesis .bh-budget + .bh-budget {
+      margin-top: 0;
+    }
+
+    #budget-hypothesis .bh-budget-tag {
+      margin: 0 0 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(15, 23, 42, 0.52);
+    }
+
+    #budget-hypothesis .bh-budget-price {
       margin: 0;
+      font-size: clamp(28px, 3.2vw, 40px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #ff8a2a;
+      font-weight: 800;
+    }
+
+    #budget-hypothesis .bh-budget-text {
+      margin: 10px 0 0;
       font-size: 14px;
-      line-height: 1.62;
-      color: #0f172a !important;
+      line-height: 1.65;
+      color: rgba(15, 23, 42, 0.78);
+    }
+
+    #budget-hypothesis .bh-note {
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(248, 250, 252, 0.92);
+      padding: 16px 18px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(15, 23, 42, 0.72);
     }
 
     #budget-hypothesis .bh-cta-row {
-      display: flex;
-      justify-content: flex-end;
       margin-top: 4px;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      display: flex;
+      justify-content: flex-start;
     }
 
     #budget-hypothesis .bh-btn {
@@ -8341,25 +8106,20 @@
       font-weight: 700;
       letter-spacing: 0.01em;
       box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
-      transition: transform .22s ease, box-shadow .22s ease;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
     }
 
     #budget-hypothesis .bh-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 18px 34px rgba(15, 23, 42, 0.22);
       background: #1e293b;
+      color: #fff;
     }
 
-    #budget-hypothesis .bh-btn-calc {
-      background: #ff8a2a;
-      color: #fff;
-      box-shadow: 0 14px 30px rgba(255, 138, 42, 0.28);
-    }
-
-    #budget-hypothesis .bh-btn-calc:hover {
-      background: #ff9b4a;
-      color: #fff;
-      box-shadow: 0 18px 34px rgba(255, 138, 42, 0.34);
+    @media (max-width: 980px) {
+      #budget-hypothesis .bh-body {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 820px) {
@@ -8371,40 +8131,8 @@
         padding: 0 20px;
       }
 
-      #budget-hypothesis .bh-body {
-        grid-template-columns: 1fr;
-      }
-
-      #budget-hypothesis .bh-visual {
-        position: static;
-      }
-
-      #budget-hypothesis .bh-cta-row {
-        justify-content: flex-start;
-      }
-
-    }
-
-    @media (max-width: 640px) {
-      #budget-hypothesis .bh-title {
-        font-size: 30px;
-      }
-
-      #budget-hypothesis .bh-visual-title {
-        font-size: 21px;
-      }
-
-      #budget-hypothesis .bh-grid {
-        max-width: none;
-      }
-
-      #budget-hypothesis .bh-card h3 {
-        font-size: 24px;
-      }
-
-      #budget-hypothesis .bh-price {
-        font-size: 23px !important;
-        right: 20px;
+      #budget-hypothesis .bh-shell {
+        padding: 22px;
       }
     }
   </style>
@@ -8412,84 +8140,41 @@
   <section id="budget-hypothesis">
     <div class="bh-wrap">
       <div class="bh-head">
-        <div class="bh-eyebrow">Стоимость и гипотеза бюджета</div>
-        <h2 class="bh-title">Инвестиции в продажи</h2>
+        <div class="bh-eyebrow">Оценка проекта</div>
+        <h2 class="bh-title">Подходит ли вам Clever?</h2>
       </div>
 
-      <div class="bh-body">
-        <aside class="bh-visual" aria-hidden="true">
-          <div class="bh-visual-card">
-            <h3 class="bh-visual-title">Собираем бюджет из состава работ, а не из шаблонного прайса</h3>
-            <svg class="bh-spark" viewBox="0 0 300 120" fill="none">
-              <path d="M14 92C44 92 54 58 82 58C112 58 118 82 148 82C179 82 190 30 220 30C247 30 258 56 286 56" stroke="rgba(255,138,42,.85)" stroke-width="3" stroke-linecap="round"/>
-              <path d="M14 92C44 92 54 58 82 58C112 58 118 82 148 82C179 82 190 30 220 30C247 30 258 56 286 56" stroke="rgba(255,138,42,.16)" stroke-width="12" stroke-linecap="round"/>
-              <circle cx="82" cy="58" r="4" fill="#ff8a2a"/>
-              <circle cx="148" cy="82" r="4" fill="#ff8a2a"/>
-              <circle cx="220" cy="30" r="4" fill="#ff8a2a"/>
-              <circle cx="286" cy="56" r="4" fill="#ff8a2a"/>
-            </svg>
+      <div class="bh-shell">
+        <div class="bh-body">
+          <div>
+            <p class="bh-copy">Мы беремся за проекты, где CRM влияет на деньги, контроль и работу отдела продаж.</p>
 
-            <div class="bh-bars">
-              <div class="bh-bars-row">
-                <span>Архитектура продаж</span>
-                <div class="bh-bar-track"><div class="bh-bar-fill" style="width: 78%;"></div></div>
-              </div>
-              <div class="bh-bars-row">
-                <span>Автоматизация рутины</span>
-                <div class="bh-bar-track"><div class="bh-bar-fill" style="width: 62%;"></div></div>
-              </div>
-              <div class="bh-bars-row">
-                <span>ИИ и разработка</span>
-                <div class="bh-bar-track"><div class="bh-bar-fill" style="width: 86%;"></div></div>
-              </div>
-            </div>
+            <p class="bh-label">Обычно это компании:</p>
+            <ul class="bh-list">
+              <li>с отделом продаж от 10 менеджеров</li>
+              <li>с несколькими каналами заявок</li>
+              <li>с длинным циклом сделки</li>
+              <li>со сложной логикой обработки клиентов</li>
+              <li>где руководителю нужен контроль продаж, а не просто “настроенная CRM”</li>
+            </ul>
           </div>
-        </aside>
 
-        <div class="bh-grid">
-          <article class="bh-card">
-            <div class="bh-card-top">
-              <span class="bh-badge">Первый шаг</span>
-              <p class="bh-price">Бесплатно</p>
+          <div class="bh-right">
+            <article class="bh-budget">
+              <p class="bh-budget-tag">Пересборка amoCRM</p>
+              <p class="bh-budget-price">от 700 000 ₽</p>
+              <p class="bh-budget-text">Бюджет проекта по пересборке amoCRM</p>
+            </article>
+
+            <article class="bh-budget">
+              <p class="bh-budget-tag">Сложные внедрения</p>
+              <p class="bh-budget-price">от 1 200 000 ₽</p>
+              <p class="bh-budget-text">Сложные внедрения / перевнедрения с интеграциями, аналитикой и запуском команды</p>
+            </article>
+
+            <div class="bh-cta-row">
+              <a href="#home-form" class="bh-btn" data-lead-open data-lead-offer="Записаться на встречу">Записаться на встречу</a>
             </div>
-            <h3>Аудит и диагностика</h3>
-          </article>
-
-          <article class="bh-card">
-            <div class="bh-card-top">
-              <span class="bh-badge">Оптимизация</span>
-              <p class="bh-price">от 200 000 руб</p>
-            </div>
-            <h3>Перевнедрение amoCRM</h3>
-          </article>
-
-          <article class="bh-card">
-            <div class="bh-card-top">
-              <span class="bh-badge">Под ключ</span>
-              <p class="bh-price">от 300 000 руб</p>
-            </div>
-            <h3>Внедрение с нуля</h3>
-          </article>
-
-          <article class="bh-card">
-            <div class="bh-card-top">
-              <span class="bh-badge">Сложные проекты</span>
-              <p class="bh-price">индивидуально</p>
-            </div>
-            <h3>Кастом + интеграции</h3>
-          </article>
-
-          <article class="bh-card">
-            <div class="bh-card-top">
-              <span class="bh-badge">AI</span>
-              <p class="bh-price">от 30 000 руб</p>
-            </div>
-            <h3>Внедрение ИИ</h3>
-          </article>
-
-          <div class="bh-cta-row">
-            <a href="{{ route('site.calculator') }}" class="bh-btn bh-btn-calc">Калькулятор услуг</a>
-            <a href="#home-form" class="bh-btn" data-lead-open data-lead-offer="Рассчитать точную стоимость">Рассчитать точную стоимость</a>
           </div>
         </div>
       </div>
@@ -8498,7 +8183,7 @@
 
   <style id="start-flow-style">
     #start-flow-block {
-      padding: 104px 0 32px;
+      padding: 104px 0 36px;
       background: #ffffff;
       color: #0f172a;
     }
@@ -8510,8 +8195,8 @@
     }
 
     #start-flow-block .sf-head {
-      margin: 0 auto 34px;
-      max-width: 760px;
+      margin: 0 auto 44px;
+      max-width: 920px;
       text-align: center;
     }
 
@@ -8533,37 +8218,32 @@
       color: #0f172a;
     }
 
+    #start-flow-block .sf-subtitle {
+      margin: 18px auto 0;
+      max-width: 780px;
+      font-size: 17px;
+      line-height: 1.62;
+      color: rgba(15, 23, 42, 0.64);
+    }
+
     #start-flow-block .sf-grid {
       position: relative;
       display: grid;
       grid-template-columns: 1fr;
       gap: 18px;
+      max-width: 920px;
       margin: 0 auto;
-      max-width: 700px;
-      padding-left: 58px;
-    }
-
-    #start-flow-block .sf-grid::before {
-      content: '';
-      position: absolute;
-      left: 18px;
-      top: 10px;
-      bottom: 10px;
-      width: 2px;
-      background: linear-gradient(180deg, rgba(255, 138, 42, 0.14), rgba(255, 138, 42, 0.46), rgba(255, 138, 42, 0.14));
-      z-index: 0;
     }
 
     #start-flow-block .sf-step {
       position: relative;
-      padding: 28px 108px 28px 30px;
-      border-radius: 26px;
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.055);
+      padding: 26px 28px 24px 102px;
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: linear-gradient(180deg, #ffffff 0%, #fcfdff 100%);
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
       min-height: 0;
       transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-      z-index: 1;
       overflow: hidden;
     }
 
@@ -8576,33 +8256,33 @@
     #start-flow-block .sf-step::before {
       content: attr(data-step);
       position: absolute;
-      right: 26px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 64px;
-      text-align: left;
-      font-size: 56px;
-      font-weight: 800;
+      left: 28px;
+      top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       line-height: 1;
-      letter-spacing: -0.06em;
-      font-variant-numeric: tabular-nums;
-      color: rgba(255, 138, 42, 0.34);
-      pointer-events: none;
+      color: #c2410c;
+      background: linear-gradient(180deg, rgba(255, 138, 42, 0.18) 0%, rgba(255, 138, 42, 0.08) 100%);
+      border: 1px solid rgba(255, 138, 42, 0.26);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
     }
 
-    #start-flow-block .sf-step::after {
+    #start-flow-block .sf-step:not(:last-child)::after {
       content: '';
       position: absolute;
-      left: -46px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 16px;
-      height: 16px;
-      border-radius: 999px;
-      background: #ff8a2a;
-      border: 4px solid #ffffff;
-      box-shadow: 0 10px 24px rgba(255, 138, 42, 0.24);
-      z-index: 1;
+      left: 53px;
+      top: 86px;
+      bottom: -18px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(255, 138, 42, 0.32) 0%, rgba(148, 163, 184, 0.06) 100%);
+      pointer-events: none;
     }
 
     #start-flow-block .sf-top {
@@ -8610,20 +8290,37 @@
     }
 
     #start-flow-block .sf-step h3 {
-      margin: 0 0 8px;
-      max-width: 70%;
-      font-size: 30px;
-      line-height: 1.08;
+      margin: 0 0 10px;
+      font-size: clamp(24px, 2.3vw, 30px);
+      line-height: 1.12;
       letter-spacing: -0.02em;
       color: #0f172a;
+      max-width: 730px;
     }
 
     #start-flow-block .sf-step p {
       margin: 0;
-      max-width: 68%;
-      font-size: 15px;
-      line-height: 1.52;
+      font-size: 16px;
+      line-height: 1.6;
       color: rgba(15, 23, 42, 0.62);
+      max-width: 760px;
+    }
+
+    #start-flow-block .sf-result {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(15, 23, 42, 0.88);
+      background: #0f172a;
+      font-size: 16px;
+      line-height: 1.56;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 78%;
+    }
+
+    #start-flow-block .sf-result strong {
+      color: #ffffff;
+      font-weight: 700;
     }
 
     @media (max-width: 760px) {
@@ -8635,34 +8332,50 @@
         padding: 0 20px;
       }
 
+      #start-flow-block .sf-head {
+        margin-bottom: 28px;
+      }
+
+      #start-flow-block .sf-subtitle {
+        font-size: 16px;
+        line-height: 1.56;
+      }
+
       #start-flow-block .sf-grid {
         gap: 14px;
-        padding-left: 34px;
-        max-width: 100%;
       }
 
       #start-flow-block .sf-step {
-        padding: 22px 76px 22px 24px;
-      }
-
-      #start-flow-block .sf-step::after {
-        left: -36px;
+        padding: 18px 18px 16px;
+        border-radius: 20px;
       }
 
       #start-flow-block .sf-step::before {
-        right: 20px;
+        position: static;
         width: 42px;
-        font-size: 42px;
+        height: 30px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+        font-size: 12px;
+      }
+
+      #start-flow-block .sf-step:not(:last-child)::after {
+        display: none;
       }
 
       #start-flow-block .sf-step h3 {
-        max-width: 74%;
         font-size: 22px;
+        line-height: 1.14;
       }
 
       #start-flow-block .sf-step p {
-        max-width: 78%;
-        font-size: 14px;
+        font-size: 15px;
+      }
+
+      #start-flow-block .sf-result {
+        margin-top: 12px;
+        padding: 11px 12px;
+        max-width: 100%;
       }
     }
   </style>
@@ -8671,28 +8384,38 @@
     <div class="sf-wrap">
       <div class="sf-head">
         <div class="sf-eyebrow">Старт проекта</div>
-        <h2 class="sf-title" id="start-flow-title">Краткий план работ</h2>
+        <h2 class="sf-title" id="start-flow-title">Как проходит пересборка CRM</h2>
       </div>
 
       <div class="sf-grid">
         <article class="sf-step" data-step="01">
-          <h3>Быстро вникаем в вашу ситуацию</h3>
-          <p>Смотрим CRM, воронку и как сейчас на самом деле работает отдел продаж</p>
+          <h3>Диагностируем продажи и текущую amoCRM</h3>
+          <p>Разбираем воронки, источники заявок, работу менеджеров, автоматизации, отчеты и точки потерь.</p>
+          <div class="sf-result"><strong>Результат:</strong> Становится понятно, где CRM мешает продажам, где теряются заявки и где руководитель не видит реальную картину.</div>
         </article>
 
         <article class="sf-step" data-step="02">
-          <h3>Находим, где теряются деньги</h3>
-          <p>Показываем узкие места в заявках, повторных продажах, контроле и логике CRM</p>
+          <h3>Проектируем новую архитектуру продаж</h3>
+          <p>Фиксируем, как должна работать CRM: этапы, роли, правила, контроль, задачи, интеграции и аналитика.</p>
+          <div class="sf-result"><strong>Результат:</strong> Появляется понятная модель управления продажами, а не просто набор полей и роботов.</div>
         </article>
 
         <article class="sf-step" data-step="03">
-          <h3>Собираем понятный план работ</h3>
-          <p>Фиксируем, что нужно переделать, автоматизировать или внедрить в первую очередь</p>
+          <h3>Внедряем изменения без хаоса</h3>
+          <p>Настраиваем amoCRM, интеграции, автоматизацию и контроль так, чтобы система не ломала текущую работу отдела.</p>
+          <div class="sf-result"><strong>Результат:</strong> Менеджеры продолжают работать, а изменения внедряются постепенно и управляемо.</div>
         </article>
 
         <article class="sf-step" data-step="04">
-          <h3>Запускаем изменения без хаоса</h3>
-          <p>Переходим к внедрению и переделке так, чтобы CRM наконец начала работать на продажи</p>
+          <h3>Запускаем команду в новую систему</h3>
+          <p>Обучаем менеджеров, проверяем реальные сценарии, исправляем сопротивление и ошибки на старте.</p>
+          <div class="sf-result"><strong>Результат:</strong> CRM начинает использоваться в ежедневной работе, а не остается формальной системой для отчетности.</div>
+        </article>
+
+        <article class="sf-step" data-step="05">
+          <h3>Доводим до управляемости</h3>
+          <p>Собираем аналитику, смотрим первые результаты и дорабатываем систему под реальные продажи.</p>
+          <div class="sf-result"><strong>Результат:</strong> Руководитель видит продажи по цифрам: заявки, конверсии, просрочки, потери, эффективность менеджеров и каналов.</div>
         </article>
       </div>
     </div>
