@@ -61,6 +61,16 @@ Route::get('/demo-header', fn () => response()->file(public_path('demo-header.ht
 Route::get('/demo-animations', fn () => response()->file(public_path('demo-animations.html')));
 Route::get('/demo-animations-v2', fn () => response()->file(public_path('demo-animations-v2.html')));
 Route::get('/demo-anim-hero', fn () => response()->file(public_path('demo-anim-hero.html')));
+Route::get('/demo-articles-hero', fn () => response()->file(public_path('demo-articles-hero.html')));
+Route::get('/demo-articles-list', fn () => response()->file(public_path('demo-articles-list.html')));
+Route::get('/demo-articles-list-v2', fn () => response()->file(public_path('demo-articles-list-v2.html')));
+Route::get('/demo-articles-readnext', fn () => response()->file(public_path('demo-articles-readnext.html')));
+Route::get('/demo-articles-hero-anim', fn () => response()->file(public_path('demo-articles-hero-anim.html')));
+Route::get('/demo-articles-list-anim', fn () => response()->file(public_path('demo-articles-list-anim.html')));
+Route::get('/demo-articles-topics-anim', fn () => response()->file(public_path('demo-articles-topics-anim.html')));
+Route::get('/demo-articles-faq-anim', fn () => response()->file(public_path('demo-articles-faq-anim.html')));
+Route::get('/demo-articles-subscribe-anim', fn () => response()->file(public_path('demo-articles-subscribe-anim.html')));
+Route::get('/demo-articles-readnext-anim', fn () => response()->file(public_path('demo-articles-readnext-anim.html')));
 Route::get('/services', [ServiceController::class, 'index'])->name('site.services.index');
 Route::get('/services/vnedrenie-crm', [ServiceController::class, 'implementation'])->name('site.services.amocrm-implementation');
 Route::get('/services/razrabotka-crm', [ServiceController::class, 'development'])->name('site.services.amocrm-development');

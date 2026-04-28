@@ -231,7 +231,7 @@
                                 'title' => $a->title,
                                 'desc' => $a->short_description ?: '',
                                 'url' => route('site.articles.show', $a->slug),
-                                'meta' => optional($a->publishedDate ?? null)->format('d.m.Y') ?: 'Материал',
+                                'meta' => optional($a->publishedDate())->format('d.m.Y') ?: 'Материал',
                                 'read' => 'Читать',
                             ]);
                         }

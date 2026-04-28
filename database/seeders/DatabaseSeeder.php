@@ -301,5 +301,9 @@ class DatabaseSeeder extends Seeder
             'status' => 'published',
             'sort_order' => 40,
         ]);
+
+        $this->call([
+            ArticleSeeder::class,
+        ]);
     }
 }
