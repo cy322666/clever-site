@@ -53,7 +53,7 @@
 
         <div class="sp-wrap" id="steps-process">
             <div class="sp-inner">
-                <div class="sp-kicker sp-anim" style="transition-delay:.2s">Процесс</div>
+                <div class="sp-kicker sp-anim" style="transition-delay:.2s">внедрение</div>
                 @if(!empty($section['title']))
                     <h2 class="sp-title sp-anim" style="transition-delay:.4s">{{ $section['title'] }}</h2>
                 @endif

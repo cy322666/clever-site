@@ -42,7 +42,7 @@
 <section class="zz-section" id="zz-benefits">
     <div class="zz-head">
         @if(!empty($section['title']))
-            <div class="zz-kicker">Что входит</div>
+            <div class="zz-kicker">Старт проекта</div>
             <h2 class="zz-title">{{ $section['title'] }}</h2>
         @endif
 
