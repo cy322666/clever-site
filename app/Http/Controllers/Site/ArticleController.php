@@ -14,12 +14,32 @@ class ArticleController extends Controller
 {
     public function index(): View
     {
+        $articles = Article::query()
+            ->published()
+            ->latest('published_at')
+            ->latest('updated_at')
+            ->paginate(9);
+
+        $topicSlugs = ['audit-amocrm', 'vnedrenie-amocrm', 'analitika-prodazh-v-amocrm'];
+        $topicLandings = LandingPage::query()
+            ->published()
+            ->whereIn('slug', $topicSlugs)
+            ->get()
+            ->sortBy(fn (LandingPage $l): int => array_search($l->slug, $topicSlugs, true))
+            ->values();
+
+        $readNextArticles = Article::query()
+            ->published()
+            ->latest('published_at')
+            ->latest('updated_at')
+            ->take(3)
+            ->get();
+
         return view('site.articles.index', [
-            'articles' => Article::query()
-                ->published()
-                ->latest('published_at')
-                ->latest('updated_at')
-                ->paginate(9),
+            'articles' => $articles,
+            'featuredArticle' => $articles->first(),
+            'topicLandings' => $topicLandings,
+            'readNextArticles' => $readNextArticles,
         ]);
     }
 
