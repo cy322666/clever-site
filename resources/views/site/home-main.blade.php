@@ -6844,7 +6844,7 @@
           {{ $siteSettings->hero_subtitle ?? 'Покажем, где бизнес теряет заявки, повторные продажи и контроль над отделом' }}
         </p>
         <div class="future-home-actions">
-          <a class="future-btn future-btn-primary" href="#home-form" data-lead-open data-lead-offer="Диагностика за 15 минут">Диагностика за 15 минут</a>
+          <a class="future-btn future-btn-primary" href="#home-form" data-lead-open data-lead-offer="Обсудить проект">Обсудить проект</a>
         </div>
       </div>
       <div class="future-home-visual">
@@ -8141,7 +8141,7 @@
     <div class="bh-wrap">
       <div class="bh-head">
         <div class="bh-eyebrow">Оценка проекта</div>
-        <h2 class="bh-title">Подходит ли вам Clever?</h2>
+        <h2 class="bh-title">Когда мы можем быть полезны</h2>
       </div>
 
       <div class="bh-shell">

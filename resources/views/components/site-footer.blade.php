@@ -36,28 +36,34 @@
             </div>
 
             <div>
-                <p class="site-footer-title">Услуги</p>
+                <p class="site-footer-title">Решения</p>
                 <ul class="site-footer-list">
-                    <li><a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}">Внедрение</a></li>
-                    <li><a href="{{ route('site.landings.show', 'audit-amocrm') }}">Аудит amoCRM</a></li>
-                    <li><a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}">Перевнедрение</a></li>
-                    <li><a href="{{ route('site.landings.show', 'razrabotka-crm') }}">Разработка</a></li>
-                    <li><a href="{{ route('site.landings.show', 'reanimaciya-amocrm') }}">Реанимация amoCRM</a></li>
+                    <li><a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}">Пересборка amoCRM</a></li>
+                    <li><a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}">Внедрение amoCRM с нуля</a></li>
                     <li><a href="{{ route('site.landings.show', 'analitika-prodazh-v-amocrm') }}">Аналитика продаж</a></li>
-                    <li><a href="{{ route('site.landings.show', 'raspredelenie-lidov-amocrm') }}">Распределение лидов</a></li>
-                    <li><a href="{{ route('site.landings.show', 'obrabotka-zayavok-crm') }}">Обработка заявок</a></li>
-                    <li><a href="{{ route('site.landings.show', 'avtozadachi-amocrm') }}">Автозадачи</a></li>
-                    <li><a href="{{ route('site.landings.show', 'integraciya-whatsapp-amocrm') }}">WhatsApp и amoCRM</a></li>
+                    <li><a href="{{ route('site.landings.show', 'razrabotka-crm') }}">Разработка и интеграции</a></li>
+                    <li><a href="{{ route('site.landings.show', 'soprovozhdenie-amocrm') }}">Сопровождение и развитие</a></li>
                 </ul>
             </div>
 
             <div>
-                <p class="site-footer-title">Контакты</p>
+                <p class="site-footer-title">Задачи</p>
                 <ul class="site-footer-list">
-                    <li><a href="/case-studies">Кейсы</a></li>
-                    <li><a href="/articles">Статьи</a></li>
-                    <li><a href="/widgets">Виджеты</a></li>
-                    <li><a href="/policy">Политика конфиденциальности</a></li>
+                    <li><a href="{{ route('site.landings.show', 'obrabotka-zayavok-crm') }}">Обработка заявок</a></li>
+                    <li><a href="{{ route('site.landings.show', 'raspredelenie-lidov-amocrm') }}">Распределение лидов</a></li>
+                    <li><a href="{{ route('site.landings.show', 'avtozadachi-amocrm') }}">Автозадачи</a></li>
+                    <li><a href="{{ route('site.landings.show', 'integraciya-whatsapp-amocrm') }}">WhatsApp и amoCRM</a></li>
+                    <li><a href="{{ route('site.landings.show', 'audit-amocrm') }}">Аудит amoCRM</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="site-footer-title">Компания</p>
+                <ul class="site-footer-list">
+                    <li><a href="{{ route('site.case-studies.index') }}">Кейсы</a></li>
+                    <li><a href="{{ route('site.home') }}#start-flow-block">Подход</a></li>
+                    <li><a href="{{ route('site.about') }}">О компании</a></li>
+                    <li><a href="{{ route('site.articles.index') }}">Статьи</a></li>
                 </ul>
             </div>
         </div>
