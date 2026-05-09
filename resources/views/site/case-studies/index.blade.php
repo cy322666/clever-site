@@ -27,7 +27,7 @@
                 <h1 class="cases-hero-title">Наши <em>кейсы</em> —<br>история роста клиентов</h1>
             </div>
             <div class="cases-hero-row">
-                <p class="cases-hero-lead">{{ $caseStudies->total() }}+ проектов в разных отраслях. Каждый кейс — задача, решение и измеримый результат для бизнеса.</p>
+                <p class="cases-hero-lead">Показываем, с какой задачей пришёл клиент, что изменили в CRM и какой результат получил бизнес после внедрения.</p>
                 <div class="cases-hero-actions">
                     <a href="#" class="cases-hero-btn" data-lead-open data-lead-offer="Обсудить проект">Обсудить проект</a>
                 </div>
@@ -107,28 +107,25 @@
                                         @endif
                                     </div>
                                 </div>
-                                @if($case->publishedDate())
-                                    <div class="cases-tl-date">{{ optional($case->publishedDate())->format('d.m.Y') }}</div>
-                                @endif
                             </div>
 
                             <h3 class="cases-tl-title">{{ $case->title }}</h3>
 
                             <div class="cases-tl-body">
                                 @if($case->problem_block)
-                                    <div class="cases-tl-block">
+                                    <div class="cases-tl-block cases-tl-block--problem">
                                         <div class="cases-tl-block-label problem">Проблема</div>
                                         <p>{{ Str::limit(strip_tags($case->problem_block), 140) }}</p>
                                     </div>
                                 @endif
                                 @if($case->solution_block)
-                                    <div class="cases-tl-block">
+                                    <div class="cases-tl-block cases-tl-block--solution">
                                         <div class="cases-tl-block-label solution">Решение</div>
                                         <p>{{ Str::limit(strip_tags($case->solution_block), 140) }}</p>
                                     </div>
                                 @endif
                                 @if($case->result_block || $case->result_summary)
-                                    <div class="cases-tl-block">
+                                    <div class="cases-tl-block cases-tl-block--result">
                                         <div class="cases-tl-block-label result">Результат</div>
                                         <p>{{ Str::limit(strip_tags($case->result_block ?: $case->result_summary), 140) }}</p>
                                     </div>
@@ -195,56 +192,33 @@
         </div>
     </section>
 
-    @if(($relatedServices ?? collect())->isNotEmpty() || ($relatedArticles ?? collect())->isNotEmpty())
-    <section class="cases-related-section cases-rl-anim" id="cases-related">
+    @if(($relatedLandings ?? collect())->isNotEmpty())
+    @php
+        $relatedLandingCards = collect($relatedLandings ?? [])->map(static fn ($landing) => [
+            'page_type_label' => $landing->pageTypeLabel(),
+            'title' => $landing->displayTitle(),
+            'excerpt' => $landing->excerpt,
+            'url' => route('site.landings.show', $landing->slug),
+            'anchor_text' => $landing->displayTitle(),
+        ]);
+    @endphp
+    <section class="rl-section" id="cases-related">
         <div class="container-wrap">
-            <div class="cases-rl-wrap">
-                <div class="cases-rl-head">
-                    <div>
-                        <p class="cases-rl-kicker">Читайте также</p>
-                        <h3 class="cases-rl-title">Вам может <span>понравиться</span></h3>
+            <div class="rl-kicker">Ещё</div>
+            <h2 class="rl-title">Другие услуги и решения</h2>
+            <p class="rl-desc">Соседние решения по внедрению, автоматизации и типовым проблемам в продажах.</p>
+
+            <div class="rl-grid">
+                @foreach($relatedLandingCards as $item)
+                    <div class="rl-card">
+                        <div class="rl-card-kicker">{{ $item['page_type_label'] }}</div>
+                        <h3 class="rl-card-title">{{ strip_tags($item['title']) }}</h3>
+                        @if($item['excerpt'])
+                            <p class="rl-card-text">{{ $item['excerpt'] }}</p>
+                        @endif
+                        <a href="{{ $item['url'] }}" class="rl-card-link">{{ $item['anchor_text'] }}</a>
                     </div>
-                    <a href="{{ route('site.articles.index') }}" class="cases-rl-all">Все материалы →</a>
-                </div>
-                <div class="cases-rl-grid">
-                    @php
-                        $items = collect();
-                        foreach(($relatedServices ?? []) as $s) {
-                            $items->push([
-                                'cat' => 'Услуга',
-                                'title' => $s->title,
-                                'desc' => $s->short_description ?: '',
-                                'url' => route('site.services.show', $s->slug),
-                                'meta' => $s->short_label ?? 'Популярно',
-                                'read' => 'Подробнее',
-                            ]);
-                        }
-                        foreach(($relatedArticles ?? []) as $a) {
-                            $items->push([
-                                'cat' => 'Статья',
-                                'title' => $a->title,
-                                'desc' => $a->short_description ?: '',
-                                'url' => route('site.articles.show', $a->slug),
-                                'meta' => optional($a->publishedDate())->format('d.m.Y') ?: 'Материал',
-                                'read' => 'Читать',
-                            ]);
-                        }
-                        $items = $items->take(3);
-                    @endphp
-                    @foreach($items as $item)
-                        <a href="{{ $item['url'] }}" class="cases-rl-card">
-                            <div class="cases-rl-cat">{{ $item['cat'] }}</div>
-                            <h4 class="cases-rl-card-title">{{ $item['title'] }}</h4>
-                            @if($item['desc'])
-                                <p class="cases-rl-card-desc">{{ Str::limit($item['desc'], 120) }}</p>
-                            @endif
-                            <div class="cases-rl-meta">
-                                <span>{{ $item['meta'] }}</span>
-                                <span class="cases-rl-read">{{ $item['read'] }} →</span>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -288,13 +262,6 @@
             ioTk.observe(tk);
         }
 
-        var rl = document.getElementById('cases-related');
-        if (rl && 'IntersectionObserver' in window) {
-            var ioRl = new IntersectionObserver(function(entries){
-                entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('play'); ioRl.disconnect(); } });
-            }, { threshold: 0.15 });
-            ioRl.observe(rl);
-        }
     })();
     </script>
 @endsection

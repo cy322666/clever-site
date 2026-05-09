@@ -73,17 +73,35 @@
     <x-card>
         <div class="space-y-1">
             <h2 class="text-lg font-semibold text-slate-900">Контент статьи</h2>
-            <p class="text-sm text-slate-500">Основной публичный рендер работает из блоков ниже</p>
+            <p class="text-sm text-slate-500">Одно поле: вставьте текст статьи в Markdown или HTML. Система сама соберет блоки для публичной страницы.</p>
         </div>
 
-        <div class="mt-5">
-            @include('admin.articles._blocks-editor')
-        </div>
+        <div class="mt-5 space-y-4" data-article-rich-text>
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-slate-700" for="full_content">Текст статьи</label>
+                <textarea
+                    id="full_content"
+                    name="full_content"
+                    rows="16"
+                    class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+                    placeholder="## Заголовок&#10;&#10;Абзац текста...&#10;&#10;- Пункт списка&#10;- Пункт списка&#10;&#10;![Подпись](https://...)"
+                >{{ old('full_content', $article->full_content) }}</textarea>
+                <p class="text-xs text-slate-500">Поддерживаются Markdown и HTML. Изображения можно вставлять ссылками или загрузить ниже.</p>
+            </div>
 
-        <div class="mt-5 space-y-2">
-            <label class="text-sm font-medium text-slate-700" for="full_content">Legacy текст статьи</label>
-            <textarea id="full_content" name="full_content" rows="6" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm">{{ old('full_content', $article->full_content) }}</textarea>
-            <p class="text-xs text-slate-500">Оставлено для совместимости со старыми материалами и миграции контента</p>
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-slate-700">Изображения в статью</p>
+                        <p class="text-xs text-slate-500">Выберите файл — ссылка добавится в текст на место курсора в формате Markdown.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="file" accept="image/*" data-article-image-input class="block text-sm text-slate-600 file:mr-3 file:rounded-md file:border-0 file:bg-slate-900 file:px-3 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-slate-700">
+                        <button type="button" class="btn btn-secondary" data-article-image-upload>Загрузить</button>
+                    </div>
+                </div>
+                <p class="mt-2 text-xs text-slate-500" data-article-image-status></p>
+            </div>
         </div>
     </x-card>
 
@@ -117,3 +135,78 @@
 </div>
 
 @include('admin.partials.slug-preview-script')
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-article-rich-text]').forEach((wrap) => {
+            const textarea = wrap.querySelector('#full_content');
+            const input = wrap.querySelector('[data-article-image-input]');
+            const button = wrap.querySelector('[data-article-image-upload]');
+            const status = wrap.querySelector('[data-article-image-status]');
+            const csrfToken = document.querySelector('input[name="_token"]')?.value || '';
+
+            if (!textarea || !input || !button || !status) {
+                return;
+            }
+
+            const setStatus = (text, isError = false) => {
+                status.textContent = text;
+                status.classList.toggle('text-red-600', isError);
+                status.classList.toggle('text-slate-500', !isError);
+            };
+
+            const insertAtCursor = (value) => {
+                const start = textarea.selectionStart ?? textarea.value.length;
+                const end = textarea.selectionEnd ?? textarea.value.length;
+                const before = textarea.value.slice(0, start);
+                const after = textarea.value.slice(end);
+                const needsPadding = before.length > 0 && !before.endsWith('\n\n') ? '\n\n' : '';
+                const inserted = `${needsPadding}${value}\n\n`;
+
+                textarea.value = `${before}${inserted}${after}`;
+                const cursor = before.length + inserted.length;
+                textarea.setSelectionRange(cursor, cursor);
+                textarea.focus();
+            };
+
+            button.addEventListener('click', async () => {
+                const file = input.files?.[0];
+                if (!file) {
+                    setStatus('Сначала выберите изображение.', true);
+                    return;
+                }
+
+                button.disabled = true;
+                setStatus('Загружаем изображение...');
+
+                try {
+                    const formData = new FormData();
+                    formData.append('image', file);
+
+                    const response = await fetch('{{ route('admin.articles.upload-image') }}', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Accept': 'application/json',
+                        },
+                        body: formData,
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('upload_failed');
+                    }
+
+                    const data = await response.json();
+                    const alt = file.name.replace(/\.[^.]+$/, '').trim() || 'image';
+                    insertAtCursor(`![${alt}](${data.url})`);
+                    input.value = '';
+                    setStatus('Изображение загружено и вставлено в текст.');
+                } catch (error) {
+                    setStatus('Не удалось загрузить изображение. Проверьте размер файла и повторите попытку.', true);
+                } finally {
+                    button.disabled = false;
+                }
+            });
+        });
+    });
+</script>

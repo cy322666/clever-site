@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ArticleRequest;
 use App\Models\Article;
 use App\Support\ArticleBlocks;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -87,16 +88,31 @@ class ArticleController extends Controller
         return back()->with('success', 'Статья удалена.');
     }
 
+    public function uploadImage(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'image' => ['required', 'image', 'max:8192'],
+        ]);
+
+        $path = $validated['image']->store('uploads/articles/content', 'public');
+
+        return response()->json([
+            'url' => asset('storage/'.$path),
+            'path' => $path,
+        ]);
+    }
+
     private function validatedData(ArticleRequest $request): array
     {
         $data = $request->validated();
-        $data['content_blocks'] = ArticleBlocks::fromPayload($data['content_blocks_payload'] ?? null);
+        $data['content_blocks'] = ArticleBlocks::fromRichText(
+            (string) ($data['full_content'] ?? ''),
+            (string) ($data['title'] ?? '')
+        );
 
         if ($data['content_blocks'] === []) {
             $data['content_blocks'] = null;
         }
-
-        unset($data['content_blocks_payload']);
 
         return $data;
     }

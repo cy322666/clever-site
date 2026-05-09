@@ -220,6 +220,9 @@
                 <a href="{{ route('site.about') }}" class="{{ request()->routeIs('site.about') ? 'is-active' : '' }}">О компании</a>
             </div>
             <div class="cmd-nav-item">
+                <a href="{{ route('site.faq') }}" class="{{ request()->routeIs('site.faq') ? 'is-active' : '' }}">FAQ</a>
+            </div>
+            <div class="cmd-nav-item">
                 <a href="{{ route('site.articles.index') }}" class="{{ request()->routeIs('site.articles.*') ? 'is-active' : '' }}">Статьи</a>
             </div>
         </div>
@@ -282,6 +285,7 @@
             <a href="{{ route('site.case-studies.index') }}" class="cmd-mob-link">Кейсы</a>
             <a href="{{ route('site.home') }}#start-flow-block" class="cmd-mob-link">Подход</a>
             <a href="{{ route('site.about') }}" class="cmd-mob-link">О компании</a>
+            <a href="{{ route('site.faq') }}" class="cmd-mob-link">FAQ</a>
             <a href="{{ route('site.articles.index') }}" class="cmd-mob-link">Статьи</a>
             <div class="cmd-mob-bottom">
                 <div class="cmd-nav-socials">

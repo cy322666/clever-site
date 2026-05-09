@@ -49,4 +49,43 @@ class LandingPageTest extends TestCase
 
         $response->assertNotFound();
     }
+
+    public function test_extended_landing_sections_render(): void
+    {
+        $landing = $this->createLanding([
+            'slug' => 'perevnedrenie-test',
+            'sections' => [
+                [
+                    'type' => 'cards',
+                    'kicker' => 'Типовые признаки хаоса',
+                    'title' => 'Когда CRM мешает',
+                    'items' => [
+                        ['title' => 'Сделки живут мимо CRM', 'text' => 'Менеджеры работают в чатах'],
+                    ],
+                ],
+                [
+                    'type' => 'case_examples',
+                    'kicker' => 'Примеры кейсов',
+                    'title' => 'Где вернули контроль',
+                    'items' => [
+                        [
+                            'label' => 'Производство',
+                            'title' => 'Навели порядок в продажах',
+                            'text' => 'Убрали хаос в воронке',
+                            'result' => 'руководитель видит потери',
+                            'url' => '/case-studies/proizvodstvo-crm',
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $response = $this->get(route('site.landings.show', $landing->slug));
+
+        $response->assertOk();
+        $response->assertSee('Типовые признаки хаоса');
+        $response->assertSee('Сделки живут мимо CRM');
+        $response->assertSee('Примеры кейсов');
+        $response->assertSee('Навели порядок в продажах');
+    }
 }

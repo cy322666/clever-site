@@ -85,6 +85,10 @@ Route::get('/solutions/{slug}', [LandingController::class, 'show'])->name('site.
 Route::get('/widgets', [WidgetController::class, 'index'])->name('site.widgets.index');
 Route::get('/widgets/{slug}', [WidgetController::class, 'show'])->name('site.widgets.show');
 Route::get('/about', AboutController::class)->name('site.about');
+Route::view('/faq', 'site.faq.index', [
+    'title' => 'FAQ по внедрению amoCRM | Clever',
+    'metaDescription' => 'Ответы на частые вопросы о стоимости, сроках, аудите, формате оплаты и работе над внедрением amoCRM.',
+])->name('site.faq');
 Route::view('/project-estimate', 'site.calculator', [
     'title' => 'Предварительная оценка CRM-проекта | CleverCRM',
     'metaDescription' => 'Калькулятор предварительной оценки CRM-проекта: бюджетный диапазон, сроки и состав работ от CleverCRM.',
@@ -108,6 +112,7 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
 
         Route::resource('services', AdminServiceController::class)->except(['show']);
         Route::resource('case-studies', AdminCaseStudyController::class)->except(['show']);
+        Route::post('articles/upload-image', [AdminArticleController::class, 'uploadImage'])->name('articles.upload-image');
         Route::resource('articles', AdminArticleController::class)->except(['show']);
         Route::resource('widgets', AdminWidgetController::class)->except(['show']);
         Route::resource('js-plugins', AdminJsPluginController::class)->except(['show']);

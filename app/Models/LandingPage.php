@@ -10,6 +10,8 @@ class LandingPage extends Model
     private const SECTION_VIEW_MAP = [
         'hero' => 'site.landings.sections.hero',
         'benefits' => 'site.landings.sections.benefits',
+        'cards' => 'site.landings.sections.cards',
+        'case_examples' => 'site.landings.sections.case-examples',
         'steps' => 'site.landings.sections.steps',
         'faq' => 'site.landings.sections.faq',
         'cta' => 'site.landings.sections.cta',

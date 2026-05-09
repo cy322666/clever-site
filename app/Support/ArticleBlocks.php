@@ -2,8 +2,12 @@
 
 namespace App\Support;
 
+use DOMDocument;
+use DOMElement;
+use DOMNode;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class ArticleBlocks
 {
@@ -69,6 +73,37 @@ class ArticleBlocks
         $decoded = json_decode($payload, true);
 
         return is_array($decoded) ? self::normalize($decoded) : [];
+    }
+
+    public static function fromRichText(string $content, ?string $title = null): array
+    {
+        $content = trim(str_replace(["\r\n", "\r"], "\n", $content));
+
+        if ($content === '') {
+            return [];
+        }
+
+        if (self::looksLikeHtml($content)) {
+            $blocks = self::fromHtml($content, $title);
+
+            if ($blocks !== []) {
+                return $blocks;
+            }
+        }
+
+        if (self::looksLikeMarkdown($content)) {
+            $html = (string) Str::markdown($content, [
+                'html_input' => 'strip',
+                'allow_unsafe_links' => false,
+            ]);
+            $blocks = self::fromHtml($html, $title);
+
+            if ($blocks !== []) {
+                return $blocks;
+            }
+        }
+
+        return self::fromLegacyText($content, $title);
     }
 
     public static function fromLegacyText(string $content, ?string $title = null): array
@@ -140,6 +175,206 @@ class ArticleBlocks
         }
 
         return self::normalize($blocks);
+    }
+
+    private static function looksLikeHtml(string $content): bool
+    {
+        return preg_match('/<\s*\/?\s*[a-z][^>]*>/iu', $content) === 1;
+    }
+
+    private static function looksLikeMarkdown(string $content): bool
+    {
+        return preg_match('/(^|\n)\s*(#{1,6}\s+|[-*+]\s+|\d+\.\s+|>\s+|!\[[^\]]*]\([^)]+\)|\[[^\]]+]\([^)]+\))/u', $content) === 1;
+    }
+
+    private static function fromHtml(string $html, ?string $title = null): array
+    {
+        $wrapper = '<div id="article-root">'.$html.'</div>';
+        $document = new DOMDocument();
+        $prev = libxml_use_internal_errors(true);
+        $document->loadHTML('<?xml encoding="utf-8" ?>'.$wrapper, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        libxml_clear_errors();
+        libxml_use_internal_errors($prev);
+
+        /** @var DOMElement|null $root */
+        $root = $document->getElementById('article-root');
+        if ($root === null) {
+            return [];
+        }
+
+        $blocks = [];
+        foreach ($root->childNodes as $node) {
+            self::collectBlocksFromNode($node, $blocks, $title);
+        }
+
+        return self::normalize($blocks);
+    }
+
+    private static function collectBlocksFromNode(DOMNode $node, array &$blocks, ?string $title = null): void
+    {
+        if ($node->nodeType === XML_TEXT_NODE) {
+            $text = trim(preg_replace('/\s+/u', ' ', (string) $node->textContent) ?? '');
+            if ($text !== '') {
+                $blocks[] = [
+                    'type' => 'paragraph',
+                    'text' => $text,
+                ];
+            }
+
+            return;
+        }
+
+        if ($node->nodeType !== XML_ELEMENT_NODE) {
+            return;
+        }
+
+        $tag = mb_strtolower($node->nodeName);
+
+        if (in_array($tag, ['script', 'style', 'noscript'], true)) {
+            return;
+        }
+
+        if (in_array($tag, ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], true)) {
+            $heading = self::inlineText($node);
+            if ($heading !== '' && ($title === null || mb_strtolower($heading) !== mb_strtolower(trim($title)))) {
+                $blocks[] = [
+                    'type' => 'heading',
+                    'text' => $heading,
+                    'level' => in_array($tag, ['h1', 'h2'], true) ? 2 : 3,
+                ];
+            }
+
+            return;
+        }
+
+        if ($tag === 'p') {
+            if ($img = self::firstImage($node)) {
+                $blocks[] = [
+                    'type' => 'image',
+                    'image_url' => $img['src'],
+                    'alt' => $img['alt'],
+                    'caption' => null,
+                ];
+                return;
+            }
+
+            $text = self::inlineText($node);
+            if ($text !== '') {
+                $blocks[] = [
+                    'type' => 'paragraph',
+                    'text' => $text,
+                ];
+            }
+
+            return;
+        }
+
+        if (in_array($tag, ['ul', 'ol'], true)) {
+            $items = [];
+            foreach ($node->childNodes as $child) {
+                if ($child->nodeType === XML_ELEMENT_NODE && mb_strtolower($child->nodeName) === 'li') {
+                    $itemText = self::inlineText($child);
+                    if ($itemText !== '') {
+                        $items[] = $itemText;
+                    }
+                }
+            }
+
+            if ($items !== []) {
+                $blocks[] = [
+                    'type' => 'list',
+                    'style' => $tag === 'ol' ? 'ordered' : 'unordered',
+                    'items' => $items,
+                ];
+            }
+
+            return;
+        }
+
+        if ($tag === 'blockquote') {
+            $text = self::inlineText($node);
+            if ($text !== '') {
+                $blocks[] = [
+                    'type' => 'quote',
+                    'text' => $text,
+                    'author' => null,
+                ];
+            }
+
+            return;
+        }
+
+        if ($tag === 'figure') {
+            $imgNode = null;
+            $caption = null;
+            foreach ($node->childNodes as $child) {
+                if ($child->nodeType !== XML_ELEMENT_NODE) {
+                    continue;
+                }
+
+                $childTag = mb_strtolower($child->nodeName);
+                if ($childTag === 'img' && $imgNode === null) {
+                    $imgNode = $child;
+                } elseif ($childTag === 'figcaption') {
+                    $caption = self::inlineText($child);
+                }
+            }
+
+            if ($imgNode instanceof DOMElement) {
+                $src = trim((string) $imgNode->getAttribute('src'));
+                if ($src !== '') {
+                    $blocks[] = [
+                        'type' => 'image',
+                        'image_url' => $src,
+                        'alt' => trim((string) $imgNode->getAttribute('alt')) ?: null,
+                        'caption' => $caption ?: null,
+                    ];
+                }
+            }
+
+            return;
+        }
+
+        if ($tag === 'img') {
+            $src = trim((string) (($node instanceof DOMElement) ? $node->getAttribute('src') : ''));
+            if ($src !== '') {
+                $blocks[] = [
+                    'type' => 'image',
+                    'image_url' => $src,
+                    'alt' => ($node instanceof DOMElement ? trim((string) $node->getAttribute('alt')) : '') ?: null,
+                    'caption' => null,
+                ];
+            }
+
+            return;
+        }
+
+        foreach ($node->childNodes as $child) {
+            self::collectBlocksFromNode($child, $blocks, $title);
+        }
+    }
+
+    private static function inlineText(DOMNode $node): string
+    {
+        $text = preg_replace('/\s+/u', ' ', trim((string) $node->textContent)) ?? '';
+        return trim($text);
+    }
+
+    private static function firstImage(DOMNode $node): ?array
+    {
+        foreach ($node->childNodes as $child) {
+            if ($child->nodeType === XML_ELEMENT_NODE && mb_strtolower($child->nodeName) === 'img' && $child instanceof DOMElement) {
+                $src = trim((string) $child->getAttribute('src'));
+                if ($src !== '') {
+                    return [
+                        'src' => $src,
+                        'alt' => trim((string) $child->getAttribute('alt')) ?: null,
+                    ];
+                }
+            }
+        }
+
+        return null;
     }
 
     private static function normalizeBlock(array $block): ?array

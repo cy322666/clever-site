@@ -23,10 +23,12 @@
     @endforeach
 
     <div class="container-wrap landing-shell">
-        @include('site.partials.landing-form', [
-            'landing' => $landing,
-            'formConfig' => $formConfig,
-        ])
+        @unless($landing->slug === 'razrabotka-crm')
+            @include('site.partials.landing-form', [
+                'landing' => $landing,
+                'formConfig' => $formConfig,
+            ])
+        @endunless
 
         @if($relatedLandings->isNotEmpty())
             <style>

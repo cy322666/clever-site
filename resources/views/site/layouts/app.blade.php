@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? ($siteSettings->site_name ?? 'CRM Integrator') }}</title>
     <meta name="description" content="{{ $metaDescription ?? 'Маркетинговый сайт CRM-интегратора' }}">
+    @if(!empty($canonical))
+        <link rel="canonical" href="{{ $canonical }}">
+    @endif
     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {!! $globalJsPlugins['head'] ?? '' !!}
