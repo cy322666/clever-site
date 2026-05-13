@@ -9,16 +9,32 @@
   <meta
     content="Внедрение и перевнедрение amoCRM. Наведём порядок в продажах, уберём потери заявок и настроим контроль. Интегратор с 2020 года, 150+ проектов."
     name="description" />
+  <link rel="canonical" href="{{ route('site.home') }}" />
   <meta content="Внедрение и перевнедрение amoCRM | CleverCRM" property="og:title" />
   <meta
     content="Внедрение и перевнедрение amoCRM. Наведём порядок в продажах, уберём потери заявок и настроим контроль. Интегратор с 2020 года, 150+ проектов."
     property="og:description" />
+  <meta content="{{ route('site.home') }}" property="og:url" />
   <meta content="Внедрение и перевнедрение amoCRM | CleverCRM" property="twitter:title" />
   <meta
     content="Внедрение и перевнедрение amoCRM. Наведём порядок в продажах, уберём потери заявок и настроим контроль. Интегратор с 2020 года, 150+ проектов."
     property="twitter:description" />
   <meta content="website" property="og:type" />
   <meta content="summary_large_image" name="twitter:card" />
+  @php
+    $homeOrganizationSchema = [
+      '@context' => 'https://schema.org',
+      '@type' => 'Organization',
+      'name' => $siteSettings->site_name ?? 'CleverCRM',
+      'url' => route('site.home'),
+      'logo' => asset('images/Max_logo.svg'),
+      'telephone' => $siteSettings->phone ?? null,
+      'email' => $siteSettings->email ?? null,
+      'address' => $siteSettings->address ?? null,
+    ];
+    $homeOrganizationSchema = array_filter($homeOrganizationSchema, static fn ($value) => filled($value));
+  @endphp
+  <script type="application/ld+json">{!! json_encode($homeOrganizationSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
   <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport" />
   <meta content="Webflow" name="generator" />
   <link crossorigin="anonymous"
@@ -8778,8 +8794,8 @@
 
     .site-footer-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 32px;
+      grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+      gap: 28px;
     }
 
     .site-footer-title {

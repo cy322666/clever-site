@@ -1,4 +1,16 @@
-@extends('site.layouts.app', ['title' => 'Контакты'])
+@extends('site.layouts.app', [
+    'title' => 'Контакты CleverCRM | Обсудить внедрение amoCRM',
+    'metaDescription' => 'Контакты CleverCRM: обсудите внедрение, перевнедрение, аудит или развитие amoCRM для отдела продаж.',
+    'canonical' => route('site.contacts'),
+])
+
+@push('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Контакты CleverCRM | Обсудить внедрение amoCRM">
+    <meta property="og:description" content="Контакты CleverCRM: обсудите внедрение, перевнедрение, аудит или развитие amoCRM для отдела продаж.">
+    <meta property="og:url" content="{{ route('site.contacts') }}">
+    <meta name="twitter:card" content="summary">
+@endpush
 
 @section('content')
     <section class="site-page-hero">

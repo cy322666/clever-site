@@ -38,6 +38,7 @@
             <div>
                 <p class="site-footer-title">Решения</p>
                 <ul class="site-footer-list">
+                    <li><a href="{{ route('site.license-renewal') }}">Продление лицензий amoCRM</a></li>
                     <li><a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}">Пересборка amoCRM</a></li>
                     <li><a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}">Внедрение amoCRM с нуля</a></li>
                     <li><a href="{{ route('site.landings.show', 'analitika-prodazh-v-amocrm') }}">Аналитика продаж</a></li>

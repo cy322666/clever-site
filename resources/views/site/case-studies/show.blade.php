@@ -20,6 +20,32 @@
     <meta name="twitter:description" content="{{ $caseStudy->seoDescription() }}">
 @endpush
 
+@php
+    $caseImage = $caseStudy->coverImageUrl();
+    $caseImageUrl = $caseImage && preg_match('#^https?://#', $caseImage) ? $caseImage : ($caseImage ? url($caseImage) : null);
+    $caseStudySchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'CreativeWork',
+        'name' => $caseStudy->seoTitle(),
+        'description' => $caseStudy->seoDescription(),
+        'url' => $caseStudy->canonicalUrl(),
+        'datePublished' => optional($caseStudy->publishedDate())->toAtomString(),
+        'dateModified' => optional($caseStudy->updated_at)->toAtomString(),
+        'image' => $caseImageUrl,
+        'about' => $caseStudy->niche,
+        'provider' => [
+            '@type' => 'Organization',
+            'name' => $siteSettings->site_name ?? 'CleverCRM',
+            'url' => route('site.home'),
+        ],
+    ];
+    $caseStudySchema = array_filter($caseStudySchema, static fn ($value) => filled($value));
+@endphp
+
+@push('schema')
+    <script type="application/ld+json">{!! json_encode($caseStudySchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+@endpush
+
 @section('content')
     @php
         $extractPoints = static function (?string $text, int $max = 4): array {

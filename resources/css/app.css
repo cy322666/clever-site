@@ -2612,8 +2612,7 @@
 /* ============================================
    Articles hero — Editorial Split (v1)
    ============================================ */
-.articles-hero { padding: 32px 0 72px; position: relative; overflow: hidden; min-height: calc(100vh - 72px); display: flex; flex-direction: column; justify-content: center; }
-.articles-hero > .container-wrap { width: 100%; }
+.articles-hero { padding: 32px 0 72px; position: relative; overflow: hidden; }
 .articles-hero::after { content:''; position:absolute; top:-40px; right:-120px; width:480px; height:480px; background:radial-gradient(circle, rgba(255,138,42,.08), transparent 70%); pointer-events:none; z-index:0; }
 .articles-hero-bc { display:flex; align-items:center; gap:6px; font-size:13px; color:rgba(15,23,42,.35); margin-bottom:20px; font-family:'Manrope',system-ui,sans-serif; }
 .articles-hero-bc a { color:rgba(15,23,42,.35); text-decoration:none; transition:color .2s; }

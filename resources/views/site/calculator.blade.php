@@ -1,4 +1,16 @@
-@extends('site.layouts.app', ['title' => $title ?? 'Предварительная оценка CRM-проекта'])
+@extends('site.layouts.app', [
+    'title' => $title ?? 'Предварительная оценка CRM-проекта',
+    'metaDescription' => $metaDescription ?? 'Калькулятор предварительной оценки CRM-проекта: бюджетный диапазон, сроки и состав работ от CleverCRM.',
+    'canonical' => route('site.calculator'),
+])
+
+@push('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $title ?? 'Предварительная оценка CRM-проекта' }}">
+    <meta property="og:description" content="{{ $metaDescription ?? 'Калькулятор предварительной оценки CRM-проекта: бюджетный диапазон, сроки и состав работ от CleverCRM.' }}">
+    <meta property="og:url" content="{{ route('site.calculator') }}">
+    <meta name="twitter:card" content="summary">
+@endpush
 
 @section('content')
     <section class="ccalc-page">

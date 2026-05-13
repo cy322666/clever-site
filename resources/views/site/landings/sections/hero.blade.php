@@ -324,7 +324,11 @@
                     <p class="lh-kicker lh-anim">{{ $section['kicker'] }}</p>
                 @endif
 
-                <h1 class="lh-title" id="lh-typewriter" data-text="{{ strip_tags($landing->h1 ?: $landing->title) }}" data-accent="{{ $landing->h1 && str_contains($landing->h1, '<span>') ? strip_tags(preg_match('/<span>(.*?)<\/span>/', $landing->h1, $m) ? $m[1] : '') : '' }}"></h1>
+                @php
+                    $heroTitleText = strip_tags($landing->h1 ?: $landing->title);
+                    $heroTitleHtml = $landing->h1 ? strip_tags($landing->h1, '<span>') : e($landing->title);
+                @endphp
+                <h1 class="lh-title" id="lh-typewriter" data-text="{{ $heroTitleText }}" data-accent="{{ $landing->h1 && str_contains($landing->h1, '<span>') ? strip_tags(preg_match('/<span>(.*?)<\/span>/', $landing->h1, $m) ? $m[1] : '') : '' }}">{!! $heroTitleHtml !!}</h1>
 
                 @if(!empty($section['lead']))
                     <p class="lh-lead lh-anim">{{ $section['lead'] }}</p>
@@ -456,6 +460,7 @@
 
     // Start typing after brief delay
     setTimeout(function() {
+        el.textContent = '';
         el.appendChild(cursor);
         type();
     }, 500);

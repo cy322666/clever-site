@@ -1,5 +1,13 @@
 @extends('site.layouts.app')
 
+@push('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $title ?? 'Политика обработки персональных данных | CleverCRM' }}">
+    <meta property="og:description" content="{{ $metaDescription ?? 'Политика обработки персональных данных CleverCRM: порядок сбора, хранения и защиты персональных данных.' }}">
+    <meta property="og:url" content="{{ $canonical ?? url('/policy') }}">
+    <meta name="twitter:card" content="summary">
+@endpush
+
 @section('content')
 <section class="site-section py-14 md:py-18">
     <div class="container mx-auto px-4">

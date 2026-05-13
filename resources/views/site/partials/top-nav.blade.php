@@ -185,8 +185,12 @@
 
         <div class="cmd-nav-center">
             <div class="cmd-nav-item has-dropdown">
-                <a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}" class="{{ request()->routeIs('site.landings.*') ? 'is-active' : '' }}">Решения</a>
+                <a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}" class="{{ request()->routeIs('site.landings.*') || request()->routeIs('site.license-renewal') ? 'is-active' : '' }}">Решения</a>
                 <div class="cmd-dropdown services-dropdown">
+                    <a href="{{ route('site.license-renewal') }}" class="cmd-solution-link">
+                        <span class="cmd-solution-title">Продление лицензий amoCRM</span>
+                        <span class="cmd-solution-desc">Бонусные месяцы, 40+ виджетов и кешбек работами по amoCRM</span>
+                    </a>
                     <a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}" class="cmd-solution-link">
                         <span class="cmd-solution-title">Пересборка amoCRM</span>
                         <span class="cmd-solution-desc">Когда CRM уже есть, но в ней бардак, нет контроля и теряются заявки</span>
@@ -214,13 +218,7 @@
                 <a href="{{ route('site.case-studies.index') }}" class="{{ request()->routeIs('site.case-studies.*') ? 'is-active' : '' }}">Кейсы</a>
             </div>
             <div class="cmd-nav-item">
-                <a href="{{ route('site.home') }}#start-flow-block">Подход</a>
-            </div>
-            <div class="cmd-nav-item">
                 <a href="{{ route('site.about') }}" class="{{ request()->routeIs('site.about') ? 'is-active' : '' }}">О компании</a>
-            </div>
-            <div class="cmd-nav-item">
-                <a href="{{ route('site.faq') }}" class="{{ request()->routeIs('site.faq') ? 'is-active' : '' }}">FAQ</a>
             </div>
             <div class="cmd-nav-item">
                 <a href="{{ route('site.articles.index') }}" class="{{ request()->routeIs('site.articles.*') ? 'is-active' : '' }}">Статьи</a>
@@ -258,6 +256,10 @@
             <details class="cmd-mob-accordion" open>
                 <summary class="cmd-mob-link">Решения</summary>
                 <div class="cmd-mob-accordion-body">
+                    <a href="{{ route('site.license-renewal') }}" class="cmd-mob-sub cmd-mob-sub-rich">
+                        <span class="cmd-mob-sub-title">Продление лицензий amoCRM</span>
+                        <span class="cmd-mob-sub-desc">Бонусные месяцы, 40+ виджетов и кешбек работами по amoCRM</span>
+                    </a>
                     <a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}" class="cmd-mob-sub cmd-mob-sub-rich">
                         <span class="cmd-mob-sub-title">Пересборка amoCRM</span>
                         <span class="cmd-mob-sub-desc">Когда CRM уже есть, но в ней бардак, нет контроля и теряются заявки</span>
@@ -283,9 +285,7 @@
 
             <div class="cmd-mob-divider"></div>
             <a href="{{ route('site.case-studies.index') }}" class="cmd-mob-link">Кейсы</a>
-            <a href="{{ route('site.home') }}#start-flow-block" class="cmd-mob-link">Подход</a>
             <a href="{{ route('site.about') }}" class="cmd-mob-link">О компании</a>
-            <a href="{{ route('site.faq') }}" class="cmd-mob-link">FAQ</a>
             <a href="{{ route('site.articles.index') }}" class="cmd-mob-link">Статьи</a>
             <div class="cmd-mob-bottom">
                 <div class="cmd-nav-socials">

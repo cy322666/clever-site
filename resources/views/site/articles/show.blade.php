@@ -23,6 +23,36 @@
     @endif
 @endpush
 
+@php
+    $articleSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Article',
+        'headline' => $article->seoTitle(),
+        'description' => $article->seoDescription(),
+        'url' => $article->canonicalUrl(),
+        'datePublished' => optional($article->publishedDate())->toAtomString(),
+        'dateModified' => optional($article->updated_at)->toAtomString(),
+        'image' => $article->coverImageUrl(),
+        'author' => [
+            '@type' => 'Organization',
+            'name' => $siteSettings->site_name ?? 'CleverCRM',
+        ],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => $siteSettings->site_name ?? 'CleverCRM',
+            'logo' => [
+                '@type' => 'ImageObject',
+                'url' => asset('images/Max_logo.svg'),
+            ],
+        ],
+    ];
+    $articleSchema = array_filter($articleSchema, static fn ($value) => filled($value));
+@endphp
+
+@push('schema')
+    <script type="application/ld+json">{!! json_encode($articleSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+@endpush
+
 @section('content')
     <section class="site-page-hero">
         <div class="container-wrap">

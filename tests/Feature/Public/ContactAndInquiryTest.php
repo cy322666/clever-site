@@ -20,6 +20,16 @@ class ContactAndInquiryTest extends TestCase
         $response->assertSee('Контакты');
     }
 
+    public function test_license_renewal_page_opens(): void
+    {
+        $response = $this->get(route('site.license-renewal'));
+
+        $response->assertOk();
+        $response->assertSee('Продлите лицензию amoCRM');
+        $response->assertSee('40+');
+        $response->assertSee('Кешбек работами');
+    }
+
     public function test_landing_inquiry_form_is_submitted_successfully(): void
     {
         $landing = $this->createLanding([
@@ -48,6 +58,32 @@ class ContactAndInquiryTest extends TestCase
             'contact' => '+79990000000',
             'landing_slug' => $landing->slug,
             'offer_type' => 'Аудит CRM',
+        ]);
+    }
+
+    public function test_license_renewal_inquiry_form_is_submitted_successfully(): void
+    {
+        $response = $this
+            ->from(route('site.license-renewal'))
+            ->post(route('site.inquiries.store'), [
+                'name' => 'Анна',
+                'contact' => '@client',
+                'message' => 'Нужно продлить 8 пользователей amoCRM',
+                'landing_title' => 'Продление лицензий amoCRM',
+                'offer_type' => 'Продление лицензий amoCRM с бонусами',
+                'page_url' => route('site.license-renewal'),
+                'form_anchor' => 'license-renewal-form',
+            ]);
+
+        $response
+            ->assertRedirect(route('site.license-renewal').'#license-renewal-form')
+            ->assertSessionHas('landing_form_success');
+
+        $this->assertDatabaseHas(SiteInquiry::class, [
+            'name' => 'Анна',
+            'contact' => '@client',
+            'landing_title' => 'Продление лицензий amoCRM',
+            'offer_type' => 'Продление лицензий amoCRM с бонусами',
         ]);
     }
 

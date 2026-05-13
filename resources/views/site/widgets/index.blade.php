@@ -1,4 +1,16 @@
-@extends('site.layouts.app', ['title' => 'Виджеты', 'canonical' => route('site.widgets.index')])
+@extends('site.layouts.app', [
+    'title' => 'Виджеты для amoCRM | CleverCRM',
+    'metaDescription' => 'Готовые CRM-виджеты и плагины для amoCRM: автоматизация процессов, интеграции и полезная бизнес-логика.',
+    'canonical' => route('site.widgets.index'),
+])
+
+@push('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Виджеты для amoCRM | CleverCRM">
+    <meta property="og:description" content="Готовые CRM-виджеты и плагины для amoCRM: автоматизация процессов, интеграции и полезная бизнес-логика.">
+    <meta property="og:url" content="{{ route('site.widgets.index') }}">
+    <meta name="twitter:card" content="summary">
+@endpush
 
 @section('content')
     <section class="site-page-hero">

@@ -1,7 +1,16 @@
 @extends('site.layouts.app', [
     'title' => 'О компании | Clever',
-    'metaDescription' => 'Кто такая команда Clever: для кого работаем, что делаем с amoCRM, чем отличаемся и как начать проект.'
+    'metaDescription' => 'Кто такая команда Clever: для кого работаем, что делаем с amoCRM, чем отличаемся и как начать проект.',
+    'canonical' => route('site.about'),
 ])
+
+@push('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="О компании | Clever">
+    <meta property="og:description" content="Кто такая команда Clever: для кого работаем, что делаем с amoCRM, чем отличаемся и как начать проект.">
+    <meta property="og:url" content="{{ route('site.about') }}">
+    <meta name="twitter:card" content="summary">
+@endpush
 
 @section('content')
     <style>

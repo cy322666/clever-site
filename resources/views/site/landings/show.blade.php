@@ -5,6 +5,86 @@
     'robots' => 'index,follow',
 ])
 
+@php
+    $landingTitle = strip_tags($landing->h1 ?: $landing->title);
+    $landingDescription = $landing->seoDescription();
+    $landingUrl = $landing->canonicalUrl();
+    $faqSection = collect($sections)->firstWhere('data.type', 'faq');
+    $faqItems = collect($faqSection['data']['items'] ?? [])
+        ->filter(fn ($item) => is_array($item) && filled($item['question'] ?? null) && filled($item['answer'] ?? null))
+        ->values();
+
+    $serviceSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Service',
+        'name' => $landingTitle,
+        'description' => $landingDescription,
+        'url' => $landingUrl,
+        'serviceType' => $landing->pageTypeLabel(),
+        'provider' => [
+            '@type' => 'Organization',
+            'name' => $siteSettings->site_name ?? 'CleverCRM',
+            'url' => route('site.home'),
+        ],
+        'areaServed' => [
+            '@type' => 'Country',
+            'name' => 'Россия',
+        ],
+    ];
+
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Главная',
+                'item' => route('site.home'),
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 2,
+                'name' => $landingTitle,
+                'item' => $landingUrl,
+            ],
+        ],
+    ];
+
+    $faqSchema = $faqItems->isEmpty() ? null : [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => $faqItems
+            ->map(fn ($item) => [
+                '@type' => 'Question',
+                'name' => $item['question'],
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => $item['answer'],
+                ],
+            ])
+            ->all(),
+    ];
+@endphp
+
+@push('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $landing->seoTitle() }}">
+    <meta property="og:description" content="{{ $landingDescription }}">
+    <meta property="og:url" content="{{ $landingUrl }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ $landing->seoTitle() }}">
+    <meta name="twitter:description" content="{{ $landingDescription }}">
+@endpush
+
+@push('schema')
+    <script type="application/ld+json">{!! json_encode($serviceSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+    <script type="application/ld+json">{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+    @if($faqSchema)
+        <script type="application/ld+json">{!! json_encode($faqSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+    @endif
+@endpush
+
 @section('content')
     @foreach($sections as $section)
         @if(($section['data']['type'] ?? '') === 'steps')

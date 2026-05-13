@@ -1,11 +1,11 @@
 @extends('site.layouts.app', [
     'title' => $title,
     'metaDescription' => $metaDescription,
+    'canonical' => route('site.faq'),
 ])
 
-@section('content')
-    @php
-        $faqItems = [
+@php
+    $faqItems = [
             [
                 'question' => 'Сколько стоит внедрение amoCRM?',
                 'answer' => 'Стоимость зависит от состава проекта: количества воронок, ролей, источников заявок, интеграций, автоматизаций, отчетов и объема обучения команды. После первичного разбора мы фиксируем понятный диапазон, а после аудита или проектирования даем точную смету по этапам.',
@@ -34,8 +34,37 @@
                 'question' => 'Что если в процессе появятся новые задачи?',
                 'answer' => 'Мы фиксируем их отдельно: оцениваем влияние на сроки и бюджет, после чего согласуем, добавлять задачу в текущий этап или вынести в следующий. Так проект не расползается незаметно, а клиент понимает, за что платит и что получает на каждом шаге.',
             ],
-        ];
-    @endphp
+    ];
+
+    $faqSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => collect($faqItems)
+            ->map(fn ($item) => [
+                '@type' => 'Question',
+                'name' => $item['question'],
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => $item['answer'],
+                ],
+            ])
+            ->all(),
+    ];
+@endphp
+
+@push('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $metaDescription }}">
+    <meta property="og:url" content="{{ route('site.faq') }}">
+    <meta name="twitter:card" content="summary">
+@endpush
+
+@push('schema')
+    <script type="application/ld+json">{!! json_encode($faqSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+@endpush
+
+@section('content')
 
     <style>
         .client-faq-page {

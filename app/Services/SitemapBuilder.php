@@ -53,30 +53,60 @@ class SitemapBuilder
                 '0.6',
             ),
             $this->makeItem(
-                route('site.landings.show', 'vnedrenie-amocrm'),
-                $this->findLandingDate($landings, 'vnedrenie-amocrm'),
-                'weekly',
-                '0.9',
-            ),
-            $this->makeItem(
-                route('site.articles.index'),
-                $this->latestDate([$articles->max('updated_at')]),
-                'weekly',
-                '0.8',
-            ),
-            $this->makeItem(
                 route('site.case-studies.index'),
                 $this->latestDate([$caseStudies->max('updated_at')]),
                 'weekly',
                 '0.8',
             ),
             $this->makeItem(
+                route('site.about'),
+                $this->asCarbon($siteSettingsUpdatedAt),
+                'monthly',
+                '0.7',
+            ),
+            $this->makeItem(
+                route('site.faq'),
+                $this->asCarbon($siteSettingsUpdatedAt),
+                'monthly',
+                '0.6',
+            ),
+            $this->makeItem(
+                route('site.license-renewal'),
+                $this->asCarbon($siteSettingsUpdatedAt),
+                'monthly',
+                '0.6',
+            ),
+            $this->makeItem(
+                route('site.calculator'),
+                $this->asCarbon($siteSettingsUpdatedAt),
+                'monthly',
+                '0.5',
+            ),
+            $this->makeItem(
+                route('site.policy'),
+                $this->asCarbon($siteSettingsUpdatedAt),
+                'yearly',
+                '0.2',
+            ),
+        ])->filter();
+
+        if ($articles->isNotEmpty()) {
+            $items->push($this->makeItem(
+                route('site.articles.index'),
+                $this->latestDate([$articles->max('updated_at')]),
+                'weekly',
+                '0.8',
+            ));
+        }
+
+        if ($widgets->isNotEmpty()) {
+            $items->push($this->makeItem(
                 route('site.widgets.index'),
                 $this->latestDate([$widgets->max('updated_at')]),
                 'monthly',
                 '0.7',
-            ),
-        ])->filter();
+            ));
+        }
 
         $items = $items
             ->concat($landings->map(fn (LandingPage $landing): array => $this->makeItem(

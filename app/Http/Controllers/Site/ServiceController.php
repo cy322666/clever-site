@@ -9,22 +9,22 @@ class ServiceController extends Controller
 {
     public function index(): RedirectResponse
     {
-        return redirect()->route('site.landings.show', 'vnedrenie-amocrm');
+        return redirect()->route('site.landings.show', ['slug' => 'vnedrenie-amocrm'], 301);
     }
 
     public function implementation(): RedirectResponse
     {
-        return redirect()->route('site.landings.show', 'vnedrenie-amocrm');
+        return redirect()->route('site.landings.show', ['slug' => 'vnedrenie-amocrm'], 301);
     }
 
     public function development(): RedirectResponse
     {
-        return redirect()->route('site.landings.show', 'razrabotka-crm');
+        return redirect()->route('site.landings.show', ['slug' => 'razrabotka-crm'], 301);
     }
 
     public function resuscitation(): RedirectResponse
     {
-        return redirect()->route('site.landings.show', 'reanimaciya-amocrm');
+        return redirect()->route('site.landings.show', ['slug' => 'reanimaciya-amocrm'], 301);
     }
 
     public function show(string $slug): RedirectResponse
@@ -40,6 +40,6 @@ class ServiceController extends Controller
             'kupit-licenzii' => 'skolko-stoit-amocrm',
         ];
 
-        return redirect()->route('site.landings.show', $map[$slug] ?? $slug);
+        return redirect()->route('site.landings.show', ['slug' => $map[$slug] ?? $slug], 301);
     }
 }
