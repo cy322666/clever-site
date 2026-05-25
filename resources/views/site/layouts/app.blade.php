@@ -63,5 +63,6 @@
     </script>
 
     {!! $globalJsPlugins['body_end'] ?? '' !!}
+    @stack('scripts')
 </body>
 </html>

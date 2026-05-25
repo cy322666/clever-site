@@ -1,8 +1,8 @@
-<figure class="rounded-2xl border-l-4 border-slate-900 bg-slate-50 px-6 py-5">
-    <blockquote class="text-lg leading-8 text-slate-800">
-        “{{ $block['text'] }}”
+<figure class="article-expert-quote">
+    <blockquote class="article-expert-quote-text">
+        &ldquo;{{ $block['text'] }}&rdquo;
     </blockquote>
     @if(!empty($block['author']))
-        <figcaption class="mt-3 text-sm font-medium text-slate-500">{{ $block['author'] }}</figcaption>
+        <figcaption class="article-expert-quote-author">{{ $block['author'] }}</figcaption>
     @endif
 </figure>
