@@ -1,623 +1,714 @@
 @extends('site.layouts.app', [
-    'title' => 'О компании | Clever',
-    'metaDescription' => 'Кто такая команда Clever: для кого работаем, что делаем с amoCRM, чем отличаемся и как начать проект.',
+    'title' => 'О CleverCRM | amoCRM для управляемых продаж',
+    'metaDescription' => 'CleverCRM: кто отвечает за проект, как мы подходим к amoCRM, почему начинаем с процесса продаж и доводим CRM до управляемости.',
     'canonical' => route('site.about'),
 ])
 
 @push('meta')
     <meta property="og:type" content="website">
-    <meta property="og:title" content="О компании | Clever">
-    <meta property="og:description" content="Кто такая команда Clever: для кого работаем, что делаем с amoCRM, чем отличаемся и как начать проект.">
+    <meta property="og:title" content="О CleverCRM | amoCRM для управляемых продаж">
+    <meta property="og:description" content="Кто отвечает за проект, как мы подходим к amoCRM и почему начинаем не с настроек, а с процесса продаж.">
     <meta property="og:url" content="{{ route('site.about') }}">
     <meta name="twitter:card" content="summary">
 @endpush
 
 @section('content')
     <style>
-        .about-redesign {
+        .about-page {
             overflow: hidden;
+            background: #f6f7f9;
+            color: #111318;
             font-family: 'Manrope', system-ui, sans-serif;
         }
 
-        .about-redesign .cases-hero {
-            padding-bottom: 96px;
+        .about-page a {
+            color: inherit;
         }
 
-        .about-hero-layout {
+        .about-page .about-hero {
+            padding: 112px 0 84px;
+            background: linear-gradient(180deg, #ffffff 0%, #f6f7f9 100%);
+        }
+
+        .about-page .about-hero-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.72fr);
-            gap: 48px;
-            align-items: end;
-            margin-top: 32px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-redesign .cases-hero .cases-hero-title[class] {
-            max-width: 920px;
-        }
-
-        .about-system-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 28px;
-            padding: 24px;
-            background:
-                radial-gradient(circle at 100% 0%, rgba(249, 115, 22, 0.2), transparent 36%),
-                linear-gradient(135deg, #171717 0%, #0c0c0c 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            box-shadow: 0 26px 70px rgba(15, 23, 42, 0.18);
-        }
-
-        .about-system-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
-            background-size: 42px 42px;
-            opacity: 0.55;
-            pointer-events: none;
-        }
-
-        .about-system-card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-system-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 18px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .about-system-label {
-            color: #ff8a2a;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .about-system-title {
-            margin-top: 8px;
-            max-width: 300px;
-            color: rgba(255, 255, 255, 0.86);
-            font-size: 15px;
-            font-weight: 700;
-            line-height: 1.45;
-        }
-
-        .about-system-pill {
-            flex: 0 0 auto;
-            border-radius: 999px;
-            padding: 8px 12px;
-            background: rgba(249, 115, 22, 0.16);
-            color: #ff9b3d;
-            font-size: 11px;
-            font-weight: 900;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .about-system-flow {
-            display: grid;
-            gap: 12px;
-            margin-top: 18px;
-        }
-
-        .about-system-step {
-            display: grid;
-            grid-template-columns: 42px minmax(0, 1fr);
-            gap: 13px;
+            grid-template-columns: minmax(0, 1.05fr) 420px;
+            gap: 56px;
             align-items: center;
-            border-radius: 18px;
-            padding: 13px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .about-system-num {
+        .about-page .about-kicker {
+            margin: 0 0 18px;
+            color: #f97316;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .about-page .about-title {
+            max-width: 850px;
+            margin: 0;
+            color: #101116;
+            font-size: 72px;
+            font-weight: 950;
+            line-height: .98;
+            letter-spacing: 0;
+        }
+
+        .about-page .about-title span {
+            color: #f97316;
+        }
+
+        .about-page .about-lead {
+            max-width: 690px;
+            margin: 28px 0 0;
+            color: rgba(17, 19, 24, .72);
+            font-size: 20px;
+            line-height: 1.65;
+        }
+
+        .about-page .about-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 34px;
+        }
+
+        .about-page .about-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            background: #f97316;
-            color: #fff;
-            font-size: 12px;
-            font-weight: 900;
+            min-height: 52px;
+            padding: 0 22px;
+            border-radius: 999px;
+            border: 1px solid rgba(17, 19, 24, .14);
+            background: #fff;
+            color: #111318;
+            font-size: 15px;
+            font-weight: 850;
+            text-decoration: none;
+            transition: transform .18s ease, background .18s ease, border-color .18s ease;
         }
 
-        .about-system-step strong {
-            display: block;
+        .about-page .about-btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(17, 19, 24, .24);
+            background: #f3f4f6;
+        }
+
+        .about-page .about-btn-primary {
+            border-color: #111318;
+            background: #111318;
             color: #fff;
+        }
+
+        .about-page .about-btn-primary:hover {
+            background: #262a33;
+            color: #fff;
+        }
+
+        .about-page .about-founder {
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(17, 19, 24, .08);
+            background: #fff;
+            box-shadow: 0 24px 64px rgba(17, 19, 24, .12);
+        }
+
+        .about-page .about-founder-photo {
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            background: #dde2e0;
+        }
+
+        .about-page .about-founder-photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 34%;
+        }
+
+        .about-page .about-founder-body {
+            padding: 22px;
+        }
+
+        .about-page .about-founder-name {
+            margin: 0;
+            color: #101116;
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1.15;
+        }
+
+        .about-page .about-founder-role {
+            margin: 7px 0 0;
+            color: rgba(17, 19, 24, .54);
+            font-size: 14px;
+            font-weight: 750;
+        }
+
+        .about-page .about-founder-quote {
+            margin: 18px 0 0;
+            padding-top: 18px;
+            border-top: 1px solid rgba(17, 19, 24, .08);
+            color: rgba(17, 19, 24, .74);
             font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .about-page .about-section {
+            padding: 84px 0;
+        }
+
+        .about-page .about-section-white {
+            background: #fff;
+        }
+
+        .about-page .about-section-head {
+            max-width: 760px;
+            margin-bottom: 36px;
+        }
+
+        .about-page .about-section-title {
+            margin: 0;
+            color: #101116;
+            font-size: 44px;
+            font-weight: 930;
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+
+        .about-page .about-section-text {
+            margin: 16px 0 0;
+            color: rgba(17, 19, 24, .62);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .about-page .about-principles {
+            display: grid;
+            gap: 0;
+            overflow: hidden;
+            border: 1px solid rgba(17, 19, 24, .08);
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .about-page .about-principle {
+            display: grid;
+            grid-template-columns: 240px minmax(0, 1fr);
+            gap: 32px;
+            padding: 30px 34px;
+            border-bottom: 1px solid rgba(17, 19, 24, .08);
+        }
+
+        .about-page .about-principle:last-child {
+            border-bottom: 0;
+        }
+
+        .about-page .about-principle-title {
+            color: #101116;
+            font-size: 19px;
+            font-weight: 900;
             line-height: 1.25;
         }
 
-        .about-system-step span {
-            display: block;
-            margin-top: 4px;
-            color: rgba(255, 255, 255, 0.56);
-            font-size: 13px;
-            line-height: 1.4;
+        .about-page .about-principle-text {
+            margin: 0;
+            color: rgba(17, 19, 24, .68);
+            font-size: 16px;
+            line-height: 1.7;
         }
 
-        .about-strip {
-            padding: 0 0 72px;
+        .about-page .about-dark {
+            background: #111318;
+            color: #fff;
         }
 
-        .about-strip-panel {
+        .about-page .about-dark .about-kicker {
+            color: #ff9a4f;
+        }
+
+        .about-page .about-dark .about-section-title {
+            color: #fff;
+        }
+
+        .about-page .about-dark .about-section-text {
+            color: rgba(255, 255, 255, .68);
+        }
+
+        .about-page .about-work-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 0;
-            overflow: hidden;
-            border-radius: 28px;
-            border: 1px solid rgba(15, 23, 42, 0.06);
-            background: rgba(255, 255, 255, 0.72);
-            box-shadow: 0 14px 42px rgba(15, 23, 42, 0.06);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
         }
 
-        .about-strip-item {
-            min-height: 152px;
-            padding: 26px;
-            border-right: 1px solid rgba(15, 23, 42, 0.06);
+        .about-page .about-work-item {
+            min-height: 236px;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(255, 255, 255, .06);
         }
 
-        .about-strip-item:last-child {
-            border-right: 0;
-        }
-
-        .about-strip-index {
-            color: #f97316;
-            font-size: 12px;
+        .about-page .about-work-number {
+            color: #ff9a4f;
+            font-size: 13px;
             font-weight: 900;
-            letter-spacing: 0.1em;
+            letter-spacing: .08em;
         }
 
-        .about-strip-title {
-            margin-top: 18px;
-            color: #111;
+        .about-page .about-work-title {
+            margin: 42px 0 0;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1.15;
+        }
+
+        .about-page .about-work-text {
+            margin: 14px 0 0;
+            color: rgba(255, 255, 255, .66);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .about-page .about-fit {
+            display: grid;
+            grid-template-columns: 360px minmax(0, 1fr);
+            gap: 36px;
+            align-items: start;
+        }
+
+        .about-page .about-fit-note {
+            position: sticky;
+            top: 110px;
+            border-radius: 8px;
+            padding: 26px;
+            background: #111318;
+            color: #fff;
+        }
+
+        .about-page .about-fit-note strong {
+            display: block;
+            font-size: 26px;
+            line-height: 1.12;
+        }
+
+        .about-page .about-fit-note span {
+            display: block;
+            margin-top: 16px;
+            color: rgba(255, 255, 255, .66);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .about-page .about-fit-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .about-page .about-fit-row {
+            display: grid;
+            grid-template-columns: 30px minmax(0, 1fr);
+            gap: 16px;
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(17, 19, 24, .10);
+        }
+
+        .about-page .about-fit-row:first-child {
+            padding-top: 0;
+        }
+
+        .about-page .about-fit-mark {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(249, 115, 22, .13);
+            color: #f97316;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+        }
+
+        .about-page .about-fit-row strong {
+            display: block;
+            color: #101116;
+            font-size: 20px;
+            line-height: 1.25;
+        }
+
+        .about-page .about-fit-row p {
+            margin: 8px 0 0;
+            color: rgba(17, 19, 24, .62);
+            font-size: 16px;
+            line-height: 1.65;
+        }
+
+        .about-page .about-proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .about-page .about-proof-card {
+            display: flex;
+            min-height: 210px;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 22px;
+            border-radius: 8px;
+            border: 1px solid rgba(17, 19, 24, .08);
+            background: #fff;
+            text-decoration: none;
+            transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+        }
+
+        .about-page .about-proof-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(249, 115, 22, .36);
+            box-shadow: 0 16px 42px rgba(17, 19, 24, .08);
+        }
+
+        .about-page .about-proof-logo {
+            width: 54px;
+            height: 54px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f4f6;
+            color: #f97316;
+            font-weight: 900;
+        }
+
+        .about-page .about-proof-logo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-page .about-proof-title {
+            margin: 18px 0 0;
+            color: #101116;
             font-size: 18px;
-            font-weight: 800;
-            line-height: 1.18;
-            letter-spacing: -0.02em;
+            font-weight: 900;
+            line-height: 1.25;
         }
 
-        .about-strip-text {
-            margin-top: 10px;
-            color: rgba(15, 23, 42, 0.5);
+        .about-page .about-proof-text {
+            margin: 10px 0 0;
+            color: rgba(17, 19, 24, .58);
             font-size: 14px;
             line-height: 1.55;
         }
 
-        .about-timeline-section {
-            padding-top: 0;
-        }
-
-        .about-tl-intro {
-            margin-bottom: 44px;
-        }
-
-        .about-tl-intro .cases-hero-kicker {
-            margin: 0;
-        }
-
-        .about-tl-title {
-            margin-top: 10px;
-            max-width: 760px;
-            color: #111;
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 900;
-            line-height: 1.03;
-            letter-spacing: -0.04em;
-        }
-
-        .about-tl-lead {
-            margin-top: 16px;
-            max-width: 660px;
-            color: rgba(15, 23, 42, 0.48);
-            font-size: 16px;
-            line-height: 1.72;
-        }
-
-        .about-tl-list {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 22px;
-        }
-
-        .about-tl-chip {
-            position: relative;
-            min-height: 100%;
-            padding: 16px 16px 17px;
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            border-radius: 16px;
-            background: linear-gradient(180deg, #fff, rgba(248, 250, 252, 0.75));
-            color: rgba(15, 23, 42, 0.68);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .about-tl-chip::before {
-            content: '';
-            position: absolute;
-            inset: 0 auto 0 0;
-            width: 3px;
-            border-radius: 16px 0 0 16px;
-            background: rgba(249, 115, 22, 0.28);
-        }
-
-        .about-case-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
-            margin-top: 28px;
-        }
-
-        .about-case-card {
-            width: auto;
-            margin-right: 0;
-        }
-
-        .about-case-link {
-            display: inline-flex;
-            margin-top: 14px;
+        .about-page .about-proof-link {
+            margin-top: 18px;
             color: #f97316;
-            font-size: 13px;
-            font-weight: 800;
-            text-decoration: none;
+            font-size: 14px;
+            font-weight: 850;
         }
 
-        .about-cta-card {
-            border-radius: 30px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .about-cta-actions {
+        .about-page .about-cta {
             display: grid;
-            gap: 12px;
-        }
-
-        .about-cta-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 56px;
-            border-radius: 18px;
-            padding: 0 24px;
-            font-size: 15px;
-            font-weight: 800;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .about-cta-btn-primary {
-            border: 0;
-            background: #ff8a2a;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .about-cta-btn-primary:hover {
-            background: #ff7a0a;
-            transform: translateY(-1px);
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 32px;
+            align-items: end;
+            border-radius: 8px;
+            padding: 42px;
+            background: #111318;
             color: #fff;
         }
 
-        .about-cta-btn-secondary {
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.06);
+        .about-page .about-cta .about-section-title {
             color: #fff;
         }
 
-        .about-cta-btn-secondary:hover {
-            border-color: rgba(255, 255, 255, 0.22);
-            color: #fff;
+        .about-page .about-cta .about-section-text {
+            max-width: 660px;
+            color: rgba(255, 255, 255, .68);
         }
 
-        @media (max-width: 1000px) {
-            .about-hero-layout,
-            .about-strip-panel,
-            .about-case-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+        .about-page .about-cta-actions {
+            display: grid;
+            gap: 10px;
+            min-width: 220px;
+        }
+
+        @media (max-width: 1020px) {
+            .about-page .about-hero-grid,
+            .about-page .about-fit,
+            .about-page .about-cta {
+                grid-template-columns: 1fr;
             }
 
-            .about-hero-layout {
-                align-items: start;
+            .about-page .about-founder {
+                max-width: 460px;
             }
 
-            .about-strip-item:nth-child(2) {
-                border-right: 0;
+            .about-page .about-work-grid,
+            .about-page .about-proof-grid {
+                grid-template-columns: 1fr;
             }
 
-            .about-strip-item:nth-child(-n + 2) {
-                border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+            .about-page .about-fit-note {
+                position: static;
             }
         }
 
         @media (max-width: 760px) {
-            .about-redesign .cases-hero {
-                padding: 28px 0 56px;
+            .about-page .about-hero {
+                padding: 88px 0 58px;
             }
 
-            .about-hero-layout,
-            .about-strip-panel,
-            .about-tl-list,
-            .about-case-grid {
+            .about-page .about-section {
+                padding: 58px 0;
+            }
+
+            .about-page .about-title {
+                font-size: 46px;
+                line-height: 1.02;
+            }
+
+            .about-page .about-lead {
+                font-size: 17px;
+            }
+
+            .about-page .about-section-title {
+                font-size: 34px;
+                line-height: 1.08;
+            }
+
+            .about-page .about-principle {
                 grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 24px;
             }
 
-            .about-hero-layout {
-                gap: 28px;
-            }
-
-            .about-system-card,
-            .about-strip-panel,
-            .about-cta-card {
-                border-radius: 24px;
-            }
-
-            .about-strip {
-                padding-bottom: 56px;
-            }
-
-            .about-strip-item,
-            .about-strip-item:nth-child(2),
-            .about-strip-item:nth-child(-n + 2) {
-                border-right: 0;
-                border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-            }
-
-            .about-strip-item:last-child {
-                border-bottom: 0;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .about-system-card,
-            .about-cta-card {
-                padding: 20px;
-            }
-
-            .about-system-top {
-                flex-direction: column;
-            }
-
-            .about-cta-btn {
+            .about-page .about-hero-actions,
+            .about-page .about-cta-actions {
                 width: 100%;
+            }
+
+            .about-page .about-btn {
+                width: 100%;
+            }
+
+            .about-page .about-cta {
+                padding: 28px;
             }
         }
     </style>
 
-    <div class="about-redesign">
-        <section class="cases-hero">
+    <div class="about-page">
+        <section class="about-hero">
             <div class="container-wrap">
-                <nav class="cases-bc" aria-label="breadcrumbs">
-                    <a href="{{ route('site.home') }}">Главная</a>
-                    <span class="cases-bc-sep">/</span>
-                    <span>О компании</span>
-                </nav>
-
-                <div class="about-hero-layout">
+                <div class="about-hero-grid">
                     <div>
-                        <div class="cases-hero-top">
-                            <h1 class="cases-hero-title">Clever —<br>CRM как <em>система продаж</em></h1>
-                        </div>
-                        <div class="cases-hero-row">
-                            <p class="cases-hero-lead">Мы проектируем amoCRM вокруг реального процесса: заявки, этапы, роли, задачи, аналитика и контроль руководителя. Не продаем “настройку по списку” — собираем рабочий контур продаж.</p>
-                            <div class="cases-hero-actions">
-                                <a href="#" class="cases-hero-btn" data-lead-open data-lead-offer="Обсудить проект">Обсудить проект</a>
-                            </div>
+                        <p class="about-kicker">CleverCRM</p>
+                        <h1 class="about-title">Не просто настраиваем amoCRM. <span>Берем ответственность за систему продаж</span></h1>
+                        <p class="about-lead">
+                            Эта страница не про красивую легенду компании. Она про то, как мы думаем в проекте:
+                            сначала разбираем продажи, потом проектируем CRM, потом доводим ее до состояния,
+                            где менеджеры работают, а руководитель видит контроль.
+                        </p>
+                        <div class="about-hero-actions">
+                            <a href="#" class="about-btn about-btn-primary" data-lead-open data-lead-offer="Обсудить проект">Обсудить проект</a>
+                            <a href="{{ route('site.case-studies.index') }}" class="about-btn">Смотреть кейсы</a>
                         </div>
                     </div>
 
-                    <aside class="about-system-card" aria-label="Схема работы Clever">
-                        <div class="about-system-top">
-                            <div>
-                                <div class="about-system-label">Контур продаж</div>
-                            </div>
+                    <aside class="about-founder" aria-label="Основатель CleverCRM">
+                        <div class="about-founder-photo">
+                            <img src="{{ asset('images/founder-interview.png') }}" alt="Вячеслав Трофимов" loading="lazy">
                         </div>
-                        <div class="about-system-flow">
-                            <div class="about-system-step">
-                                <span class="about-system-num">01</span>
-                                <div><strong>Процесс</strong><span>разбираем реальную логику продаж</span></div>
-                            </div>
-                            <div class="about-system-step">
-                                <span class="about-system-num">02</span>
-                                <div><strong>amoCRM</strong><span>собираем под этапы, роли и контроль</span></div>
-                            </div>
-                            <div class="about-system-step">
-                                <span class="about-system-num">03</span>
-                                <div><strong>Команда</strong><span>запускаем менеджеров в единую систему</span></div>
-                            </div>
-                            <div class="about-system-step">
-                                <span class="about-system-num">04</span>
-                                <div><strong>Руководитель</strong><span>получает цифры и точки управления</span></div>
-                            </div>
+                        <div class="about-founder-body">
+                            <h2 class="about-founder-name">Вячеслав Трофимов</h2>
+                            <p class="about-founder-role">Основатель CleverCRM, 8+ лет в amoCRM</p>
+                            <p class="about-founder-quote">
+                                “Я смотрю на CRM как на управленческую систему: где берется заявка,
+                                кто за нее отвечает, что должен сделать менеджер и какие цифры видит руководитель.”
+                            </p>
                         </div>
                     </aside>
                 </div>
             </div>
         </section>
 
-        <section class="about-strip">
+        <section class="about-section">
             <div class="container-wrap">
-                <div class="about-strip-panel">
-                    <div class="about-strip-item">
-                        <div class="about-strip-index">01</div>
-                        <div class="about-strip-title">Сначала процесс</div>
-                        <p class="about-strip-text">Не начинаем с полей и роботов. Фиксируем, как должна работать продажа.</p>
+                <div class="about-section-head">
+                    <p class="about-kicker">Позиция</p>
+                    <h2 class="about-section-title">Почему мы не начинаем проект с настроек</h2>
+                    <p class="about-section-text">
+                        Если сразу идти в поля, роботов и права доступа, легко получить аккуратную CRM,
+                        которая не управляет продажами. Поэтому сначала фиксируем реальную логику работы.
+                    </p>
+                </div>
+
+                <div class="about-principles">
+                    <div class="about-principle">
+                        <div class="about-principle-title">Продажи важнее интерфейса</div>
+                        <p class="about-principle-text">Нам важно понять, как приходит заявка, как она проходит этапы, где зависает, кто принимает решение и что должно быть видно руководителю.</p>
                     </div>
-                    <div class="about-strip-item">
-                        <div class="about-strip-index">02</div>
-                        <div class="about-strip-title">Потом архитектура</div>
-                        <p class="about-strip-text">Этапы, роли, задачи, интеграции и отчеты собираются в одну модель.</p>
+                    <div class="about-principle">
+                        <div class="about-principle-title">CRM должна быть понятной менеджеру</div>
+                        <p class="about-principle-text">Система не должна ломать рабочий день. Она должна помогать менеджеру не забывать задачи, видеть приоритеты и вести клиента без хаоса.</p>
                     </div>
-                    <div class="about-strip-item">
-                        <div class="about-strip-index">03</div>
-                        <div class="about-strip-title">Запуск команды</div>
-                        <p class="about-strip-text">Проверяем реальные сценарии и доводим систему до использования.</p>
+                    <div class="about-principle">
+                        <div class="about-principle-title">Руководитель должен видеть управление</div>
+                        <p class="about-principle-text">Не просто количество сделок, а потери по этапам, скорость реакции, качество обработки, просрочки, источники и реальную картину по команде.</p>
                     </div>
-                    <div class="about-strip-item">
-                        <div class="about-strip-index">04</div>
-                        <div class="about-strip-title">Контроль цифр</div>
-                        <p class="about-strip-text">Руководитель видит потери, просрочки, конверсию и работу каналов.</p>
+                    <div class="about-principle">
+                        <div class="about-principle-title">После запуска проект не бросается</div>
+                        <p class="about-principle-text">Мы проверяем сценарии на живой работе, исправляем сопротивление и доводим систему до использования, а не до формального “настроено”.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="cases-timeline-section about-timeline-section">
+        <section class="about-section about-dark">
             <div class="container-wrap">
-                <div class="about-tl-intro">
-                    <p class="cases-hero-kicker">Как работаем</p>
-                    <h2 class="about-tl-title">Полезны там, где CRM должна управлять продажами, а не просто хранить сделки</h2>
-                    <p class="about-tl-lead">Лучше всего мы раскрываемся в проектах, где несколько каналов заявок, длинный цикл сделки, разные роли в команде, интеграции и потребность видеть картину по цифрам.</p>
+                <div class="about-section-head">
+                    <p class="about-kicker">Как устроена работа</p>
+                    <h2 class="about-section-title">В проекте есть три слоя ответственности</h2>
+                    <p class="about-section-text">
+                        Мы не делаем вид, что CRM решается одной настройкой. Нормальный результат появляется,
+                        когда бизнес-логика, техническая реализация и запуск команды собраны вместе.
+                    </p>
                 </div>
 
-                <div class="cases-timeline">
-                    <div class="cases-tl-item">
-                        <div class="cases-tl-dot"></div>
-                        <article class="cases-tl-card">
-                            <div class="cases-tl-top">
-                                <div class="cases-tl-left">
-                                    <div class="cases-tl-logo"><span>01</span></div>
-                                    <div>
-                                        <div class="cases-tl-company">Для кого</div>
-                                        <div class="cases-tl-niche">Сложные продажи и рост команды</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h3 class="cases-tl-title">Для собственников и руководителей, которым нужна управляемость продаж</h3>
-                            <div class="about-tl-list">
-                                <div class="about-tl-chip">Отдел продаж от 10 менеджеров или несколько команд, работающих с разными типами клиентов.</div>
-                                <div class="about-tl-chip">Несколько каналов заявок: сайт, звонки, мессенджеры, реклама, партнеры, повторные продажи.</div>
-                                <div class="about-tl-chip">CRM уже есть, но в ней нет контроля, прозрачной аналитики и единой логики работы.</div>
-                            </div>
-                        </article>
+                <div class="about-work-grid">
+                    <div class="about-work-item">
+                        <div class="about-work-number">01</div>
+                        <h3 class="about-work-title">Бизнес-логика</h3>
+                        <p class="about-work-text">Разбираем путь клиента, роли в команде, правила передачи, контроль задач, причины потерь и точки, где нужны цифры.</p>
                     </div>
-
-                    <div class="cases-tl-item">
-                        <div class="cases-tl-dot"></div>
-                        <article class="cases-tl-card">
-                            <div class="cases-tl-top">
-                                <div class="cases-tl-left">
-                                    <div class="cases-tl-logo"><span>02</span></div>
-                                    <div>
-                                        <div class="cases-tl-company">Что делаем</div>
-                                        <div class="cases-tl-niche">Диагностика, архитектура, внедрение</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h3 class="cases-tl-title">Пересобираем CRM вокруг процесса продаж</h3>
-                            <div class="about-tl-list">
-                                <div class="about-tl-chip">Находим, где теряются заявки, контроль, скорость и деньги.</div>
-                                <div class="about-tl-chip">Проектируем этапы, правила, роли, задачи, интеграции и отчеты.</div>
-                                <div class="about-tl-chip">Настраиваем amoCRM и запускаем изменения без остановки отдела продаж.</div>
-                            </div>
-                        </article>
+                    <div class="about-work-item">
+                        <div class="about-work-number">02</div>
+                        <h3 class="about-work-title">Архитектура amoCRM</h3>
+                        <p class="about-work-text">Проектируем воронки, поля, статусы, автоматизацию, интеграции и аналитику так, чтобы система выдерживала реальную работу.</p>
                     </div>
-
-                    <div class="cases-tl-item">
-                        <div class="cases-tl-dot"></div>
-                        <article class="cases-tl-card">
-                            <div class="cases-tl-top">
-                                <div class="cases-tl-left">
-                                    <div class="cases-tl-logo"><span>03</span></div>
-                                    <div>
-                                        <div class="cases-tl-company">Чем отличаемся</div>
-                                        <div class="cases-tl-niche">Бизнес-логика вместо шаблонов</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h3 class="cases-tl-title">Мы смотрим на CRM как на систему управления продажами</h3>
-                            <div class="about-tl-list">
-                                <div class="about-tl-chip">Не переносим чужую воронку и не собираем “как обычно”.</div>
-                                <div class="about-tl-chip">Переводим задачи собственника в этапы, правила, контроль и аналитику.</div>
-                                <div class="about-tl-chip">Строим основу, которая выдерживает рост команды, новые каналы и отчеты.</div>
-                            </div>
-                        </article>
+                    <div class="about-work-item">
+                        <div class="about-work-number">03</div>
+                        <h3 class="about-work-title">Запуск людей</h3>
+                        <p class="about-work-text">Проверяем сценарии, обучаем, исправляем слабые места и помогаем команде перейти из старого хаоса в новый порядок.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="cases-ticker-section">
+        <section class="about-section about-section-white">
             <div class="container-wrap">
-                <div class="about-tl-intro">
-                    <p class="cases-hero-kicker">Кейсы</p>
-                    <h2 class="about-tl-title">Как это выглядит в проектах</h2>
-                    <p class="about-tl-lead">В кейсах видно, с какими задачами приходят компании и что меняется после пересборки amoCRM: контроль заявок, дисциплина работы, аналитика и понятная картина по продажам.</p>
+                <div class="about-fit">
+                    <div class="about-fit-note">
+                        <strong>Мы полезны, когда CRM уже влияет на деньги</strong>
+                        <span>Не беремся делать “просто красиво в amoCRM”. Наша зона: продажи, контроль, аналитика, интеграции и управляемость.</span>
+                    </div>
+
+                    <div>
+                        <div class="about-section-head">
+                            <p class="about-kicker">Кому подходим</p>
+                            <h2 class="about-section-title">Обычно к нам приходят не за кнопками, а за порядком</h2>
+                        </div>
+
+                        <div class="about-fit-list">
+                            <div class="about-fit-row">
+                                <span class="about-fit-mark">1</span>
+                                <div>
+                                    <strong>CRM есть, но руководитель ей не доверяет</strong>
+                                    <p>Менеджеры ведут сделки по-разному, отчеты не сходятся, задачи теряются, а реальные проблемы видно только вручную.</p>
+                                </div>
+                            </div>
+                            <div class="about-fit-row">
+                                <span class="about-fit-mark">2</span>
+                                <div>
+                                    <strong>Продажи выросли, старая логика перестала держать нагрузку</strong>
+                                    <p>Появились новые каналы, роли, отделы, повторные продажи, но CRM осталась на уровне первого внедрения.</p>
+                                </div>
+                            </div>
+                            <div class="about-fit-row">
+                                <span class="about-fit-mark">3</span>
+                                <div>
+                                    <strong>Нужна аналитика, а не выгрузки ради выгрузок</strong>
+                                    <p>Важно видеть, где деньги, где потери, как работает команда и какие действия реально меняют продажи.</p>
+                                </div>
+                            </div>
+                            <div class="about-fit-row">
+                                <span class="about-fit-mark">4</span>
+                                <div>
+                                    <strong>Был неудачный интегратор или внедрение по шаблону</strong>
+                                    <p>Мы спокойно разбираем, что уже сделано, что мешает работе и как пересобрать систему без лишнего разрушения.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container-wrap">
+                <div class="about-section-head">
+                    <p class="about-kicker">Доказательства</p>
+                    <h2 class="about-section-title">Лучше всего подход виден в кейсах</h2>
+                    <p class="about-section-text">
+                        На странице “О компании” можно написать что угодно. Поэтому ниже не обещания,
+                        а проекты, где видно, какие задачи мы разбираем и какой порядок собираем в amoCRM.
+                    </p>
                 </div>
 
-                <div class="about-case-grid">
+                <div class="about-proof-grid">
                     @forelse($caseStudies as $case)
-                        <a href="{{ route('site.case-studies.show', $case->slug) }}" class="cases-ticker-card about-case-card">
-                            <div class="cases-tc-top">
-                                <div class="cases-tc-logo">
+                        <a href="{{ route('site.case-studies.show', $case->slug) }}" class="about-proof-card">
+                            <div>
+                                <div class="about-proof-logo">
                                     @if($case->logoUrl())
                                         <img src="{{ $case->logoUrl() }}" alt="{{ $case->client_name ?: $case->title }}" loading="lazy">
                                     @else
                                         <span>{{ mb_substr($case->client_name ?: $case->title, 0, 2) }}</span>
                                     @endif
                                 </div>
-                                <div>
-                                    <div class="cases-tc-name">{{ $case->client_name ?: $case->title }}</div>
-                                    @if($case->niche)
-                                        <div class="cases-tc-niche">{{ $case->niche }}</div>
-                                    @endif
-                                </div>
+                                <h3 class="about-proof-title">{{ $case->title }}</h3>
+                                <p class="about-proof-text">{{ \Illuminate\Support\Str::limit(strip_tags($case->result_summary ?: $case->short_description), 120) }}</p>
                             </div>
-                            <p class="cases-tc-result">{{ Str::limit($case->result_summary ?: $case->short_description, 110) }}</p>
-                            <span class="about-case-link">Открыть кейс →</span>
+                            <span class="about-proof-link">Открыть кейс</span>
                         </a>
                     @empty
-                        <a href="{{ route('site.case-studies.index') }}" class="cases-ticker-card about-case-card">
-                            <div class="cases-tc-top">
-                                <div class="cases-tc-logo"><span>CL</span></div>
-                                <div>
-                                    <div class="cases-tc-name">Кейсы Clever</div>
-                                    <div class="cases-tc-niche">Проекты amoCRM</div>
-                                </div>
+                        <a href="{{ route('site.case-studies.index') }}" class="about-proof-card">
+                            <div>
+                                <div class="about-proof-logo"><span>CL</span></div>
+                                <h3 class="about-proof-title">Кейсы CleverCRM</h3>
+                                <p class="about-proof-text">Примеры внедрений, пересборок и аналитики для компаний со сложными продажами.</p>
                             </div>
-                            <p class="cases-tc-result">Собрали примеры внедрений, пересборок и аналитики для компаний со сложными продажами.</p>
-                            <span class="about-case-link">Смотреть кейсы →</span>
+                            <span class="about-proof-link">Смотреть кейсы</span>
                         </a>
                     @endforelse
                 </div>
             </div>
         </section>
 
-        <section class="cases-contact-section">
+        <section class="about-section about-section-white">
             <div class="container-wrap">
-                <div class="cases-cp-panel">
+                <div class="about-cta">
                     <div>
-                        <p class="cases-hero-kicker">Как начать</p>
-                        <h2 class="cases-cp-title">Начинаем с разговора о <span>продажах</span></h2>
-                        <p class="cases-cp-desc">На первой встрече разбираем, что сейчас происходит с заявками, командой, контролем и аналитикой. После этого понятно, нужен ли аудит, внедрение с нуля, пересборка или развитие текущей системы.</p>
-                        <div class="cases-cp-trust">
-                            <div class="cases-cp-trust-item">Без навязывания готового шаблона</div>
-                            <div class="cases-cp-trust-item">Сначала процесс, потом настройки</div>
-                            <div class="cases-cp-trust-item">Покажем ближайшие точки потерь</div>
-                        </div>
+                        <p class="about-kicker">Старт проекта</p>
+                        <h2 class="about-section-title">Начинаем с разговора о продажах</h2>
+                        <p class="about-section-text">
+                            На первой встрече разбираем, что происходит с заявками, командой,
+                            контролем и аналитикой. После этого понятно, нужен аудит, внедрение,
+                            пересборка или развитие текущей amoCRM.
+                        </p>
                     </div>
-
-                    <div class="about-cta-card">
-                        <div class="about-cta-actions">
-                            <button type="button" class="about-cta-btn about-cta-btn-primary" data-lead-open data-lead-offer="Обсудить проект">Обсудить проект</button>
-                            <a href="{{ route('site.case-studies.index') }}" class="about-cta-btn about-cta-btn-secondary">Смотреть кейсы</a>
-                        </div>
+                    <div class="about-cta-actions">
+                        <a href="#" class="about-btn about-btn-primary" data-lead-open data-lead-offer="Обсудить проект">Обсудить проект</a>
+                        <a href="https://t.me/integrator" class="about-btn" target="_blank" rel="noreferrer">Написать в Telegram</a>
                     </div>
                 </div>
             </div>

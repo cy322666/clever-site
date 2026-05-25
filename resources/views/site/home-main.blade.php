@@ -3902,18 +3902,18 @@
     #cases-redesign-6 .cs-mini-preview {
       display: grid !important;
       width: 100% !important;
-      aspect-ratio: 16 / 8 !important;
+      aspect-ratio: 16 / 9 !important;
       place-items: center !important;
       overflow: hidden !important;
       border-radius: 14px !important;
-      border: 1px solid rgba(249, 115, 22, .1) !important;
-      background: linear-gradient(135deg, rgba(249, 115, 22, .12), rgba(255, 247, 237, .72)) !important;
+      background: #f8fafc !important;
     }
 
     #cases-redesign-6 .cs-mini-preview img {
       width: 100% !important;
       height: 100% !important;
       object-fit: cover !important;
+      object-position: center !important;
       display: block !important;
     }
 
@@ -7624,7 +7624,7 @@
           'image' => asset('images/home/quantum-case-card.png'),
           'image_alt' => 'Quantum Clinic — ресепшен клиники',
           'service_url' => route('site.landings.show', 'vnedrenie-amocrm'),
-          'case_url' => route('site.case-studies.show', 'zapusk-amocrm-dlia-salona-santexniki-dozd-kak-my-zabrali-problemnyi-proekt-posle-neudacnogo-vnedreniia'),
+          'case_url' => route('site.case-studies.show', 'kak-my-vystroili-kommunikacii-v-seti-klinik-krasoty-i-rabotaem-s-klientom-uze-2-goda'),
         ],
         [
           'title' => 'Перевнедрение',
@@ -7644,7 +7644,7 @@
         ],
         [
           'title' => 'Разработка',
-          'description' => 'Сделали для Shortread интеграцию с сайтом и выгрузку исторических данных',
+          'description' => 'Виджет для проведения показов в недвижимости для Art Estate',
           'image' => asset('images/home/shortread-case-card.png'),
           'image_alt' => 'Команда проекта Shortread',
           'service_url' => route('site.landings.show', 'razrabotka-crm'),
@@ -7845,11 +7845,23 @@
       </div>
 
       <div class="cs-mini-grid">
+        @php
+          $casePreviewFallbacks = [
+            'kak-my-vystroili-kommunikacii-v-seti-klinik-krasoty-i-rabotaem-s-klientom-uze-2-goda' => asset('images/home/quantum-case-card.png'),
+            'zapusk-amocrm-dlia-salona-santexniki-dozd-kak-my-zabrali-problemnyi-proekt-posle-neudacnogo-vnedreniia' => asset('images/home/quantum-case-card.png'),
+            'kak-crm-mozet-nacat-mesat-prodazam-perezapusk-amocrm-dlia-obrazovatelnogo-proekta-necto' => asset('images/home/nechto-case-card.png'),
+            'b2b-analitika-datalens' => asset('images/home/eurolos-case-card.png'),
+            'kak-pravilno-vybrat-mesto-dlia-vidzeta-v-amocrm-keis-art-estate' => asset('images/home/shortread-case-card.png'),
+            'macromir-invest' => asset('images/home/shortread-case-card.png'),
+            'medicina-crm' => asset('images/home/quantum-case-card.png'),
+            'proizvodstvo-crm' => asset('images/home/crm-diagnostics-map.png'),
+          ];
+        @endphp
         @forelse($caseStudies as $case)
         <a class="cs-mini cr-mini" href="/case-studies/{{ $case->slug }}">
           @php
-            $casePreviewImage = $case->coverImageUrl();
-            $casePreviewLogo = $case->logoUrl();
+            $casePreviewImage = $case->coverImageUrl() ?: ($casePreviewFallbacks[$case->slug] ?? null);
+            $casePreviewLogo = $casePreviewImage ? null : $case->logoUrl();
           @endphp
           @if($casePreviewImage)
             <div class="cs-mini-preview">

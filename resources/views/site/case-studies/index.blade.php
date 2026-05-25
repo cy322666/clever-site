@@ -35,11 +35,12 @@
 
             <div class="cases-hero-quote">
                 <div class="cases-hq-left">
-                    <div class="cases-hq-avatar">ВТ</div>
+                    <div class="cases-hq-avatar">
+                        <img src="{{ asset('images/founder-avatar.png') }}" alt="Вячеслав Трофимов" loading="lazy">
+                    </div>
                     <div>
                         <div class="cases-hq-name">Вячеслав Трофимов</div>
                         <div class="cases-hq-role">Основатель, CRM-архитектор</div>
-                        <span class="cases-hq-cert">★ amoCRM Gold Partner</span>
                     </div>
                 </div>
                 <p class="cases-hq-text">Мы измеряем успех не часами разработки, а деньгами, которые клиент не теряет после внедрения. Это главный критерий качества.</p>
