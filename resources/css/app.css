@@ -2371,6 +2371,195 @@
     .cases-tl-dot { left:-25px; }
 }
 
+/* ===== Case Studies — Related Content (Section 5: Dark "Вам может понравиться") ===== */
+.cases-related-section { padding: 40px 0 72px; position: relative; }
+.site-main > .case-detail-related-section { padding-bottom: 160px !important; }
+.case-detail-related-section .cases-rl-wrap { padding-bottom: 72px; }
+.site-main > .article-read-more-section { padding-bottom: 112px !important; }
+.article-read-more-gap { height: 72px; }
+
+.cases-rl-wrap { padding: 0; }
+
+.cases-rl-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+.cases-rl-kicker {
+    font-family: 'Manrope',system-ui,sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #f97316;
+    margin-bottom: 8px;
+}
+.cases-rl-title {
+    font-family: 'Manrope',system-ui,sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: #111;
+    margin: 0;
+    line-height: 1.2;
+}
+.cases-rl-title span { color: #f97316; }
+.cases-rl-all {
+    font-family: 'Manrope',system-ui,sans-serif;
+    font-size: 14px;
+    color: rgba(15,23,42,.5) !important;
+    text-decoration: none !important;
+    transition: color .2s;
+}
+.cases-rl-all:hover { color: #f97316 !important; }
+
+.cases-rl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.cases-rl-card {
+    background: #fff;
+    border: 1px solid rgba(15,23,42,.06);
+    border-radius: 22px;
+    padding: 28px;
+    min-height: 200px;
+    transition: all .3s;
+    text-decoration: none !important;
+    color: inherit !important;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(15,23,42,.04);
+}
+.cases-rl-card:hover {
+    border-color: rgba(249,115,22,.2);
+    transform: translateY(-3px);
+}
+.cases-rl-cat {
+    font-family: 'Manrope',system-ui,sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #f97316;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+.cases-rl-card-title {
+    font-family: 'Manrope',system-ui,sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    margin: 12px 0 0 0;
+    line-height: 1.3;
+    letter-spacing: -.01em;
+}
+.cases-rl-card-desc {
+    font-family: 'Manrope',system-ui,sans-serif;
+    font-size: 14px;
+    color: rgba(15,23,42,.5);
+    margin-top: 12px;
+    line-height: 1.6;
+}
+.cases-rl-meta {
+    font-family: 'Manrope',system-ui,sans-serif;
+    font-size: 12px;
+    color: rgba(15,23,42,.35);
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(15,23,42,.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cases-rl-read { color: #f97316; font-weight: 600; }
+
+@media (max-width: 900px) {
+    .cases-rl-grid { grid-template-columns: 1fr; }
+    .cases-rl-wrap { padding: 28px; border-radius: 24px; }
+    .cases-rl-head { flex-direction: column; align-items: flex-start; }
+    .site-main > .article-read-more-section { padding-bottom: 88px !important; }
+    .article-read-more-gap { height: 72px; }
+}
+
+/* Animation — V1: cascade fade-up */
+.cases-rl-anim .cases-rl-kicker,
+.cases-rl-anim .cases-rl-title,
+.cases-rl-anim .cases-rl-all,
+.cases-rl-anim .cases-rl-card {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s cubic-bezier(.19,1,.22,1), transform .8s cubic-bezier(.19,1,.22,1);
+}
+.cases-rl-anim.play .cases-rl-kicker { opacity: 1; transform: none; transition-delay: 0ms; }
+.cases-rl-anim.play .cases-rl-title  { opacity: 1; transform: none; transition-delay: 100ms; }
+.cases-rl-anim.play .cases-rl-all    { opacity: 1; transform: none; transition-delay: 200ms; }
+.cases-rl-anim.play .cases-rl-card:nth-child(1) { opacity: 1; transform: none; transition-delay: 300ms; }
+.cases-rl-anim.play .cases-rl-card:nth-child(2) { opacity: 1; transform: none; transition-delay: 450ms; }
+.cases-rl-anim.play .cases-rl-card:nth-child(3) { opacity: 1; transform: none; transition-delay: 600ms; }
+
+.case-related-cascade:not(.is-animated) .cases-rl-kicker,
+.case-related-cascade:not(.is-animated) .cases-rl-title,
+.case-related-cascade:not(.is-animated) .cases-rl-all,
+.case-related-cascade:not(.is-animated) .cases-rl-grid,
+.case-related-cascade:not(.is-animated) .cases-rl-card {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.case-related-cascade.is-animated .cases-rl-kicker,
+.case-related-cascade.is-animated .cases-rl-title,
+.case-related-cascade.is-animated .cases-rl-all,
+.case-related-cascade.is-animated .cases-rl-grid,
+.case-related-cascade.is-animated .cases-rl-card {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: caseRelatedFadeUp 1s cubic-bezier(.22, .75, .28, 1) forwards;
+}
+
+.case-related-cascade.is-animated .cases-rl-title {
+    animation-delay: .12s;
+}
+
+.case-related-cascade.is-animated .cases-rl-all {
+    animation-delay: .2s;
+}
+
+.case-related-cascade.is-animated .cases-rl-grid {
+    animation-delay: .28s;
+}
+
+.case-related-cascade.is-animated .cases-rl-card:nth-child(1) {
+    animation-delay: .44s;
+}
+
+.case-related-cascade.is-animated .cases-rl-card:nth-child(2) {
+    animation-delay: .58s;
+}
+
+.case-related-cascade.is-animated .cases-rl-card:nth-child(3) {
+    animation-delay: .72s;
+}
+
+@keyframes caseRelatedFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .case-related-cascade .cases-rl-kicker,
+    .case-related-cascade .cases-rl-title,
+    .case-related-cascade .cases-rl-all,
+    .case-related-cascade .cases-rl-grid,
+    .case-related-cascade .cases-rl-card {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+}
+
 /* ===== Case Studies — Contact Form (Section 4: Trust Checkmarks) ===== */
 .cases-contact-section { padding: 72px 0 96px; position: relative; }
 
