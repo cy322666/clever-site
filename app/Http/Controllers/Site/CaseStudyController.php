@@ -39,6 +39,14 @@ class CaseStudyController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        return view('site.case-studies.show', compact('caseStudy'));
+        $relatedCaseStudies = CaseStudy::query()
+            ->published()
+            ->whereKeyNot($caseStudy->getKey())
+            ->orderBy('sort_order')
+            ->latest('published_at')
+            ->limit(3)
+            ->get();
+
+        return view('site.case-studies.show', compact('caseStudy', 'relatedCaseStudies'));
     }
 }

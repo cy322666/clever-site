@@ -128,7 +128,7 @@ class ArticleController extends Controller
         $description = trim((string) Arr::get($item, 'description', ''));
         $badge = trim((string) Arr::get($item, 'badge', ''));
 
-        if ($title !== '') {
+        if ($title !== '' && $title !== $url) {
             $resolved['title'] = $title;
         }
 

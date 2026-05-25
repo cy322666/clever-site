@@ -20,4 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     document.querySelectorAll('.anim-bounce').forEach(el => observer.observe(el));
+
+    const articleSectionObserver = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-animated');
+                currentObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0,
+        rootMargin: '0px 0px -45% 0px'
+    });
+
+    document.querySelectorAll('.article-editorial-cascade, .article-detail-related-section.case-related-cascade, .article-read-more-section.case-related-cascade').forEach(el => {
+        articleSectionObserver.observe(el);
+    });
 });

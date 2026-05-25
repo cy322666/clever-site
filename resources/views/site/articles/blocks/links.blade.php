@@ -1,23 +1,29 @@
-<div class="space-y-4">
+<div class="article-related-links">
     @if(!empty($block['title']))
-        <h3 class="text-xl font-semibold tracking-tight text-slate-900">{{ $block['title'] }}</h3>
+        <h3 class="article-related-links-title">{{ $block['title'] }}</h3>
     @endif
 
-    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div class="article-related-links-grid">
         @foreach($block['items'] as $item)
             <a
                 href="{{ $item['url'] }}"
-                class="site-card no-underline"
+                class="article-related-card"
                 @if(str_starts_with($item['url'], 'http')) target="_blank" rel="noreferrer noopener" @endif
             >
-                @if(!empty($item['badge']))
-                    <p class="site-kicker">{{ $item['badge'] }}</p>
-                @endif
-                <h3 class="site-card-title mt-3">{{ $item['title'] }}</h3>
+                <div class="article-related-meta">
+                    @if(!empty($item['badge']))
+                        <span>{{ $item['badge'] }}</span>
+                    @endif
+                    <span>CRM</span>
+                </div>
+                <h3 class="article-related-card-title">{{ $item['title'] }}</h3>
                 @if(!empty($item['description']))
-                    <p class="site-card-text">{{ $item['description'] }}</p>
+                    <p class="article-related-card-text">{{ $item['description'] }}</p>
                 @endif
-                <span class="site-link">Открыть</span>
+                <div class="article-related-card-foot">
+                    <span class="article-related-card-url">{{ $item['url'] }}</span>
+                    <span class="article-related-card-arrow">→</span>
+                </div>
             </a>
         @endforeach
     </div>
