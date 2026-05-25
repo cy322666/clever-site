@@ -47,11 +47,13 @@
         position: absolute;
         left: 0;
         top: calc(100% + 14px);
-        min-width: 760px;
+        min-width: 320px;
+        width: max-content;
+        max-width: min(360px, calc(100vw - 32px));
         display: grid;
         grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 14px;
+        gap: 6px;
+        padding: 10px;
         border-radius: 18px;
         background: #111;
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -73,7 +75,7 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
-        padding: 10px 12px;
+        padding: 9px 11px;
         border-radius: 12px;
         border: 1px solid transparent;
         background: rgba(255, 255, 255, 0.01);
@@ -92,12 +94,6 @@
         font-size: 15px;
         line-height: 1.35;
         font-weight: 600;
-    }
-
-    .cmd-solution-desc {
-        color: rgba(255, 255, 255, 0.58);
-        font-size: 13px;
-        line-height: 1.45;
     }
 
     .cmd-nav-actions {
@@ -186,31 +182,25 @@
 
         <div class="cmd-nav-center">
             <div class="cmd-nav-item has-dropdown">
-                <a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}" class="{{ request()->routeIs('site.landings.*') || request()->routeIs('site.license-renewal') ? 'is-active' : '' }}">Решения</a>
+                <a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}" class="{{ request()->routeIs('site.landings.*') || request()->routeIs('site.license-renewal') ? 'is-active' : '' }}">Услуги</a>
                 <div class="cmd-dropdown services-dropdown">
                     <a href="{{ route('site.license-renewal') }}" class="cmd-solution-link">
                         <span class="cmd-solution-title">Продление лицензий amoCRM</span>
-                        <span class="cmd-solution-desc">Бонусные месяцы, 40+ виджетов от нас и партнеров и кешбек работами по amoCRM</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}" class="cmd-solution-link">
                         <span class="cmd-solution-title">Пересборка amoCRM</span>
-                        <span class="cmd-solution-desc">Когда CRM уже есть, но в ней бардак, нет контроля и теряются заявки</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}" class="cmd-solution-link">
                         <span class="cmd-solution-title">Внедрение amoCRM с нуля</span>
-                        <span class="cmd-solution-desc">Когда нужно сразу собрать правильную систему продаж, а не просто настроить воронку</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'analitika-prodazh-v-amocrm') }}" class="cmd-solution-link">
                         <span class="cmd-solution-title">Аналитика продаж</span>
-                        <span class="cmd-solution-desc">Когда руководителю нужны цифры по заявкам, менеджерам, каналам и выручке</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'razrabotka-crm') }}" class="cmd-solution-link">
                         <span class="cmd-solution-title">Разработка и интеграции</span>
-                        <span class="cmd-solution-desc">Когда стандартной amoCRM не хватает под вашу логику продаж</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'soprovozhdenie-amocrm') }}" class="cmd-solution-link">
                         <span class="cmd-solution-title">Сопровождение и развитие</span>
-                        <span class="cmd-solution-desc">Когда CRM нужно не просто поддерживать, а регулярно улучшать</span>
                     </a>
                 </div>
             </div>
@@ -255,31 +245,25 @@
 
         <div class="cmd-mob-panel">
             <details class="cmd-mob-accordion" open>
-                <summary class="cmd-mob-link">Решения</summary>
+                <summary class="cmd-mob-link">Услуги</summary>
                 <div class="cmd-mob-accordion-body">
                     <a href="{{ route('site.license-renewal') }}" class="cmd-mob-sub cmd-mob-sub-rich">
                         <span class="cmd-mob-sub-title">Продление лицензий amoCRM</span>
-                        <span class="cmd-mob-sub-desc">Бонусные месяцы, 40+ виджетов от нас и партнеров и кешбек работами по amoCRM</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}" class="cmd-mob-sub cmd-mob-sub-rich">
                         <span class="cmd-mob-sub-title">Пересборка amoCRM</span>
-                        <span class="cmd-mob-sub-desc">Когда CRM уже есть, но в ней бардак, нет контроля и теряются заявки</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'vnedrenie-amocrm') }}" class="cmd-mob-sub cmd-mob-sub-rich">
                         <span class="cmd-mob-sub-title">Внедрение amoCRM с нуля</span>
-                        <span class="cmd-mob-sub-desc">Когда нужно сразу собрать правильную систему продаж, а не просто настроить воронку</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'analitika-prodazh-v-amocrm') }}" class="cmd-mob-sub cmd-mob-sub-rich">
                         <span class="cmd-mob-sub-title">Аналитика продаж</span>
-                        <span class="cmd-mob-sub-desc">Когда руководителю нужны цифры по заявкам, менеджерам, каналам и выручке</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'razrabotka-crm') }}" class="cmd-mob-sub cmd-mob-sub-rich">
                         <span class="cmd-mob-sub-title">Разработка и интеграции</span>
-                        <span class="cmd-mob-sub-desc">Когда стандартной amoCRM не хватает под вашу логику продаж</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'soprovozhdenie-amocrm') }}" class="cmd-mob-sub cmd-mob-sub-rich">
                         <span class="cmd-mob-sub-title">Сопровождение и развитие</span>
-                        <span class="cmd-mob-sub-desc">Когда CRM нужно не просто поддерживать, а регулярно улучшать</span>
                     </a>
                 </div>
             </details>

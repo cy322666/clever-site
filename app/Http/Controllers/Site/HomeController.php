@@ -23,16 +23,13 @@ class HomeController extends Controller
             ->limit(4)
             ->get();
 
-        $allCases = CaseStudy::query()
+        $caseStudies = CaseStudy::query()
             ->where('status', 'published')
             ->orderByRaw('CASE WHEN sort_order IS NULL THEN 1 ELSE 0 END')
             ->orderBy('sort_order')
             ->latest('updated_at')
-            ->limit(4)
+            ->limit(6)
             ->get();
-
-        $featuredCase = $allCases->shift();
-        $caseStudies = $allCases;
 
         $testimonials = Testimonial::query()
             ->where('status', 'published')
@@ -62,7 +59,6 @@ class HomeController extends Controller
         return view('site.home-main', compact(
             'siteSettings',
             'services',
-            'featuredCase',
             'caseStudies',
             'testimonials',
             'faqs',

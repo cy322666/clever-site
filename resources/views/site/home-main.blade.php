@@ -1277,11 +1277,13 @@
       position: absolute;
       left: 0;
       top: calc(100% + 14px);
-      min-width: 560px;
+      min-width: 320px;
+      width: max-content;
+      max-width: min(360px, calc(100vw - 32px));
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px 24px;
-      padding: 18px;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 10px;
       border-radius: 18px;
       background: #111;
       border: 1px solid rgba(255, 255, 255, .08);
@@ -1298,9 +1300,9 @@
     }
 
     .cmd-dropdown.services-dropdown {
-      min-width: 760px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px 24px;
+      min-width: 320px;
+      grid-template-columns: 1fr;
+      gap: 6px;
     }
 
     .cmd-nav-item:hover .cmd-dropdown {
@@ -1337,8 +1339,8 @@
 
     @media (max-width: 991px) {
       .cmd-dropdown.services-dropdown {
-        width: min(95vw, 760px);
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: min(92vw, 360px);
+        grid-template-columns: 1fr;
       }
 
       .cmd-nav-inner {
@@ -1356,7 +1358,7 @@
         position: static;
         margin-top: 10px;
         min-width: 0;
-        width: min(92vw, 560px);
+        width: min(92vw, 360px);
         display: none;
         opacity: 1;
         visibility: visible;
@@ -1368,14 +1370,14 @@
       }
 
       .cmd-dropdown.services-dropdown {
-        gap: 12px 16px;
+        gap: 6px;
       }
     }
 
     @media (max-width: 640px) {
       .cmd-dropdown.services-dropdown {
         grid-template-columns: 1fr;
-        width: min(96vw, 420px);
+        width: min(96vw, 360px);
       }
     }
   </style>
@@ -3880,13 +3882,131 @@
       color: #f97316 !important;
     }
 
+    #cases-redesign-6 .cs-mini-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      align-items: stretch !important;
+    }
+
+    #cases-redesign-6 .cs-mini {
+      min-height: 0 !important;
+      padding: 14px !important;
+      border-radius: 18px !important;
+      background: #fff !important;
+      border: 1px solid rgba(15, 23, 42, .08) !important;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, .06) !important;
+      justify-content: space-between !important;
+      gap: 22px !important;
+    }
+
+    #cases-redesign-6 .cs-mini-preview {
+      display: grid !important;
+      width: 100% !important;
+      aspect-ratio: 16 / 8 !important;
+      place-items: center !important;
+      overflow: hidden !important;
+      border-radius: 14px !important;
+      border: 1px solid rgba(249, 115, 22, .1) !important;
+      background: linear-gradient(135deg, rgba(249, 115, 22, .12), rgba(255, 247, 237, .72)) !important;
+    }
+
+    #cases-redesign-6 .cs-mini-preview img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+
+    #cases-redesign-6 .cs-mini-preview--logo img {
+      width: 82px !important;
+      height: 82px !important;
+      object-fit: contain !important;
+    }
+
+    #cases-redesign-6 .cs-mini-preview span {
+      color: #f97316 !important;
+      font-size: 26px !important;
+      font-weight: 900 !important;
+    }
+
+    #cases-redesign-6 .cs-mini-body {
+      display: flex !important;
+      min-height: 126px !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+      padding: 4px 4px 2px !important;
+    }
+
+    #cases-redesign-6 .cs-mini:hover {
+      border-color: rgba(249, 115, 22, .28) !important;
+      box-shadow: 0 18px 42px rgba(15, 23, 42, .1) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    #cases-redesign-6 .cs-mini-title {
+      font-size: 18px !important;
+      font-weight: 800 !important;
+      line-height: 1.24 !important;
+      letter-spacing: 0 !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 3 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+
+    #cases-redesign-6 .cs-mini-link {
+      margin-top: auto !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      width: fit-content !important;
+      color: #101014 !important;
+      font-size: 13px !important;
+      font-weight: 800 !important;
+      line-height: 1.2 !important;
+      text-decoration: none !important;
+      transition: color .2s, transform .2s !important;
+    }
+
+    #cases-redesign-6 .cs-mini:hover .cs-mini-link {
+      color: #f97316 !important;
+      transform: translateX(2px) !important;
+    }
+
+    #cases-redesign-6 .cs-all-wrap {
+      display: flex !important;
+      justify-content: center !important;
+      margin-top: 28px !important;
+    }
+
+    #cases-redesign-6 .cs-all-link {
+      display: inline-flex !important;
+      min-height: 48px !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border-radius: 12px !important;
+      padding: 0 22px !important;
+      background: #101014 !important;
+      color: #fff !important;
+      font-size: 14px !important;
+      font-weight: 800 !important;
+      line-height: 1 !important;
+      text-decoration: none !important;
+      transition: background .2s, transform .2s, box-shadow .2s !important;
+    }
+
+    #cases-redesign-6 .cs-all-link:hover {
+      background: #f97316 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 16px 34px rgba(249, 115, 22, .24) !important;
+    }
+
     @media (max-width: 991px) {
       .cs-featured-grid {
         grid-template-columns: 1fr;
       }
 
       .cs-mini-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       }
 
       .cs-title {
@@ -4143,6 +4263,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
       border-radius: 0 !important;
     }
 
@@ -5926,11 +6047,13 @@
       position: absolute;
       left: 0;
       top: calc(100% + 14px);
-      min-width: 560px;
+      min-width: 320px;
+      width: max-content;
+      max-width: min(360px, calc(100vw - 32px));
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px 24px;
-      padding: 18px;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 10px;
       border-radius: 18px;
       background: #111;
       border: 1px solid rgba(255, 255, 255, .08);
@@ -5947,9 +6070,9 @@
     }
 
     .cmd-dropdown.services-dropdown {
-      min-width: 760px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px 24px;
+      min-width: 320px;
+      grid-template-columns: 1fr;
+      gap: 6px;
     }
 
     .cmd-nav-item:hover .cmd-dropdown {
@@ -6041,8 +6164,8 @@
 
     @media (max-width: 991px) {
       .cmd-dropdown.services-dropdown {
-        width: min(95vw, 760px);
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: min(92vw, 360px);
+        grid-template-columns: 1fr;
       }
 
       .cmd-nav-inner {
@@ -6060,7 +6183,7 @@
         position: static;
         margin-top: 10px;
         min-width: 0;
-        width: min(92vw, 560px);
+        width: min(92vw, 360px);
         display: none;
         opacity: 1;
         visibility: visible;
@@ -6072,7 +6195,7 @@
       }
 
       .cmd-dropdown.services-dropdown {
-        gap: 12px 16px;
+        gap: 6px;
       }
 
       .cmd-nav-inner {
@@ -6094,7 +6217,7 @@
     @media (max-width: 640px) {
       .cmd-dropdown.services-dropdown {
         grid-template-columns: 1fr;
-        width: min(96vw, 420px);
+        width: min(96vw, 360px);
       }
     }
   </style>
@@ -6469,6 +6592,9 @@
         grid-template-columns: 1fr !important;
         gap: 12px !important;
       }
+      #cases-redesign-6 .cs-all-link {
+        width: 100% !important;
+      }
       .cs-mini {
         padding: 18px !important;
       }
@@ -6744,10 +6870,12 @@
     }
 
     .cmdf5-inspired-nav .cmd-dropdown.services-dropdown {
-      min-width: 760px !important;
+      min-width: 320px !important;
+      width: max-content !important;
+      max-width: min(360px, calc(100vw - 32px)) !important;
       grid-template-columns: 1fr !important;
-      gap: 10px !important;
-      padding: 14px !important;
+      gap: 6px !important;
+      padding: 10px !important;
     }
 
     .cmdf5-inspired-nav .cmd-solution-link {
@@ -6836,9 +6964,9 @@
 
     @media (max-width: 991px) {
       .cmdf5-inspired-nav .cmd-dropdown.services-dropdown {
-        width: min(95vw, 760px) !important;
+        width: min(92vw, 360px) !important;
         grid-template-columns: 1fr !important;
-        gap: 10px !important;
+        gap: 6px !important;
       }
     }
 
@@ -7008,6 +7136,20 @@
       transform: translateY(-8px);
       border-color: rgba(255, 138, 42, 0.2);
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.07);
+    }
+
+    .future-service-image {
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .future-service-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     .future-service-kicker {
@@ -7479,26 +7621,34 @@
         [
           'title' => 'Внедрение',
           'description' => 'Запустили систему после интегратора, который не смог сделать это за год',
+          'image' => asset('images/home/quantum-case-card.png'),
+          'image_alt' => 'Quantum Clinic — ресепшен клиники',
           'service_url' => route('site.landings.show', 'vnedrenie-amocrm'),
-          'case_url' => route('site.case-studies.show', 'proizvodstvo-crm'),
+          'case_url' => route('site.case-studies.show', 'zapusk-amocrm-dlia-salona-santexniki-dozd-kak-my-zabrali-problemnyi-proekt-posle-neudacnogo-vnedreniia'),
         ],
         [
           'title' => 'Перевнедрение',
           'description' => 'Пересобрали перегруженную систему для проекта "Нечто" Михаила Дашкиева',
+          'image' => asset('images/home/nechto-case-card.png'),
+          'image_alt' => 'Нечто — образовательное сообщество для предпринимателей',
           'service_url' => route('site.landings.show', 'perevnedrenie-amocrm'),
-          'case_url' => route('site.case-studies.index'),
+          'case_url' => route('site.case-studies.show', 'kak-crm-mozet-nacat-mesat-prodazam-perezapusk-amocrm-dlia-obrazovatelnogo-proekta-necto'),
         ],
         [
           'title' => 'Аналитика',
           'description' => 'Собрали прозрачный дашборд в DataLens для маркетинга и отдела продаж',
+          'image' => asset('images/home/eurolos-case-card.png'),
+          'image_alt' => 'Евролос — системы очистки',
           'service_url' => route('site.landings.show', 'analitika-prodazh-v-amocrm'),
           'case_url' => route('site.case-studies.show', 'b2b-analitika-datalens'),
         ],
         [
           'title' => 'Разработка',
           'description' => 'Сделали для Shortread интеграцию с сайтом и выгрузку исторических данных',
+          'image' => asset('images/home/shortread-case-card.png'),
+          'image_alt' => 'Команда проекта Shortread',
           'service_url' => route('site.landings.show', 'razrabotka-crm'),
-          'case_url' => route('site.case-studies.index'),
+          'case_url' => route('site.case-studies.show', 'kak-pravilno-vybrat-mesto-dlia-vidzeta-v-amocrm-keis-art-estate'),
         ],
       ];
       @endphp
@@ -7507,6 +7657,11 @@
         @foreach($directionCards as $card)
         <div class="future-service-reveal">
           <div class="future-service-card">
+            @if(!empty($card['image']))
+            <div class="future-service-image">
+              <img src="{{ $card['image'] }}" alt="{{ $card['image_alt'] ?? $card['description'] }}" loading="lazy">
+            </div>
+            @endif
             <div class="future-service-copy">
               <div class="future-service-kicker">{{ $card['title'] }}</div>
               <h3>{{ $card['description'] }}</h3>
@@ -7595,7 +7750,7 @@
   </section>
   <section id="founder-block">
     <div class="founder-split">
-      <div class="founder-split-photo cine-photo"><img src="/images/founder-v2.jpg" alt="Вячеслав Трофимов"></div>
+      <div class="founder-split-photo cine-photo"><img src="/images/founder-interview.png" alt="Вячеслав Трофимов"></div>
       <div class="founder-split-text">
         <div class="founder-split-ey cine-ey">Основатель</div>
         <h2 class="founder-split-heading cine-head">Каждый проект начинается с личного погружения
@@ -7689,58 +7844,43 @@
         <h2 class="cs-title">Реальные результаты наших клиентов</h2>
       </div>
 
-      @if($featuredCase)
-      <div class="cs-featured cr-featured">
-        @if($featuredCase->logoUrl())
-        <div class="cs-case-logo">
-          <img src="{{ $featuredCase->logoUrl() }}" alt="{{ $featuredCase->client_name ?: $featuredCase->title }}" loading="lazy">
-        </div>
-        @endif
-        <div class="cs-featured-meta">{{ $featuredCase->niche ?? 'Кейс' }} / amoCRM</div>
-        <h3 class="cs-featured-title">{{ $featuredCase->title }}</h3>
-        <div class="cs-featured-grid">
-          @if($featuredCase->problem_block)
-          <div class="cs-feat-box">
-            <div class="cs-box-label">Проблема</div>
-            <div class="cs-box-text">{{ Str::limit(strip_tags($featuredCase->problem_block), 120) }}</div>
-          </div>
-          @endif
-          @if($featuredCase->solution_block)
-          <div class="cs-feat-box">
-            <div class="cs-box-label">Решение</div>
-            <div class="cs-box-text">{{ Str::limit(strip_tags($featuredCase->solution_block), 120) }}</div>
-          </div>
-          @endif
-          @if($featuredCase->result_block)
-          <div class="cs-feat-box">
-            <div class="cs-box-label">Результат</div>
-            <div class="cs-box-text">{{ Str::limit(strip_tags($featuredCase->result_block), 120) }}</div>
-          </div>
-          @endif
-        </div>
-        <a class="cs-featured-btn" href="/case-studies/{{ $featuredCase->slug }}">Открыть кейс</a>
-      </div>
-      @endif
-
       <div class="cs-mini-grid">
         @forelse($caseStudies as $case)
         <a class="cs-mini cr-mini" href="/case-studies/{{ $case->slug }}">
-          @if($case->logoUrl())
-          <div class="cs-case-logo" style="width:52px;height:52px;margin-bottom:8px;border-radius:16px;">
-            <img src="{{ $case->logoUrl() }}" alt="{{ $case->client_name ?: $case->title }}" loading="lazy" style="width:38px;height:38px;">
-          </div>
+          @php
+            $casePreviewImage = $case->coverImageUrl();
+            $casePreviewLogo = $case->logoUrl();
+          @endphp
+          @if($casePreviewImage)
+            <div class="cs-mini-preview">
+              <img src="{{ $casePreviewImage }}" alt="{{ $case->title }}" loading="lazy">
+            </div>
+          @elseif($casePreviewLogo)
+            <div class="cs-mini-preview cs-mini-preview--logo">
+              <img src="{{ $casePreviewLogo }}" alt="{{ $case->client_name ?: $case->title }}" loading="lazy">
+            </div>
+          @else
+            <div class="cs-mini-preview">
+              <span>{{ mb_substr($case->client_name ?: $case->title, 0, 2) }}</span>
+            </div>
           @endif
-          <div class="cs-mini-meta">{{ $case->niche ?? 'Кейс' }}</div>
-          <h4 class="cs-mini-title">{{ $case->title }}</h4>
-          <p class="cs-mini-text">{{ Str::limit($case->result_summary ?? $case->short_description, 100) }}</p>
-          <span class="cs-mini-link">Открыть →</span>
+          <div class="cs-mini-body">
+            <h4 class="cs-mini-title">{{ $case->title }}</h4>
+            <span class="cs-mini-link">Читать полностью →</span>
+          </div>
         </a>
         @empty
         <div class="cs-mini cr-mini">
-          <h4 class="cs-mini-title">Кейсы пока не добавлены</h4>
-          <p class="cs-mini-text">Добавьте кейсы в админке</p>
+          <div class="cs-mini-preview"><span>CL</span></div>
+          <div class="cs-mini-body">
+            <h4 class="cs-mini-title">Кейсы пока не добавлены</h4>
+            <span class="cs-mini-link">Добавьте кейсы в админке</span>
+          </div>
         </div>
         @endforelse
+      </div>
+      <div class="cs-all-wrap">
+        <a class="cs-all-link" href="{{ route('site.case-studies.index') }}">Смотреть все кейсы</a>
       </div>
     </div>
   </section>
@@ -8012,12 +8152,11 @@
     }
 
     #budget-hypothesis .bh-label {
-      margin: 24px 0 12px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      color: rgba(15, 23, 42, 0.48);
+      margin: 26px 0 12px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0;
+      color: #0f172a;
     }
 
     #budget-hypothesis .bh-list {
@@ -8025,30 +8164,28 @@
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 12px;
+      gap: 10px;
+      max-width: 620px;
     }
 
     #budget-hypothesis .bh-list li {
       position: relative;
-      border-radius: 16px;
-      border: 1px solid rgba(148, 163, 184, 0.16);
-      background: rgba(255, 255, 255, 0.9);
-      padding: 12px 14px 12px 36px;
+      padding-left: 22px;
       font-size: 15px;
+      font-weight: 500;
       line-height: 1.55;
-      color: #0f172a;
+      color: rgba(15, 23, 42, 0.78);
     }
 
     #budget-hypothesis .bh-list li::before {
       content: '';
       position: absolute;
-      left: 14px;
-      top: 16px;
-      width: 10px;
-      height: 10px;
+      left: 0;
+      top: 0.68em;
+      width: 7px;
+      height: 7px;
       border-radius: 999px;
       background: #ff8a2a;
-      box-shadow: 0 0 0 5px rgba(255, 138, 42, 0.16);
     }
 
     #budget-hypothesis .bh-right {
@@ -8150,6 +8287,7 @@
       #budget-hypothesis .bh-shell {
         padding: 22px;
       }
+
     }
   </style>
 
@@ -8322,6 +8460,21 @@
       max-width: 760px;
     }
 
+    #start-flow-block .sf-step-image {
+      margin: 14px 0 16px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 18px;
+      background: #f8fafc;
+      box-shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+
+    #start-flow-block .sf-step-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     #start-flow-block .sf-result {
       margin-top: 16px;
       padding: 12px 14px;
@@ -8388,6 +8541,11 @@
         font-size: 15px;
       }
 
+      #start-flow-block .sf-step-image {
+        margin: 12px 0 14px;
+        border-radius: 14px;
+      }
+
       #start-flow-block .sf-result {
         margin-top: 12px;
         padding: 11px 12px;
@@ -8400,37 +8558,44 @@
     <div class="sf-wrap">
       <div class="sf-head">
         <div class="sf-eyebrow">Старт проекта</div>
-        <h2 class="sf-title" id="start-flow-title">Как проходит пересборка CRM</h2>
+        <h2 class="sf-title" id="start-flow-title">Как проходит работа с нами</h2>
       </div>
 
       <div class="sf-grid">
         <article class="sf-step" data-step="01">
           <h3>Диагностируем продажи и текущую amoCRM</h3>
-          <p>Разбираем воронки, источники заявок, работу менеджеров, автоматизации, отчеты и точки потерь.</p>
+          <div class="sf-step-image">
+            <img src="{{ asset('images/home/crm-diagnostics-map.png') }}" alt="Карта диагностики продаж и текущей CRM" loading="lazy">
+          </div>
           <div class="sf-result"><strong>Результат:</strong> Становится понятно, где CRM мешает продажам, где теряются заявки и где руководитель не видит реальную картину.</div>
         </article>
 
         <article class="sf-step" data-step="02">
           <h3>Проектируем новую архитектуру продаж</h3>
-          <p>Фиксируем, как должна работать CRM: этапы, роли, правила, контроль, задачи, интеграции и аналитика.</p>
+          <div class="sf-step-image">
+            <img src="{{ asset('images/home/sales-architecture-board.png') }}" alt="Схема новой архитектуры продаж" loading="lazy">
+          </div>
           <div class="sf-result"><strong>Результат:</strong> Появляется понятная модель управления продажами, а не просто набор полей и роботов.</div>
         </article>
 
         <article class="sf-step" data-step="03">
           <h3>Внедряем изменения без хаоса</h3>
-          <p>Настраиваем amoCRM, интеграции, автоматизацию и контроль так, чтобы система не ломала текущую работу отдела.</p>
+          <div class="sf-step-image">
+            <img src="{{ asset('images/home/implementation-kanban.png') }}" alt="Доска задач проекта внедрения CRM" loading="lazy">
+          </div>
           <div class="sf-result"><strong>Результат:</strong> Менеджеры продолжают работать, а изменения внедряются постепенно и управляемо.</div>
         </article>
 
         <article class="sf-step" data-step="04">
           <h3>Запускаем команду в новую систему</h3>
-          <p>Обучаем менеджеров, проверяем реальные сценарии, исправляем сопротивление и ошибки на старте.</p>
           <div class="sf-result"><strong>Результат:</strong> CRM начинает использоваться в ежедневной работе, а не остается формальной системой для отчетности.</div>
         </article>
 
         <article class="sf-step" data-step="05">
           <h3>Доводим до управляемости</h3>
-          <p>Собираем аналитику, смотрим первые результаты и дорабатываем систему под реальные продажи.</p>
+          <div class="sf-step-image">
+            <img src="{{ asset('images/home/daily-reports-dashboard.png') }}" alt="Ежедневные отчеты и дашборд управляемости продаж" loading="lazy">
+          </div>
           <div class="sf-result"><strong>Результат:</strong> Руководитель видит продажи по цифрам: заявки, конверсии, просрочки, потери, эффективность менеджеров и каналов.</div>
         </article>
       </div>

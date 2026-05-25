@@ -260,22 +260,33 @@
         if (!hero) return;
         var titleEl = hero.querySelector('.articles-hero-title');
         if (titleEl) {
-            // Split text nodes into letter spans, preserve <br> and accent <span>.
+            // Split text nodes into animated letters while keeping words indivisible for line wrapping.
             var letterIndex = 0;
             var splitNode = function (node, isAccent) {
                 if (node.nodeType === 3) {
                     var text = node.nodeValue;
                     var frag = document.createDocumentFragment();
-                    for (var i = 0; i < text.length; i++) {
-                        var ch = text[i];
-                        if (ch === ' ') { frag.appendChild(document.createTextNode(' ')); continue; }
-                        var s = document.createElement('span');
-                        s.className = 'articles-hero-title-letter';
-                        s.style.transitionDelay = (letterIndex * 28 + 350) + 'ms';
-                        s.textContent = ch;
-                        frag.appendChild(s);
-                        letterIndex++;
-                    }
+                    text.split(/(\s+)/).forEach(function (part) {
+                        if (part === '') return;
+                        if (/^\s+$/.test(part)) {
+                            frag.appendChild(document.createTextNode(part));
+                            return;
+                        }
+
+                        var word = document.createElement('span');
+                        word.className = 'articles-hero-title-word';
+
+                        for (var i = 0; i < part.length; i++) {
+                            var s = document.createElement('span');
+                            s.className = 'articles-hero-title-letter';
+                            s.style.transitionDelay = (letterIndex * 28 + 350) + 'ms';
+                            s.textContent = part[i];
+                            word.appendChild(s);
+                            letterIndex++;
+                        }
+
+                        frag.appendChild(word);
+                    });
                     node.parentNode.replaceChild(frag, node);
                 } else if (node.nodeType === 1) {
                     if (node.tagName === 'BR') return;
