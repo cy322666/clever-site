@@ -1844,16 +1844,16 @@
     border-color: rgba(249,115,22,.2) !important;
 }
 
-.cases-tc-top { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.cases-tc-top { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
 
 .cases-tc-logo {
-    width: 36px !important;
-    min-width: 36px !important;
-    max-width: 36px !important;
-    height: 36px !important;
-    min-height: 36px !important;
-    max-height: 36px !important;
-    border-radius: 10px;
+    width: 56px !important;
+    min-width: 56px !important;
+    max-width: 56px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
+    border-radius: 16px;
     background: rgba(249,115,22,.08);
     display: flex;
     align-items: center;
@@ -1862,14 +1862,14 @@
     flex-shrink: 0;
 }
 .cases-tc-logo img {
-    width: 36px !important;
-    height: 36px !important;
-    max-width: 36px !important;
-    max-height: 36px !important;
+    width: 46px !important;
+    height: 46px !important;
+    max-width: 46px !important;
+    max-height: 46px !important;
     object-fit: contain !important;
-    border-radius: 10px;
+    border-radius: 12px;
 }
-.cases-tc-logo span { font-size:14px; font-weight:800; color:#f97316; }
+.cases-tc-logo span { font-size:16px; font-weight:800; color:#f97316; }
 
 .cases-tc-name { font-family:'Manrope',system-ui,sans-serif; font-size:14px; font-weight:700; color:#111; }
 .cases-tc-niche { font-size:11px; color:rgba(15,23,42,.35); font-weight:500; }
@@ -1887,9 +1887,137 @@
 
 .cases-hero-divider { margin-top:48px; height:1px; background:linear-gradient(90deg, transparent, rgba(15,23,42,.06), transparent); }
 
+.cases-filter-section {
+    padding: 0 0 24px;
+    position: relative;
+    z-index: 2;
+}
+.cases-filter-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 0.32fr) minmax(220px, 0.36fr) auto;
+    gap: 12px;
+    align-items: end;
+    padding: 18px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+    font-family: 'Manrope', system-ui, sans-serif;
+}
+.cases-filter-field {
+    display: grid;
+    gap: 8px;
+}
+.cases-filter-field span {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.38);
+}
+.cases-filter-field input,
+.cases-filter-field select {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    background: #fff;
+    padding: 0 14px;
+    color: #111;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cases-filter-field input::placeholder {
+    color: rgba(15, 23, 42, 0.34);
+    font-weight: 500;
+}
+.cases-filter-field input:focus,
+.cases-filter-field select:focus {
+    border-color: rgba(249, 115, 22, 0.45);
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.08);
+}
+.cases-filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cases-filter-submit,
+.cases-filter-reset {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 14px;
+    padding: 0 18px;
+    border: 0;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none !important;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.cases-filter-submit {
+    background: #f97316;
+    color: #fff !important;
+}
+.cases-filter-submit:hover {
+    background: #ea6c0e;
+    transform: translateY(-1px);
+}
+.cases-filter-reset {
+    background: rgba(15, 23, 42, 0.05);
+    color: rgba(15, 23, 42, 0.62) !important;
+}
+.cases-filter-reset:hover {
+    color: #111 !important;
+    background: rgba(15, 23, 42, 0.08);
+}
+.cases-empty {
+    margin: 0 auto;
+    max-width: 620px;
+    padding: 42px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+    text-align: center;
+    font-family: 'Manrope', system-ui, sans-serif;
+}
+.cases-empty-kicker {
+    margin: 0;
+    color: #f97316;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+.cases-empty-title {
+    margin: 10px 0 0;
+    color: #111;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+}
+.cases-empty-text {
+    margin: 12px auto 22px;
+    max-width: 420px;
+    color: rgba(15, 23, 42, 0.5);
+    font-size: 15px;
+    line-height: 1.65;
+}
+
 @media (max-width:767px) {
     .cases-hero-row { flex-direction:column; align-items:flex-start; }
     .cases-hero .cases-hero-top .cases-hero-title[class] { --_fs:clamp(32px,10vw,48px); font-size:var(--_fs) !important; }
+    .cases-filter-panel { grid-template-columns: 1fr; }
+    .cases-filter-actions { align-items: stretch; flex-direction: column; }
+    .cases-filter-submit, .cases-filter-reset { width: 100%; }
+    .cases-empty { padding: 28px 20px; }
 }
 
 /* ===== Case Studies Hero — Animations (Variant 3: Clip-Path Sweep + Underline Draw) ===== */
@@ -2076,15 +2204,15 @@
     gap:16px;
     margin-bottom:16px;
 }
-.cases-tl-left { display:flex; align-items:center; gap:14px; }
+.cases-tl-left { display:flex; align-items:center; gap:18px; }
 .cases-tl-logo {
-    width:44px !important;
-    min-width:44px !important;
-    max-width:44px !important;
-    height:44px !important;
-    min-height:44px !important;
-    max-height:44px !important;
-    border-radius:12px;
+    width:68px !important;
+    min-width:68px !important;
+    max-width:68px !important;
+    height:68px !important;
+    min-height:68px !important;
+    max-height:68px !important;
+    border-radius:18px;
     background:linear-gradient(135deg, rgba(249,115,22,.1), rgba(249,115,22,.03));
     display:flex;
     align-items:center;
@@ -2093,14 +2221,14 @@
     overflow:hidden;
 }
 .cases-tl-logo img {
-    width:32px !important;
-    height:32px !important;
-    max-width:32px !important;
-    max-height:32px !important;
+    width:56px !important;
+    height:56px !important;
+    max-width:56px !important;
+    max-height:56px !important;
     object-fit:contain !important;
 }
 .cases-tl-logo span {
-    font-size:14px;
+    font-size:18px;
     font-weight:800;
     color:#f97316;
 }

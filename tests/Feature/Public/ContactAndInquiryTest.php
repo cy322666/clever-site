@@ -27,7 +27,8 @@ class ContactAndInquiryTest extends TestCase
         $response->assertOk();
         $response->assertSee('Продлите лицензию amoCRM');
         $response->assertSee('40+');
-        $response->assertSee('Кешбек работами');
+        $response->assertSee('Антидублирование');
+        $response->assertSee('виджетов от нас и партнеров');
     }
 
     public function test_landing_inquiry_form_is_submitted_successfully(): void

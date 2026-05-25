@@ -28,7 +28,6 @@
             <article class="site-card">
                 <h2 class="site-card-title">Связаться с нами</h2>
                 <div class="mt-4 space-y-3 text-sm text-slate-700">
-                    <p>Телефон: {{ $siteSettings->phone ?? '+7 (000) 000-00-00' }}</p>
                     <p>Email: {{ $siteSettings->email ?? 'hello@example.com' }}</p>
                     <p>Адрес: {{ $siteSettings->address ?? 'Не указан' }}</p>
                 </div>

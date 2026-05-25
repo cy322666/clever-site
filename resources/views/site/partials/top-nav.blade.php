@@ -177,6 +177,7 @@
         }
     }
 </style>
+@php($topNavTelegramLink = 'https://t.me/integrator')
 <nav class="cmdf5-inspired-nav">
     <div class="cmd-nav-inner">
         <a class="cmd-nav-brand" href="{{ route('site.home') }}" aria-label="{{ $siteSettings->site_name ?? 'CleverCRM' }}">
@@ -189,7 +190,7 @@
                 <div class="cmd-dropdown services-dropdown">
                     <a href="{{ route('site.license-renewal') }}" class="cmd-solution-link">
                         <span class="cmd-solution-title">Продление лицензий amoCRM</span>
-                        <span class="cmd-solution-desc">Бонусные месяцы, 40+ виджетов и кешбек работами по amoCRM</span>
+                        <span class="cmd-solution-desc">Бонусные месяцы, 40+ виджетов от нас и партнеров и кешбек работами по amoCRM</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}" class="cmd-solution-link">
                         <span class="cmd-solution-title">Пересборка amoCRM</span>
@@ -227,7 +228,7 @@
 
         <div class="cmd-nav-actions">
             <div class="cmd-nav-socials">
-                <a href="{{ $siteSettings->telegram_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Telegram" title="Telegram">
+                <a href="{{ $topNavTelegramLink }}" target="_blank" rel="noreferrer" aria-label="Telegram" title="Telegram">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21.2 4.4 2.4 10.8c-.6.2-.6.6 0 .8l4.8 1.8 1.8 5.8c.1.4.5.5.8.2l2.6-2.2 4.8 3.6c.4.3 1 .1 1.1-.4L22 5.2c.1-.6-.4-1-.8-.8Z"/>
                         <path d="m9 13.6 8.4-6.4"/>
@@ -258,7 +259,7 @@
                 <div class="cmd-mob-accordion-body">
                     <a href="{{ route('site.license-renewal') }}" class="cmd-mob-sub cmd-mob-sub-rich">
                         <span class="cmd-mob-sub-title">Продление лицензий amoCRM</span>
-                        <span class="cmd-mob-sub-desc">Бонусные месяцы, 40+ виджетов и кешбек работами по amoCRM</span>
+                        <span class="cmd-mob-sub-desc">Бонусные месяцы, 40+ виджетов от нас и партнеров и кешбек работами по amoCRM</span>
                     </a>
                     <a href="{{ route('site.landings.show', 'perevnedrenie-amocrm') }}" class="cmd-mob-sub cmd-mob-sub-rich">
                         <span class="cmd-mob-sub-title">Пересборка amoCRM</span>
@@ -289,7 +290,7 @@
             <a href="{{ route('site.articles.index') }}" class="cmd-mob-link">Статьи</a>
             <div class="cmd-mob-bottom">
                 <div class="cmd-nav-socials">
-                    <a href="{{ $siteSettings->telegram_link ?? '#' }}" target="_blank" rel="noreferrer" aria-label="Telegram">
+                    <a href="{{ $topNavTelegramLink }}" target="_blank" rel="noreferrer" aria-label="Telegram">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21.2 4.4 2.4 10.8c-.6.2-.6.6 0 .8l4.8 1.8 1.8 5.8c.1.4.5.5.8.2l2.6-2.2 4.8 3.6c.4.3 1 .1 1.1-.4L22 5.2c.1-.6-.4-1-.8-.8Z"/>
                             <path d="m9 13.6 8.4-6.4"/>

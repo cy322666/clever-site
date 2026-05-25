@@ -1,10 +1,35 @@
 @extends('site.layouts.app', [
     'title' => 'Продление лицензий amoCRM с бонусами | Clever',
-    'metaDescription' => 'Продлите лицензию amoCRM через Clever: бонусные месяцы amoCRM, 40+ виджетов и кешбек работами по amoCRM до 10% от суммы оплаты лицензий.',
+    'metaDescription' => 'Продлите лицензию amoCRM через Clever: бонусные месяцы amoCRM, 40+ виджетов от нас и партнеров и кешбек работами по amoCRM до 10% от суммы оплаты лицензий.',
     'canonical' => route('site.license-renewal'),
 ])
 
 @php
+    $companyWidgets = [
+        ['title' => 'Антидублирование', 'description' => 'Поиск и объединение дублей контактов и компаний.'],
+        ['title' => 'Написать в WhatsApp', 'description' => 'Быстрый переход в чат WhatsApp из карточки CRM.'],
+        ['title' => 'Табель', 'description' => 'Отображение статусов сотрудников: работает, отпуск и другие состояния.'],
+        ['title' => 'Управление полями', 'description' => 'Скрытие и показ полей для пользователей.'],
+        ['title' => 'Яндекс.Диск', 'description' => 'Хранение файлов вне CRM.'],
+        ['title' => 'Google Drive', 'description' => 'Интеграция с Google Диском.'],
+        ['title' => 'Чек-листы', 'description' => 'Чек-листы действий по сделкам.'],
+        ['title' => 'Уведомления в Telegram', 'description' => 'Оповещения о событиях CRM.'],
+        ['title' => 'Мультикомпании', 'description' => 'Связь нескольких юрлиц.'],
+        ['title' => 'Регион по номеру', 'description' => 'Определение региона и времени клиента.'],
+        ['title' => 'Информер', 'description' => 'Быстрый просмотр связанных данных.'],
+        ['title' => 'Подсказки полей', 'description' => 'Инструкции по заполнению полей.'],
+        ['title' => 'Автоудаление файлов', 'description' => 'Очистка устаревших файлов.'],
+        ['title' => 'Копирование сделок', 'description' => 'Клонирование сделок в 1 клик.'],
+        ['title' => 'Итоги таблиц', 'description' => 'Суммы и итоги в списках CRM.'],
+        ['title' => 'Ускорение голосовых', 'description' => 'Изменение скорости аудио.'],
+        ['title' => 'Гугл таблицы', 'description' => 'Выгрузка данных в Google Sheets.'],
+        ['title' => 'Трекер активности', 'description' => 'Учет времени работы со сделками.'],
+        ['title' => 'Файндер', 'description' => 'Быстрый поиск по CRM и контроль времени ответа.'],
+        ['title' => 'Пушер', 'description' => 'Push-уведомления о событиях.'],
+        ['title' => 'Калькулятор полей', 'description' => 'Расчет значений полей по формулам.'],
+        ['title' => 'Email-модули', 'description' => 'Массовые email-рассылки и трекинг.'],
+    ];
+
     $bonusRows = [
         ['term' => '6', 'gift' => '1', 'total' => '7', 'payment' => 'Оплачиваете 6, пользуетесь 7', 'saving' => '1 199'],
         ['term' => '9', 'gift' => '2', 'total' => '10', 'payment' => 'Оплачиваете 8, пользуетесь 11', 'saving' => '2 398'],
@@ -13,9 +38,40 @@
     ];
 
     $bonusCards = [
-        ['value' => '40+', 'title' => 'виджетов бонусом', 'text' => 'Полезные виджеты от Clever и партнеров для продаж, контроля, коммуникаций и автоматизации.'],
+        ['value' => '40+', 'title' => 'виджетов от нас и партнеров', 'text' => 'Набор amoCRM-виджетов для продаж, контроля, коммуникаций и автоматизации.'],
         ['value' => 'до 10%', 'title' => 'кешбек работами', 'text' => 'Дарим часы работ по amoCRM от суммы оплаты лицензий. Расчет: 3 000 ₽ за час.'],
         ['value' => '+1-4', 'title' => 'месяца amoCRM', 'text' => 'Продлеваете через нас и получаете дополнительные месяцы использования amoCRM.'],
+    ];
+
+    $relatedLinks = [
+        [
+            'kicker' => 'Решение',
+            'title' => 'Внедрение amoCRM',
+            'text' => 'Соберем CRM с нуля: воронки, этапы, роли, автоматизацию и контроль заявок.',
+            'url' => route('site.landings.show', 'vnedrenie-amocrm'),
+            'label' => 'Смотреть внедрение',
+        ],
+        [
+            'kicker' => 'Решение',
+            'title' => 'Пересборка amoCRM',
+            'text' => 'Наводим порядок в действующей CRM, если накопились дубли, хаос в воронках и потерян контроль.',
+            'url' => route('site.landings.show', 'perevnedrenie-amocrm'),
+            'label' => 'Смотреть пересборку',
+        ],
+        [
+            'kicker' => 'Решение',
+            'title' => 'Разработка и интеграции',
+            'text' => 'Дорабатываем amoCRM под вашу логику продаж, интеграции, отчеты и нестандартные процессы.',
+            'url' => route('site.landings.show', 'razrabotka-crm'),
+            'label' => 'Смотреть разработку',
+        ],
+        [
+            'kicker' => 'Раздел',
+            'title' => 'Кейсы Clever',
+            'text' => 'Посмотрите, как мы решаем задачи по CRM, аналитике, автоматизации и контролю продаж.',
+            'url' => route('site.case-studies.index'),
+            'label' => 'Перейти в кейсы',
+        ],
     ];
 
     $licenseSchema = [
@@ -35,7 +91,7 @@
 @push('meta')
     <meta property="og:type" content="website">
     <meta property="og:title" content="Продление лицензий amoCRM с бонусами | Clever">
-    <meta property="og:description" content="Продлите лицензию amoCRM через Clever: бонусные месяцы amoCRM, 40+ виджетов и кешбек работами по amoCRM до 10% от суммы оплаты лицензий.">
+    <meta property="og:description" content="Продлите лицензию amoCRM через Clever: бонусные месяцы amoCRM, 40+ виджетов от нас и партнеров и кешбек работами по amoCRM до 10% от суммы оплаты лицензий.">
     <meta property="og:url" content="{{ route('site.license-renewal') }}">
     <meta name="twitter:card" content="summary">
 @endpush
@@ -49,12 +105,8 @@
         <div class="container-wrap grid gap-10 py-14 md:py-20 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,.95fr)] lg:items-center">
             <div>
                 <h1 class="max-w-4xl text-4xl font-black leading-[1.02] tracking-tight md:text-6xl">
-                    Продлите лицензию amoCRM с бонусными месяцами и виджетами
+                    Продлите лицензии amoCRM с бонусными месяцами и виджетами
                 </h1>
-                <p class="mt-6 max-w-2xl text-base leading-8 text-white/68 md:text-lg">
-                    Поможем продлить amoCRM через нас: лицензия становится выгоднее за счет бесплатных месяцев,
-                    а сверху вы получаете 40+ виджетов и кешбек часами работ по amoCRM.
-                </p>
 
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="#license-renewal-form" class="inline-flex min-h-12 items-center justify-center rounded-xl bg-orange-500 px-5 text-sm font-extrabold text-white shadow-lg shadow-orange-500/20 transition hover:bg-orange-600">
@@ -72,10 +124,6 @@
                         <div>
                             <p class="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-400">Экономия на лицензии</p>
                             <p class="mt-1 text-2xl font-black tracking-tight">amoCRM + Clever</p>
-                        </div>
-                        <div class="rounded-2xl bg-orange-50 px-4 py-3 text-right">
-                            <p class="text-xs font-bold text-orange-700">бонусом</p>
-                            <p class="text-xl font-black text-orange-600">40+</p>
                         </div>
                     </div>
 
@@ -110,8 +158,8 @@
                             <p class="mt-1 text-xs leading-5 text-slate-500">кешбек работами</p>
                         </div>
                         <div class="rounded-2xl bg-slate-100 p-4">
-                            <p class="text-2xl font-black">3 000</p>
-                            <p class="mt-1 text-xs leading-5 text-slate-500">₽ за час работ</p>
+                            <p class="text-2xl font-black">40+</p>
+                            <p class="mt-1 text-xs leading-5 text-slate-500">виджетов бесплатно</p>
                         </div>
                     </div>
                 </div>
@@ -124,9 +172,6 @@
             <div class="max-w-3xl">
                 <p class="site-kicker">Что входит</p>
                 <h2 class="site-title">Бонусы при продлении через Clever</h2>
-                <p class="site-subtitle">
-                    Условия взяты из бонусного предложения Clever: бесплатные месяцы amoCRM, набор виджетов и кешбек на работы по CRM.
-                </p>
             </div>
 
             <div class="mt-8 grid gap-4 md:grid-cols-3">
@@ -143,11 +188,34 @@
 
     <section class="site-section pt-0">
         <div class="container-wrap">
+            <div class="grid gap-8 lg:grid-cols-[minmax(280px,.78fr)_minmax(0,1.22fr)] lg:items-start">
+                <div class="lg:sticky lg:top-28">
+                    <p class="site-kicker">Бонусные виджеты Clever</p>
+                    <h2 class="site-title">Набор из 40+ виджетов для amoCRM</h2>
+                </div>
+
+                <div class="divide-y divide-slate-200 border-y border-slate-200">
+                    @foreach($companyWidgets as $widget)
+                        <article class="grid gap-2 py-4 sm:grid-cols-[minmax(180px,.42fr)_minmax(0,1fr)] sm:items-start">
+                            <h3 class="text-base font-extrabold text-slate-950">
+                                {{ $widget['title'] }}
+                            </h3>
+                            <p class="text-sm leading-6 text-slate-600">
+                                {{ $widget['description'] }}
+                            </p>
+                        </article>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="site-section pt-0">
+        <div class="container-wrap">
             <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
                 <div class="grid gap-4 border-b border-slate-200 bg-slate-950 p-6 text-white md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:p-8">
                     <div>
                         <p class="text-xs font-extrabold uppercase tracking-[0.12em] text-orange-300">Бонусные месяцы</p>
-                        <h2 class="mt-3 text-3xl font-black tracking-tight md:text-4xl">Сколько можно получить</h2>
+                        <h2 class="mt-3 text-3xl font-black tracking-tight md:text-4xl">БОНУСНЫЕ МЕСЯЦЫ</h2>
                     </div>
                     <p class="max-w-md text-sm leading-7 text-white/62">
                         Вы платите меньше, чем напрямую, а пользуетесь amoCRM дольше. Выгода указана за одного пользователя.
@@ -172,32 +240,13 @@
                                     <td class="px-5 py-5"><span class="rounded-full bg-orange-100 px-3 py-1.5 font-extrabold text-orange-700">+{{ $row['gift'] }}</span></td>
                                     <td class="px-5 py-5 font-bold text-slate-700">{{ $row['total'] }} мес.</td>
                                     <td class="px-5 py-5 text-slate-600">{{ $row['payment'] }}</td>
-                                    <td class="px-5 py-5 font-black text-slate-950">{{ $row['saving'] }} ₽</td>
+                                    <td class="px-5 py-5 font-black text-slate-950">От {{ $row['saving'] }} ₽</td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="site-section pt-0">
-        <div class="container-wrap grid gap-4 lg:grid-cols-3">
-            <article class="site-card lg:col-span-2">
-                <p class="site-kicker">Кешбек работами</p>
-                <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950">Часы на доработки amoCRM вместо абстрактной скидки</h2>
-                <p class="mt-4 max-w-3xl text-base leading-8 text-slate-600">
-                    До 10% от суммы оплаты лицензий возвращаем работами с нами. Эти часы можно направить на настройку воронок,
-                    автоматизацию, интеграции, разбор ошибок или развитие CRM. Расчет стоимости часа: 3 000 ₽.
-                </p>
-            </article>
-            <article class="site-card bg-slate-950 text-white">
-                <p class="text-5xl font-black">10%</p>
-                <p class="mt-4 text-sm leading-7 text-white/68">
-                    Максимальный кешбек работами от суммы оплаты лицензий. Финальный объем считаем перед счетом.
-                </p>
-            </article>
         </div>
     </section>
 
@@ -212,9 +261,6 @@
                         бонусными месяцами, виджетами и расчетом кешбека работами.
                     </p>
                     <div class="mt-8 grid gap-3 text-sm text-white/72">
-                        <a href="tel:+79996373955" class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-300/40 hover:bg-white/[0.08] hover:text-white">
-                            Контакты: +7 999 637-39-55
-                        </a>
                         <a href="mailto:admin@blackclever.ru" class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-300/40 hover:bg-white/[0.08] hover:text-white">
                             Email: admin@blackclever.ru
                         </a>
@@ -270,6 +316,25 @@
                         </p>
                     </form>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rl-section pt-0" id="license-related">
+        <div class="container-wrap">
+            <div class="rl-kicker">Ещё</div>
+            <h2 class="rl-title">Другие услуги и решения</h2>
+            <p class="rl-desc">Соседние страницы по внедрению, развитию и настройке amoCRM.</p>
+
+            <div class="rl-grid">
+                @foreach($relatedLinks as $item)
+                    <div class="rl-card">
+                        <div class="rl-card-kicker">{{ $item['kicker'] }}</div>
+                        <h3 class="rl-card-title">{{ $item['title'] }}</h3>
+                        <p class="rl-card-text">{{ $item['text'] }}</p>
+                        <a href="{{ $item['url'] }}" class="rl-card-link">{{ $item['label'] }}</a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

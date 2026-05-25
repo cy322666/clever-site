@@ -48,12 +48,50 @@
 
     </section>
 
-    @if($caseStudies->count() > 0)
+    <section class="cases-filter-section" id="cases-filter">
+        <div class="container-wrap">
+            <form action="{{ route('site.case-studies.index') }}" method="GET" class="cases-filter-panel">
+                <label class="cases-filter-field cases-filter-search">
+                    <span>Поиск</span>
+                    <input type="search" name="q" value="{{ $filters['q'] ?? '' }}" placeholder="Например: аналитика, лиды, дубли">
+                </label>
+
+                <label class="cases-filter-field">
+                    <span>Задача</span>
+                    <select name="task">
+                        <option value="">Все задачи</option>
+                        @foreach($taskOptions as $taskValue => $taskLabel)
+                            <option value="{{ $taskValue }}" @selected(($filters['task'] ?? '') === $taskValue)>{{ $taskLabel }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <label class="cases-filter-field">
+                    <span>Отрасль</span>
+                    <select name="niche">
+                        <option value="">Все отрасли</option>
+                        @foreach($caseNiches as $caseNiche)
+                            <option value="{{ $caseNiche }}" @selected(($filters['niche'] ?? '') === $caseNiche)>{{ $caseNiche }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <div class="cases-filter-actions">
+                    <button type="submit" class="cases-filter-submit">Показать</button>
+                    @if(($filters['q'] ?? '') !== '' || ($filters['niche'] ?? '') !== '' || ($filters['task'] ?? '') !== '')
+                        <a href="{{ route('site.case-studies.index') }}" class="cases-filter-reset">Сбросить</a>
+                    @endif
+                </div>
+            </form>
+        </div>
+    </section>
+
+    @if($tickerCaseStudies->count() > 0)
     <section class="cases-ticker-section cases-tk-anim" id="cases-ticker">
         <div class="cases-ticker-wrap">
             <div class="cases-ticker">
                 @for($i = 0; $i < 2; $i++)
-                    @foreach($caseStudies as $tickerCase)
+                    @foreach($tickerCaseStudies as $tickerCase)
                         <a href="{{ route('site.case-studies.show', $tickerCase->slug) }}" class="cases-ticker-card">
                             <div class="cases-tc-top">
                                 <div class="cases-tc-logo">
@@ -86,70 +124,79 @@
     @php $totalCases = $caseStudies->count(); @endphp
     <section class="cases-timeline-section cases-tl-anim" id="cases-list" style="--tl-total: {{ max($totalCases, 1) }};">
         <div class="container-wrap">
-            <div class="cases-timeline">
-                @foreach($caseStudies as $case)
-                    <div class="cases-tl-item" style="--i: {{ $loop->index }};">
-                        <div class="cases-tl-dot"></div>
-                        <article class="cases-tl-card">
-                            <div class="cases-tl-top">
-                                <div class="cases-tl-left">
-                                    <div class="cases-tl-logo">
-                                        @if($case->logoUrl())
-                                            <img src="{{ $case->logoUrl() }}" alt="{{ $case->client_name ?: $case->title }}" loading="lazy">
-                                        @else
-                                            <span>{{ mb_substr($case->client_name ?: $case->title, 0, 2) }}</span>
-                                        @endif
-                                    </div>
-                                    <div>
-                                        <div class="cases-tl-company">{{ $case->client_name ?: $case->title }}</div>
-                                        @if($case->niche)
-                                            <div class="cases-tl-niche">{{ $case->niche }}</div>
-                                        @endif
+            @if($caseStudies->count() > 0)
+                <div class="cases-timeline">
+                    @foreach($caseStudies as $case)
+                        <div class="cases-tl-item" style="--i: {{ $loop->index }};">
+                            <div class="cases-tl-dot"></div>
+                            <article class="cases-tl-card">
+                                <div class="cases-tl-top">
+                                    <div class="cases-tl-left">
+                                        <div class="cases-tl-logo">
+                                            @if($case->logoUrl())
+                                                <img src="{{ $case->logoUrl() }}" alt="{{ $case->client_name ?: $case->title }}" loading="lazy">
+                                            @else
+                                                <span>{{ mb_substr($case->client_name ?: $case->title, 0, 2) }}</span>
+                                            @endif
+                                        </div>
+                                        <div>
+                                            <div class="cases-tl-company">{{ $case->client_name ?: $case->title }}</div>
+                                            @if($case->niche)
+                                                <div class="cases-tl-niche">{{ $case->niche }}</div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <h3 class="cases-tl-title">{{ $case->title }}</h3>
+                                <h3 class="cases-tl-title">{{ $case->title }}</h3>
 
-                            <div class="cases-tl-body">
-                                @if($case->problem_block)
-                                    <div class="cases-tl-block cases-tl-block--problem">
-                                        <div class="cases-tl-block-label problem">Проблема</div>
-                                        <p>{{ Str::limit(strip_tags($case->problem_block), 140) }}</p>
-                                    </div>
-                                @endif
-                                @if($case->solution_block)
-                                    <div class="cases-tl-block cases-tl-block--solution">
-                                        <div class="cases-tl-block-label solution">Решение</div>
-                                        <p>{{ Str::limit(strip_tags($case->solution_block), 140) }}</p>
-                                    </div>
-                                @endif
-                                @if($case->result_block || $case->result_summary)
-                                    <div class="cases-tl-block cases-tl-block--result">
-                                        <div class="cases-tl-block-label result">Результат</div>
-                                        <p>{{ Str::limit(strip_tags($case->result_block ?: $case->result_summary), 140) }}</p>
-                                    </div>
-                                @endif
-                            </div>
+                                <div class="cases-tl-body">
+                                    @if($case->problem_block)
+                                        <div class="cases-tl-block cases-tl-block--problem">
+                                            <div class="cases-tl-block-label problem">Проблема</div>
+                                            <p>{{ Str::limit(strip_tags($case->problem_block), 140) }}</p>
+                                        </div>
+                                    @endif
+                                    @if($case->solution_block)
+                                        <div class="cases-tl-block cases-tl-block--solution">
+                                            <div class="cases-tl-block-label solution">Решение</div>
+                                            <p>{{ Str::limit(strip_tags($case->solution_block), 140) }}</p>
+                                        </div>
+                                    @endif
+                                    @if($case->result_block || $case->result_summary)
+                                        <div class="cases-tl-block cases-tl-block--result">
+                                            <div class="cases-tl-block-label result">Результат</div>
+                                            <p>{{ Str::limit(strip_tags($case->result_block ?: $case->result_summary), 140) }}</p>
+                                        </div>
+                                    @endif
+                                </div>
 
-                            <div class="cases-tl-bottom">
-                                @if($case->result_summary)
-                                    <div class="cases-tl-metrics">
-                                        <span class="cases-tl-metric">{{ $case->result_summary }}</span>
-                                    </div>
-                                @else
-                                    <span></span>
-                                @endif
-                                <a href="{{ route('site.case-studies.show', $case->slug) }}" class="cases-tl-link">
-                                    Полный кейс
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                                </a>
-                            </div>
-                        </article>
-                    </div>
-                @endforeach
-            </div>
-            {{ $caseStudies->links() }}
+                                <div class="cases-tl-bottom">
+                                    @if($case->result_summary)
+                                        <div class="cases-tl-metrics">
+                                            <span class="cases-tl-metric">{{ $case->result_summary }}</span>
+                                        </div>
+                                    @else
+                                        <span></span>
+                                    @endif
+                                    <a href="{{ route('site.case-studies.show', $case->slug) }}" class="cases-tl-link">
+                                        Полный кейс
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    @endforeach
+                </div>
+                {{ $caseStudies->links() }}
+            @else
+                <div class="cases-empty">
+                    <p class="cases-empty-kicker">Ничего не нашли</p>
+                    <h2 class="cases-empty-title">Попробуйте изменить поиск или отрасль</h2>
+                    <p class="cases-empty-text">Кейсы есть, но под выбранные условия они не попали.</p>
+                    <a href="{{ route('site.case-studies.index') }}" class="cases-filter-submit">Сбросить фильтры</a>
+                </div>
+            @endif
         </div>
     </section>
 
