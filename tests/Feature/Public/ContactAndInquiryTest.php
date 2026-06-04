@@ -105,4 +105,28 @@ class ContactAndInquiryTest extends TestCase
 
         $response->assertSessionHasErrors(['name', 'contact', 'landing_slug', 'page_url']);
     }
+
+    public function test_inquiry_form_rejects_english_spam_in_message(): void
+    {
+        $response = $this
+            ->from(route('site.home'))
+            ->post(route('site.inquiries.store'), [
+                'name' => 'Заявка с главной',
+                'contact' => 'rlxmsioy@hall-ortiz.com',
+                'message' => implode("\n", [
+                    'Hello.',
+                    'Withdraw your earned bitcoins: https://telegra.ph/You-Mined-13426-BTC-Message-ID-884747-05-04',
+                    'We are pleased to inform you that your website clevercrm.pro has earned 1.3426 BTC in cloud mining on our service.',
+                    'URGENT! You must withdrawal your bitcoins within the next 24 hours, otherwise they will be lost.',
+                ]),
+                'offer_type' => 'Диагностика CRM',
+                'page_url' => route('site.home'),
+            ]);
+
+        $response->assertSessionHasErrors(['message']);
+
+        $this->assertDatabaseMissing(SiteInquiry::class, [
+            'contact' => 'rlxmsioy@hall-ortiz.com',
+        ]);
+    }
 }

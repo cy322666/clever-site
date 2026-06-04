@@ -48,8 +48,9 @@
 
 @section('content')
     @php
-        $extractPoints = static function (?string $text, int $max = 4): array {
+        $extractPoints = static function (?string $text, int $max = 5): array {
             $raw = trim((string) $text);
+
             if ($raw === '') {
                 return [];
             }
@@ -58,104 +59,106 @@
             $items = [];
 
             foreach ($lines as $line) {
-                $line = trim((string) $line);
-                $line = preg_replace('/^[\-\*\•\—\–\d\.\)\s]+/u', '', $line ?? '');
-                $line = trim((string) $line);
+                $line = trim((string) preg_replace('/^[\-\*\•\—\–\d\.\)\s]+/u', '', (string) $line));
+
                 if ($line !== '') {
                     $items[] = $line;
                 }
             }
 
             if (count($items) < 2) {
-                $single = preg_replace('/\s+/u', ' ', $raw);
-                $sentences = preg_split('/(?<=[\.\!\?])\s+/u', (string) $single) ?: [];
-                $items = [];
-                foreach ($sentences as $sentence) {
-                    $sentence = trim((string) $sentence);
-                    $sentence = rtrim($sentence, '. ');
-                    if ($sentence !== '') {
-                        $items[] = $sentence;
-                    }
-                }
+                $sentences = preg_split('/(?<=[\.\!\?])\s+/u', preg_replace('/\s+/u', ' ', $raw)) ?: [];
+                $items = array_filter(array_map(static fn ($item) => trim((string) $item, " \t\n\r\0\x0B."), $sentences));
             }
 
-            $items = array_values(array_unique(array_filter(array_map(
-                static fn ($item) => trim((string) preg_replace('/\s+/u', ' ', (string) $item)),
-                $items
-            ))));
-
-            return array_slice($items, 0, $max);
+            return array_slice(array_values(array_unique($items)), 0, $max);
         };
 
-        $problemItems = $extractPoints($caseStudy->problem_block, 5);
+        $problemItems = $extractPoints($caseStudy->problem_block, 4);
         $solutionItems = $extractPoints($caseStudy->solution_block, 4);
         $resultItems = $extractPoints($caseStudy->result_block ?: $caseStudy->result_summary, 4);
-        $heroResults = array_slice($resultItems, 0, 3);
-
-        if (empty($problemItems)) {
-            $problemItems = ['Сделки застревали между этапами без понятной причины.', 'Лиды терялись из-за ручной работы и разрозненных каналов.', 'Руководитель не видел реальную картину по отделу продаж.'];
-        }
-
-        if (empty($solutionItems)) {
-            $solutionItems = ['Провели разбор текущей логики продаж и точек потерь.', 'Пересобрали воронки и структуру карточек под фактический процесс.', 'Настроили ключевую автоматизацию и интеграции.', 'Закрепили контроль по этапам, задачам и потерям.'];
-        }
-
-        if (empty($resultItems)) {
-            $resultItems = ['Убрали потери лидов на ключевых этапах.', 'Сделали движение сделок прозрачным для руководителя.', 'Команда начала работать в CRM по единой логике.'];
-        }
-
-        if (empty($heroResults)) {
-            $heroResults = array_slice($resultItems, 0, 3);
-        }
-
-        $solutionTitles = ['Разбор и приоритизация', 'Логика продаж', 'Автоматизация и интеграции', 'Контроль и запуск'];
-        $solutionImpacts = ['Диагностика', 'Архитектура', 'Автоматизация', 'Запуск'];
-        $resultImpacts = ['Контроль', 'Скорость', 'Прозрачность', 'Управляемость'];
-        $whyWorkedItems = [
-            'Сначала разобрали реальные процессы, а не внедряли шаблон.',
-            'Убрали лишнее и оставили только рабочую логику сделки.',
-            'Собрали автоматизацию под фактическую нагрузку команды.',
-            'Закрепили контроль по этапам, срокам и потерям.',
-        ];
         $metricItems = $extractPoints($caseStudy->metrics_block, 6);
-        $diagnosisItems = array_slice($problemItems, 0, 3);
-        $diagnosisImpacts = ['Потеря скорости', 'Потеря заявок', 'Потеря контроля'];
-        $heroTitleWords = preg_split('/\s+/u', trim($caseStudy->title)) ?: [];
+
+        $problemItems = $problemItems ?: ['Не было прозрачной картины по сделкам, задачам и потерям в продажах.'];
+        $solutionItems = $solutionItems ?: ['Разобрали процесс, пересобрали логику CRM и закрепили контроль по ключевым этапам.'];
+        $resultItems = $resultItems ?: ['CRM стала понятным инструментом для менеджеров и руководителя.'];
+        $metricItems = $metricItems ?: array_slice($resultItems, 0, 3);
+        $defaultMetrics = [
+            $caseStudy->result_summary ?: 'Появилась понятная картина по продажам и потерям',
+            'Менеджеры работают по единой логике без лишней ручной сверки',
+            'Руководитель видит проблемные этапы и точки контроля',
+        ];
+
+        foreach ($defaultMetrics as $metric) {
+            if (count($metricItems) >= 3) {
+                break;
+            }
+
+            if (! in_array($metric, $metricItems, true)) {
+                $metricItems[] = $metric;
+            }
+        }
+
+        $clientName = $caseStudy->client_name ?: 'Клиент CleverCRM';
         $caseCoverImage = $caseStudy->coverImageUrl();
+        $heroVisual = $caseCoverImage ?: asset('images/hero-sales-system-v3.png');
+        $cleanFullContent = trim(strip_tags((string) $caseStudy->full_content));
+        $showFullContent = $cleanFullContent !== '' && ! Str::startsWith($cleanFullContent, 'Подробное описание проекта');
+        $processSteps = [
+            ['label' => '01', 'title' => 'Диагностика', 'text' => $problemItems[0] ?? 'Нашли точки потерь и лишние действия в текущем процессе.'],
+            ['label' => '02', 'title' => 'Архитектура', 'text' => $solutionItems[0] ?? 'Собрали новую логику воронок, ролей, задач и статусов.'],
+            ['label' => '03', 'title' => 'Запуск', 'text' => $resultItems[0] ?? 'Передали команде рабочую систему контроля продаж.'],
+        ];
     @endphp
 
-    <section class="case-executive-hero case-executive-word-reveal">
+    <section class="case-story-hero">
         <div class="container-wrap">
-            <div class="case-executive-hero-grid">
-                <div class="case-executive-copy">
-                    <p class="case-executive-kicker">Кейс amoCRM</p>
-                    <h1 class="case-executive-title" aria-label="{{ $caseStudy->title }}">
-                        @foreach($heroTitleWords as $index => $word)
-                            <span class="case-executive-title-word" style="--word-index: {{ $index }}">{{ $word }}</span>{{ $loop->last ? '' : ' ' }}
-                        @endforeach
-                    </h1>
-                    <p class="case-executive-lead">{{ $caseStudy->short_description ?: $caseStudy->result_summary }}</p>
-                    <div class="case-executive-client-strip">
-                        @if($caseStudy->logoUrl())
-                            <div class="case-executive-logo">
-                                <img src="{{ $caseStudy->logoUrl() }}" alt="{{ $caseStudy->client_name ?: $caseStudy->title }}" loading="lazy">
-                            </div>
-                        @else
-                            <div class="case-executive-logo case-executive-logo-fallback">{{ mb_strtoupper(mb_substr($caseStudy->client_name ?: $caseStudy->title, 0, 1)) }}</div>
-                        @endif
-                        <div class="case-executive-meta-tags" aria-label="{{ $caseStudy->client_name ?: $caseStudy->title }}">
-                            @if($caseStudy->niche)
-                                <span>{{ $caseStudy->niche }}</span>
-                            @endif
-                            <span>amoCRM</span>
+            <nav class="case-story-breadcrumb" aria-label="Навигация">
+                <a href="{{ route('site.home') }}">Главная</a>
+                <span>/</span>
+                <a href="{{ route('site.case-studies.index') }}">Кейсы</a>
+                <span>/</span>
+                <span>{{ Str::limit($clientName, 34) }}</span>
+            </nav>
+
+            <div class="case-story-hero-grid">
+                <div class="case-story-hero-copy">
+                    <p class="case-story-kicker">Кейс amoCRM</p>
+                    <h1 class="case-story-title">{{ $caseStudy->title }}</h1>
+                    @if($caseStudy->short_description || $caseStudy->result_summary)
+                        <p class="case-story-lead">{{ $caseStudy->short_description ?: $caseStudy->result_summary }}</p>
+                    @endif
+
+                    <div class="case-story-meta">
+                        <div>
+                            <span>Клиент</span>
+                            <strong>{{ $clientName }}</strong>
+                        </div>
+                        <div>
+                            <span>Отрасль</span>
+                            <strong>{{ $caseStudy->niche ?: 'CRM-проект' }}</strong>
+                        </div>
+                        <div>
+                            <span>Фокус</span>
+                            <strong>Продажи и контроль</strong>
                         </div>
                     </div>
 
-                    <div class="case-executive-actions">
-                        <button type="button" class="case-executive-btn case-executive-btn-primary" data-lead-open data-lead-offer="Разобрать мою ситуацию по кейсу">Разобрать похожую ситуацию</button>
-                        <a href="{{ route('site.case-studies.index') }}" class="case-executive-btn case-executive-btn-secondary">Все кейсы</a>
+                    <div class="case-story-actions">
+                        <button type="button" class="case-story-button case-story-button-primary" data-lead-open data-lead-offer="Разобрать похожую ситуацию">Разобрать похожую ситуацию</button>
+                        <a href="{{ route('site.case-studies.index') }}" class="case-story-button case-story-button-secondary">Все кейсы</a>
                     </div>
                 </div>
+
+                <aside class="case-story-hero-panel" aria-label="Краткий итог проекта">
+                    <div class="case-story-visual">
+                        <img src="{{ $heroVisual }}" alt="{{ $caseStudy->title }}" loading="eager">
+                    </div>
+                    <div class="case-story-result-card">
+                        <span>Главный результат</span>
+                        <strong>{{ $caseStudy->result_summary ?: $resultItems[0] }}</strong>
+                    </div>
+                </aside>
             </div>
         </div>
     </section>
@@ -163,187 +166,138 @@
     @if($caseCoverImage)
         <section class="case-cover-section">
             <div class="container-wrap">
-                <figure class="case-cover-frame">
+                <figure class="case-cover-frame case-story-cover-frame">
                     <img src="{{ $caseCoverImage }}" alt="{{ $caseStudy->title }}" loading="lazy">
                 </figure>
             </div>
         </section>
     @endif
 
-    @if($metricItems !== [])
-        <section class="site-section">
+    <section class="case-story-section case-story-metrics-section">
+        <div class="container-wrap">
+            <div class="case-story-section-head">
+                <p class="case-story-kicker">Цифры и метрики</p>
+                <h2 class="case-story-section-title">Что стало видно после проекта</h2>
+            </div>
+            <div class="case-story-metrics">
+                @foreach($metricItems as $item)
+                    <article class="case-story-metric">
+                        <span>{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                        <p>{{ $item }}</p>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <section class="case-story-section">
+        <div class="container-wrap">
+            <div class="case-story-before-after">
+                <article class="case-story-column">
+                    <p class="case-story-kicker">Ситуация до</p>
+                    <h2>Где бизнес терял управление</h2>
+                    <ul>
+                        @foreach($problemItems as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                </article>
+
+                <article class="case-story-column case-story-column-accent">
+                    <p class="case-story-kicker">Что стало</p>
+                    <h2>Что изменилось после внедрения</h2>
+                    <ul>
+                        @foreach($resultItems as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-story-section case-story-process-section">
+        <div class="container-wrap">
+            <div class="case-story-section-head case-story-section-head-wide">
+                <p class="case-story-kicker">Что сделали</p>
+                <h2 class="case-story-section-title">Сначала разобрали процесс, потом трогали CRM</h2>
+                <p class="case-story-section-text">Так страница показывает не просто список настроек, а понятную управленческую работу: диагноз, новая логика, запуск и контроль результата.</p>
+            </div>
+
+            <div class="case-story-process">
+                @foreach($processSteps as $step)
+                    <article class="case-story-step">
+                        <span>{{ $step['label'] }}</span>
+                        <h3>{{ $step['title'] }}</h3>
+                        <p>{{ $step['text'] }}</p>
+                    </article>
+                @endforeach
+            </div>
+
+            <div class="case-story-solution-list">
+                @foreach($solutionItems as $item)
+                    <div>
+                        <span>{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                        <p>{{ $item }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    @if($showFullContent)
+        <section class="case-story-section">
             <div class="container-wrap">
-                <div class="service-section-head">
-                    <h2 class="site-title service-section-title">Цифры и метрики</h2>
-                </div>
-                <div class="service-cards-grid service-cards-grid--4">
-                    @foreach($metricItems as $item)
-                        <article class="site-card service-clean-card">
-                            <p class="service-clean-card-text">— {{ $item }}</p>
-                        </article>
-                    @endforeach
-                </div>
+                <article class="case-story-editorial">
+                    <p class="case-story-kicker">Детали проекта</p>
+                    <div class="case-story-editorial-content">
+                        @foreach(preg_split('/\R{2,}/u', trim((string) $caseStudy->full_content)) ?: [] as $paragraph)
+                            @if(trim(strip_tags($paragraph)) !== '')
+                                <p>{{ trim(strip_tags($paragraph)) }}</p>
+                            @endif
+                        @endforeach
+                    </div>
+                </article>
             </div>
         </section>
     @endif
 
-    <section class="case-diagnosis-section case-diagnosis-note-first">
+    <section class="case-story-section case-story-cta-section">
         <div class="container-wrap">
-            <div class="case-diagnosis-head">
+            <article class="case-story-cta">
                 <div>
-                    <p class="case-diagnosis-kicker">Ситуация до</p>
-                    <h2 class="case-diagnosis-title">CRM была внедрена, но не управляла продажами</h2>
-                    <p class="case-diagnosis-lead">Перед изменениями фиксируем не просто список жалоб, а управленческий диагноз: где именно система теряла скорость, заявки и контроль.</p>
+                    <p class="case-story-kicker">Заявка на разбор</p>
+                    <h2>Хотите такой же порядок в CRM?</h2>
+                    <p>Опишите, что сейчас не устраивает в продажах. Мы посмотрим на задачу и подскажем, с чего начинать: аудит, доработка или полноценное перевнедрение.</p>
                 </div>
-            </div>
-
-            <div class="case-diagnosis-grid">
-                @foreach($diagnosisItems as $index => $item)
-                    <article class="case-diagnosis-card">
-                        <div class="case-diagnosis-num">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}</div>
-                        <h3>{{ Str::limit(strip_tags($item), 72) }}</h3>
-                        <p>{{ $item }}</p>
-                        <div class="case-diagnosis-impact">{{ $diagnosisImpacts[$index] ?? 'Зона риска' }}</div>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <section class="case-diagnosis-section case-diagnosis-section--solution case-diagnosis-note-first">
-        <div class="container-wrap">
-            <div class="case-diagnosis-head">
-                <div>
-                    <p class="case-diagnosis-kicker">Что сделали</p>
-                    <h2 class="case-diagnosis-title">Сначала процесс, потом настройки</h2>
-                    <p class="case-diagnosis-lead">Пересобрали CRM не как набор отдельных доработок, а как последовательную систему управления продажами.</p>
-                </div>
-            </div>
-
-            <div class="case-diagnosis-grid">
-                @foreach($solutionItems as $index => $item)
-                    <article class="case-diagnosis-card">
-                        <div class="case-diagnosis-num">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}</div>
-                        <h3>{{ $solutionTitles[$index] ?? ('Шаг ' . ($index + 1)) }}</h3>
-                        <p>{{ $item }}</p>
-                        <div class="case-diagnosis-impact">{{ $solutionImpacts[$index] ?? 'Этап проекта' }}</div>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <section class="case-diagnosis-section case-diagnosis-section--result case-diagnosis-note-first">
-        <div class="container-wrap">
-            <div class="case-diagnosis-head">
-                <div>
-                    <p class="case-diagnosis-kicker">Что стало</p>
-                    <h2 class="case-diagnosis-title">CRM снова стала рабочим инструментом продаж</h2>
-                    <p class="case-diagnosis-lead">После перезапуска стало понятно, где теряются заявки, почему сделки зависают и какой следующий шаг нужен команде.</p>
-                </div>
-            </div>
-
-            <div class="case-diagnosis-grid">
-                @foreach($resultItems as $item)
-                    <article class="case-diagnosis-card">
-                        <div class="case-diagnosis-num">{{ str_pad((string) ($loop->index + 1), 2, '0', STR_PAD_LEFT) }}</div>
-                        <h3>{{ Str::limit(strip_tags($item), 72) }}</h3>
-                        <p>{{ $item }}</p>
-                        <div class="case-diagnosis-impact">{{ $resultImpacts[$loop->index] ?? 'Итог проекта' }}</div>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <section class="site-section case-why-table-line">
-        <div class="container-wrap">
-            <div class="case-why-compare-head">
-                <p class="case-why-compare-kicker">Почему это сработало</p>
-                <h2 class="case-why-compare-title">Мы не усиливали хаос автоматизацией</h2>
-                <p class="case-why-compare-lead">Проект сработал, потому что сначала разобрали реальную логику продаж, а уже потом меняли структуру CRM.</p>
-            </div>
-
-            <div class="case-why-compare-table">
-                <div class="case-why-compare-row">
-                    <div>
-                        <small>Не делали</small>
-                        <h3>Не переносили старый хаос в новые настройки</h3>
-                        <p>Автоматизация без разбора процесса только ускорила бы ошибки и потери.</p>
-                    </div>
-                    <div>
-                        <small>Сделали</small>
-                        <h3>{{ $whyWorkedItems[0] ?? 'Сначала разобрали реальные процессы, а не внедряли шаблон.' }}</h3>
-                        <p>После этого стало понятно, какие этапы, поля и задачи действительно нужны.</p>
-                    </div>
-                </div>
-                <div class="case-why-compare-row">
-                    <div>
-                        <small>Не делали</small>
-                        <h3>Не усложняли CRM дополнительными сущностями</h3>
-                        <p>Лишние элементы мешали бы менеджерам работать регулярно и одинаково.</p>
-                    </div>
-                    <div>
-                        <small>Сделали</small>
-                        <h3>{{ $whyWorkedItems[1] ?? 'Убрали лишнее и оставили только рабочую логику сделки.' }}</h3>
-                        <p>Команда получила понятный следующий шаг по сделке и меньше ручной сверки.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="site-section case-situation-form-section case-situation-quiet-scan">
-        <div class="container-wrap">
-            <article class="case-situation-form">
-                <div class="case-situation-form-content">
-                    <p class="case-situation-form-kicker">Заявка на разбор</p>
-                    <h2 class="case-situation-form-title">Опишите задачу коротко, остальное уточним на звонке</h2>
-                    <p class="case-situation-form-lead">Покажем, где в CRM теряются заявки, контроль и скорость продаж, а затем предложим первый понятный шаг без лишней перестройки.</p>
-                </div>
-                <form action="{{ route('site.inquiries.store') }}" method="POST" class="case-situation-form-card">
+                <form action="{{ route('site.inquiries.store') }}" method="POST" class="case-story-form">
                     @csrf
-                    <input type="hidden" name="name" value="Заявка с сайта">
                     <input type="hidden" name="landing_title" value="{{ $caseStudy->title }}">
                     <input type="hidden" name="offer_type" value="Разобрать мою ситуацию по кейсу">
                     <input type="hidden" name="calculator_snapshot" value="">
                     <input type="hidden" name="page_url" value="{{ request()->fullUrl() }}">
-                    <input type="hidden" name="form_anchor" value="case-situation-form">
+                    <input type="hidden" name="form_anchor" value="case-study-detail">
 
-                    <input class="case-situation-form-field" type="text" name="contact_name" placeholder="Ваше имя" autocomplete="name">
-                    <input class="case-situation-form-field" type="text" name="contact" placeholder="Телефон или мессенджер" autocomplete="tel">
-                    <textarea class="case-situation-form-field case-situation-form-textarea" name="message" rows="3" placeholder="Что сейчас не устраивает в CRM"></textarea>
-                    <button type="submit" class="case-situation-form-button">Отправить заявку</button>
+                    <label>
+                        <span>Имя</span>
+                        <input type="text" name="name" value="{{ old('name') }}" placeholder="Как к вам обращаться" autocomplete="name">
+                    </label>
+                    <label>
+                        <span>Контакт</span>
+                        <input type="text" name="contact" value="{{ old('contact') }}" placeholder="Телефон или Telegram" autocomplete="tel">
+                    </label>
+                    <label>
+                        <span>Что происходит в CRM</span>
+                        <textarea name="message" rows="4" placeholder="Например: теряются заявки, нет контроля по менеджерам, отчеты не сходятся">{{ old('message') }}</textarea>
+                    </label>
+                    <button type="submit">Получить разбор</button>
                 </form>
             </article>
         </div>
     </section>
 
-    <section class="site-section case-final-panel-section case-final-panel-cascade">
-        <div class="container-wrap">
-            <div class="case-final-panel">
-                <div class="case-final-panel-grid">
-                    <div class="case-final-panel-content">
-                        <p class="case-final-panel-kicker">По итогам кейса</p>
-                        <h2 class="case-final-panel-title">Покажем, где вы теряете деньги в продажах</h2>
-                        <p class="case-final-panel-text">Разбираем текущую ситуацию, находим слабые места и показываем, как выстроить систему продаж под ваш бизнес без лишней сложности.</p>
-                        <div class="case-final-panel-actions">
-                            <a href="#" data-lead-open data-lead-offer="Разобрать мою ситуацию по кейсу" class="case-final-panel-button case-final-panel-button-primary">Разобрать мою ситуацию</a>
-                            <a href="{{ route('site.landings.show', 'audit-amocrm') }}" class="case-final-panel-button case-final-panel-button-secondary">Смотреть аудит CRM</a>
-                        </div>
-                    </div>
-
-                    <aside class="case-final-panel-note">
-                        <p class="case-final-panel-note-title">Формат</p>
-                        <p class="case-final-panel-note-text">Без перегруза и без продажи ради продажи. Сначала смотрим, где у вас реальные потери, и только потом говорим про внедрение или перевнедрение.</p>
-                    </aside>
-                </div>
-            </div>
-        </div>
-    </section>
-
     @if(($relatedCaseStudies ?? collect())->isNotEmpty())
-        <section class="cases-related-section case-detail-related-section case-related-cascade">
+        <section class="cases-related-section case-detail-related-section">
             <div class="container-wrap">
                 <div class="cases-rl-wrap">
                     <div class="cases-rl-head">
@@ -384,35 +338,3 @@
         </section>
     @endif
 @endsection
-
-@push('scripts')
-    <script>
-        (function () {
-            var sections = document.querySelectorAll('.case-diagnosis-note-first, .case-editorial-steps-fade, .case-result-list-cascade, .case-why-table-line, .case-situation-quiet-scan, .case-final-panel-cascade, .case-related-cascade');
-            if (!sections.length) return;
-
-            if (!('IntersectionObserver' in window)) {
-                sections.forEach(function (section) {
-                    section.classList.add('is-animated');
-                });
-                return;
-            }
-
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (!entry.isIntersecting) return;
-
-                    entry.target.classList.add('is-animated');
-                    observer.unobserve(entry.target);
-                });
-            }, {
-                threshold: 0.28,
-                rootMargin: '0px 0px -12% 0px'
-            });
-
-            sections.forEach(function (section) {
-                observer.observe(section);
-            });
-        })();
-    </script>
-@endpush

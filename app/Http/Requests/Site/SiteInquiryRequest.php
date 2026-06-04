@@ -32,7 +32,16 @@ class SiteInquiryRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:120'],
             'contact' => ['required', 'string', 'max:190'],
-            'message' => ['nullable', 'string', 'max:3000'],
+            'message' => [
+                'nullable',
+                'string',
+                'max:3000',
+                function (string $attribute, mixed $value, \Closure $fail): void {
+                    if ($this->hasSpamEnglishWords((string) $value)) {
+                        $fail('Проверьте описание задачи и отправьте заявку еще раз.');
+                    }
+                },
+            ],
             'calculator_snapshot' => ['nullable', 'string', 'max:4000'],
             'landing_slug' => ['nullable', 'string', Rule::exists('landing_pages', 'slug')],
             'landing_title' => ['nullable', 'string', 'max:255'],
@@ -50,5 +59,69 @@ class SiteInquiryRequest extends FormRequest
             'landing_slug.exists' => 'Страница лендинга не найдена',
             'page_url.url' => 'Некорректный адрес страницы',
         ];
+    }
+
+    private function hasSpamEnglishWords(string $message): bool
+    {
+        if ($message === '') {
+            return false;
+        }
+
+        preg_match_all('/[A-Za-z][A-Za-z\'-]{2,}/u', $message, $matches);
+
+        if (empty($matches[0])) {
+            return false;
+        }
+
+        $allowedWords = [
+            'airtable',
+            'albato',
+            'amocrm',
+            'api',
+            'avito',
+            'bitrix',
+            'bitrix24',
+            'calltouch',
+            'crm',
+            'datalens',
+            'docs',
+            'drive',
+            'facebook',
+            'google',
+            'instagram',
+            'kommo',
+            'lptracker',
+            'mango',
+            'meta',
+            'microsoft',
+            'onlinepbx',
+            'power',
+            'powerbi',
+            'retailcrm',
+            'roistat',
+            'sheets',
+            'telegram',
+            'tilda',
+            'uis',
+            'vk',
+            'webhook',
+            'webhooks',
+            'whatsapp',
+            'wordpress',
+            'yandex',
+            'youtube',
+        ];
+
+        $allowedWords = array_fill_keys($allowedWords, true);
+
+        foreach ($matches[0] as $word) {
+            $normalizedWord = mb_strtolower(str_replace(['-', '\''], '', $word));
+
+            if (! isset($allowedWords[$normalizedWord])) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
