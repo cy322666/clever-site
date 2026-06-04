@@ -3933,8 +3933,18 @@
       display: flex !important;
       min-height: 126px !important;
       flex-direction: column !important;
-      gap: 18px !important;
+      gap: 10px !important;
       padding: 4px 4px 2px !important;
+    }
+
+    #cases-redesign-6 .cs-mini-kicker {
+      color: #ff8a2a !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.12em !important;
+      line-height: 1.2 !important;
+      text-transform: uppercase !important;
+      margin: 0 !important;
     }
 
     #cases-redesign-6 .cs-mini:hover {
@@ -3944,10 +3954,13 @@
     }
 
     #cases-redesign-6 .cs-mini-title {
-      font-size: 18px !important;
-      font-weight: 800 !important;
-      line-height: 1.24 !important;
+      font-family: var(--font-sans) !important;
+      font-size: clamp(22px, 1.9vw, 28px) !important;
+      font-weight: 700 !important;
+      line-height: 1.12 !important;
       letter-spacing: 0 !important;
+      color: #0f172a !important;
+      margin: 0 !important;
       display: -webkit-box !important;
       -webkit-line-clamp: 3 !important;
       -webkit-box-orient: vertical !important;
@@ -7166,7 +7179,7 @@
       font-size: clamp(22px, 1.9vw, 28px) !important;
       font-weight: 700 !important;
       line-height: 1.12 !important;
-      letter-spacing: -0.03em !important;
+      letter-spacing: 0 !important;
       color: #0f172a !important;
       margin-top: 0;
       max-width: 48ch;
@@ -7841,7 +7854,7 @@
     <div class="cs-wrap">
       <div class="cs-head cr-head">
         <div class="cs-ey">Кейсы</div>
-        <h2 class="cs-title">Реальные результаты наших клиентов</h2>
+        <h2 class="cs-title">Результаты наших клиентов</h2>
       </div>
 
       <div class="cs-mini-grid">
@@ -7877,6 +7890,7 @@
             </div>
           @endif
           <div class="cs-mini-body">
+            <div class="cs-mini-kicker">{{ $case->niche ?: ($case->client_name ?: 'Кейс') }}</div>
             <h4 class="cs-mini-title">{{ $case->title }}</h4>
             <span class="cs-mini-link">Читать полностью →</span>
           </div>
@@ -7885,6 +7899,7 @@
         <div class="cs-mini cr-mini">
           <div class="cs-mini-preview"><span>CL</span></div>
           <div class="cs-mini-body">
+            <div class="cs-mini-kicker">Кейсы</div>
             <h4 class="cs-mini-title">Кейсы пока не добавлены</h4>
             <span class="cs-mini-link">Добавьте кейсы в админке</span>
           </div>
@@ -7989,6 +8004,82 @@
     #pain-section .pain-heading,
     #useful-business-block .uf-title {
       color: #ffffff !important;
+    }
+  </style>
+
+  <style id="home-card-overlap-guard">
+    #home-directions {
+      padding-bottom: 96px !important;
+    }
+
+    #cases-redesign-6 {
+      padding-top: 96px !important;
+      clear: both !important;
+    }
+
+    #home-directions .future-card-grid,
+    #cases-redesign-6 .cs-mini-grid {
+      gap: 28px !important;
+      align-items: stretch !important;
+    }
+
+    #home-directions .future-service-reveal {
+      min-width: 0 !important;
+      min-height: 0 !important;
+      height: auto !important;
+      display: flex !important;
+    }
+
+    #home-directions .future-service-card,
+    #cases-redesign-6 .cs-mini {
+      box-sizing: border-box !important;
+      min-width: 0 !important;
+      height: 100% !important;
+      overflow: hidden !important;
+    }
+
+    #home-directions .future-service-image,
+    #cases-redesign-6 .cs-mini-preview {
+      flex: 0 0 auto !important;
+    }
+
+    #home-directions .future-service-copy,
+    #cases-redesign-6 .cs-mini-body {
+      min-width: 0 !important;
+      min-height: 0 !important;
+    }
+
+    #cases-redesign-6 .cs-mini-body {
+      min-height: auto !important;
+    }
+
+    #home-directions .future-service-copy h3,
+    #cases-redesign-6 .cs-mini-title {
+      letter-spacing: 0 !important;
+      overflow-wrap: anywhere !important;
+      word-break: normal !important;
+      hyphens: auto !important;
+    }
+
+    @media (max-width: 768px) {
+      #home-directions {
+        padding-bottom: 72px !important;
+      }
+
+      #cases-redesign-6 {
+        padding-top: 72px !important;
+      }
+
+      #home-directions .future-card-grid,
+      #cases-redesign-6 .cs-mini-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+
+      #home-directions .future-service-card,
+      #cases-redesign-6 .cs-mini {
+        height: auto !important;
+      }
     }
   </style>
 

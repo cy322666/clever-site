@@ -204,6 +204,33 @@ class CaseStudyAndWidgetPageTest extends TestCase
         $response->assertSee('Читать полностью →');
     }
 
+    public function test_homepage_case_cards_do_not_duplicate_direction_case_links(): void
+    {
+        $directionCaseSlug = 'kak-my-vystroili-kommunikacii-v-seti-klinik-krasoty-i-rabotaem-s-klientom-uze-2-goda';
+
+        $this->createCaseStudy([
+            'slug' => $directionCaseSlug,
+            'title' => 'Кейс из блока направлений не должен повторяться ниже',
+            'sort_order' => 1,
+        ]);
+
+        foreach (range(1, 6) as $index) {
+            $this->createCaseStudy([
+                'slug' => 'unique-home-case-'.$index,
+                'title' => 'Уникальный кейс главной '.$index,
+                'sort_order' => $index + 1,
+            ]);
+        }
+
+        $response = $this->get(route('site.home'));
+
+        $response->assertOk();
+        $response->assertDontSee('Кейс из блока направлений не должен повторяться ниже');
+        $response->assertSee('Уникальный кейс главной 1');
+        $response->assertSee('Уникальный кейс главной 6');
+        $this->assertSame(1, substr_count($response->getContent(), '/case-studies/'.$directionCaseSlug));
+    }
+
     public function test_published_widget_opens(): void
     {
         $widget = $this->createWidget([

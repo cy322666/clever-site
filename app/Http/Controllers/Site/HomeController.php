@@ -13,6 +13,13 @@ use Illuminate\Contracts\View\View;
 
 class HomeController extends Controller
 {
+    private const HOMEPAGE_DIRECTION_CASE_SLUGS = [
+        'kak-my-vystroili-kommunikacii-v-seti-klinik-krasoty-i-rabotaem-s-klientom-uze-2-goda',
+        'kak-crm-mozet-nacat-mesat-prodazam-perezapusk-amocrm-dlia-obrazovatelnogo-proekta-necto',
+        'b2b-analitika-datalens',
+        'kak-pravilno-vybrat-mesto-dlia-vidzeta-v-amocrm-keis-art-estate',
+    ];
+
     public function __invoke(): View
     {
         $siteSettings = SiteSetting::query()->first();
@@ -24,12 +31,16 @@ class HomeController extends Controller
             ->get();
 
         $caseStudies = CaseStudy::query()
-            ->where('status', 'published')
+            ->published()
+            ->whereNotIn('slug', self::HOMEPAGE_DIRECTION_CASE_SLUGS)
             ->orderByRaw('CASE WHEN sort_order IS NULL THEN 1 ELSE 0 END')
             ->orderBy('sort_order')
             ->latest('updated_at')
-            ->limit(6)
-            ->get();
+            ->limit(12)
+            ->get()
+            ->unique('slug')
+            ->take(6)
+            ->values();
 
         $testimonials = Testimonial::query()
             ->where('status', 'published')
