@@ -69,11 +69,13 @@ class SeoIndexingTest extends TestCase
         $contactsResponse = $this->get(route('site.contacts'));
 
         $homeResponse->assertOk();
-        $homeResponse->assertSee('https://mc.yandex.ru/metrika/tag.js', false);
-        $homeResponse->assertSee("ym('12345678', 'init'", false);
+        $homeResponse->assertSee('tag.js?id=12345678', false);
+        $homeResponse->assertSee("ym(12345678, 'init'", false);
+        $homeResponse->assertSee('ecommerce:"dataLayer"', false);
 
         $contactsResponse->assertOk();
-        $contactsResponse->assertSee('https://mc.yandex.ru/metrika/tag.js', false);
-        $contactsResponse->assertSee("ym('12345678', 'init'", false);
+        $contactsResponse->assertSee('tag.js?id=12345678', false);
+        $contactsResponse->assertSee("ym(12345678, 'init'", false);
+        $contactsResponse->assertSee('ecommerce:"dataLayer"', false);
     }
 }
