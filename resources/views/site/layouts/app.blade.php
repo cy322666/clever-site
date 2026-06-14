@@ -11,6 +11,7 @@
     @if(!empty($canonical))
         <link rel="canonical" href="{{ $canonical }}">
     @endif
+    @include('site.partials.seo-verification')
     @stack('meta')
     @php
         $organizationSchema = [
@@ -30,6 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {!! $globalJsPlugins['head'] ?? '' !!}
+    @include('site.partials.yandex-metrika')
 </head>
 <body class="min-h-screen">
     @include('site.partials.top-nav')

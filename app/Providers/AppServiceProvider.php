@@ -17,10 +17,14 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $rootUrl = (string) (config('app.asset_url') ?: config('app.url'));
+        $rootUrl = rtrim((string) (config('seo.public_url') ?: config('app.asset_url') ?: config('app.url')), '/');
 
-        if ($this->app->environment('production') && str_starts_with($rootUrl, 'https://')) {
-            URL::forceScheme('https');
+        if ($rootUrl !== '' && ! str_contains($rootUrl, 'localhost')) {
+            URL::forceRootUrl($rootUrl);
+
+            if (str_starts_with($rootUrl, 'https://')) {
+                URL::forceScheme('https');
+            }
         }
 
         View::composer(['site.*', 'admin.*', 'errors.*', 'components.*'], function ($view): void {

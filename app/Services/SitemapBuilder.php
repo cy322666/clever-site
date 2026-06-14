@@ -9,7 +9,6 @@ use App\Models\SiteSetting;
 use App\Models\Widget;
 use Carbon\CarbonInterface;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 
 class SitemapBuilder
 {
@@ -17,15 +16,15 @@ class SitemapBuilder
     {
         $landings = LandingPage::query()
             ->published()
-            ->get(['slug', 'updated_at', 'sort_order']);
+            ->get(['slug', 'canonical_url', 'updated_at', 'sort_order']);
 
         $articles = Article::query()
             ->published()
-            ->get(['slug', 'published_at', 'updated_at']);
+            ->get(['slug', 'canonical_url', 'published_at', 'updated_at']);
 
         $caseStudies = CaseStudy::query()
             ->published()
-            ->get(['slug', 'published_at', 'updated_at']);
+            ->get(['slug', 'canonical_url', 'published_at', 'updated_at']);
 
         $widgets = Widget::query()
             ->where('status', 'published')
@@ -110,19 +109,19 @@ class SitemapBuilder
 
         $items = $items
             ->concat($landings->map(fn (LandingPage $landing): array => $this->makeItem(
-                route('site.landings.show', $landing->slug),
+                $landing->canonicalUrl(),
                 $this->asCarbon($landing->updated_at),
                 'weekly',
                 '0.8',
             )))
             ->concat($articles->map(fn (Article $article): array => $this->makeItem(
-                route('site.articles.show', $article->slug),
+                $article->canonicalUrl(),
                 $this->asCarbon($article->published_at ?: $article->updated_at),
                 'monthly',
                 '0.7',
             )))
             ->concat($caseStudies->map(fn (CaseStudy $caseStudy): array => $this->makeItem(
-                route('site.case-studies.show', $caseStudy->slug),
+                $caseStudy->canonicalUrl(),
                 $this->asCarbon($caseStudy->published_at ?: $caseStudy->updated_at),
                 'monthly',
                 '0.7',
@@ -175,12 +174,5 @@ class SitemapBuilder
         }
 
         return null;
-    }
-
-    private function findLandingDate(Collection $landings, string $slug): ?CarbonInterface
-    {
-        $landing = $landings->firstWhere('slug', $slug);
-
-        return $landing instanceof LandingPage ? $this->asCarbon($landing->updated_at) : null;
     }
 }

@@ -10,6 +10,7 @@
     content="Внедрение и перевнедрение amoCRM. Наведём порядок в продажах, уберём потери заявок и настроим контроль. Интегратор с 2020 года, 150+ проектов."
     name="description" />
   <link rel="canonical" href="{{ route('site.home') }}" />
+  @include('site.partials.seo-verification')
   <meta content="Внедрение и перевнедрение amoCRM | CleverCRM" property="og:title" />
   <meta
     content="Внедрение и перевнедрение amoCRM. Наведём порядок в продажах, уберём потери заявок и настроим контроль. Интегратор с 2020 года, 150+ проектов."
@@ -6828,6 +6829,7 @@
   </style>
 
   {!! $headPlugins ?? '' !!}
+  @include('site.partials.yandex-metrika')
 </head>
 
 <body>
