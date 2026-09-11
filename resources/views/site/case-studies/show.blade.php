@@ -221,7 +221,6 @@
             <div class="case-story-section-head case-story-section-head-wide">
                 <p class="case-story-kicker">Что сделали</p>
                 <h2 class="case-story-section-title">Сначала разобрали процесс, потом трогали CRM</h2>
-                <p class="case-story-section-text">Так страница показывает не просто список настроек, а понятную управленческую работу: диагноз, новая логика, запуск и контроль результата.</p>
             </div>
 
             <div class="case-story-process">

@@ -37,7 +37,7 @@
                 <a href="{{ $section['primary_cta']['url'] }}" class="ct-btn">{{ $section['primary_cta']['label'] }}</a>
             @endif
             @if(!empty($section['secondary_cta']['label']) && !empty($section['secondary_cta']['url']))
-                <a href="{{ $section['secondary_cta']['url'] }}" class="ct-btn-ghost">{{ $section['secondary_cta']['label'] }}</a>
+                <a href="{{ $section['secondary_cta']['url'] === 'https://t.me/example' ? 'https://t.me/integrator' : $section['secondary_cta']['url'] }}" class="ct-btn-ghost">{{ $section['secondary_cta']['label'] }}</a>
             @endif
         </div>
     </div>

@@ -1,0 +1,526 @@
+/* Shared finishing styles for the Webflow homepage and Laravel public pages. */
+body.site-refined {
+    --site-bg: #fff;
+    --site-bg-soft: #f6f7f7;
+    --site-border: #e1e4e5;
+    --site-border-strong: #c9ced0;
+    --site-text: #17191b;
+    --site-text-soft: #53595f;
+    --site-text-muted: #646b71;
+    --site-radius-xl: 8px;
+    --site-radius-2xl: 8px;
+    --site-shadow: 0 6px 18px rgb(20 24 28 / 5%);
+    --site-shadow-soft: 0 2px 8px rgb(20 24 28 / 4%);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+body.site-refined :is(h1, h2, h3, h4, p, a, button, label, summary) {
+    letter-spacing: 0 !important;
+}
+
+body.site-refined :is(h1, h2, h3, h4) {
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+}
+
+body.site-refined :is(a, button, input, textarea, select, summary):focus-visible {
+    outline: 2px solid #b94d0b !important;
+    outline-offset: 4px;
+}
+
+body.site-refined :is(section[id], form[id]) {
+    scroll-margin-top: 104px;
+}
+
+/* Decorative overlays are separate from the actual diagrams and photographs. */
+html body.site-refined :is(.section, .site-section, .future-section, .landing-section,
+    .future-home-hero, .is-inverse, #founder-block, #cases-redesign-6, #faq-section,
+    #pain-section, .case-editorial-steps-section, .cases-cp-panel, .ct-wrap,
+    .sp-wrap, .ce-shell, .lf-shell, .future-contact-panel)::before,
+body.site-refined :is(.section:first-of-type, .lh-open, .articles-hero, .cases-hero, #pain-section,
+    #amocrm-interview-block, #useful-business-block)::after,
+body.site-refined :is(.lh-launch-card, .articles-topics-section,
+    .articles-list-section, .articles-subscribe-panel, .articles-mag-feat)::before,
+body.site-refined .articles-list-section::after {
+    content: none !important;
+    background: none !important;
+}
+
+body.site-refined :is(.case-story-hero, .case-story-cta, .site-footer) {
+    background-image: none !important;
+}
+
+body.site-refined .case-story-hero {
+    background-color: #fff;
+}
+
+body.site-refined :is(#home-directions, #cases-redesign-6, #founder-block,
+    #budget-hypothesis, #start-flow-block) {
+    background: #f6f7f7 !important;
+}
+
+body.site-refined :is(#home-directions, #cases-redesign-6, #home-reviews,
+    #founder-block, #useful-business-block, #budget-hypothesis, #start-flow-block),
+body.site-refined section.section#faq-section {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+}
+
+body.site-refined :is(#pain-section .pain-heading, #home-directions .future-section-title,
+    #founder-block .founder-split-heading, #interview-video-block .iv-title,
+    #cases-redesign-6 .cs-title, #home-reviews .future-section-title,
+    #useful-business-block .uf-title, #budget-hypothesis .bh-title,
+    #start-flow-block .sf-title),
+body.site-refined section.section#faq-section .faq-left-title {
+    font-size: 42px !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0 !important;
+}
+
+body.site-refined section.future-home-hero {
+    min-height: 0;
+    padding: 64px 0 !important;
+    border-bottom: 1px solid #e1e4e5;
+}
+
+body.site-refined section.future-home-hero h1.future-home-title {
+    margin-top: 0;
+    font-size: 64px !important;
+    font-weight: 800 !important;
+    line-height: 1.07 !important;
+    letter-spacing: 0 !important;
+}
+
+body.site-refined :is(.future-home-title span, .lh-title span) {
+    text-shadow: none;
+}
+
+body.site-refined .future-home-subtitle {
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 1.65;
+}
+
+body.site-refined .future-home-actions {
+    margin-top: 28px;
+}
+
+body.site-refined .future-home-visual {
+    min-height: 0 !important;
+    filter: none;
+}
+
+body.site-refined .future-home-core-card {
+    width: 100%;
+    padding: 8px 0 8px 32px;
+    border: 0;
+    border-left: 1px solid #e1e4e5;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+body.site-refined :is(.future-home-core-title, .future-home-core-item span) {
+    letter-spacing: 0;
+    color: #646b71 !important;
+}
+
+body.site-refined .future-home-core-text {
+    margin-top: 12px;
+}
+
+body.site-refined .future-home-core-grid {
+    gap: 0;
+    margin-bottom: 0;
+}
+
+body.site-refined .future-home-core-item {
+    padding: 18px 0;
+    border: 0;
+    border-top: 1px solid #e1e4e5;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+body.site-refined .future-home-core-item strong {
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+body.site-refined .future-home-core-item em {
+    background: #edf5f1;
+    color: #267052;
+    box-shadow: none;
+}
+
+body.site-refined .future-home-core-meta {
+    gap: 12px 24px;
+}
+
+body.site-refined .future-home-core-pill {
+    padding: 0;
+    min-height: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #4e555a;
+    letter-spacing: 0;
+}
+
+body.site-refined :is(.future-btn, .cmd-nav-cta, .cmd-mob-cta, .lh-btn-primary,
+    .lh-btn-outline, .ct-btn, .ct-btn-ghost, .case-story-button, .cases-rl-all,
+    .future-form-submit, .lf-submit, .articles-hero-btn-primary, .cases-hero-btn) {
+    border-radius: 8px !important;
+    min-height: 44px;
+    box-shadow: none !important;
+    transition: color .18s ease, background-color .18s ease, border-color .18s ease;
+}
+
+body.site-refined :is(.future-btn-primary, .lh-btn-primary, .ct-btn,
+    .future-form-submit, .lf-submit, .case-story-button-primary,
+    .case-story-form button[type='submit'], .articles-hero-btn-primary, .cases-hero-btn) {
+    background: #f58232 !important;
+    color: #17191b !important;
+}
+
+body.site-refined :is(.future-btn-primary, .lh-btn-primary, .ct-btn,
+    .future-form-submit, .lf-submit, .case-story-button-primary,
+    .case-story-form button[type='submit'], .articles-hero-btn-primary, .cases-hero-btn):hover {
+    background: #ff964c !important;
+    transform: none;
+}
+
+body.site-refined :is(.future-service-card, #cases-redesign-6 .cs-mini,
+    .future-review-card, .rl-card, .cases-rl-card, .site-card,
+    .articles-topics-card, .articles-readnext-card, .articles-hero-featured) {
+    border-radius: 8px !important;
+    border-color: #dfe3e5 !important;
+    box-shadow: 0 2px 6px rgb(20 24 28 / 3%) !important;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+body.site-refined :is(.future-service-card, #cases-redesign-6 .cs-mini,
+    .future-review-card, .rl-card, .cases-rl-card, .site-card,
+    .articles-topics-card, .articles-readnext-card, .articles-hero-featured):hover {
+    transform: none !important;
+    border-color: #bfc6ca !important;
+    box-shadow: 0 6px 18px rgb(20 24 28 / 6%) !important;
+}
+
+body.site-refined :is(.future-service-image, #cases-redesign-6 .cs-mini-preview,
+    .articles-hero-featured-cover) {
+    border-radius: 4px !important;
+}
+
+body.site-refined :is(#home-directions .future-service-card, #cases-redesign-6 .cs-mini) {
+    padding: 24px;
+}
+
+body.site-refined :is(#home-directions .future-service-copy h3, #cases-redesign-6 .cs-mini-title) {
+    font-size: 24px !important;
+    line-height: 1.3 !important;
+    hyphens: none !important;
+}
+
+body.site-refined .future-service-actions {
+    border-top: 1px solid #e8eaeb;
+    padding-top: 16px;
+    gap: 4px;
+}
+
+body.site-refined :is(.future-service-link, .future-service-case-link,
+    #cases-redesign-6 .cs-mini-link) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    font-size: 14px !important;
+    text-transform: none;
+    color: #4e555a !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+body.site-refined :is(.future-service-case-link, #cases-redesign-6 .cs-mini-link) {
+    color: #a9470e !important;
+}
+
+body.site-refined :is(.future-service-link, .future-service-case-link):hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+body.site-refined :is(.lh-lead, .rl-desc, .lh-bc, .lh-bc a,
+    .case-story-breadcrumb, .case-story-breadcrumb a, .cases-hero-lead,
+    .cases-bc, .cases-bc a, .articles-hero-lead, .articles-hero-bc, .articles-hero-bc a) {
+    color: #5b6268;
+}
+
+body.site-refined .lh-title,
+body.site-refined .articles-hero-title {
+    font-size: 56px;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+body.site-refined .case-story-title {
+    font-size: 48px;
+    line-height: 1.12;
+    font-weight: 800;
+}
+
+body.site-refined .cases-hero .cases-hero-top .cases-hero-title[class] {
+    font-size: 56px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+}
+
+body.site-refined .articles-hero-title-accent {
+    color: #c6530d !important;
+}
+
+body.site-refined .articles-hero-title-accent::before {
+    content: none;
+}
+
+body.site-refined :is(.case-story-meta > div, .case-story-metric, .case-story-step,
+    .case-story-cover, .case-story-visual, .case-story-result-card, .case-story-cta) {
+    box-shadow: none;
+}
+
+body.site-refined .lh-launch-card {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    align-self: center;
+}
+
+body.site-refined section.section#faq-section .faq-acc-ans-inner {
+    font-size: 16px !important;
+    color: #53595f !important;
+    line-height: 1.7 !important;
+}
+
+body.site-refined section.section#faq-section .faq-acc-open .faq-acc-ans {
+    max-height: none !important;
+}
+
+body.site-refined section.section#faq-section .faq-acc-icon {
+    transform: rotate(45deg) !important;
+}
+
+body.site-refined section.section#faq-section .faq-acc-open .faq-acc-icon {
+    transform: none !important;
+}
+
+/* Content stays readable while the existing scroll controllers initialize. */
+body.site-refined :is(.future-home-title, .future-home-subtitle, .future-home-actions,
+    .future-service-reveal, .cr-head, .cr-mini, .future-review-card,
+    .lh-bc, .lh-kicker, .lh-title, .lh-lead, .lh-actions, .lh-info,
+    .lh-launch-card, .lh-divider,
+    .cases-bc, .cases-hero-kicker, .cases-hero-title, .cases-hero-lead,
+    .cases-hero-actions, .cases-tl-card, .cases-timeline-h2, .cases-timeline-sub,
+    .articles-hero-bc, .articles-hero-kicker, .articles-hero-title-letter,
+    .articles-hero-lead, .articles-hero-actions, .articles-hero-featured,
+    .articles-list-head, .articles-mag-feat, .articles-mag-small,
+    .articles-topics-head, .articles-topics-card, .articles-faq-aside,
+    .articles-faq-item, .articles-readnext-head, .articles-readnext-card,
+    .case-related-cascade .cases-rl-kicker, .case-related-cascade .cases-rl-title,
+    .case-related-cascade .cases-rl-all, .case-related-cascade .cases-rl-grid,
+    .case-related-cascade .cases-rl-card) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition-delay: 0s !important;
+}
+
+body.site-refined :is(.cases-hero-title, .cases-ticker-wrap) {
+    clip-path: none !important;
+}
+
+body.site-refined .cmd-nav-item:focus-within .cmd-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+body.site-refined .cmd-dropdown::before {
+    content: '';
+    position: absolute;
+    height: 16px;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+}
+
+body.site-refined :is(.cmd-dropdown, .cmd-solution-link, .cmd-mob-panel, .cmd-burger) {
+    border-radius: 8px !important;
+}
+
+body.site-refined .cmd-burger {
+    border: 0;
+}
+
+body.site-refined .cmd-mob-panel {
+    visibility: hidden;
+}
+
+body.site-refined .cmd-nav-check:checked ~ .cmd-mob-panel {
+    visibility: visible;
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+    body.site-refined .cmd-nav-actions .cmd-nav-socials {
+        display: none !important;
+    }
+
+    body.site-refined .cmd-nav-center {
+        gap: 16px;
+    }
+
+    body.site-refined .cmd-nav-item > a {
+        font-size: 14px !important;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 991px) {
+    body.site-refined .future-home-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    body.site-refined .future-home-core-card {
+        padding: 24px 0 0;
+        border-left: 0;
+        border-top: 1px solid #e1e4e5;
+    }
+
+    body.site-refined .lh-title,
+    body.site-refined .articles-hero-title {
+        font-size: 44px;
+    }
+
+    body.site-refined .future-home-core-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    body.site-refined .future-home-core-item {
+        padding: 14px 0;
+    }
+
+    body.site-refined .future-home-core-item strong {
+        font-size: 16px;
+    }
+
+    body.site-refined .future-home-core-item em {
+        display: none;
+    }
+
+    body.site-refined .future-home-core-text {
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 767px) {
+    body.site-refined .container-wrap {
+        padding-inline: 20px !important;
+    }
+
+    body.site-refined section.future-home-hero {
+        padding: 36px 0 44px !important;
+    }
+
+    body.site-refined section.future-home-hero h1.future-home-title {
+        font-size: 42px !important;
+        line-height: 1.12 !important;
+    }
+
+    body.site-refined .future-home-subtitle {
+        font-size: 16px !important;
+    }
+
+    body.site-refined :is(#home-directions, #cases-redesign-6, #home-reviews,
+        #founder-block, #useful-business-block, #budget-hypothesis, #start-flow-block),
+    body.site-refined section.section#faq-section {
+        padding-top: 52px !important;
+        padding-bottom: 52px !important;
+    }
+
+    body.site-refined :is(#pain-section .pain-heading, #home-directions .future-section-title,
+        #founder-block .founder-split-heading, #interview-video-block .iv-title,
+        #cases-redesign-6 .cs-title, #home-reviews .future-section-title,
+        #useful-business-block .uf-title, #budget-hypothesis .bh-title,
+        #start-flow-block .sf-title),
+    body.site-refined section.section#faq-section .faq-left-title {
+        font-size: 30px !important;
+    }
+
+    body.site-refined :is(#home-directions .future-service-copy h3, #cases-redesign-6 .cs-mini-title) {
+        font-size: 21px !important;
+    }
+
+    body.site-refined :is(#home-directions .future-service-card, #cases-redesign-6 .cs-mini) {
+        padding: 20px;
+    }
+
+    body.site-refined .lh-title,
+    body.site-refined .articles-hero-title {
+        font-size: 36px;
+    }
+
+    body.site-refined .cases-hero .cases-hero-top .cases-hero-title[class] {
+        font-size: 36px !important;
+    }
+
+    body.site-refined .case-story-title {
+        font-size: 32px;
+    }
+
+    body.site-refined .lh-bc {
+        flex-wrap: wrap;
+    }
+
+    body.site-refined .ct-actions {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    body.site-refined .ct-actions > a {
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    body.site-refined section.future-home-hero h1.future-home-title {
+        font-size: 38px !important;
+    }
+
+    body.site-refined .future-home-core-text {
+        display: none;
+    }
+
+    body.site-refined .future-home-core-grid {
+        margin-top: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.site-refined *,
+    body.site-refined *::before,
+    body.site-refined *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        transition-delay: 0s !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. https://webflow.com --><!-- Last Published: Wed Mar 18 2026 11:15:03 GMT+0000 (Coordinated Universal Time) -->
-<html data-wf-domain="crm-architect.webflow.io" data-wf-page="69ba84624a8024d8c245e9af"
+<html lang="ru" data-wf-domain="crm-architect.webflow.io" data-wf-page="69ba84624a8024d8c245e9af"
   data-wf-site="69ba84564a8024d8c245e791" data-wf-status="1">
 
 <head>
@@ -46,13 +46,7 @@
   <style>
     body {
       color: var(--site-text);
-      background:
-        linear-gradient(rgba(15, 23, 42, 0.008) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.008) 1px, transparent 1px),
-        radial-gradient(circle at 12% 0%, rgba(255, 155, 61, 0.12) 0%, rgba(255, 255, 255, 0) 28%),
-        radial-gradient(circle at 100% 12%, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 0) 24%),
-        linear-gradient(180deg, #f7f9fc 0%, #f4f7fb 100%);
-      background-size: 62px 62px, 62px 62px, auto, auto, auto;
+      background: #fff;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       margin: 0;
@@ -6830,9 +6824,10 @@
 
   {!! $headPlugins ?? '' !!}
   @include('site.partials.yandex-metrika')
+  @vite('resources/css/site-refinements.css')
 </head>
 
-<body>
+<body class="site-refined">
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="ico-tg" viewBox="0 0 24 24">
@@ -6992,8 +6987,6 @@
     }
   </style>
   <section class="future-home-hero">
-    <div class="future-mesh-1"></div>
-    <div class="future-mesh-2"></div>
     <div class="container-wrap future-home-hero-grid">
       <div class="future-home-copy">
         <h1 class="future-home-title">
@@ -7007,16 +7000,6 @@
         </div>
       </div>
       <div class="future-home-visual">
-        <div class="future-home-orb"></div>
-        <div class="future-home-orb-lines">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="future-home-panel future-home-panel-back" aria-hidden="true"></div>
-        <div class="future-home-panel future-home-panel-front" aria-hidden="true"></div>
-
         <div class="future-home-core-card">
           <div class="future-home-core-head">
             <div class="future-home-core-title">Контур продаж</div>

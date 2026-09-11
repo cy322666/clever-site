@@ -29,11 +29,11 @@
     <script type="application/ld+json">{!! json_encode($organizationSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
     @stack('schema')
     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/site-refinements.css', 'resources/js/app.js'])
     {!! $globalJsPlugins['head'] ?? '' !!}
     @include('site.partials.yandex-metrika')
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen site-refined">
     @include('site.partials.top-nav')
 
     <main class="site-main">

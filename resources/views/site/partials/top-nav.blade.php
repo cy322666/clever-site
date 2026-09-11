@@ -239,11 +239,11 @@
         </div>
 
         <input type="checkbox" id="nav-toggle" class="cmd-nav-check" aria-hidden="true">
-        <label for="nav-toggle" class="cmd-burger" aria-label="Меню">
+        <button type="button" class="cmd-burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-navigation">
             <span></span><span></span><span></span>
-        </label>
+        </button>
 
-        <div class="cmd-mob-panel">
+        <div class="cmd-mob-panel" id="mobile-navigation" inert>
             <details class="cmd-mob-accordion" open>
                 <summary class="cmd-mob-link">Услуги</summary>
                 <div class="cmd-mob-accordion-body">
@@ -297,3 +297,31 @@
     </div>
 </nav>
 <div class="nav-spacer"></div>
+<script>
+    (() => {
+        const toggle = document.getElementById('nav-toggle');
+        const button = document.querySelector('.cmd-burger');
+        const panel = document.getElementById('mobile-navigation');
+
+        function setOpen(open) {
+            toggle.checked = open;
+            button.setAttribute('aria-expanded', String(open));
+            button.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+            panel.inert = !open;
+        }
+
+        button.addEventListener('click', () => setOpen(!toggle.checked));
+        panel.addEventListener('click', (event) => {
+            if (event.target.closest('a')) setOpen(false);
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && toggle.checked) {
+                setOpen(false);
+                button.focus();
+            }
+        });
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.cmdf5-inspired-nav')) setOpen(false);
+        });
+    })();
+</script>
