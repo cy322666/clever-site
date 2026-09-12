@@ -15,7 +15,7 @@
                             <span class="site-footer-bank-label">ИНН</span>
                             <strong>025508490244</strong>
                         </div>
-                        <div>
+                        <div class="site-footer-bank-account">
                             <span class="site-footer-bank-label">Расчётный счёт</span>
                             <strong>40802810314500038154</strong>
                         </div>
@@ -27,7 +27,7 @@
                             <span class="site-footer-bank-label">БИК</span>
                             <strong>044525104</strong>
                         </div>
-                        <div>
+                        <div class="site-footer-bank-account">
                             <span class="site-footer-bank-label">Корреспондентский счёт</span>
                             <strong>30101810745374525104</strong>
                         </div>

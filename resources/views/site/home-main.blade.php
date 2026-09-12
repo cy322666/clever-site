@@ -7000,6 +7000,9 @@
         </div>
       </div>
       <div class="future-home-visual">
+        <div class="future-home-panel future-home-panel-back" aria-hidden="true"></div>
+        <div class="future-home-panel future-home-panel-front" aria-hidden="true"></div>
+
         <div class="future-home-core-card">
           <div class="future-home-core-head">
             <div class="future-home-core-title">Контур продаж</div>
@@ -9036,6 +9039,7 @@
       background:
         radial-gradient(circle at 100% 0%, rgba(255, 106, 0, 0.14), transparent 24%),
         linear-gradient(180deg, #141414 0%, #0d0d0d 100%);
+      background-color: #141414;
       color: rgba(255, 255, 255, 0.88);
     }
 
