@@ -69,7 +69,7 @@ body.site-refined :is(#home-directions, #cases-redesign-6, #founder-block,
 }
 
 body.site-refined :is(#home-directions, #cases-redesign-6, #home-reviews,
-    #founder-block, #useful-business-block, #budget-hypothesis, #start-flow-block),
+    #useful-business-block, #budget-hypothesis, #start-flow-block),
 body.site-refined section.section#faq-section {
     padding-top: 80px !important;
     padding-bottom: 80px !important;
@@ -324,7 +324,7 @@ body.site-refined .cmd-nav-check:checked ~ .cmd-mob-panel {
     }
 
     body.site-refined :is(#home-directions, #cases-redesign-6, #home-reviews,
-        #founder-block, #useful-business-block, #budget-hypothesis, #start-flow-block),
+        #useful-business-block, #budget-hypothesis, #start-flow-block),
     body.site-refined section.section#faq-section {
         padding-top: 52px !important;
         padding-bottom: 52px !important;
