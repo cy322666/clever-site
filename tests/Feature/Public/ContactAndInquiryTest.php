@@ -31,6 +31,18 @@ class ContactAndInquiryTest extends TestCase
         $response->assertSee('виджетов от нас и партнеров');
     }
 
+    public function test_license_renewal_omits_savings_panel_and_gift_column(): void
+    {
+        $response = $this->get(route('site.license-renewal'));
+
+        $response->assertOk();
+        $response->assertDontSee('Экономия на лицензии');
+        $response->assertDontSee('amoCRM + Clever');
+        $response->assertDontSee('Месяцы в подарок');
+        $response->assertSeeInOrder(['Месяцы продления', 'Общий срок', 'Как это выглядит', 'Выгода']);
+        $response->assertSee('license-renewal-form');
+    }
+
     public function test_landing_inquiry_form_is_submitted_successfully(): void
     {
         $landing = $this->createLanding([

@@ -31,10 +31,10 @@
     ];
 
     $bonusRows = [
-        ['term' => '6', 'gift' => '1', 'total' => '7', 'payment' => 'Оплачиваете 6, пользуетесь 7', 'saving' => '1 199'],
-        ['term' => '9', 'gift' => '2', 'total' => '10', 'payment' => 'Оплачиваете 8, пользуетесь 11', 'saving' => '2 398'],
-        ['term' => '12', 'gift' => '3', 'total' => '13', 'payment' => 'Оплачиваете 10, пользуетесь 13', 'saving' => '3 597'],
-        ['term' => '24', 'gift' => '4', 'total' => '25', 'payment' => 'Оплачиваете 18, пользуетесь 25', 'saving' => '7 194'],
+        ['term' => '6', 'total' => '7', 'payment' => 'Оплачиваете 6, пользуетесь 7', 'saving' => '1 199'],
+        ['term' => '9', 'total' => '10', 'payment' => 'Оплачиваете 8, пользуетесь 11', 'saving' => '2 398'],
+        ['term' => '12', 'total' => '13', 'payment' => 'Оплачиваете 10, пользуетесь 13', 'saving' => '3 597'],
+        ['term' => '24', 'total' => '25', 'payment' => 'Оплачиваете 18, пользуетесь 25', 'saving' => '7 194'],
     ];
 
     $bonusCards = [
@@ -102,7 +102,7 @@
 
 @section('content')
     <section class="relative overflow-hidden bg-[#111113] text-white">
-        <div class="container-wrap grid gap-10 py-14 md:py-20 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,.95fr)] lg:items-center">
+        <div class="container-wrap py-14 md:py-20">
             <div>
                 <h1 class="max-w-4xl text-4xl font-black leading-[1.02] tracking-tight md:text-6xl">
                     Продлите лицензии amoCRM с бонусными месяцами и виджетами
@@ -118,52 +118,6 @@
                 </div>
             </div>
 
-            <div class="rounded-[28px] border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 backdrop-blur">
-                <div class="rounded-3xl bg-white p-5 text-slate-950">
-                    <div class="flex items-center justify-between gap-4 border-b border-slate-100 pb-4">
-                        <div>
-                            <p class="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-400">Экономия на лицензии</p>
-                            <p class="mt-1 text-2xl font-black tracking-tight">amoCRM + Clever</p>
-                        </div>
-                    </div>
-
-                    <div class="mt-5 grid gap-3">
-                        <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                            <div class="flex items-center justify-between gap-4">
-                                <span class="text-sm font-bold text-slate-600">Оплачиваете</span>
-                                <span class="text-lg font-black">10 месяцев</span>
-                            </div>
-                            <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-200">
-                                <div class="h-full w-[78%] rounded-full bg-orange-500"></div>
-                            </div>
-                        </div>
-                        <div class="rounded-2xl border border-orange-100 bg-orange-50 p-4">
-                            <div class="flex items-center justify-between gap-4">
-                                <span class="text-sm font-bold text-orange-800">Пользуетесь</span>
-                                <span class="text-lg font-black text-orange-700">13 месяцев</span>
-                            </div>
-                            <div class="mt-3 h-2 overflow-hidden rounded-full bg-orange-200">
-                                <div class="h-full w-full rounded-full bg-orange-500"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-5 grid grid-cols-3 gap-3">
-                        <div class="rounded-2xl bg-slate-950 p-4 text-white">
-                            <p class="text-2xl font-black">3</p>
-                            <p class="mt-1 text-xs leading-5 text-white/62">месяца в подарок</p>
-                        </div>
-                        <div class="rounded-2xl bg-slate-100 p-4">
-                            <p class="text-2xl font-black">10%</p>
-                            <p class="mt-1 text-xs leading-5 text-slate-500">кешбек работами</p>
-                        </div>
-                        <div class="rounded-2xl bg-slate-100 p-4">
-                            <p class="text-2xl font-black">40+</p>
-                            <p class="mt-1 text-xs leading-5 text-slate-500">виджетов бесплатно</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -223,11 +177,10 @@
                 </div>
 
                 <div class="overflow-x-auto">
-                    <table class="min-w-[820px] w-full text-left">
+                    <table class="min-w-[680px] w-full text-left">
                         <thead class="bg-slate-50 text-xs font-extrabold uppercase tracking-[0.08em] text-slate-500">
                             <tr>
                                 <th class="px-5 py-4">Месяцы продления</th>
-                                <th class="px-5 py-4">Месяцы в подарок</th>
                                 <th class="px-5 py-4">Общий срок</th>
                                 <th class="px-5 py-4">Как это выглядит</th>
                                 <th class="px-5 py-4">Выгода</th>
@@ -237,7 +190,6 @@
                             @foreach($bonusRows as $row)
                                 <tr class="transition hover:bg-orange-50/40">
                                     <td class="px-5 py-5 text-lg font-black text-slate-950">{{ $row['term'] }}</td>
-                                    <td class="px-5 py-5"><span class="rounded-full bg-orange-100 px-3 py-1.5 font-extrabold text-orange-700">+{{ $row['gift'] }}</span></td>
                                     <td class="px-5 py-5 font-bold text-slate-700">{{ $row['total'] }} мес.</td>
                                     <td class="px-5 py-5 text-slate-600">{{ $row['payment'] }}</td>
                                     <td class="px-5 py-5 font-black text-slate-950">От {{ $row['saving'] }} ₽</td>
