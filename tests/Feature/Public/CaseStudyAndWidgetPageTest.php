@@ -177,6 +177,19 @@ class CaseStudyAndWidgetPageTest extends TestCase
         $response->assertDontSee('case-cover-section', false);
     }
 
+    public function test_homepage_omits_useful_materials_section(): void
+    {
+        $response = $this->get(route('site.home'));
+
+        $response->assertOk();
+        $response->assertDontSee('<section id="useful-business-block">', false);
+        $response->assertDontSee('Материалы о CRM, продажах и контроле');
+        $response->assertDontSee('Где CRM тормозит продажи');
+        $response->assertDontSee('Кейсы сложных внедрений');
+        $response->assertSeeInOrder(['id="home-reviews"', 'id="faq-section"'], false);
+        $response->assertSee('Что важно понять до старта');
+    }
+
     public function test_homepage_shows_six_compact_case_cards_without_featured_case(): void
     {
         foreach (range(1, 7) as $index) {
